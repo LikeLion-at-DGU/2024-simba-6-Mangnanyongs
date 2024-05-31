@@ -1,12 +1,10 @@
 <!-- for문 예시 -->
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% block content %} {% load static %}
+<br><br>
 <div>
-    <hr>
     {% for p in posts %}
         [{{p.organization}}] {{p.title}}
         <br>
     {% endfor %}
 </div>
-
 {% endblock %}

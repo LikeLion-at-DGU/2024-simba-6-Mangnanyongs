@@ -21,9 +21,9 @@
           <a class="Caption" href="">알아보기</a>
           <a class="Caption" href="">지원현황</a>
         </section>
-        <a class="logo" href="/">
+        <a class="logo logo-font" href="/">
           <img src="{% static 'images/logo.svg' %}" />
-          <span class="logo logo-font">동국일개미</span>
+          동국일개미
         </a>
         <section class="nav-3">
         {% if user.is_authenticated %}
@@ -32,12 +32,14 @@
 
         <!-- 로그인을 하지 않은 경우 -->
         {% else %}
-        <a class="Caption" href="">회원가입</a>
+        <a class="Caption gray" href="">회원가입</a>
         <!--회원가입 페이지-->
-        <a class="Caption" href="">로그인</a>
+        <a class="Caption gray" href="">로그인</a>
         <!--로그인 페이지-->
         {% endif %}
-        <img src="{% static 'images/icons/bell.svg' %}" />
+        <a class="Caption bell">
+          <img src="{% static 'images/icons/bell.svg' %}" />
+        </a>
         </section>
       </div>
   </div>

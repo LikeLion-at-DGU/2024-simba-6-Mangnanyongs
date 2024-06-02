@@ -173,8 +173,13 @@
 }
 
 .more_info{
-    float: right;
-    margin-right:85px;
+    margin-left: auto;
+    margin-right: 5.31em;
+}
+
+.circle{
+    border-radius: 50%;
+    border: 5px #FE902F;
 }
 
 input {
@@ -254,7 +259,9 @@ select{
     color: rgba(28, 28, 30, 0.80);
 }
 
-
+.up{
+    margin-top: 22px;
+}
 
 .Capital{
     font-size: 32px;

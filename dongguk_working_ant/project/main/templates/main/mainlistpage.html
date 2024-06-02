@@ -26,14 +26,12 @@
         <span id="selector">
             <label for="sort">
                 <select id="sort" class="Caption gray thin"> 
-                <select id="sort" class="Caption gray thin"> 
-                    <option vlaue="">정렬</option>
+                    <option value="">정렬</option>
                 </select>
             </label>
             <label for="end">
                 <select id="end" class="Caption gray thin">
-                <select id="end" class="Caption gray thin">
-                    <option vlaue="">마감 공고 제외</option>
+                    <option value="">마감 공고 제외</option>
                 </select>
             </label>
             <label for="place">
@@ -42,7 +40,6 @@
                 </select>
             </label>
             <label for="income">
-                <select id="income" class="Caption gray thin">
                 <select id="income" class="Caption gray thin">
                     <option value="">소득 분위</option>
                 </select>
@@ -69,16 +66,16 @@
                 </span>
             </div>
             <div class="title Caption big">
-                [{{post.place}}] {{post.title}}
+                [{{post.organization}}] {{post.title}}
             </div>
-            <div class="Caption light">
-                <p>{{post.place}}</p>
-                <p>{{post.time}}</p>
+            <div class="Caption light up">
+                <div>{{post.place}}</div>
+                <div>{{post.time}}</div>
             </div>
         </span>
-        <span class="more_info">
-            <img src="{% static 'images/icons/arrow.svg' %}"/>
-        </span>
+        <button type="button" class="more_info">
+            <img src="{% static 'images/icons/moreinfo.svg' %}"/>
+        </button>
     </div>
     {% endfor %}
 </div>

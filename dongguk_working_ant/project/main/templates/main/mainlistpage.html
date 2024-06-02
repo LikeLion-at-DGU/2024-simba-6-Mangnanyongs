@@ -1,10 +1,88 @@
 <!-- for문 예시 -->
 {% extends 'base.html' %} {% block content %} {% load static %}
-<br><br>
-<div>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/mainlistpage.css'%}"
+/>
+
+<div class="content" id="header">
+    <div class="Caption Capital" id="Welcome">
+        <p><span class="orange">동국대학교</span>에서 지금,</p>
+        <p>모집 중인 <span class="orange">근로</span></p>
+    </div>
+</div>
+<div class="content" id="main">
+    <div id="filter">
+        <button class="unchecked button Caption" id="all" value="전체">전체</button>
+        <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
+        <button class="unchecked button Caption" id="department" value="학과">학과</button>
+    </div>
+    <div id="convenience">
+        <span id="textfield">
+            <input id="search" placeholder="검색" required value>
+            <button id="submit" aria-label="submit"></button>
+        </span>
+        <span id="selector">
+            <label for="sort">
+                <select id="sort" class="Caption gray thin"> 
+                    <option value="">정렬</option>
+                </select>
+            </label>
+            <label for="end">
+                <select id="end" class="Caption gray thin">
+                    <option value="">마감 공고 제외</option>
+                </select>
+            </label>
+            <label for="place">
+                <select id="place" class="Caption gray thin">
+                    <option value="">근로 장소</option>
+                </select>
+            </label>
+            <label for="income">
+                <select id="income" class="Caption gray thin">
+                    <option value="">소득 분위</option>
+                </select>
+            </label>
+        </span>
+    </div>
+</div>
+<div class="content" id="footer">
+    {% for post in posts %}
+    <div class="card">
+        <span class="star">
+            <img src="{% static 'images/icons/star.svg' %}"/>
+        </span>
+        <span class="photo">
+            <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+        </span>
+        <span class="detail">
+            <div class="information">
+                <span class="info classification small orange">
+                    #{{post.department}}
+                </span>
+                <span class="info date small white">
+                    남음
+                </span>
+            </div>
+            <div class="title Caption big">
+                [{{post.organization}}] {{post.title}}
+            </div>
+            <div class="Caption light up">
+                <div>{{post.place}}</div>
+                <div>{{post.time}}</div>
+            </div>
+        </span>
+        <button type="button" class="more_info">
+            <img src="{% static 'images/icons/moreinfo.svg' %}"/>
+        </button>
+    </div>
+    {% endfor %}
+</div>
+<!--div>
     {% for p in posts %}
         [{{p.organization}}] {{p.title}}
         <br>
     {% endfor %}
-</div>
+</div-->
 {% endblock %}

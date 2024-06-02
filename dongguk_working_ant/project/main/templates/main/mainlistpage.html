@@ -14,9 +14,9 @@
 </div>
 <div class="content" id="main">
     <div id="filter">
-        <input type="button" class="unchecked button Caption" id="all" value="전체"/>
-        <input type="button" class="unchecked button Caption" id="oncampus" value="교내"/>
-        <input type="button" class="unchecked button Caption" id="department" value="학과"/>
+        <button class="unchecked button Caption" id="all" value="전체">전체</button>
+        <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
+        <button class="unchecked button Caption" id="department" value="학과">학과</button>
     </div>
     <div id="convenience">
         <span id="textfield">
@@ -25,22 +25,22 @@
         </span>
         <span id="selector">
             <label for="sort">
-                <select id="sort"> 
+                <select id="sort" class="Caption gray thin"> 
                     <option vlaue="">정렬</option>
                 </select>
             </label>
             <label for="end">
-                <select id="end">
+                <select id="end" class="Caption gray thin">
                     <option vlaue="">마감 공고 제외</option>
                 </select>
             </label>
             <label for="place">
-                <select id="palce">
+                <select id="place" class="Caption gray thin">
                     <option value="">근로 장소</option>
                 </select>
             </label>
             <label for="income">
-                <select id="income">
+                <select id="income" class="Caption gray thin">
                     <option value="">소득 분위</option>
                 </select>
             </label>
@@ -48,7 +48,36 @@
     </div>
 </div>
 <div class="content" id="footer">
-
+    {% for post in posts %}
+    <div class="card">
+        <span class="star">
+            <img src="{% static 'images/icons/star.svg' %}"/>
+        </span>
+        <span class="photo">
+            <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+        </span>
+        <span class="detail">
+            <div class="information">
+                <span class="info classification small orange">
+                    #{{post.department}}
+                </span>
+                <span class="info date small white">
+                    남음
+                </span>
+            </div>
+            <div class="title Caption big">
+                [{{post.place}}] {{post.title}}
+            </div>
+            <div class="Caption light">
+                <p>{{post.place}}</p>
+                <p>{{post.time}}</p>
+            </div>
+        </span>
+        <span class="more_info">
+            <img src="{% static 'images/icons/arrow.svg' %}"/>
+        </span>
+    </div>
+    {% endfor %}
 </div>
 <!--div>
     {% for p in posts %}

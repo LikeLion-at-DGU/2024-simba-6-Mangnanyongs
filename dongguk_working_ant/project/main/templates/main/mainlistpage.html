@@ -1,10 +1,35 @@
 <!-- for문 예시 -->
 {% extends 'base.html' %} {% block content %} {% load static %}
-<br><br>
-<div>
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/mainlistpage.css'%}"
+/>
+
+<div class="content" id="header">
+    <div class="Caption Capital" id="Welcome">
+        <p><span class="orange">동국대학교</span>에서 지금,</p>
+        <p>모집 중인 <span class="orange">근로</span></p>
+    </div>
+</div>
+<div class="content" id="main">
+    <div id="choice">
+        <input type="button" class="unchecked button Caption" id="all" value="전체"/>
+        <input type="button" class="unchecked button Caption" id="oncampus" value="교내"/>
+        <input type="button" class="unchecked button Caption" id="department" value="학과"/>
+    </div>
+    <div id="convenience">
+        <input class="search" type="text" placeholder="검색"/>
+        <img src="{% static 'images/icons/search.svg' %}" id="glasses">
+    </div>
+</div>
+<div class="content" id="footer">
+
+</div>
+<!--div>
     {% for p in posts %}
         [{{p.organization}}] {{p.title}}
         <br>
     {% endfor %}
-</div>
+</div-->
 {% endblock %}

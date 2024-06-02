@@ -6,7 +6,7 @@
 
     gap: 10px;
 
-    margin-left: 16.3%;
+    margin-left: 12%;
 
     @media (max-width: 1050px) {
         align-items: start;
@@ -19,40 +19,59 @@
 }
 
 #header{ 
-    margin-top: 8.43em;
+    margin-top: 8em;
 }
 
 #main{
-    margin-top: 5em;
+    margin-top: 4em;
 }
 
 #convenience{
+    display: flex;
     margin-top: 2.5em;
 }
 
-#glasses{
-    position : absolute;
-}
-
-.button{
-    width: 6em;
-    height: 3em;
+#search{
+    width: 500px;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
     border: none;
-    border-radius: 1em;
+    outline: none;
+    background-color: inherit;
+    font-size: 16px;
+    letter-spacing: -0.33px;
 }
 
-.search{
-    width: 37.8em;
+#submit{
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 16px 26px 11px 10px;
+    bottom: 3px;
+    background: url(../../images/icons/search.svg) 0px 0px no-repeat;
+}
+
+#textfield{
+    display: flex;
+    width: 38em;
     height: 3em;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 14px;
     border-radius: 50px;
     border: 1px solid #FFAF36;
 }
 
-input::placeholder{
-    padding-left:2em;
-    color:#FFAF36
+#selector{
+    margin-left: 9.5em;
+    display:flex;
+    gap: 13px;
 }
-
 
 
 
@@ -87,6 +106,44 @@ input::placeholder{
     color:#FE902F;
 }
 
+.button{
+    width: 6em;
+    height: 3em;
+    border: none;
+    border-radius: 1em;
+}
+
 input {
     display:inline-block
+}
+
+button{
+    background-color: #FFF;
+    border:none;
+    cursor: pointer;
+}
+
+textarea{
+    outline: 0;
+    resize: none;
+}
+
+input::placeholder{
+    color:#FFAF36
+}
+
+label{
+    display: inline-flex;
+    align-items: flex-end;
+    
+}
+
+select{
+    display: flex;
+    height: 48px;
+    padding-right: 1.75em;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #E4E4E4;
 }

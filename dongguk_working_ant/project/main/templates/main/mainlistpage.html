@@ -13,14 +13,38 @@
     </div>
 </div>
 <div class="content" id="main">
-    <div id="choice">
+    <div id="filter">
         <input type="button" class="unchecked button Caption" id="all" value="전체"/>
         <input type="button" class="unchecked button Caption" id="oncampus" value="교내"/>
         <input type="button" class="unchecked button Caption" id="department" value="학과"/>
     </div>
     <div id="convenience">
-        <input class="search" type="text" placeholder="검색"/>
-        <img src="{% static 'images/icons/search.svg' %}" id="glasses">
+        <span id="textfield">
+            <input id="search" placeholder="검색" required value>
+            <button id="submit" aria-label="submit"></button>
+        </span>
+        <span id="selector">
+            <label for="sort">
+                <select id="sort"> 
+                    <option vlaue="">정렬</option>
+                </select>
+            </label>
+            <label for="end">
+                <select id="end">
+                    <option vlaue="">마감 공고 제외</option>
+                </select>
+            </label>
+            <label for="place">
+                <select id="palce">
+                    <option value="">근로 장소</option>
+                </select>
+            </label>
+            <label for="income">
+                <select id="income">
+                    <option value="">소득 분위</option>
+                </select>
+            </label>
+        </span>
     </div>
 </div>
 <div class="content" id="footer">

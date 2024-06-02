@@ -253,3 +253,26 @@ select{
 .light{
     color: rgba(28, 28, 30, 0.80);
 }
+
+
+
+.Capital{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}
+
+.orange{
+    color:#FE902F;
+}
+
+.gray{
+    color: #9C9CA1
+}
+
+.thin{
+    font-size: 16px;
+    font-weight: 500;
+}

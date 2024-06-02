@@ -1,0 +1,92 @@
+.content {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+
+    gap: 10px;
+
+    margin-left: 16.3%;
+
+    @media (max-width: 1050px) {
+        align-items: start;
+        justify-content: center;
+    }
+    @media (min-width: 1051px) {
+        align-items: start;
+        justify-content: center;
+    }
+}
+
+#header{ 
+    margin-top: 8.43em;
+}
+
+#main{
+    margin-top: 5em;
+}
+
+#convenience{
+    margin-top: 2.5em;
+}
+
+#glasses{
+    position : absolute;
+}
+
+.button{
+    width: 6em;
+    height: 3em;
+    border: none;
+    border-radius: 1em;
+}
+
+.search{
+    width: 37.8em;
+    height: 3em;
+    border-radius: 50px;
+    border: 1px solid #FFAF36;
+}
+
+input::placeholder{
+    padding-left:2em;
+    color:#FFAF36
+}
+
+
+
+
+
+
+
+
+
+.unchecked{
+    border: 1px solid #E4E4E4;
+    background-color: #FFFDFB;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    color: #9C9CA1;
+}
+
+.checked{
+    border: none;
+    background-color: #FE902F;
+    box-shadow: 0px 0px 10px 0px rgba(254, 144, 47, 0.20);
+    color: #FFF;
+}
+
+.Capital{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}
+
+.orange{
+    color:#FE902F;
+}
+
+input {
+    display:inline-block
+}

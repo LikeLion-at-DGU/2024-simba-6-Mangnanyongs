@@ -1,3 +1,6 @@
+.container{
+    width: 100vw;
+}
 .content {
     display: flex;
     flex-direction: column;
@@ -6,7 +9,7 @@
 
     gap: 10px;
 
-    margin-left: 12%;
+    margin-left: 10%;
 
     @media (max-width: 1050px) {
         align-items: start;
@@ -29,6 +32,7 @@
 #convenience{
     display: flex;
     margin-top: 2.5em;
+    align-items: center;
 }
 
 #search{
@@ -94,18 +98,6 @@
     color: #FFF;
 }
 
-.Capital{
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 10px; /* 31.25% */
-    letter-spacing: 3.2px;
-}
-
-.orange{
-    color:#FE902F;
-}
-
 .button{
     width: 6em;
     height: 3em;
@@ -140,10 +132,33 @@ label{
 
 select{
     display: flex;
-    height: 48px;
-    padding-right: 1.75em;
+    height: 3em;
+    padding-right: 1.3em;
     justify-content: flex-end;
     align-items: center;
     border-radius: 15px;
     border: 1px solid #E4E4E4;
+}
+
+
+
+.Capital{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}
+
+.orange{
+    color:#FE902F;
+}
+
+.gray{
+    color: #9C9CA1
+}
+
+.thin{
+    font-size: 16px;
+    font-weight: 500;
 }

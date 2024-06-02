@@ -1,12 +1,15 @@
+.container{
+    width: 100%;
+}
 .content {
     display: flex;
     flex-direction: column;
 
-    width: 100%;
+    width: 82.5%;
 
     gap: 10px;
 
-    margin-left: 16.3%;
+    margin-left: 17.5%;
 
     @media (max-width: 1050px) {
         align-items: start;
@@ -19,42 +22,65 @@
 }
 
 #header{ 
-    margin-top: 8.43em;
+    margin-top: 8em;
 }
 
 #main{
-    margin-top: 5em;
+    margin-top: 4em;
 }
 
 #convenience{
+    display: flex;
     margin-top: 2.5em;
+    align-items: center;
 }
 
-#glasses{
-    position : absolute;
-}
-
-.button{
-    width: 6em;
+#textfield{
+    display: flex;
+    width: 36em;
     height: 3em;
-    border: none;
-    border-radius: 1em;
-}
-
-.search{
-    width: 37.8em;
-    height: 3em;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding-left: 1em;
     border-radius: 50px;
     border: 1px solid #FFAF36;
 }
 
-input::placeholder{
-    padding-left:2em;
-    color:#FFAF36
+#search{
+    width: 450px;
+    font-family: SUIT;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-size: 16px;
+    letter-spacing: -0.33px;
 }
 
+#submit{
+    position: relative;
+    width: 24px;
+    height: 24px;
+    margin: 16px 26px 11px 10px;
+    bottom: 3px;
+    background: url(../../images/icons/search.svg) 0px 0px no-repeat;
+}
 
+#selector{
+    margin-left: 9.5em;
+    display:flex;
+    gap: 13px;
+}
 
+#footer{
+    margin-top: 4.8em;
+    gap: 2.2em;
+}
 
 
 
@@ -75,6 +101,120 @@ input::placeholder{
     color: #FFF;
 }
 
+.button{
+    width: 6em;
+    height: 3em;
+    border: none;
+    border-radius: 1em;
+}
+
+.card{
+    display:flex;
+    width: 82.625em;
+    height: 13.75em;
+    flex-shrink: 0;
+    border-radius: 0.75em;
+    border: 1px solid #EBEBEB;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+    align-items: center;
+}
+
+.star{
+    margin-left: 4em;
+}
+
+.photo{
+    margin-left: 2em;
+}
+
+.architecture{
+    display:flex;
+    width: 10em;
+    height: 10em;
+    border-radius:50%;
+    background-color: #D3D3D3;
+}
+
+.detail{
+    margin-left: 3.5em;
+    margin-right: 6.25em;
+}
+
+.information .info{
+    display: inline-block;
+}
+
+.classification{
+    display: flex;
+    padding: 11px 23px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    border: 1px solid #FF8A00;
+    background: #FFF;
+}
+
+.date{
+    display: flex;
+    padding: 11px 32px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #FF8A00;
+}
+
+.title{
+    margin-top: 19px;
+}
+
+.more_info{
+    float: right;
+    margin-right:85px;
+}
+
+input {
+    display:inline-block;
+}
+
+button{
+    background-color: #FFF;
+    border:none;
+    cursor: pointer;
+}
+
+textarea{
+    outline: 0;
+    resize: none;
+}
+
+input::placeholder{
+    color:#FFAF36
+}
+
+label{
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+select{
+    display: flex;
+    height: 3em;
+    padding-left:0.5em;
+    padding-right: 1em;
+    justify-content: flex-end;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid #E4E4E4;
+    cursor: pointer;
+}
+
+
+
 .Capital{
     font-size: 32px;
     font-style: normal;
@@ -87,6 +227,52 @@ input::placeholder{
     color:#FE902F;
 }
 
-input {
-    display:inline-block
+.white{
+    color: #FFF;
+}
+
+.gray{
+    color: #9C9CA1
+}
+
+.thin{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.small{
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.big{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.light{
+    color: rgba(28, 28, 30, 0.80);
+}
+
+
+
+.Capital{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}
+
+.orange{
+    color:#FE902F;
+}
+
+.gray{
+    color: #9C9CA1
+}
+
+.thin{
+    font-size: 16px;
+    font-weight: 500;
 }

@@ -12,7 +12,7 @@
         <p>모집 중인 <span class="orange">근로</span></p>
     </div>
 </div>
-<div class="content" id="main">
+<div class="content" id="main1">
     <div id="filter">
         <button class="unchecked button Caption" id="all" value="전체">전체</button>
         <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
@@ -26,33 +26,54 @@
         <span id="selector">
             <label for="sort">
                 <select id="sort" class="Caption gray thin"> 
-                    <option value="">정렬</option>
+                    <option value="" hidden>정렬</option>
+                    <option value="deadline">마감순</option>
+                    <option value="inquiry">조회순</option>
+                    <option value="scrap">스크랩순</option>
                 </select>
             </label>
             <label for="end">
                 <select id="end" class="Caption gray thin">
-                    <option value="">마감 공고 제외</option>
+                    <option value="" hidden>마감 공고 제외</option>
+                    <option value="exclude">제외</option>
+                    <option value="include">포함</option>
                 </select>
             </label>
             <label for="place">
                 <select id="place" class="Caption gray thin">
-                    <option value="">근로 장소</option>
+                    <option value="" hidden>근로 장소</option>
+                    <option value="경영/사회과학관">경영/사회과학관</option>
+                    <option value="과학관">과학관</option>
+                    <option value="다향관">다향관</option>
+                    <option value="명진관">명진관</option>
+                    <option value="법학/만해관">법학/만해관</option>
+                    <option value="본관">본관</option>
+                    <option value="신공학관">신공학관</option>
+                    <option value="정각원">정각원</option>
+                    <option value="중앙도서관">중앙도서관</option>
+                    <option value="원흥관">원흥관</option>
+                    <option value="학림관">학림관</option>
+                    <option value="학술문화관">학술문화관</option>
+                    <option value="혜화관">혜화관</option>
+                    <option value="기타">기타</option>
                 </select>
             </label>
             <label for="income">
                 <select id="income" class="Caption gray thin">
-                    <option value="">소득 분위</option>
+                    <option value="" hidden>소득 분위</option>
+                    <option value="apply">반영</option>
+                    <option value="remove">미반영</option>
                 </select>
             </label>
         </span>
     </div>
 </div>
-<div class="content" id="footer">
+<div class="content" id="main2">
     {% for post in posts %}
-    <div class="card">
-        <span class="star">
+    <a href="" class="card">
+        <button class="star">
             <img src="{% static 'images/icons/star.svg' %}"/>
-        </span>
+        </button>
         <span class="photo">
             <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
         </span>
@@ -76,13 +97,8 @@
         <button type="button" class="more_info">
             <img src="{% static 'images/icons/moreinfo.svg' %}"/>
         </button>
-    </div>
+    </a>
     {% endfor %}
 </div>
-<!--div>
-    {% for p in posts %}
-        [{{p.organization}}] {{p.title}}
-        <br>
-    {% endfor %}
-</div-->
+<script src="{%static 'js/main/mainlistpage.js'%}"></script>
 {% endblock %}

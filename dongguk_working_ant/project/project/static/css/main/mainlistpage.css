@@ -25,7 +25,7 @@
     margin-top: 8em;
 }
 
-#main{
+#main1{
     margin-top: 4em;
 }
 
@@ -77,15 +77,10 @@
     gap: 13px;
 }
 
-#footer{
+#main2{
     margin-top: 4.8em;
     gap: 2.2em;
 }
-
-
-
-
-
 
 .unchecked{
     border: 1px solid #E4E4E4;
@@ -217,8 +212,6 @@ select{
     border: 1px solid #E4E4E4;
     cursor: pointer;
 }
-
-
 
 .Capital{
     font-size: 32px;

@@ -1,15 +1,44 @@
 <!--240522 fork 테스트 -->
+<!--240603 메인페이지 개발 브랜치 ldg_mainpage-->
 <!-- for문 예시-->
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="content"> <br>메인페이지 입니다.
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/mainpage.css'%}"
+/>
+<div class="mainpageScreen">
     <!--
     <hr>
     {% for p in posts %}
         [{{p.organization}}] {{p.title}}
         <br>
     {% endfor %}-->
+
+    <div class="mainTextFrame">
+        <span class="mainText">
+            <span class="orange">동국대학교</span>에서 지금,
+            <br>가장 인기 있는 <span class="orange">근로</span>
+        </span>
+    </div>
+    
+    <div class="slideFrame">
+        <ul class="slides">
+            {% for p in posts %}
+                <li>
+                    <div class="cardFrame">
+                        <div class="cardImg"></div>
+                        <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="btnBox">
+            <button type="button" class="btnPrev">Prev</button>
+            <button type="button" class="btnNext">Next</button>
+        </div>
+    </div>
 </div>
 {% endblock %} 
-

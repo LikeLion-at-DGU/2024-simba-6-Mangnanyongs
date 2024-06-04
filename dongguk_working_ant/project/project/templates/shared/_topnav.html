@@ -32,10 +32,12 @@
 
           <!-- 로그인을 하지 않은 경우 -->
           {% else %}
+          <ul class="nav-link-account">
           <a class="Caption gray" href="">회원가입</a>
           <!--회원가입 페이지-->
-          <a class="Caption gray" href="">로그인</a>
+          <a class="Caption gray" href="{% url 'accounts:login' %}">로그인</a>
           <!--로그인 페이지-->
+          </ul>
           {% endif %}
           <a class="Caption bell"> <!--알림 기능은 어떻게 구현할 지 구상 중..-->
             <img src="{% static 'images/icons/bell.svg' %}" />

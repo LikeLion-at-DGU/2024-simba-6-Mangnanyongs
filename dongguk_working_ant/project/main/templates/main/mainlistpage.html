@@ -78,8 +78,8 @@
 </div>
 <div class="content" id="main2">
     {% for post in posts %}
-    <a href="" class="card">
-        <button class="star">
+    <div class="card">
+        <button class="star" value="none" onclick="scrap(this);">
             <img src="{% static 'images/icons/star.svg' %}"/>
         </button>
         <span class="photo">
@@ -105,8 +105,8 @@
         <button type="button" class="more_info">
             <img src="{% static 'images/icons/moreinfo.svg' %}"/>
         </button>
-    </a>
+    </div>
     {% endfor %}
 </div>
-<script src="{%static 'js/main/mainlistpage.js'%}"></script>
+<script src="{% static 'js/main/mainlistpage.js' %}"></script>
 {% endblock %}

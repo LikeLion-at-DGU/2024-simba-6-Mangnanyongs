@@ -69,9 +69,9 @@
 .slideUl{
     display: flex;
     list-style: none;
-    gap:10px;
+    gap:30px;
     overflow: hidden;/**/
-    width: 900px; /* 화면에 보이는 카드 3개 너비 설정 */
+    width: 1400px; /* 화면에 보이는 카드 3개 너비 설정 */
     
 }
 .slideCard {/**/

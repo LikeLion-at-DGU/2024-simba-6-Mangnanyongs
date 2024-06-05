@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
 filter = document.querySelectorAll('#selector label')
 console.log(filter[0].value);
 
-
+console.log(document.querySelectorAll('.card'));
 
 //스크랩 기능
 function scrap(card){

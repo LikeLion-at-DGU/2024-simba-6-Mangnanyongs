@@ -65,20 +65,20 @@ line-height: 24px; /* 120% */
 
 .footerIconFrame{
     display: inline-flex;
-height: 45.217px;
-align-items: flex-start;
-gap: 10px;
-flex-shrink: 0;
+    height: 45.217px;
+    align-items: flex-start;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
 .icon{
     display: flex;
     justify-content: center;
     align-items: center;
-width: 40px;
-height: 40px;
-flex-shrink: 0;
-border-radius: 50px;
-background: #D6D6DD;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    border-radius: 50px;
+    background: #D6D6DD;
 }
 

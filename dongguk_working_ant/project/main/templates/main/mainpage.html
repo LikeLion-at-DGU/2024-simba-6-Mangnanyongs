@@ -1,15 +1,62 @@
 <!--240522 fork 테스트 -->
+<!--240603 메인페이지 개발 브랜치 ldg_mainpage-->
 <!-- for문 예시-->
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<div class="content"> <br>메인페이지 입니다.
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/mainpage.css'%}"
+/>
+<div class="mainpageScreen">
     <!--
     <hr>
     {% for p in posts %}
         [{{p.organization}}] {{p.title}}
         <br>
     {% endfor %}-->
-</div>
-{% endblock %} 
 
+    <div class="mainTextFrame">
+        <span class="mainText">
+            <span class="orange">동국대학교</span>에서 지금,
+            <br>가장 인기 있는 <span class="orange">근로</span>
+        </span>
+    </div>
+    
+    <div class="slideFrame">
+        <button class="btnPrev">
+            <div class="buttonIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
+                    <path d="M26.729 9.72949L19.2695 17.1788L26.729 24.6281" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+            </div>
+            
+        </button>
+        <ul class="slideUl">
+            {% for p in posts %}
+                <li class="slideCard">
+                    <div class="cardFrame">
+                        <div class="cardImg"></div>
+                        <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <button class="btnNext">
+            <div class="buttonIcon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
+                    <path d="M19.271 35.2705L26.7305 27.8212L19.271 20.3719" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+            </div>
+            
+        </button>
+    </div>
+    <div class="pageBtn">
+        <a href="http://127.0.0.1:8000/mainlistpage" class="btnText">
+            더 많은 근로 공고
+        </a>
+    </div>
+</div>
+<script src="{% static 'js/main/mainpage.js' %}"></script>
+{% endblock %} 

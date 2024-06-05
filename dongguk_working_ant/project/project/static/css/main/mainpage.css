@@ -1,0 +1,131 @@
+.mainpageScreen{
+    width: 100%;
+    height: 680px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: solid 1px red; */
+    gap:50px
+    
+}
+
+.mainTextFrame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+.mainText{
+    color: #1C1C1E;
+    font-family: "SUITE Variable";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 3.2px;
+    text-align: center;
+}
+.orange{
+    
+    color: #FE902F;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    
+    letter-spacing: 3.2px;
+}
+
+.slideFrame{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* 수정이용: 위치 조정 */
+}
+.btnPrev, .btnNext { /* 수정이용: 슬라이드 버튼 스타일 추가 */
+    cursor: pointer;
+    z-index: 1000;
+    border-color: #E4E4E4;
+    background-color:#FFFFFF ;
+    width: 40px; /* 버튼의 너비 */
+    height: 40px; /* 버튼의 높이 */
+    border-radius: 50%; /* 원형으로 만들기 */
+}
+.btnPrev{
+    position: fixed;
+    left:240px;
+} 
+.btnNext{
+    position: fixed;
+    right: 240px;
+} 
+.buttonIcon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.slideUl{
+    display: flex;
+    list-style: none;
+    gap:10px;
+    overflow: hidden;/**/
+    width: 900px; /* 화면에 보이는 카드 3개 너비 설정 */
+    
+}
+.slideCard {/**/
+    flex: 0 0 300px; /* 카드 너비 설정 */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+.cardFrame{
+    display: flex;
+    flex-direction: column;
+    width: 295px;
+height: 350px;
+background: #F5F5F5;
+opacity: 0.5;/**/
+}
+.cardFrame.active { /* 수정이용: 활성 카드 스타일 추가 */
+    opacity: 1;
+    transform: scale(1.5);
+}
+/* 수정이용: 중앙 카드 불투명도 제거 */
+.slideCard:nth-child(3n+2) .cardFrame {
+    opacity: 1;
+}
+.cardImg{
+    width: 100%;
+    height: 250px;
+    border: solid 1px blue;
+}
+.cardText{
+    width:100%;
+    height: 100px;
+    display: flex;
+    
+    padding-top: 15px;
+
+}
+
+.pageBtn{
+    border-radius: 30px;
+    background: #FE902F;
+    display: flex;
+    width: 120px;
+    height: 25px;
+    padding: 18px 38px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+}
+.btnText{
+    color: #FFFDFB;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}

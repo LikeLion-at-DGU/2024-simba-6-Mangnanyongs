@@ -37,7 +37,9 @@
             {% for p in posts %}
                 <li class="slideCard">
                     <div class="cardFrame">
-                        <div class="cardImg"></div>
+                        <div class="cardImg">
+                            <p><img src="{% static 'images/testimage.png' %}" alt="사진"></p>
+                        </div>
                         <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
                     </div>
                 </li>
@@ -53,7 +55,7 @@
         </button>
     </div>
     <div class="pageBtn">
-        <a href="http://127.0.0.1:8000/mainlistpage" class="btnText">
+        <a href="{% url 'main:mainlistpage' %}" class="btnText">
             더 많은 근로 공고
         </a>
     </div>

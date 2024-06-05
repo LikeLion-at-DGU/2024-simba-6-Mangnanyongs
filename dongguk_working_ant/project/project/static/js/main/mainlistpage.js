@@ -24,21 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 //정렬, 마감 공고, 근로 장소, 소득분위 선택
-filter = document.querySelectorAll('#selector label')
-console.log(filter[0].value);
-
-console.log(document.querySelectorAll('.card'));
+filters = document.querySelectorAll('#selector label')
+filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+        kind = filter.getAttribute('for');
+        select = document.getElementById(kind);
+        value = select.value;
+        
+        document.getElementById
+    })
+})
 
 //스크랩 기능
-function scrap(card){
-    console.log(card);
-    let star_img = document.querySelector(".star img");
+function scrap(star) {
+    let star_img = star.querySelector("img");
 
-    if(card.value == "none"){//value가 scraped로 바뀜
-        card.value="scraped";          
-        star_img.src = "http://127.0.0.1:8000/static/images/icons/blink_star.svg"
-    } else{
-        card.value="none";
-        star_img.src = "http://127.0.0.1:8000/static/images/icons/star.svg"
+    if (star.value == "none") { // value가 scraped로 바뀜
+        star.value = "scraped";          
+        star_img.src = "http://127.0.0.1:8000/static/images/icons/blink_star.svg";
+    } else {
+        star.value = "none";
+        star_img.src = "http://127.0.0.1:8000/static/images/icons/star.svg";
     }   
 }

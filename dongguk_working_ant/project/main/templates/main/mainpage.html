@@ -30,15 +30,19 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
                     <path d="M26.729 9.72949L19.2695 17.1788L26.729 24.6281" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
-            </div>
-            
+                </div>
         </button>
+
         <ul class="slideUl">
             {% for p in posts %}
                 <li class="slideCard">
                     <div class="cardFrame">
                         <div class="cardImg">
+<<<<<<< HEAD
                             <p><img src="{% static 'images/testimage.png' %}" alt="사진"></p>
+=======
+                            <img src="image_url" alt="cardImage" width="295px" height="250px">
+>>>>>>> 08e9fd2c85d5cca934f7fc0a4c17bb778a07155a
                         </div>
                         <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
                     </div>

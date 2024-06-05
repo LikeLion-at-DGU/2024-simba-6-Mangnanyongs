@@ -21,8 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 })
 
-
-
 //정렬, 마감 공고, 근로 장소, 소득분위 선택
 filters = document.querySelectorAll('#selector label')
 filters.forEach((filter) => {

@@ -72,6 +72,11 @@
     line-height: normal;
 }
 
+.nav-3 .nav-link-account{
+    display:flex;
+    gap:1.5em;
+}
+
 .nav-3 .bell{
     margin-left: 1em;
 }

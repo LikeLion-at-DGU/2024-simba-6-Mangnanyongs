@@ -22,12 +22,14 @@
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->
-        <span id="textfield">
-            <input id="search" placeholder="검색" required value>
-            <button id="submit" aria-label="submit"></button>
-        </span>
+        <form method="POST" action="" id="textfield" name="textfield"> <!--action 채우기-->
+            {% csrf_token %}
+            <input type="search" id="search" placeholder="검색" value="">
+            <button type="submit" id="submit" aria-label="submit"></button>
+        </form>
         <!--정렬 필터-->
-        <span id="selector">
+        <form method="POST" action="" id="selector" name="selector"> <!--action 채우기-->
+            {% csrf_token %}
             <!--정렬-->
             <label for="sort">
                 <select id="sort" class="Caption gray thin"> 
@@ -39,7 +41,7 @@
             </label>
             <!--마감 공고 제외-->
             <label for="end">
-                <select id="end" class="Caption gray thin">
+                <select id="end" class="Caption gray thin" >
                     <option value="" hidden>마감 공고 제외</option>
                     <option value="exclude">제외</option>
                     <option value="include">포함</option>
@@ -73,13 +75,13 @@
                     <option value="remove">미반영</option>
                 </select>
             </label>
-        </span>
+        </form>
     </div>
 </div>
 <div class="content" id="main2">
     {% for post in posts %}
     <div class="card">
-        <button class="star" value="none" onclick="scrap(this);">
+        <button name="star" class="star" value="none" onclick="scrap(this);">
             <img src="{% static 'images/icons/star.svg' %}"/>
         </button>
         <span class="photo">
@@ -94,9 +96,9 @@
                     남음
                 </span>
             </div>
-            <div class="title Caption big">
+            <a class="title Caption big" href="">
                 [{{post.organization}}] {{post.title}}
-            </div>
+            </a>
             <div class="Caption light up">
                 <div>{{post.place}}</div>
                 <div>{{post.time}}</div>

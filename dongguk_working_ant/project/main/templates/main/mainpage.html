@@ -38,7 +38,7 @@
                 <li class="slideCard">
                     <div class="cardFrame">
                         <div class="cardImg">
-                            <img src="image_url" alt="cardImage" width="295px" height="250px">
+                            <img src="{% static 'images/testimage.png' %}" alt="cardImage" width="295px" height="250px">
                         </div>
                         <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
                     </div>
@@ -55,7 +55,7 @@
         </button>
     </div>
     <div class="pageBtn">
-        <a href="http://127.0.0.1:8000/mainlistpage" class="btnText">
+        <a href="{% url 'main:mainlistpage' %}" class="btnText">
             더 많은 근로 공고
         </a>
     </div>

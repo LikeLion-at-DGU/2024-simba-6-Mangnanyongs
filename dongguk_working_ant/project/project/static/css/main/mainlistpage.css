@@ -49,7 +49,7 @@
 }
 
 #search{
-    width: 450px;
+    width: 32em;
     font-family: SUIT;
     font-size: 16px;
     font-style: normal;
@@ -72,7 +72,7 @@
 }
 
 #selector{
-    margin-left: 7em;
+    margin-left: 12em;
     display:flex;
     gap: 13px;
 }
@@ -136,13 +136,17 @@
     margin-right: 6.25em;
 }
 
+.information{
+    margin-bottom: 19px;
+}
+
 .information .info{
     display: inline-block;
 }
 
 .classification{
     display: flex;
-    padding: 11px 23px;
+    padding: 5px 10px;
     justify-content: center;
     align-items: center;
     gap: 8px;
@@ -154,17 +158,13 @@
 
 .date{
     display: flex;
-    padding: 11px 32px;
+    padding: 5px 10px;
     justify-content: center;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
     border-radius: 30px;
     background: #FF8A00;
-}
-
-.title{
-    margin-top: 19px;
 }
 
 .more_info{
@@ -250,6 +250,7 @@ select{
 
 .light{
     color: rgba(28, 28, 30, 0.80);
+    font-size: 17px;    
 }
 
 .up{

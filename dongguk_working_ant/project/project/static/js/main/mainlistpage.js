@@ -21,19 +21,25 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 })
 
+//검색 기능
+textfield = document.getElementById('search');
+submit = document.querySelector('#submit');
 
+submit.addEventListener('click', () => {
+    console.log(textfield.value);
+})
 
 //정렬, 마감 공고, 근로 장소, 소득분위 선택
-filters = document.querySelectorAll('#selector label')
-filters.forEach((filter) => {
-    filter.addEventListener("click", () => {
-        kind = filter.getAttribute('for');
-        select = document.getElementById(kind);
-        value = select.value;
-        
-        document.getElementById
+selector = document.getElementById('selector');
+selector.addEventListener('change', function(event) {
+    event.preventDefault();
+
+    selects = selector.querySelectorAll("select");
+    
+    selects.forEach((select) =>{
+        console.log(select.value);
     })
-})
+});
 
 //스크랩 기능
 function scrap(star) {

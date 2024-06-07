@@ -16,6 +16,8 @@ class Post(models.Model):
     is_attending = models.IntegerField(null=False) #boolean
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
+    deadline = models.DateField(null=True)
+    day_left = models.IntegerField(null=True)#남은날짜
     place = models.CharField(max_length=50, null=False)
     content = models.CharField(max_length=50, null=False)
     time = models.TextField(max_length=50, null=False)

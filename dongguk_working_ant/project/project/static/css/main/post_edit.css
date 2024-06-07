@@ -1,0 +1,61 @@
+.content {
+    display: flex;
+    flex-direction: column;
+
+    width: 1400px;
+
+    margin-left:260px;
+    
+    gap: 10px;
+
+    @media (max-width: 1050px) {
+        align-items: start;
+        justify-content: center;
+    }
+    @media (min-width: 1051px) {
+        align-items: start;
+        justify-content: center;
+    }
+}
+
+#main1{
+    height: 74px;
+    margin-top: 90px;
+}
+
+#introduction{
+    display:flex;
+}
+
+#back{
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+#word{
+    margin-top: 1.25rem;
+}
+
+#main2{
+    margin-top: 41px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.Capital{
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}

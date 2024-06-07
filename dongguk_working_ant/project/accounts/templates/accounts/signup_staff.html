@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<form action="{% url 'accounts:signup-staff' %}" method="POST">
+    {% csrf_token %}
+    <p>아이디</p>
+    <input type="text" name="username">
+    <br>
+
+    <p>비밀번호</p>
+    <input type="password" name="password">
+    <br>
+
+    <p>비밀번호 확인</p>
+    <input type="password" name="confirm">
+    <br>
+
+    <p>이름</p>
+    <input type="text" name="name">
+    <br>
+
+    <p>이메일</p>
+    <input type="email" name="email" maxlength="64" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" required>
+    <br>
+
+    <p>교직원증명서</p>
+    <input type="file" name="certification">
+    <br>
+    
+    <input type="submit" value="회원가입">
+</form>
+
+{% endblock %}

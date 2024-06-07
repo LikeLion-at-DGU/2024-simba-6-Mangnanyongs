@@ -28,12 +28,12 @@
         <section class="nav-3">
           {% if user.is_authenticated %}
           <a class="Caption" href="/accounts/logout/">로그아웃</a>
-          <a class="Caption" href="/accounts/mypage/">MY</a>
+          <a class="Caption" href="{% url 'users:mypage' %}">MY</a>
 
           <!-- 로그인을 하지 않은 경우 -->
           {% else %}
           <ul class="nav-link-account">
-          <a class="Caption gray" href="">회원가입</a>
+          <a class="Caption gray" href="{% url 'accounts:signup-choose' %}">회원가입</a>
           <!--회원가입 페이지-->
           <a class="Caption gray" href="{% url 'accounts:login' %}">로그인</a>
           <!--로그인 페이지-->

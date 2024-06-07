@@ -11,3 +11,6 @@ def mainpage(request):
 def mainlistpage(request):
     posts = Post.objects.all()
     return render(request, 'main/mainlistpage.html', {'posts':posts})
+
+def post_edit(request):
+    return render(request, 'main/post_edit.html')

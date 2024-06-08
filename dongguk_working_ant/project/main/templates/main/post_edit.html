@@ -6,14 +6,95 @@
 />
 
 <div class="content" id="main1">
-    <div class="Caption Capital" id="introduction">
-        <a href="">
-            <img src="{% static 'images/icons/vector.svg' %}" id="back"/>
-        </a>
-        <span id="word">모집 공고 작성</span>
-    </div>
+  <div class="Caption Capital" id="introduction">
+    <a href="">
+      <img src="{% static 'images/icons/vector.svg' %}" id="back" />
+    </a>
+    <span id="word">모집 공고 작성</span>
+  </div>
 </div>
-<div class="content" id="main2"></div>
+<div class="content" id="main2">
+  <div id="shell">
+    <div id="icon">
+      <img src="{% static 'images/icons/note.svg' %}" id="note" />
+    </div>
+    <form action="" method="post" id="detail">
+      <div class="Caption topic" id="title">
+        <span class="orange">*</span>
+        <span>
+          <span class="Caption big gray">기관 입력(ex.교무팀) | 공고 제목 입력</span>
+          <div class="top">
+            <label for="work_detail">근로 내용</label>
+            <select name="work_detail" id="work_detail" class="selector">
+              <option value="" hidden></option>
+              <option value="admin">행정보조</option>
+            </select>
+          </div>
+          <div>
+            <label for="target">모집 대상</label>
+            <select name="target" id="target" class="selector">
+              <option value="" hidden></option>
+              <option value="admin">행정보조</option>
+            </select>
+          </div>
+          <div>
+            <label for="work_date">활동 기간</label>
+            <select name="work_date" id="work_date" class="selector">
+              <option value="" hidden></option>
+              <option value="admin">행정보조</option>
+            </select>
+          </div>
+          <div>
+            <label for="recruit_date">모집 기간</label>
+            <select name="recruit_date" id="recruit_date" class="selector">
+              <option value="" hidden></option>
+              <option value="admin">행정보조</option>
+            </select>
+          </div>
+        </span>
+      </div>
+      <div class="Caption topic" id="contents">
+        <span class="orange">*</span>
+        <span class="Caption big gray">공고 내용을 선택해주세요</span>
+        <div class="top">
+          <label for="recruit_count">모집 인원</label>
+          <select name="recruit_count" id="recruit_count" class="selector">
+            <option value="" hidden></option>
+            <option value="admin">행정보조</option>
+          </select>
+        </div>
+        <div>
+          <label for="work_place">근로 장소</label>
+          <select name="work_place" id="work_place" class="selector">
+            <option value="" hidden></option>
+            <option value="admin">행정보조</option>
+          </select>
+        </div>
+        <div>
+          <label for="work_time">근로 요일 및 시간</label>
+          <select name="work_time" id="work_time" class="selector">
+            <option value="" hidden></option>
+            <option value="admin">행정보조</option>
+          </select>
+        </div>
+        <div>
+          <label for="salary">급여</label>
+          <select name="salary" id="salary" class="selector">
+            <option value="" hidden></option>
+            <option value="admin">행정보조</option>
+          </select>
+        </div>
+      </div>
+    </form>
+    <hr />
+    <div id="add">
+      <button class="big">
+        <span class="orange" style="margin-right:0.5em">+</span>질문 추가
+      </button>
+    </div>
+  </div>
+</div>
+
 <div class="content" id="main3"></div>
 
 <script src="{% static 'js/main/post_edit.js' %}"></script>

@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import auth
-from .models import Profile_Staff, Profile_Student
+from .models import Profile
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -36,19 +36,20 @@ def signup_student(request):
                 password = request.POST['password'],
             )
 
+            student_or_staff = 'student'
             name = request.POST['name']
             gender = request.POST['gender']
             birth = request.POST['birth']
             department = request.POST['department']
             phone = request.POST['phone']
             email = request.POST['email']
-            if request.FILES.get('certification'):
-                certification = request.FILES['certification']
+            if request.FILES.get('certification_student'):
+                certification = request.FILES['certification_student']
 
-            profile_student = Profile_Student(user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email)
-            if request.FILES.get('certification'):
-                profile_student = Profile_Student(certification=certification)
-            profile_student.save()
+            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email)
+            if request.FILES.get('certification_student'):
+                profile = Profile(certification=certification)
+            profile.save()
 
             auth.login(request, user)
             return redirect('/')
@@ -63,16 +64,17 @@ def signup_staff(request):
                 password = request.POST['password'],
             )
 
+            student_or_staff = 'staff'
             name = request.POST['name']
             email = request.POST['email']
-            if request.FILES.get('certification'):
-                certification = request.FILES['certification']
+            if request.FILES.get('certification_staff'):
+                certification = request.FILES['certification_staff']
 
-            profile_staff = Profile_Staff(user=user, name=name, email=email)
-            if request.FILES.get('certification'):
-                profile_staff = Profile_Staff(certification=certification)
+            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, email=email)
+            if request.FILES.get('certification_staff'):
+                profile = Profile(certification=certification)
 
-            profile_staff.save()
+            profile.save()
 
             auth.login(request, user)
             return redirect('/')

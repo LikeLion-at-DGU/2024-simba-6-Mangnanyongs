@@ -22,13 +22,13 @@
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->
-        <form method="POST" action="" id="textfield" name="textfield"> <!--action 채우기-->
+        <form method="GET" action="{% url 'main:mainlistpage' %}" id="textfield" name="textfield"> <!--action 채우기-->
             {% csrf_token %}
             <input type="search" id="search" placeholder="검색" value="">
             <button type="submit" id="submit" aria-label="submit"></button>
         </form>
         <!--정렬 필터-->
-        <form method="POST" action="" id="selector" name="selector"> <!--action 채우기-->
+        <form method="GET" action="{% url 'main:mainlistpage' %}" id="selector" name="selector"> <!--action 채우기-->
             {% csrf_token %}
             <!--정렬-->
             <label for="sort">

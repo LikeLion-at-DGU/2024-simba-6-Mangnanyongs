@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/main/post_edit.css'%}"
+/>
+
+<div class="content" id="main1">
+    <div class="Caption Capital" id="introduction">
+        <a href="">
+            <img src="{% static 'images/icons/vector.svg' %}" id="back"/>
+        </a>
+        <span id="word">모집 공고 작성</span>
+    </div>
+</div>
+<div class="content" id="main2"></div>
+<div class="content" id="main3"></div>
+
+<script src="{% static 'js/main/post_edit.js' %}"></script>
+{% endblock %}

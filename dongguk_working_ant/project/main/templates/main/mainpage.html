@@ -9,7 +9,7 @@
     type="text/css"
     href="{% static 'css/main/mainpage.css'%}"
 />
-<div class="mainpageScreen">
+<div class="mainpageScreen" >
     <!--
     <hr>
     {% for p in posts %}
@@ -23,42 +23,60 @@
             <br>가장 인기 있는 <span class="orange">근로</span>
         </span>
     </div>
-    
-    <div class="slideFrame">
-        <button class="btnPrev">
-            <div class="buttonIcon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
-                    <path d="M26.729 9.72949L19.2695 17.1788L26.729 24.6281" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </div>
-        </button>
-
-        <ul class="slideUl">
-            {% for p in posts %}
-                <li class="slideCard">
-                    <div class="cardFrame">
-                        <div class="cardImg">
-                            <img src="{% static 'images/testimage.png' %}" alt="cardImage" width="295px" height="250px">
-                        </div>
-                        <div class="cardText">[{{p.organization}}]<br>{{p.title}}</div>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-        <button class="btnNext">
-            <div class="buttonIcon">
-                <svg xmlns="http://www.w3.org/2000/svg" width="46" height="45" viewBox="0 0 46 45" fill="none">
-                    <path d="M19.271 35.2705L26.7305 27.8212L19.271 20.3719" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-            </div>
+    <div class="slideBtnWapper"> 
+        <div class="slideBtn">
+            <button class="btnPrev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+                    <circle cx="26" cy="26" r="25.5" transform="rotate(-180 26 26)" fill="white" stroke="#E4E4E4"/>
+                    <path d="M28.0005 18.1016L20.541 25.5509L28.0005 33.0002" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button> 
+        </div>
+        
+        <div class="slideFrame">
             
-        </button>
+            <ul class="slideCards">
+                {% for p in posts %}
+                    <li class="slide">
+                        <a href="{% url 'main:mainlistpage' %}" class="cardUrl"> 
+                            <div class="cardFrame">
+                                <div class="cardImg">
+                                    <img src="{% static 'images/testimage.png' %}" alt="cardImage" width="295px" height="250px">
+                                </div>
+                                <div class="cardTextFrame">
+                                    <div class="cardText">[{{p.organization}}]</div>
+                                    <div class="cardText2">{{p.title}}</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="slideBtn">
+            <button class="btnNext">
+                <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+                    <circle cx="26" cy="26" r="25.5" fill="white" stroke="#E4E4E4"/>
+                    <path d="M23.9995 33.8984L31.459 26.4491L23.9995 18.9998" stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </button> 
+        </div>
+        
+
     </div>
+
     <div class="pageBtn">
         <a href="{% url 'main:mainlistpage' %}" class="btnText">
-            더 많은 근로 공고
+            <span class="pageBtnContent">
+                더 많은 근로 공고
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
+                    <path d="M7 17.5015L18.8647 5.63672M18.8647 5.63672H8.00011M18.8647 5.63672V15.5005" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
         </a>
     </div>
 </div>
+
+
 <script src="{% static 'js/main/mainpage.js' %}"></script>
 {% endblock %} 

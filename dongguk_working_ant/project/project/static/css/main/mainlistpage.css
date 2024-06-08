@@ -277,3 +277,7 @@ select{
     font-size: 16px;
     font-weight: 500;
 }
+
+.nav-1 .nav-2 :nth-child(1){
+    color: #FF8A00;
+}

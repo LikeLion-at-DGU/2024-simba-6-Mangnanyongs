@@ -1,0 +1,6 @@
+.detailpageScreen{
+    display: flex;
+    
+    border:solid 1px red;
+    width: 1400px;
+}

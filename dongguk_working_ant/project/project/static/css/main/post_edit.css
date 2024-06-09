@@ -3,8 +3,6 @@
     flex-direction: column;
 
     width: 1400px;
-
-    margin-left:260px;
     
     gap: 10px;
 
@@ -187,3 +185,7 @@ hr{
     border-top: 1px solid #E4E4E4CC
 }
 
+input[type="text"]{
+    border:none;
+    border-bottom: 1px solid #9C9CA1;
+}

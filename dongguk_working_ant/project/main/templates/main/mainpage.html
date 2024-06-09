@@ -10,13 +10,6 @@
     href="{% static 'css/main/mainpage.css'%}"
 />
 <div class="mainpageScreen" >
-    <!--
-    <hr>
-    {% for p in posts %}
-        [{{p.organization}}] {{p.title}}
-        <br>
-    {% endfor %}-->
-
     <div class="mainTextFrame">
         <span class="mainText">
             <span class="orange">동국대학교</span>에서 지금,
@@ -64,19 +57,24 @@
         
 
     </div>
-
-    <div class="pageBtn">
-        <a href="{% url 'main:mainlistpage' %}" class="btnText">
-            <span class="pageBtnContent">
-                더 많은 근로 공고
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
-                    <path d="M7 17.5015L18.8647 5.63672M18.8647 5.63672H8.00011M18.8647 5.63672V15.5005" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </span>
-        </a>
+    <div class="pageBtnFrame">
+        <div class="pageBtn">
+            <a href="{% url 'main:mainlistpage' %}" class="btnText">
+                <span class="pageBtnContent">
+                    더 많은 근로 공고
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 25 24" fill="none">
+                        <path d="M7 17.5015L18.8647 5.63672M18.8647 5.63672H8.00011M18.8647 5.63672V15.5005" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
     </div>
+    
 </div>
 
 
 <script src="{% static 'js/main/mainpage.js' %}"></script>
 {% endblock %} 
+{% block footer %}
+    {% include 'shared/_footer.html' %}
+{% endblock %}

@@ -24,8 +24,10 @@
       {% block content %} {% endblock %}
       <!-- 내용 -->
 
-      <!--하단 footer-->
-      {% include 'shared/_footer.html' %}
+      <!--하단 footer: 필요한 페이지에서만 넣기 -->
+      {% block footer %}
+        {% include 'shared/_footer.html' %}
+      {% endblock %}
       <!--하단 footer-->
     </div>
   </body>

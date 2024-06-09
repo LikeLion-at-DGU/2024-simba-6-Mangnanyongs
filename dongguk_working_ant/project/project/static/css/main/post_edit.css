@@ -147,6 +147,10 @@
     color: #FE902F;
 }
 
+.bold{
+    font-weight: 700;
+}
+
 label{
     margin-right: 1.25em;
 }

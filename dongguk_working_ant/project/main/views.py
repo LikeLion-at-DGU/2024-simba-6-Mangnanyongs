@@ -30,3 +30,6 @@ def mainlistpage(request):
 
 def post_edit(request):
     return render(request, 'main/post_edit.html')
+
+def workDetailPage(request):
+    return render(request, 'main/workDetailPage.html')

@@ -103,6 +103,27 @@
     margin: 2em 0px 2em 0px;
 }
 
+#main3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+}
+
+.question{
+    display: flex;
+    width:1263px;;
+    height: 324px;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 235, 0.92);
+    background: rgba(251, 251, 251, 0.98);
+    padding-top: 1em;
+}
+
+
+
+
+
 
 
 .Capital{
@@ -161,3 +182,4 @@ hr{
     border: none;
     border-top: 1px solid #E4E4E4CC
 }
+

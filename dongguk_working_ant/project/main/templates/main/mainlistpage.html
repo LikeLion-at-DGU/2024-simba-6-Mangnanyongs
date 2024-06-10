@@ -33,7 +33,7 @@
             <!--정렬-->
             <label for="sort">
                 <select id="sort" class="Caption gray thin"> 
-                    <option value="" hidden>정렬</option>
+                    <option value="">정렬</option>
                     <option value="deadline">마감순</option>
                     <option value="inquiry">조회순</option>
                     <option value="scrap">스크랩순</option>
@@ -42,7 +42,7 @@
             <!--마감 공고 제외-->
             <label for="end">
                 <select id="end" class="Caption gray thin" >
-                    <option value="" hidden>마감 공고 제외</option>
+                    <option value="">마감 공고 제외</option>
                     <option value="exclude">제외</option>
                     <option value="include">포함</option>
                 </select>
@@ -50,7 +50,7 @@
             <!--근로 장소-->
             <label for="place">
                 <select id="place" class="Caption gray thin">
-                    <option value="" hidden>근로 장소</option>
+                    <option value="">근로 장소</option>
                     <option value="경영/사회과학관">경영/사회과학관</option>
                     <option value="과학관">과학관</option>
                     <option value="다향관">다향관</option>
@@ -70,7 +70,7 @@
             <!--소득분위-->
             <label for="income">
                 <select id="income" class="Caption gray thin">
-                    <option value="" hidden>소득 분위</option>
+                    <option value="">소득 분위</option>
                     <option value="apply">반영</option>
                     <option value="remove">미반영</option>
                 </select>
@@ -81,9 +81,16 @@
 <div class="content" id="main2">
     {% for post in posts %}
     <div class="card">
-        <button name="star" class="star" value="none" onclick="scrap(this);">
-            <img src="{% static 'images/icons/star.svg' %}"/>
-        </button>
+        <form action="{% url 'main:scraps' post.id %}" method='POST'> <!--스크랩-->
+            {% csrf_token %}
+            <button name="star" class="star" value="none">
+                {% if request.user in post.scrap.all %}
+                    <img src="{% static 'images/icons/blink_star.svg' %}"/>
+                {% else %}
+                    <img src="{% static 'images/icons/star.svg' %}"/>
+                {% endif %}
+            </button>
+        </form>
         <span class="photo">
             <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
         </span>
@@ -96,8 +103,7 @@
                     남음
                 </span>
             </div>
-            <!--이동건 수정한부분 id넘기기추가 -->
-            <a class="title Caption big" href="{% url 'main:workDetailPage' post.id %}">
+            <a class="title Caption big" href="{% url 'main:post-detail' post.id %}">
                 [{{post.organization}}] {{post.title}}
             </a>
             <div class="Caption light up">

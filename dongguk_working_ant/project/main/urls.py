@@ -6,6 +6,6 @@ urlpatterns = [
     path('', mainpage, name="mainpage"),
     path('mainlistpage/', mainlistpage, name="mainlistpage"),
     path('post-edit/', post_edit, name="post-edit"),
-    #이동건 수정한부분 
-    path('workDetailPage/<int:post_id>/', workDetailPage, name="workDetailPage")
+    path('post-detail/<int:post_id>', post_detail, name="post-detail"),
+    path('scrap/<int:post_id>', scraps, name="scraps"),
 ]

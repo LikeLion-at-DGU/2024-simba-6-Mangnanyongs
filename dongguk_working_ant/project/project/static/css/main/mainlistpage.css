@@ -1,28 +1,32 @@
-.container{
+.container {
     width: 100%;
 }
+
 .content {
     display: flex;
     flex-direction: column;
-
-    width: 1400px;
-
-    margin-left:260px;
-    
+    width: 100%;
+    max-width: 1400px;
+    margin-left: 2em;
     gap: 10px;
+}
 
-    @media (max-width: 1050px) {
+@media (max-width: 1050px) {
+    .content {
         align-items: start;
         justify-content: center;
     }
-    @media (min-width: 1051px) {
+}
+
+@media (min-width: 1051px) {
+    .content {
         align-items: start;
         justify-content: center;
     }
 }
 
 #header{ 
-    margin-top: 8em;
+    margin-top: 6em;
 }
 
 #main1{

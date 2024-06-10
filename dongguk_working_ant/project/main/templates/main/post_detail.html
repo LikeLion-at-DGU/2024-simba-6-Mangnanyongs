@@ -7,7 +7,7 @@
 <link
     rel="stylesheet"
     type="text/css"
-    href="{% static 'css/main/workDetailPage.css'%}"
+    href="{% static 'css/main/post_detail.css'%}"
 />
 
 <div class="detailpageScreen">
@@ -32,7 +32,14 @@
         <div class="detailBox1">
             <div class="box1ContentFrame">
                 너무 크다...
-                <div class="">
+                <div class="box1Index">
+                    {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
+                        <a class="Caption" href="">지원현황</a>
+                    {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
+                        <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
+                    {% else %} <!--로그인하지 않았거나 어드민일 때(현재 개발 중인 탭 넣어두기)-->
+                        <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
+                    {% endif %}
                     <p>[{{post.organization}}] {{ post.title }}</p>
                     <p>장소: {{ post.place }}</p>
                     <p>부서: {{ post.department }}</p>

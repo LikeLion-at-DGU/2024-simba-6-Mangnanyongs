@@ -161,6 +161,12 @@ select{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
 }
 
+select:focus{
+    width: 203px;
+    height: 33px; /* 기본 높이를 자동으로 조절 */
+    max-height: 100px; /* 최대 높이 설정 */
+}
+
 .topic{
     margin-top: 2.5em;
 }
@@ -188,4 +194,8 @@ hr{
 input[type="text"]{
     border:none;
     border-bottom: 1px solid #9C9CA1;
+}
+
+.nav-2 :nth-child(2){
+    color: #FF8A00
 }

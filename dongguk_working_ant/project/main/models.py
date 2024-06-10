@@ -26,6 +26,6 @@ class Post(models.Model):
     body = models.TextField()
     file = models.ImageField(upload_to="post/", blank=True, null=True)
     pub_date = models.DateTimeField()
-    #scrap = models.ManyToManyField(User, related_name='scraped', blank=True)
-    scrap = models.IntegerField(null=True, default=0)
+    scrap = models.ManyToManyField(User, related_name='scraped', blank=True)
+    scrap_count = models.PositiveIntegerField(default=0)
     inquiry = models.IntegerField(null=True, default=0)

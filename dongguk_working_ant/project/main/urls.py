@@ -6,5 +6,5 @@ urlpatterns = [
     path('', mainpage, name="mainpage"),
     path('mainlistpage/', mainlistpage, name="mainlistpage"),
     path('post-edit/', post_edit, name="post-edit"),
-    path('workDetailPage/', workDetailPage, name="workDetailPage")
+    path('post-detail/<int:id>', post_detail, name="post-detail")
 ]

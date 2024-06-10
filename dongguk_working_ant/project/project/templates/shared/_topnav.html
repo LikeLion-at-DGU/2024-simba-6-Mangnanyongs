@@ -19,12 +19,12 @@
         <!-- 로그인을 한 경우 -->
         <section class="nav-2">
           <a class="Caption" href="{% url 'main:mainlistpage' %}">알아보기</a>
-          {% if user.profile.student_or_staff == 'student' %}
+          {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
             <a class="Caption" href="">지원현황</a>
-          {% elif user.profile.student_or_staff == 'staff' %}
+          {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
             <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
           {% else %} <!--현재 개발 중인 탭 넣어두기-->
-          <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
+            <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
           {% endif %}
         </section>
         <a class="logo logo-font" href="{% url 'main:mainpage' %}">

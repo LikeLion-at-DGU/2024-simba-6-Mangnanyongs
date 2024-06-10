@@ -1,12 +1,15 @@
-selectors = document.querySelectorAll('select');
-function makescroll(selector){
-    selector.setAttribute('onfocus', 'this.size=5');
-    selector.setAttribute('onblur', 'this.size=1');
-    selector.setAttribute('onchange', 'this.size=1');
-}
-selectors.forEach((selector) =>{
-    selector.addEventListener("click", () => {
-        console.log(selector);
-        makescroll(selector);
-    })
-})
+/*document.addEventListener('DOMContentLoaded', function(){
+    var selectElements = document.querySelectorAll('select');
+    selectElements.forEach(selectElement => {
+        selectElement.addEventListener('focus', function(){
+            this.size=5;
+        });
+        selectElement.addEventListener('blur', function(){
+            this.size = 1;
+        });
+        selectElement.addEventListener('change', function(){
+            this.size = 1;
+            this.blur();
+        });
+    });
+});*/

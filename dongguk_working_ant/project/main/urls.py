@@ -6,5 +6,6 @@ urlpatterns = [
     path('', mainpage, name="mainpage"),
     path('mainlistpage/', mainlistpage, name="mainlistpage"),
     path('post-edit/', post_edit, name="post-edit"),
-    path('post-detail/<int:id>', post_detail, name="post-detail")
+    path('post-detail/<int:post_id>', post_detail, name="post-detail"),
+    path('scrap/<int:post_id>', scraps, name="scraps"),
 ]

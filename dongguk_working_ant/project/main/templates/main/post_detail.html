@@ -7,23 +7,71 @@
 <link
     rel="stylesheet"
     type="text/css"
-    href="{% static 'css/main/workDetailPage.css'%}"
+    href="{% static 'css/main/post_detail.css'%}"
 />
 
 <div class="detailpageScreen">
+    <!--뒤로가기 버튼-->
     <div class="backBtn">
-        <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
-            <g clip-path="url(#clip0_1089_3134)">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9664 27.5327C17.5602 27.1264 17.332 26.5754 17.332 26.0009C17.332 25.4264 17.5602 24.8754 17.9664 24.4691L30.2232 12.2122C30.4231 12.0053 30.6622 11.8402 30.9265 11.7267C31.1909 11.6131 31.4752 11.5534 31.7629 11.5509C32.0506 11.5484 32.3359 11.6032 32.6021 11.7121C32.8684 11.8211 33.1103 11.9819 33.3138 12.1854C33.5172 12.3888 33.6781 12.6307 33.787 12.897C33.896 13.1633 33.9508 13.4486 33.9483 13.7363C33.9458 14.024 33.886 14.3083 33.7725 14.5726C33.6589 14.837 33.4938 15.076 33.2869 15.2759L22.5619 26.0009L33.2869 36.7259C33.6816 37.1345 33.9 37.6818 33.895 38.2499C33.8901 38.818 33.6622 39.3615 33.2605 39.7632C32.8588 40.1649 32.3154 40.3928 31.7473 40.3977C31.1792 40.4026 30.6319 40.1843 30.2232 39.7896L17.9664 27.5327Z" fill="black"/>
-            </g>
-            <defs>
-            <clipPath id="clip0_1089_3134">
-            <rect width="52" height="52" fill="white"/>
-            </clipPath>
-            </defs>
-        </svg>
-        내용
+        <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+            <svg xmlns="http://www.w3.org/2000/svg" width="52" height="52" viewBox="0 0 52 52" fill="none">
+                <g clip-path="url(#clip0_1089_3134)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M17.9664 27.5327C17.5602 27.1264 17.332 26.5754 17.332 26.0009C17.332 25.4264 17.5602 24.8754 17.9664 24.4691L30.2232 12.2122C30.4231 12.0053 30.6622 11.8402 30.9265 11.7267C31.1909 11.6131 31.4752 11.5534 31.7629 11.5509C32.0506 11.5484 32.3359 11.6032 32.6021 11.7121C32.8684 11.8211 33.1103 11.9819 33.3138 12.1854C33.5172 12.3888 33.6781 12.6307 33.787 12.897C33.896 13.1633 33.9508 13.4486 33.9483 13.7363C33.9458 14.024 33.886 14.3083 33.7725 14.5726C33.6589 14.837 33.4938 15.076 33.2869 15.2759L22.5619 26.0009L33.2869 36.7259C33.6816 37.1345 33.9 37.6818 33.895 38.2499C33.8901 38.818 33.6622 39.3615 33.2605 39.7632C32.8588 40.1649 32.3154 40.3928 31.7473 40.3977C31.1792 40.4026 30.6319 40.1843 30.2232 39.7896L17.9664 27.5327Z" fill="black"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_1089_3134">
+                <rect width="52" height="52" fill="white"/>
+                </clipPath>
+                </defs>
+            </svg>
+        </a>
     </div>
+    <!--화면 내용 전체 프레임 박스사이gap72-->
+    <div class="detailpageFrame">
+        <!--상세공고 내용들어가는 박스1 -->
+        <div class="detailBox1">
+            <div class="box1ContentFrame">
+                너무 크다...
+                <div class="box1Index">
+                    {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
+                        <a class="Caption" href="">지원현황</a>
+                    {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
+                        <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
+                    {% else %} <!--로그인하지 않았거나 어드민일 때(현재 개발 중인 탭 넣어두기)-->
+                        <a class="Caption" href="{% url 'main:post-edit' %}">게시하기</a>
+                    {% endif %}
+                    <p>[{{post.organization}}] {{ post.title }}</p>
+                    <p>장소: {{ post.place }}</p>
+                    <p>부서: {{ post.department }}</p>
+                    <p>시간: {{ post.time }}</p>
+                    <p>기타 세부사항: {{ post.details }}</p>
+                </div>
+            </div>
+        </div>
+        <!--세부사항 목차+박스프레임 -->
+        <div class="detailBox2Frame">
+            <!--세부사항 목차 아이콘?-->
+            <div class="index">
+                <span class="indexText">세부사항</span>
+            </div>
+            <!--세부사항 내용 들어가는 박스2-->
+            <div class="detailBox2">
+
+            </div>
+        </div>
+        <!--지원하기 버튼-->
+        <div class="applyBtn">
+            <a href="{% url 'main:mainpage' %}" class="applyBtnAtag"><!--url수정하기-->
+                <span class="applyBtnContent">
+                    지원하기
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                        <path d="M6.5 17.9897L18.3647 6.125M18.3647 6.125H7.50011M18.3647 6.125V15.9888" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </a>
+        </div>
+    </div>
+
 </div>
 
 <script src="{% static 'js/main/workDetailPage.js' %}"></script>

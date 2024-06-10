@@ -179,9 +179,11 @@ right:26px;
     border-radius: 30px;
     background: #FE902F;
     display: flex;
-    width: 155px;
-    height: 20px;
-    padding: 18px 24px;
+    /* width: 155px; */
+    /* height: 20px; */
+    width: 225px;
+    height: 58px;
+    /* padding: 18px 24px; */
     justify-content: center;
     align-items: center;
     gap: 8px;

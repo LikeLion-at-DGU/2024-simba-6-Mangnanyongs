@@ -96,7 +96,8 @@
                     남음
                 </span>
             </div>
-            <a class="title Caption big" href="{% url 'main:workDetailPage' %}">
+            <!--이동건 수정한부분 id넘기기추가 -->
+            <a class="title Caption big" href="{% url 'main:workDetailPage' post.id %}">
                 [{{post.organization}}] {{post.title}}
             </a>
             <div class="Caption light up">

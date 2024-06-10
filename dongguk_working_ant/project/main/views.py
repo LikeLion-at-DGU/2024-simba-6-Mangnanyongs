@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404  # get_object_or_404 추가
 from django.utils import timezone
 
 from .models import Post
@@ -31,5 +31,9 @@ def mainlistpage(request):
 def post_edit(request):
     return render(request, 'main/post_edit.html')
 
-def workDetailPage(request):
-    return render(request, 'main/workDetailPage.html')
+# def workDetailPage(request):
+#     return render(request, 'main/workDetailPage.html')
+# 이동건 수정한부분 
+def workDetailPage(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+    return render(request, 'main/workDetailPage.html', {'post': post})

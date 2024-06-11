@@ -36,8 +36,15 @@
                     <!--박스1 상단 인덱스 프레임 -->
                     <div class="box1IndexFrame">
                         <div class="box1Index"><span class="box1IndexText">{{post.department}}</span></div>
-                        <!-- @@이부분백에서 연결하기 -->
-                        <div class="box1Index"><span class="box1IndexText">소득분위 미반영</span></div>
+                        <!-- 소득분위 반영 미반영 체크 -->
+                        <div class="box1Index">
+                            {% if post.is_income_bracket == 0 %}
+                                <span class="box1IndexText">소득분위 미반영</span>
+                            {% elif post.is_income_bracket == 1 %}
+                                <span class="box1IndexText">소득분위 반영</span>
+                            {% endif %}
+                        
+                        </div>
                         <div class="box1Index"><span class="box1IndexText">{{ post.recruitment }}명</span></div>
                     </div>
                     <!--박스1 상단 우측 수정,삭제버튼  로그인에 따라 구현 -->

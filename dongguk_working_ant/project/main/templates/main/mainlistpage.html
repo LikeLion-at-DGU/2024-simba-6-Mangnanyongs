@@ -14,11 +14,13 @@
 <!--각 근로 카드 위 부분-->
 <div class="content" id="main1">
     <!--교내, 학과 선택 필터-->
-    <div id="filter">
-        <button class="unchecked button Caption" id="all" value="전체">전체</button>
-        <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
-        <button class="unchecked button Caption" id="department" value="학과">학과</button>
-    </div>
+    <form action="{% url 'main:mainlistpage' %}" method='GET'>
+        {% csrf_token %}
+        <div id="filter">
+            <button class="unchecked button Caption" id="all" value="전체">전체</button>
+            <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
+            <button class="unchecked button Caption" id="department" value="학과">학과</button>
+        </div>
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->

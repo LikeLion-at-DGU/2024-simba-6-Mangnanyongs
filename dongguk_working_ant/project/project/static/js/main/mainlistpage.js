@@ -38,7 +38,7 @@ selector.addEventListener('change', function(event) {
     
     selects.forEach((select) =>{
         console.log(select.value);
-    })
+    })   
 });
 
 //스크랩 기능

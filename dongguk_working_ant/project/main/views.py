@@ -10,24 +10,31 @@ def mainpage(request):
 
 def mainlistpage(request):
     if request.user.is_authenticated:
-        posts = Post.objects.all()
-
-        sort = request.GET.get('sort','')
-        if sort == 'deadline':
-            posts = Post.objects.all().order_by('-deadline','-pub_date')
-        elif sort ==  'inquiry':
-            posts = Post.objects.all().order_by('-inquiry','-pub_date')
-        elif sort ==  'scrap':
-            posts = Post.objects.all().order_by('-scrap','-pub_date')
+        
+        department_filter = request.GET.get('filter','')
+        if department_filter == '교내':
+            posts = Post.objects.filter(department='교내')
+        elif department_filter == '학과':
+            posts = Post.objects.filter(department=request.user.profile.department)
         else:
-            posts = Post.objects.all().order_by('-pub_date')
+            posts = Post.objects.all()
+
+        sort = request.GET.get('sortKind','')
+        if sort == 'deadline':
+            posts = posts.order_by('-deadline','-pub_date')
+        elif sort ==  'inquiry':
+            posts = posts.order_by('-inquiry','-pub_date')
+        elif sort ==  'scrap':
+            posts = posts.order_by('-scrap','-pub_date')
+        else:
+            posts = posts.order_by('-pub_date')
             
         #페이지 나누기 추후 추가
         #paginator = Paginator(content_list,5)
         #page = request.GET.get('page','')
         #posts = paginator.get_page(page)
         
-        return render(request,'main/mainlistpage.html',{'posts':posts,'sort':sort})
+        return render(request,'main/mainlistpage.html',{'posts':posts, 'department_filter':department_filter, 'sort':sort})
     return redirect('accounts:login')
 
 def post_edit(request):

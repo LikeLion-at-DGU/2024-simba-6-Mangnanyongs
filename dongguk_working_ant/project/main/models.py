@@ -29,3 +29,4 @@ class Post(models.Model):
     scrap = models.ManyToManyField(User, related_name='scraped', blank=True, null=True, default=None)
     scrap_count = models.PositiveIntegerField(default=0)
     inquiry = models.PositiveIntegerField(default=0)
+    applicated_count = models.PositiveIntegerField(default=0)

@@ -118,7 +118,7 @@
 }
 .cardText2{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     color:#1C1C1E;
     text-align: left; /* 변경된 text-align */
     font-family: "SUITE Variable";

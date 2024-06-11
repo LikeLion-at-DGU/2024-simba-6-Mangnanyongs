@@ -288,6 +288,7 @@
     gap: 8px;
     border-radius: 30px;
     background: #FE902F;
+    margin-bottom: 70px;
 }
 .applyBtnAtag {
     text-decoration: none; /* 밑줄 제거 */

@@ -13,7 +13,7 @@
     <span id="word">모집 공고 작성</span>
     <form action="" method="post" id="submit_button">
       <button class="Caption orange bigger" id="temporary">임시 저장</button>
-      <button class="Caption white" id="submit">게시하기</button>
+      <button class="Caption white bigger" id="submit">게시하기</button>
     </form>
   </div>
 </div>
@@ -31,7 +31,7 @@
           >
           <div class="top">
             <label for="work_detail">근로 내용</label>
-            <select name="work_detail" id="work_detail" class="selector" >
+            <select name="work_detail" id="work_detail" class="selector">
               <option value="" hidden></option>
               <option value="admin">행정보조</option>
               <option value="desk">사무보조</option>
@@ -108,39 +108,45 @@
         </div>
         <div>
           <label for="salary">급여</label>
-          <input type="number" id="salary"/>
+          <input type="number" id="salary" />
         </div>
       </div>
     </form>
     <hr />
-    <div id="add">
-      <button class="big">
-        <span class="orange" style="margin-right: 0.5em">+</span>질문 추가
-      </button>
-    </div>
+    <form action="" method="post" id="add">
+      <div
+        class="Caption big"
+        style="align-self: flex-start; margin-left: 1.5em"
+      >
+        <span class="orange" style="margin-right: 0.25em">*</span>
+        <span class="gray">세부사항을 입력해주세요.</span>
+      </div>
+      <div class="question" id="add_detail"></div>
+    </form>
+    <!--div class="Caption bold gray">
+        1.
+        <input type="text" class="Caption bold gray" id="more_detail" placeholder="입력란" style="width:1050px;">
+      </div-->
   </div>
 </div>
 
-<form name="question" action="" method="post" class="content" id="main3">
-  <div class="Caption big question">
-    <div style="width: 100%">
-      <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
-        >*</span
-      >
-      <span class="gray">세부사항을 입력해주세요.</span>
+<div class="content" id="main3">
+  <div class="Caption Capital area">지원서 양식</div>
+  <div class="q_border">
+    <form name="question" action="" method="post" class="content" id="questions">
+      <div class="Caption big questions">
+        <span class="orange" style="margin-left: 1em; margin-right: 0.25em">1.</span>
+        <input type="text" class="gray" placeholder="질문을 입력해주세요." />
+      </div>
+    </form>
+    <div class="answer">
+      <div class="Caption bold gray">지원자의 답변 입력란</div>
     </div>
-    <!--div class="Caption bold gray">
-      1.
-      <input type="text" class="Caption bold gray" id="more_detail" placeholder="입력란" style="width:1050px;">
-    </div-->
   </div>
-  <div class="Caption big question">
-    <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
-      >1.</span
-    >
-    <span class="gray">질문을 입력해주세요.</span>
-  </div>
-</form>
+  <button id="add_question" style="margin-top: 69px;">
+    <img src="{% static 'images/icons/add.svg' %}">
+  </button>
+</div>
 
 <script src="{% static 'js/main/post_edit.js' %}"></script>
 {% endblock %}

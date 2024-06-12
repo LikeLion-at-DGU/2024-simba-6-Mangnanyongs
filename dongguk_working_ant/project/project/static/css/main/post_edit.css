@@ -1,86 +1,93 @@
 .content {
     display: flex;
     flex-direction: column;
-
-    width: 1400px;
-    
+    width: 100%;
+    max-width: 1400px;
     gap: 10px;
+}
 
-    @media (max-width: 1050px) {
+@media (max-width: 1050px) {
+    .content {
         align-items: start;
         justify-content: center;
     }
-    @media (min-width: 1051px) {
-        align-items: center;
+}
+
+@media (min-width: 1051px) {
+    .content {
+        align-items: start;
         justify-content: center;
     }
 }
 
-#main1{
+#main1 {
+    display: flex;
     height: 74px;
-    margin-top: 6em;
-    align-items: start;
+    margin-top: 3em;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#introduction{
-    display:flex;
-    margin-left: 1em;
+#introduction {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
-#back{
+#back {
     width: 60px;
     height: 60px;
     object-fit: cover;
 }
 
-#word{
-    margin-top: 1.25rem;
+#word {
+    margin-bottom:0.25em;
+    flex: 0.92; /* 여유 공간을 차지하도록 */
 }
 
-#submit_button{
+#submit_button {
     display: flex;
-    margin-left: 760px;
+    gap: 1em; /* 버튼 사이 간격을 일정하게 */
 }
 
-#temporary{
+#temporary, #submit {
     display: flex;
     width: 130px;
     height: 58px;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border: 1px solid #FE902F;
     border-radius: 30px;
 }
 
-#submit{
-    display: flex;
-    width: 130px;
-    height: 58px;
-    justify-content: center;
-    align-items: center;
+#temporary {
+    border: 1px solid #FE902F;
+}
+
+#submit {
     background-color: #FE902F;
-    gap: 8px;
     border: 1px solid #FE902F;
-    border-radius: 30px;
-    margin-left: 1em;
 }
+
 
 #main2{
     display: flex;
     margin-top: 41px;
-    width: 1400px;
+    width: 100%;
     justify-content: center;
     align-items: center;
+    margin-left: -2em;
 }
 
 #shell{
     display: flex;
     flex-direction: column;
-    width: 1263px;
-    border: 1px solid #FE902F;
+    width: 90%;
+    border: 2px solid #FE902F;
     border-radius: 1em;
-    z-index: 1;
 }
 
 #icon{
@@ -96,7 +103,7 @@
 
 #detail{
     display: flex;
-    width: 1263px;
+    width: 100%;
     gap: 200px;
     justify-content: center;
     align-items: center;
@@ -124,34 +131,32 @@
 
 #add{
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    margin: 2em 0px 2em 0px;
-}
-
-#main3{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 4em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .question{
     display: flex;
-    width:1263px;;
-    height: 324px;
+    width: 90%;
+    height: 220px;
     border-radius: 12px;
     border: 1px solid rgba(235, 235, 235, 0.92);
     background: rgba(251, 251, 251, 0.98);
     padding-top: 1em;
 }
 
-
-
-
-
-
+#main3{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+}
 
 .Capital{
     font-size: 32px;
@@ -167,6 +172,7 @@
 }
 
 .gray{
+    background-color: #FBFBFB;
     color: #9C9CA1;
 }
 
@@ -222,7 +228,18 @@ hr{
 
 input[type="text"]{
     border:none;
-    border-bottom: 1px solid #9C9CA1;
+    width: 90%;
+    height: 40px;
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;   
+    line-height: normal;
+}
+
+input:focus{
+    outline: none;
 }
 
 .nav-2 :nth-child(2){
@@ -235,4 +252,46 @@ input[type="text"]{
 
 .white{
     color: #FFF;
+}
+
+.area{
+    width: 90%;
+}
+
+.q_border{
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 324px;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 235, 0.92);
+    background: rgba(251, 251, 251, 0.98);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+    margin-top: 65px;
+}
+
+::placeholder{
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.questions{
+    align-self: flex-start;
+    margin-left: 0.5em;
+    margin-top: 1em;
+}
+
+.answer{
+    width: 90%;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F7F8FB;
+    align-self: center;
+    padding-left: 19px;
+    padding-top: 13px;
 }

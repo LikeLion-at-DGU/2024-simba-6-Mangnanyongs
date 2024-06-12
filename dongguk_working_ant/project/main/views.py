@@ -15,53 +15,43 @@ def mainlistpage(request):
         # 입력 파라미터
         keyword = request.GET.get('kw', '')
         sort = request.GET.get('so', '')
-        end = request.GET.get('end', '')
-        place = request.GET.get('place', '')
-        income = request.GET.get('income', '')
+        end = request.GET.get('en', '')
+        place = request.GET.get('pl', '')
+        income = request.GET.get('inc', '')
 
         # 검색
+        posts = Post.objects.all()
+
         if keyword:
-            posts = Post.objects.filter(
+            posts = posts.filter(
                 Q(title__icontains=keyword) |  # 제목에서 검색
                 Q(organization__icontains=keyword) | #기관에서 검색
                 Q(body__icontains=keyword)  # 내용에서 검색
             ).distinct()
-        else:
-            posts = Post.objects.all()
 
         #마감 공고 제외 여부
         if end == 'exclude':
             posts = posts.filter(day_left__gte=0) #day_left>=0
     
         #근로 장소
-        if place == '경영/사회과학관':
-            posts = posts.filter(place='경영/사회과학관')
-        elif place == '과학관':
-            posts = posts.filter(place='과학관')
-        elif place == '다향관':
-            posts = posts.filter(place='다향관')
-        elif place == '명진관':
-            posts = posts.filter(place='명진관')
-        elif place == '법학/만해관':
-            posts = posts.filter(place='법학/만해관')
-        elif place == '본관':
-            posts = posts.filter(place='본관')
-        elif place == '신공학관':
-            posts = posts.filter(place='신공학관')
-        elif place == '남산학사':
-            posts = posts.filter(place='남산학사')
-        elif place == '중앙도서관':
-            posts = posts.filter(place='중앙도서관')
-        elif place == '원흥관':
-            posts = posts.filter(place='원흥관')
-        elif place == '학림관':
-            posts = posts.filter(place='학림관')
-        elif place == '학술문화관':
-            posts = posts.filter(place='학술문화관')
-        elif place == '혜화관':
-            posts = posts.filter(place='혜화관')
-        elif place == '기타':
-            posts = posts.filter(place='기타')
+        place_mapping = {
+            '1': '경영/사회과학관',
+            '2': '과학관',
+            '3': '다향관',
+            '4': '명진관',
+            '5': '법학/만해관',
+            '6': '본관',
+            '7': '신공학관',
+            '8': '남산학사',
+            '9': '중앙도서관',
+            '10': '원흥관',
+            '11': '학림관',
+            '12': '학술문화관',
+            '13': '혜화관',
+            '14': '기타'
+        }
+        if place in place_mapping:
+            posts = posts.filter(place=place_mapping[place])
         
         #소득 분위 반영 여부
         if income == 'apply':
@@ -87,9 +77,9 @@ def mainlistpage(request):
             'posts': posts, 
             'kw': keyword,
             'so': sort, 
-            'end': end, 
-            'place': place,
-            'income': income,
+            'en': end, 
+            'pl': place,
+            'inc': income,
         }
 
         return render(request,'main/mainlistpage.html', context)

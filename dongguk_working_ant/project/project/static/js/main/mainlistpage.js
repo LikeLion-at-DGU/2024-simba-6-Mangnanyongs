@@ -31,17 +31,18 @@ function changeSelect_so(obj) {
 }
 
 function changeSelect_end(obj) {
-    document.getElementById("end").value = obj.value
+    document.getElementById("en").value = obj.value
     document.getElementById("searchForm").submit()
 }
 
 function changeSelect_place(obj) {
-    document.getElementById("place").value = obj.value
+    console.log("장소값"+document.getElementById("pl").value)
+    document.getElementById("pl").value = obj.value
     document.getElementById("searchForm").submit()
 }
 
 function changeSelect_income(obj) {
-    document.getElementById("income").value = obj.value
+    document.getElementById("inc").value = obj.value
     document.getElementById("searchForm").submit()
 }
 
@@ -49,8 +50,8 @@ function changeSelect_income(obj) {
 document.getElementById('search').onkeydown = function(e) {
     // e.key를 사용하여 'Enter' 키를 확인합니다.
     if (e.key === 'Enter') {
-        // ID가 "kw"인 요소의 값을 ID가 "inputSearch"인 요소의 값으로 설정
-        document.getElementById("kw").value = document.getElementById("inputSearch").value;
+        // ID가 "kw"인 요소의 값을 ID가 "search"인 요소의 값으로 설정
+        document.getElementById("kw").value = document.getElementById("search").value;
         
         // ID가 "searchForm"인 폼을 제출
         document.getElementById("searchForm").submit();

@@ -80,6 +80,7 @@ def mainlistpage(request):
         #posts = paginator.get_page(page)
         
         context = {
+            'depa': department,
             'posts': posts, 
             'kw': keyword,
             'so': sort, 

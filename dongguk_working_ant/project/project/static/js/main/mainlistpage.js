@@ -1,6 +1,6 @@
 
 //전체 교내 학과 선택
-/*document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     buttons = document.querySelectorAll('#filter .button'); //버튼 지정 (배열)
     const defaultButton = document.getElementById('all'); // 기본값으로 지정할 버튼
 
@@ -12,21 +12,19 @@
             buttons.forEach(btn => btn.classList.replace("checked", "unchecked"));
             button.classList.replace("unchecked", "checked");
             if(button.value == '교내'){ //django에서 값을 받아오면 완성
+                document.getElementById("depa").value = '교내';
                 console.log(2);
             } else if(button.value == '학과'){
+                document.getElementById("depa").value = '학과';
                 console.log(3);
-            } else{
+            } else if(button.value == '전체'){
+                document.getElementById("depa").value = '전체';
                 console.log(1);
             }
+            document.getElementById("searchForm").submit();
         })
     });
-})*/
-
-//정지윤 정렬 코드 테스트
-function clickButton(obj) {
-    document.getElementById("depa").value = obj.value;
-    document.getElementById("searchForm").submit();
-}
+})
 
 // Sorting
 function changeSelect_so(obj) {

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from django.db.models import Q, Count, F
 
 from .models import Post
 
@@ -11,30 +12,36 @@ def mainpage(request):
 def mainlistpage(request):
     if request.user.is_authenticated:
         
-        department_filter = request.GET.get('filter','')
-        if department_filter == '교내':
-            posts = Post.objects.filter(department='교내')
-        elif department_filter == '학과':
-            posts = Post.objects.filter(department=request.user.profile.department)
+        # 입력 파라미터
+        kw = request.GET.get('kw', '')
+        so = request.GET.get('so', '')
+
+        # 검색
+        if kw:
+            posts = Post.objects.filter(
+                Q(title__icontains=kw) |  # 제목에서 검색
+                Q(organization__icontains=kw) | #r기관에서 검색
+                Q(body__icontains=kw)  # 내용에서 검색
+            ).distinct()
         else:
             posts = Post.objects.all()
 
-        sort = request.GET.get('sortKind','')
-        if sort == 'deadline':
+        # 정렬
+        if so == 'deadline':
             posts = posts.order_by('-deadline','-pub_date')
-        elif sort ==  'inquiry':
+        elif so ==  'inquiry':
             posts = posts.order_by('-inquiry','-pub_date')
-        elif sort ==  'scrap':
+        elif so ==  'scrap':
             posts = posts.order_by('-scrap','-pub_date')
         else:
             posts = posts.order_by('-pub_date')
-            
+        
         #페이지 나누기 추후 추가
         #paginator = Paginator(content_list,5)
         #page = request.GET.get('page','')
         #posts = paginator.get_page(page)
         
-        return render(request,'main/mainlistpage.html',{'posts':posts, 'department_filter':department_filter, 'sort':sort})
+        return render(request,'main/mainlistpage.html',{'posts':posts, 'kw': kw, 'so': so})
     return redirect('accounts:login')
 
 def post_edit(request):

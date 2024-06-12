@@ -1,17 +1,22 @@
 .content {
     display: flex;
     flex-direction: column;
-
-    width: 1400px;
-    
+    width: 100%;
+    max-width: 1400px;
+    margin-left: 2em;
     gap: 10px;
+}
 
-    @media (max-width: 1050px) {
+@media (max-width: 1050px) {
+    .content {
         align-items: start;
         justify-content: center;
     }
-    @media (min-width: 1051px) {
-        align-items: center;
+}
+
+@media (min-width: 1051px) {
+    .content {
+        align-items: start;
         justify-content: center;
     }
 }

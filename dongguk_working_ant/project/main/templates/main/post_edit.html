@@ -5,151 +5,196 @@
   href="{% static 'css/main/post_edit.css'%}"
 />
 
-<div class="content" id="main1">
-  <div class="Caption Capital" id="introduction">
-    <a href="">
-      <img src="{% static 'images/icons/vector.svg' %}" id="back" />
-    </a>
-    <span id="word">모집 공고 작성</span>
-    <form action="" method="post" id="submit_button">
-      <button class="Caption orange bigger" id="temporary">임시 저장</button>
-      <button class="Caption white bigger" id="submit">게시하기</button>
-    </form>
-  </div>
-</div>
-<div class="content" id="main2">
-  <div id="shell">
-    <div id="icon">
-      <img src="{% static 'images/icons/note.svg' %}" id="note" />
+<div id="edit_page">
+  <div class="content" id="main1">
+    <div class="Caption Capital" id="introduction">
+      <!--뒤로 가기 버튼-->
+      <a href="">
+        <img src="{% static 'images/icons/vector.svg' %}" id="back" />
+      </a>
+      <span id="word">모집 공고 작성</span>
+      <!--임시 저장과 게시하기-->
+      <form action="" method="post" id="submit_button">
+        <button class="Caption orange bigger" id="temporary">임시 저장</button>
+        <button class="Caption white bigger" id="submit">게시하기</button>
+      </form>
     </div>
-    <form action="" method="post" id="detail">
-      <div class="Caption topic" id="title">
-        <span class="orange">*</span>
-        <span>
-          <span class="Caption big gray"
-            >기관 입력(ex.교무팀) | 공고 제목 입력</span
-          >
+  </div>
+  <div class="content" id="main2">
+    <div id="shell">
+      <div id="icon">
+        <img src="{% static 'images/icons/note.svg' %}" id="note" />
+      </div>
+      <!--공고 제목과 내용 입력란-->
+      <form action="" method="post" id="detail">
+        <div class="Caption topic" id="title">
+          <span class="orange">*</span>
+          <span>
+            <span class="Caption big gray"
+              >기관 입력(ex.교무팀) | 공고 제목 입력</span
+            >
+            <div class="top">
+              <label for="work_detail">근로 내용</label>
+              <select name="work_detail" id="work_detail" class="selector">
+                <option value="" hidden></option>
+                <option value="admin">행정보조</option>
+                <option value="desk">사무보조</option>
+                <option value="call">전화업무</option>
+                <option value="promote">홍보물 제작</option>
+                <option value="else">기타</option>
+              </select>
+            </div>
+            <div>
+              <label for="target">모집 대상</label>
+              <select name="target" id="target" class="selector">
+                <option value="" hidden></option>
+                <option value="all">전체</option>
+                <option value="경영대학">경영대학</option>
+                <option value="공과대학">공과대학</option>
+                <option value="경찰사법대학">경찰사법대학</option>
+                <option value="문과대학">문과대학</option>
+                <option value="미래융합대학">미래융합대학</option>
+                <option value="바이오시스템대학">바이오시스템대학</option>
+                <option value="법과대학">법과대학</option>
+                <option value="불교대학">불교대학</option>
+                <option value="사범대학">사범대학</option>
+                <option value="사회과학대학">사회과학대학</option>
+                <option value="약학대학">약학대학</option>
+                <option value="예술대학">예술대학</option>
+                <option value="이과대학">이과대학</option>
+              </select>
+            </div>
+            <div>
+              <label for="work_date">활동 기간</label>
+                <input type="date" id="work_date" class="selector">
+            </div>
+            <div>
+              <label for="recruit_date">활동 기간</label>
+                <input type="date" id="recruit_date" class="selector">
+            </div>
+          </span>
+        </div>
+        <div class="Caption topic" id="contents">
+          <span class="orange">*</span>
+          <span class="Caption big gray">공고 내용을 선택해주세요</span>
           <div class="top">
-            <label for="work_detail">근로 내용</label>
-            <select name="work_detail" id="work_detail" class="selector">
+            <label for="recruit_count">모집 인원</label>
+            <select name="recruit_count" id="recruit_count" class="selector">
               <option value="" hidden></option>
-              <option value="admin">행정보조</option>
-              <option value="desk">사무보조</option>
-              <option value="call">전화업무</option>
-              <option value="promote">홍보물 제작</option>
-              <option value="else">기타</option>
+              <option value="1">1</option>
+              <option value="1">2</option>
+              <option value="2">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
           <div>
-            <label for="target">모집 대상</label>
-            <select name="target" id="target" class="selector">
-              <option value="" hidden></option>
-              <option value="all">전체</option>
-              <option value="경영대학">경영대학</option>
-              <option value="공과대학">공과대학</option>
-              <option value="경찰사법대학">경찰사법대학</option>
-              <option value="문과대학">문과대학</option>
-              <option value="미래융합대학">미래융합대학</option>
-              <option value="바이오시스템대학">바이오시스템대학</option>
-              <option value="법과대학">법과대학</option>
-              <option value="불교대학">불교대학</option>
-              <option value="사범대학">사범대학</option>
-              <option value="사회과학대학">사회과학대학</option>
-              <option value="약학대학">약학대학</option>
-              <option value="예술대학">예술대학</option>
-              <option value="이과대학">이과대학</option>
-            </select>
-          </div>
-          <div>
-            <label for="work_date">활동 기간</label>
-            <select name="work_date" id="work_date" class="selector">
+            <label for="work_place">근로 장소</label>
+            <select name="work_place" id="work_place" class="selector">
               <option value="" hidden></option>
               <option value="admin">행정보조</option>
             </select>
           </div>
           <div>
-            <label for="recruit_date">모집 기간</label>
-            <select name="recruit_date" id="recruit_date" class="selector">
+            <label for="work_time">근로 요일 및 시간</label>
+            <select name="work_time" id="work_time" class="selector">
               <option value="" hidden></option>
-              <option value="admin">행정보조</option>
+              <option value="Mon">월요일</option>
+              <option value="Tue">화요일</option>
+              <option value="Wed">수요일</option>
+              <option value="Thu">목요일</option>
+              <option value="Fri">금요일</option>
+              <option value="Sat">토요일</option>
+              <option value="Sun">일요일</option>
             </select>
           </div>
-        </span>
-      </div>
-      <div class="Caption topic" id="contents">
-        <span class="orange">*</span>
-        <span class="Caption big gray">공고 내용을 선택해주세요</span>
-        <div class="top">
-          <label for="recruit_count">모집 인원</label>
-          <select name="recruit_count" id="recruit_count" class="selector">
-            <option value="" hidden></option>
-            <option value="admin">행정보조</option>
-          </select>
+          <div>
+            <label for="salary">급여</label>
+            <input type="number" id="salary" />
+          </div>
         </div>
-        <div>
-          <label for="work_place">근로 장소</label>
-          <select name="work_place" id="work_place" class="selector">
-            <option value="" hidden></option>
-            <option value="admin">행정보조</option>
-          </select>
+      </form>
+      <hr />
+      <!--세부사항 입력란-->
+      <form action="" method="post" id="add">
+        <div
+          class="Caption big"
+          style="align-self: flex-start; margin-left: 1.5em; margin-bottom: 1em"
+        >
+          <span class="orange" style="margin-right: 0.25em">*</span>
+          <span class="gray">세부사항을 입력해주세요.</span>
         </div>
-        <div>
-          <label for="work_time">근로 요일 및 시간</label>
-          <select name="work_time" id="work_time" class="selector">
-            <option value="" hidden></option>
-            <option value="Mon">월요일</option>
-            <option value="Tue">화요일</option>
-            <option value="Wed">수요일</option>
-            <option value="Thu">목요일</option>
-            <option value="Fri">금요일</option>
-            <option value="Sat">토요일</option>
-            <option value="Sun">일요일</option>
-          </select>
+        <div
+          id="details"
+          class="question"
+          style="display: block; background-color: #f7f8fb; overflow: auto"
+        >
+          <div
+            class="detail"
+            style="
+              display: flex;
+              width: 100%;
+              height: 34px;
+              background-color: #f7f8fb;
+              margin-bottom: 1em;
+            "
+          >
+            <img
+              src="{% static 'images/icons/check.svg' %}"
+              style="margin-left: 23px; margin-right: 10px"
+            />
+            <input
+              type="text"
+              placeholder="입력란"
+              class="input_text"
+              style="
+                border-bottom: 1px solid #9c9ca1;
+                font-size: 16px;
+                height: 25px;
+                width: 85%;
+                margin-top: 3px;
+              "
+            />
+            <img
+              src="{% static 'images/icons/chuga.svg' %}"
+              class="add_detail"
+              style="margin-left: 10px"
+              onclick="add_detail();"
+            />
+            <!--삭제 버튼으로 대체할 거임-->
+            <img
+              src="{% static 'images/icons/chuga.svg' %}"
+              class="delete_detail"
+              onclick="delete_detail(this);"
+            />
+          </div>
         </div>
-        <div>
-          <label for="salary">급여</label>
-          <input type="number" id="salary" />
-        </div>
-      </div>
-    </form>
-    <hr />
-    <form action="" method="post" id="add" style="display: flex;">
-      <div
-        class="Caption big"
-        style="align-self: flex-start; margin-left: 1.5em; margin-bottom: 1em;"
-      >
-        <span class="orange" style="margin-right: 0.25em">*</span>
-        <span class="gray">세부사항을 입력해주세요.</span>
-      </div>
-      <div id="details" class="question" style="display:block; background-color: #F7F8FB; overflow: auto;">
-        <div class="detail" style="display:flex; width:100%; height: 34px; background-color: #F7F8FB; margin-bottom: 1em;">
-          <img src="{% static 'images/icons/check.svg' %}" style="margin-left: 23px; margin-right:10px;">
-          <input type="text" placeholder="입력란" class="input_text" style="border-bottom: 1px solid #9C9CA1; font-size: 16px; height: 25px; width: 85%; margin-top:3px;">
-          <img src="{% static 'images/icons/chuga.svg' %}" class="add_detail" style="margin-left: 10px;" onclick="add_detail();">
-          <img src="{% static 'images/icons/chuga.svg' %}" class="delete_detail" onclick="delete_detail(this);"> <!--삭제 버튼으로 대체할 거임-->
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<div class="content" id="main3">
-  <div class="Caption Capital area">지원서 양식</div>
-  <div class="q_border">
-    <form name="question1" action="" method="post" id="questions">
-      <div class="Caption big questions">
-        <span class="orange" style="margin-left: 1em; margin-right: 0.25em">1.</span>
-        <input type="text" class="gray" placeholder="질문을 입력해주세요." />
-      </div>
-    </form>
-    <div class="answer">
-      <div class="Caption bold gray" style="background-color: #F7F8FB;">지원자의 답변 입력란</div>
+      </form>
     </div>
   </div>
-  <button id="add_question" style="margin-top: 69px;">
-    <img src="{% static 'images/icons/add.svg' %}">
-  </button>
-</div>
 
+  <div class="content" id="main3">
+    <div class="Caption Capital area">지원서 양식</div>
+    <div class="q_border">
+      <!--질문 입력란-->
+      <form name="question1" action="" method="post" id="questions">
+        <div class="Caption big questions">
+          <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
+            >1.</span
+          >
+          <input type="text" class="gray" placeholder="질문을 입력해주세요." />
+        </div>
+      </form>
+      <div class="answer">
+        <div class="Caption bold gray" style="background-color: #f7f8fb">
+          지원자의 답변 입력란
+        </div>
+      </div>
+    </div>
+    <button id="add_question" style="margin-top: 69px">
+      <img src="{% static 'images/icons/add.svg' %}" />
+    </button>
+  </div>
+</div>
 <script src="{% static 'js/main/post_edit.js' %}"></script>
 {% endblock %}

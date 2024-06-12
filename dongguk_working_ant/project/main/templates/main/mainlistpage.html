@@ -14,7 +14,7 @@
 <!--각 근로 카드 위 부분-->
 <div class="content" id="main1">
     <!--교내, 학과 선택 필터-->
-    <form action="{% url 'main:mainlistpage' %}" method='GET'>
+    <form action="" method='GET'>
         {% csrf_token %}
         <div id="filter">
             <button class="unchecked button Caption" id="all" value="전체">전체</button>
@@ -24,32 +24,39 @@
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->
-        <form method="GET" action="{% url 'main:mainlistpage' %}" id="textfield" name="textfield"> <!--action 채우기-->
-            {% csrf_token %}
-            <input type="search" id="search" placeholder="검색" value="">
+        <div id="textfield" name="textfield"> 
+            <input id="search" type="text" class="form-control kw" placeholder="검색" value="{{ kw|default_if_none:'' }}">
             <button type="submit" id="submit" aria-label="submit"></button>
-        </form>
+        </div>
         <!--정렬 필터-->
-        <form method="GET" action="{% url 'main:mainlistpage' %}" id="selector" name="selector"> <!--action 채우기-->
-            {% csrf_token %}
-            <!--정렬-->
+        <div id="selector" name="selector">
             <label for="sort">
-                <select id="sort" class="Caption gray thin"> 
-                    <option value="">정렬</option>
-                    <option value="deadline">마감순</option>
-                    <option value="inquiry">조회순</option>
-                    <option value="scrap">스크랩순</option>
+                <select id="sort" class="Caption gray thin so" onchange="changeSelect_so(this);">
+                    {% comment %} {{ so }} {% endcomment %}
+                    <option value="" {% if so == '' %}selected{% endif %}>정렬</option>
+                    <option value="deadline" {% if so == 'deadline' %}selected{% endif %}>마감순</option>
+                    <option value="inquiry" {% if so == 'inquiry' %}selected{% endif %}>조회순</option>
+                    <option value="scrap" {% if so == 'scrap' %}selected{% endif %}>스크랩순</option>
                 </select>
             </label>
             <!--마감 공고 제외-->
-            <label for="end">
+            <!--<label for="end">
                 <select id="end" class="Caption gray thin" >
-                    <option value="">마감 공고 제외</option>
+                    <option value="">마감 공고 제외 여부</option>
                     <option value="exclude">제외</option>
                     <option value="include">포함</option>
                 </select>
+            </label>-->
+            <label for="end">
+                <select id="end" class="Caption gray thin end" onchange="changeSelect_end(this);">
+                    {% comment %} {{ end }} {% endcomment %}
+                    <option value="" {% if end == '' %}selected{% endif %}>마감 공고 제외 여부</option>
+                    <option value="exclude" {% if end == 'exclude' %}selected{% endif %}>제외</option>
+                    <option value="include" {% if end == 'include' %}selected{% endif %}>포함</option>
+                </select>
             </label>
             <!--근로 장소-->
+            <!--
             <label for="place">
                 <select id="place" class="Caption gray thin">
                     <option value="">근로 장소</option>
@@ -68,16 +75,44 @@
                     <option value="혜화관">혜화관</option>
                     <option value="기타">기타</option>
                 </select>
+            </label>-->
+            <label for="place">
+                <select id="place" class="Caption gray thin place" onchange="changeSelect_place(this);">
+                    {% comment %} {{ place }} {% endcomment %}
+                    <option value="" {% if place == '' %}selected{% endif %}>근로 장소</option>
+                    <option value="경영/사회과학관" {% if place == '경영/사회과학관' %}selected{% endif %}>경영/사회과학관</option>
+                    <option value="과학관" {% if place == '과학관' %}selected{% endif %}>과학관</option>
+                    <option value="다향관" {% if place == '다향관' %}selected{% endif %}>다향관</option>
+                    <option value="명진관" {% if place == '명진관' %}selected{% endif %}>명진관</option>
+                    <option value="법학/만해관" {% if place == '법학/만해관' %}selected{% endif %}>법학/만해관</option>
+                    <option value="본관" {% if place == '본관' %}selected{% endif %}>본관</option>
+                    <option value="신공학관" {% if place == '신공학관' %}selected{% endif %}>신공학관</option>
+                    <option value="남산학사" {% if place == '남산학사' %}selected{% endif %}>남산학사</option>
+                    <option value="중앙도서관" {% if place == '중앙도서관' %}selected{% endif %}>중앙도서관</option>
+                    <option value="원흥관" {% if place == '원흥관' %}selected{% endif %}>원흥관</option>
+                    <option value="학림관" {% if place == '학림관' %}selected{% endif %}>학림관</option>
+                    <option value="학술문화관" {% if place == '학술문화관' %}selected{% endif %}>학술문화관</option>
+                    <option value="혜화관" {% if place == '혜화관' %}selected{% endif %}>혜화관</option>
+                    <option value="기타" {% if place == '기타' %}selected{% endif %}>기타</option>
+                </select>
             </label>
             <!--소득분위-->
-            <label for="income">
+            <!--<label for="income">
                 <select id="income" class="Caption gray thin">
                     <option value="">소득 분위</option>
                     <option value="apply">반영</option>
                     <option value="remove">미반영</option>
                 </select>
+            </label>-->
+            <label for="income">
+                <select id="income" class="Caption gray thin income" onchange="changeSelect_income(this);">
+                    {% comment %} {{ income }} {% endcomment %}
+                    <option value="" {% if income == '' %}selected{% endif %}>소득 분위</option>
+                    <option value="apply" {% if income == 'apply' %}selected{% endif %}>반영</option>
+                    <option value="remove" {% if income == 'remove' %}selected{% endif %}>미반영</option>
+                </select>
             </label>
-        </form>
+        </div>
     </div>
 </div>
 <div class="content" id="main2">
@@ -102,7 +137,11 @@
                     #{{post.department}}
                 </span>
                 <span class="info date small white">
-                    남음
+                    {% if post.day_left >= 0 %}
+                        {{ post.day_left }}일 남음
+                    {% else %}
+                        지원 마감
+                    {% endif %}
                 </span>
             </div>
             <a class="title Caption big" href="{% url 'main:post-detail' post.id %}">
@@ -120,4 +159,15 @@
     {% endfor %}
 </div>
 <script src="{% static 'js/main/mainlistpage.js' %}"></script>
+
+<!--정지윤 추가-->
+<form id="searchForm" method="GET" action="{% url 'main:mainlistpage' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <!--페이지 관리 <input type="hidden" id="page" name="page" value="{{ page }}">-->
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+    <input type="hidden" id="end" name="end" value="{{ end }}">
+    <input type="hidden" id="place" name="place" value="{{ place }}">
+    <input type="hidden" id="income" name="income" value="{{ income }}">
+</form>
+
 {% endblock %}

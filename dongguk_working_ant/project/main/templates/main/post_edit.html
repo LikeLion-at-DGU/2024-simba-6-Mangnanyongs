@@ -113,20 +113,23 @@
       </div>
     </form>
     <hr />
-    <form action="" method="post" id="add">
+    <form action="" method="post" id="add" style="display: flex;">
       <div
         class="Caption big"
-        style="align-self: flex-start; margin-left: 1.5em"
+        style="align-self: flex-start; margin-left: 1.5em; margin-bottom: 1em;"
       >
         <span class="orange" style="margin-right: 0.25em">*</span>
         <span class="gray">세부사항을 입력해주세요.</span>
       </div>
-      <div class="question" id="add_detail"></div>
+      <div id="details" class="question" style="display:block; background-color: #F7F8FB; overflow: auto;">
+        <div class="detail" style="display:flex; width:100%; height: 34px; background-color: #F7F8FB; margin-bottom: 1em;">
+          <img src="{% static 'images/icons/check.svg' %}" style="margin-left: 23px; margin-right:10px;">
+          <input type="text" placeholder="입력란" class="input_text" style="border-bottom: 1px solid #9C9CA1; font-size: 16px; height: 25px; width: 85%; margin-top:3px;">
+          <img src="{% static 'images/icons/chuga.svg' %}" class="add_detail" style="margin-left: 10px;" onclick="add_detail();">
+          <img src="{% static 'images/icons/chuga.svg' %}" class="delete_detail" onclick="delete_detail(this);"> <!--삭제 버튼으로 대체할 거임-->
+        </div>
+      </div>
     </form>
-    <!--div class="Caption bold gray">
-        1.
-        <input type="text" class="Caption bold gray" id="more_detail" placeholder="입력란" style="width:1050px;">
-      </div-->
   </div>
 </div>
 

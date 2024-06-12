@@ -3,7 +3,6 @@
     flex-direction: column;
     width: 100%;
     max-width: 1400px;
-    margin-left: 2em;
     gap: 10px;
 }
 
@@ -21,71 +20,74 @@
     }
 }
 
-#main1{
+#main1 {
+    display: flex;
     height: 74px;
-    margin-top: 6em;
-    align-items: start;
+    margin-top: 3em;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-#introduction{
-    display:flex;
-    margin-left: 1em;
+#introduction {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
 }
 
-#back{
+#back {
     width: 60px;
     height: 60px;
     object-fit: cover;
 }
 
-#word{
-    margin-top: 1.25rem;
+#word {
+    margin-bottom:0.25em;
+    flex: 0.92; /* 여유 공간을 차지하도록 */
 }
 
-#submit_button{
+#submit_button {
     display: flex;
-    margin-left: 760px;
+    gap: 1em; /* 버튼 사이 간격을 일정하게 */
 }
 
-#temporary{
+#temporary, #submit {
     display: flex;
     width: 130px;
     height: 58px;
     justify-content: center;
     align-items: center;
     gap: 8px;
-    border: 1px solid #FE902F;
     border-radius: 30px;
 }
 
-#submit{
-    display: flex;
-    width: 130px;
-    height: 58px;
-    justify-content: center;
-    align-items: center;
+#temporary {
+    border: 1px solid #FE902F;
+}
+
+#submit {
     background-color: #FE902F;
-    gap: 8px;
     border: 1px solid #FE902F;
-    border-radius: 30px;
-    margin-left: 1em;
 }
+
 
 #main2{
     display: flex;
     margin-top: 41px;
-    
+    width: 100%;
     justify-content: center;
     align-items: center;
+    margin-left: -2em;
 }
 
 #shell{
     display: flex;
     flex-direction: column;
-    width: 1263px;
+    width: 90%;
     border: 2px solid #FE902F;
     border-radius: 1em;
-    z-index: 1;
 }
 
 #icon{
@@ -101,7 +103,7 @@
 
 #detail{
     display: flex;
-    width: 1263px;
+    width: 100%;
     gap: 200px;
     justify-content: center;
     align-items: center;
@@ -139,18 +141,18 @@
 
 .question{
     display: flex;
-    width:1144px;
+    width: 90%;
     height: 220px;
     border-radius: 12px;
     border: 1px solid rgba(235, 235, 235, 0.92);
     background: rgba(251, 251, 251, 0.98);
     padding-top: 1em;
-    z-index: -1;
 }
 
 #main3{
     display: flex;
     flex-direction: column;
+    width: 100%;
     justify-content: center;
     align-items: center;
     margin-top: 4em;
@@ -170,6 +172,7 @@
 }
 
 .gray{
+    background-color: #FBFBFB;
     color: #9C9CA1;
 }
 
@@ -225,7 +228,7 @@ hr{
 
 input[type="text"]{
     border:none;
-    width: 1100px;
+    width: 90%;
     height: 40px;
     color: var(--input, #9C9CA1);
     font-family: "SUITE Variable";
@@ -252,13 +255,13 @@ input:focus{
 }
 
 .area{
-    width: 1263px;
+    width: 90%;
 }
 
 .q_border{
     display: flex;
     flex-direction: column;
-    width: 1263px;
+    width: 90%;
     height: 324px;
     border-radius: 12px;
     border: 1px solid rgba(235, 235, 235, 0.92);
@@ -283,7 +286,7 @@ input:focus{
 }
 
 .answer{
-    width: 1144px;
+    width: 90%;
     height: 220px;
     flex-shrink: 0;
     border-radius: 12px;

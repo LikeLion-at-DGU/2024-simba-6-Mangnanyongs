@@ -22,9 +22,8 @@
 .topnav {
     display: flex;
     flex-direction: column;
-    width: 1400px;
+    width: 90%;
     align-items: center;
-    margin-right: 4em;
     justify-content: space-between;
     margin-bottom: 1.75em;
 }
@@ -47,9 +46,9 @@
 
 .topnav .div {
     display: inline-flex;
+    width: 100%;
     align-items: center;
     justify-content: center;
-    column-gap: 20rem;
     position: relative;
     flex: 0 0 auto;
 }
@@ -59,10 +58,13 @@
     align-items: center;
     justify-content: center;
     margin-top: 1em;
+    margin-left: 352px;
+    margin-right: 395px;
 }
 
 .nav-1 .nav-3{
     display: flex;
+    
     align-items: center;
     gap:1.18em;
     margin-top:2em;
@@ -95,6 +97,8 @@
     line-height: normal;
 }
 a {
+    display: inline-block;
+    white-space: nowrap;
     text-decoration-line: none;
 }
 .gray{

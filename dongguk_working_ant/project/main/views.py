@@ -13,6 +13,7 @@ def mainlistpage(request):
     if request.user.is_authenticated:
         
         # 입력 파라미터
+        department = request.GET.get('depa','')
         keyword = request.GET.get('kw', '')
         sort = request.GET.get('so', '')
         end = request.GET.get('en', '')
@@ -22,13 +23,18 @@ def mainlistpage(request):
         # 검색
         posts = Post.objects.all()
 
+        if department == '교내':
+            posts = posts.filter(department='교내')
+        elif department == '학과':
+            posts = posts.filter(~Q(department='교내'))
+
         if keyword:
             posts = posts.filter(
                 Q(title__icontains=keyword) |  # 제목에서 검색
                 Q(organization__icontains=keyword) | #기관에서 검색
                 Q(body__icontains=keyword)  # 내용에서 검색
             ).distinct()
-
+        print(keyword)
         #마감 공고 제외 여부
         if end == 'exclude':
             posts = posts.filter(day_left__gte=0) #day_left>=0

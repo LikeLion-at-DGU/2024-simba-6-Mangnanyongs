@@ -25,8 +25,23 @@ document.addEventListener("DOMContentLoaded", () => {
 //정지윤 정렬 코드 테스트
 
 // Sorting
-function changeSelect(obj) {
+function changeSelect_so(obj) {
     document.getElementById("so").value = obj.value
+    document.getElementById("searchForm").submit()
+}
+
+function changeSelect_end(obj) {
+    document.getElementById("end").value = obj.value
+    document.getElementById("searchForm").submit()
+}
+
+function changeSelect_place(obj) {
+    document.getElementById("place").value = obj.value
+    document.getElementById("searchForm").submit()
+}
+
+function changeSelect_income(obj) {
+    document.getElementById("income").value = obj.value
     document.getElementById("searchForm").submit()
 }
 
@@ -34,10 +49,10 @@ function changeSelect(obj) {
 document.getElementById('search').onkeydown = function(e) {
     // e.key를 사용하여 'Enter' 키를 확인합니다.
     if (e.key === 'Enter') {
-        // ID가 "kw"인 요소의 값을 ID가 "inputSearch"인 요소의 값으로 설정합니다.
+        // ID가 "kw"인 요소의 값을 ID가 "inputSearch"인 요소의 값으로 설정
         document.getElementById("kw").value = document.getElementById("inputSearch").value;
         
-        // ID가 "searchForm"인 폼을 제출합니다.
+        // ID가 "searchForm"인 폼을 제출
         document.getElementById("searchForm").submit();
     }
 };

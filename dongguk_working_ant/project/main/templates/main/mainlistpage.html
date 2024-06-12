@@ -14,7 +14,7 @@
 <!--각 근로 카드 위 부분-->
 <div class="content" id="main1">
     <!--교내, 학과 선택 필터-->
-    <form action="{% url 'main:mainlistpage' %}" method='GET'>
+    <form action="" method='GET'>
         {% csrf_token %}
         <div id="filter">
             <button class="unchecked button Caption" id="all" value="전체">전체</button>
@@ -24,21 +24,19 @@
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->
-        <form method="GET" action="{% url 'main:mainlistpage' %}" id="textfield" name="textfield"> <!--action 채우기-->
-            {% csrf_token %}
-            <input type="search" id="search" placeholder="검색" value="">
+        <form method="GET" action="" id="textfield" name="textfield"> 
+            <input id="search" type="text" class="form-control kw" placeholder="검색" value="{{ kw|default_if_none:'' }}">
             <button type="submit" id="submit" aria-label="submit"></button>
         </form>
         <!--정렬 필터-->
-        <form method="GET" action="{% url 'main:mainlistpage' %}" id="selector" name="selector"> <!--action 채우기-->
-            {% csrf_token %}
-            <!--정렬-->
+        <form method="GET" action="" id="selector" name="selector"> <!--action 채우기-->
             <label for="sort">
-                <select id="sort" class="Caption gray thin"> 
-                    <option value="">정렬</option>
-                    <option value="deadline">마감순</option>
-                    <option value="inquiry">조회순</option>
-                    <option value="scrap">스크랩순</option>
+                <select id="sort" class="Caption gray thin so" onchange="changeSelect(this);">
+                    {% comment %} {{ so }} {% endcomment %}
+                    <option value="" {% if so == '' %}selected{% endif %}>정렬</option>
+                    <option value="deadline" {% if so == 'deadline' %}selected{% endif %}>마감순</option>
+                    <option value="inquiry" {% if so == 'inquiry' %}selected{% endif %}>조회순</option>
+                    <option value="scrap" {% if so == 'scrap' %}selected{% endif %}>스크랩순</option>
                 </select>
             </label>
             <!--마감 공고 제외-->
@@ -119,5 +117,13 @@
     </div>
     {% endfor %}
 </div>
-<script src="{% static 'js/main/mainlistpage.js' %}"></script>
+<script src="{% static 'js/main/mainlistpagetest.js' %}"></script>
+
+<!--정지윤 추가-->
+<form id="searchForm" method="get" action="{% url 'main:mainlistpage' %}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <input type="hidden" id="page" name="page" value="{{ page }}">
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+</form>
+
 {% endblock %}

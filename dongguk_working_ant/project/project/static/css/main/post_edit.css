@@ -135,8 +135,8 @@
     align-items: center;
     justify-content: center;
     gap: 0.5em;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 60px;
+    margin-bottom: 60px;
 }
 
 .question{
@@ -294,4 +294,22 @@ input:focus{
     align-self: center;
     padding-left: 19px;
     padding-top: 13px;
+}
+
+.input_text{
+    background-color: #F7F8FB; 
+}
+
+.input_text::placeholder{
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.add_detail:hover,
+.delete_detail:hover {
+    cursor: pointer;
 }

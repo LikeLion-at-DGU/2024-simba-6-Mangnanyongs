@@ -64,13 +64,23 @@
                 <option value="이과대학">이과대학</option>
               </select>
             </div>
-            <div>
-              <label for="work_date">활동 기간</label>
-                <input type="date" id="work_date" class="selector">
+            <div class="date_selector">
+              <label class="work_date">활동 기간</label>
+              <div class="date_input" id="work_date_input">
+                <input type="date" id="start_work_date" class="selector" />
+                <span>부터</span>
+                <input type="date" id="end_work_date" class="selector" />
+                <span>까지</span>
+              </div>
             </div>
-            <div>
-              <label for="recruit_date">활동 기간</label>
-                <input type="date" id="recruit_date" class="selector">
+            <div class="date_selector">
+              <label class="recruit_date">모집 기간</label>
+              <div class="date_input" id="recruit_date_input">
+                <input type="date" id="start_recruit_date" class="selector" />
+                <span>부터</span>
+                <input type="date" id="end_recruit_date" class="selector" />
+                <span>까지</span>
+              </div>
             </div>
           </span>
         </div>
@@ -86,6 +96,7 @@
               <option value="2">3</option>
               <option value="4">4</option>
               <option value="5">5</option>
+              <option value="direct">직접 입력</option>
             </select>
           </div>
           <div>
@@ -108,7 +119,7 @@
               <option value="Sun">일요일</option>
             </select>
           </div>
-          <div>
+          <div style="align-items: center; margin-top: 0.55em;">
             <label for="salary">급여</label>
             <input type="number" id="salary" />
           </div>

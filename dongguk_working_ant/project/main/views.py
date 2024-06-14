@@ -23,10 +23,12 @@ def mainlistpage(request):
         # 검색
         posts = Post.objects.all()
 
-        if department == '교내':
+        if department == '국가':
+            posts = posts.filter(department='국가')
+        elif department == '교내':
             posts = posts.filter(department='교내')
         elif department == '학과':
-            posts = posts.filter(~Q(department='교내'))
+            posts = posts.filter(~Q(department='교내'), ~Q(department='국가'))
 
         if keyword:
             posts = posts.filter(

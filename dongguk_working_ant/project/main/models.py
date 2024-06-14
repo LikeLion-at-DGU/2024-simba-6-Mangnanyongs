@@ -13,13 +13,13 @@ class Post(models.Model):
     
     department = models.CharField(max_length=50, null=True)
     is_income_bracket = models.PositiveIntegerField(null=False, default=0) #boolean
-    is_attending = models.PositiveIntegerField(null=False, default=0) #boolean
+    is_attending = models.PositiveIntegerField(null=False, default=0) #삭제
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
     deadline = models.DateField(null=True)
     day_left = models.IntegerField(null=True)#남은날짜
     place = models.CharField(max_length=50, blank=False)
-    content = models.CharField(max_length=50, blank=False)
+    content = models.CharField(max_length=50, blank=False) #삭제
     time = models.TextField(max_length=50, null=False)
     recruitment = models.PositiveIntegerField(null=True, default=0)
     wage = models.PositiveIntegerField(null=True, default=0)

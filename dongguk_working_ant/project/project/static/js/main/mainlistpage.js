@@ -12,45 +12,48 @@ document.addEventListener("DOMContentLoaded", () => {
             buttons.forEach(btn => btn.classList.replace("checked", "unchecked"));
             button.classList.replace("unchecked", "checked");
             if(button.value == '교내'){ //django에서 값을 받아오면 완성
+                document.getElementById("depa").value = '교내';
                 console.log(2);
             } else if(button.value == '학과'){
+                document.getElementById("depa").value = '학과';
                 console.log(3);
-            } else{
+            } else if(button.value == '전체'){
+                document.getElementById("depa").value = '전체';
                 console.log(1);
             }
+            document.getElementById("searchForm").submit();
         })
     });
 })
 
-//정지윤 정렬 코드 테스트
-
 // Sorting
 function changeSelect_so(obj) {
-    document.getElementById("so").value = obj.value
-    document.getElementById("searchForm").submit()
+    document.getElementById("so").value = obj.value;
+    document.getElementById("searchForm").submit();
 }
 
 function changeSelect_end(obj) {
-    document.getElementById("end").value = obj.value
-    document.getElementById("searchForm").submit()
+    document.getElementById("en").value = obj.value;
+    document.getElementById("searchForm").submit();
 }
 
 function changeSelect_place(obj) {
-    document.getElementById("place").value = obj.value
-    document.getElementById("searchForm").submit()
+    document.getElementById("pl").value = obj.value;
+    document.getElementById("searchForm").submit();
 }
 
 function changeSelect_income(obj) {
-    document.getElementById("income").value = obj.value
-    document.getElementById("searchForm").submit()
+    document.getElementById("inc").value = obj.value;
+    document.getElementById("searchForm").submit();
 }
 
 // Search
 document.getElementById('search').onkeydown = function(e) {
-    // e.key를 사용하여 'Enter' 키를 확인합니다.
     if (e.key === 'Enter') {
-        // ID가 "kw"인 요소의 값을 ID가 "inputSearch"인 요소의 값으로 설정
-        document.getElementById("kw").value = document.getElementById("inputSearch").value;
+        e.preventDefault();
+
+        // ID가 "kw"인 요소의 값을 ID가 "search"인 요소의 값으로 설정
+        document.getElementById("kw").value = document.getElementById("search").value;
         
         // ID가 "searchForm"인 폼을 제출
         document.getElementById("searchForm").submit();

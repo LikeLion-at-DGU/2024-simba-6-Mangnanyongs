@@ -4,5 +4,5 @@ from .views import *
 
 app_name = "users"
 urlpatterns = [
-    path('staff_mypage/', staff_mypage, name="staff_mypage"),
+    path('staff-mypage/', staff_mypage, name="staff-mypage"),
 ]

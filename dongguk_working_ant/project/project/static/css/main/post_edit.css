@@ -1,33 +1,23 @@
-.content {
+#edit_page {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1400px;
+    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    margin: 0 auto; /* 중앙 정렬을 위한 설정 */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 1400px;
     gap: 10px;
-}
-
-@media (max-width: 1050px) {
-    .content {
-        align-items: start;
-        justify-content: center;
-    }
-}
-
-@media (min-width: 1051px) {
-    .content {
-        align-items: start;
-        justify-content: center;
-    }
+    overflow: hidden;
+    box-sizing: border-box;
 }
 
 #main1 {
-    display: flex;
     height: 74px;
     margin-top: 3em;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    box-sizing: border-box;
 }
 
 #introduction {
@@ -35,17 +25,17 @@
     align-items: center;
     gap: 10px;
     width: 100%;
+    /*box-sizing: border-box;*/
 }
 
 #back {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
+    width: 86px;
+    height: 74px;
 }
 
 #word {
-    margin-bottom:0.25em;
-    flex: 0.92; /* 여유 공간을 차지하도록 */
+    margin-bottom: 0.25em;
+    flex: 0.93; /* 여유 공간을 차지하도록 */
 }
 
 #submit_button {
@@ -72,25 +62,23 @@
     border: 1px solid #FE902F;
 }
 
-
-#main2{
+#main2 {
     display: flex;
     margin-top: 41px;
-    width: 100%;
     justify-content: center;
     align-items: center;
-    margin-left: -2em;
 }
 
-#shell{
+#shell {
     display: flex;
     flex-direction: column;
-    width: 90%;
+    width: 92%;
     border: 2px solid #FE902F;
     border-radius: 1em;
+    /*box-sizing: border-box;*/
 }
 
-#icon{
+#icon {
     display: flex;
     width: 100%;
     height: 233px;
@@ -101,35 +89,32 @@
     border-radius: 0.75em 0.75em 0px 0px;
 }
 
-#detail{
+#detail {
     display: flex;
     width: 100%;
-    gap: 200px;
+    gap: 14%;
+    align-items: start;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 3em;
 }
 
-#title{
-    margin-right: 3.5em;
-}
-
-#contents{
-    margin-right:3em;
-}
-
-#contents div{
+#title div {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.selector{
+#contents div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector {
     margin-top: 0.75em;
     margin-bottom: 1em;
 }
 
-#add{
+#add {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -139,7 +124,7 @@
     margin-bottom: 60px;
 }
 
-.question{
+.question {
     display: flex;
     width: 90%;
     height: 220px;
@@ -149,16 +134,13 @@
     padding-top: 1em;
 }
 
-#main3{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+#main3 {
     justify-content: center;
     align-items: center;
     margin-top: 4em;
 }
 
-.Capital{
+.Capital {
     font-size: 32px;
     font-style: normal;
     font-weight: 700;
@@ -166,29 +148,29 @@
     letter-spacing: 3.2px;
 }
 
-.big{
+.big {
     font-size: 20px;
     font-weight: 700;
 }
 
-.gray{
+.gray {
     background-color: #FBFBFB;
     color: #9C9CA1;
 }
 
-.orange{
+.orange {
     color: #FE902F;
 }
 
-.bold{
+.bold {
     font-weight: 700;
 }
 
-label{
+label {
     margin-right: 1.25em;
 }
 
-select{
+select {
     width: 203px;
     height: 33px;
     border-radius: 20px;
@@ -196,69 +178,72 @@ select{
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
 }
 
-select:focus{
+select:focus {
     width: 203px;
     height: 33px; /* 기본 높이를 자동으로 조절 */
     max-height: 100px; /* 최대 높이 설정 */
 }
 
-.topic{
+.topic {
     margin-top: 2.5em;
+    width: 31%;
 }
 
-.top{
+.top {
     margin-top: 2em;
 }
 
-button{
+button {
     background-color: #FFF;
-    border:none;
+    border: none;
 }
 
-button:hover{
+button:hover {
     cursor: pointer;
 }
 
-hr{
+hr {
     width: 100%;
     height: 1px;
     border: none;
     border-top: 1px solid #E4E4E4CC
 }
 
-input[type="text"]{
-    border:none;
+input[type="text"] {
+    border: none;
     width: 90%;
     height: 40px;
     color: var(--input, #9C9CA1);
     font-family: "SUITE Variable";
     font-size: 20px;
     font-style: normal;
-    font-weight: 700;   
+    font-weight: 700;
     line-height: normal;
 }
 
-input:focus{
+input:focus {
     outline: none;
 }
 
-.nav-2 :nth-child(2){
+.nav-2 :nth-child(2) {
     color: #FF8A00
 }
 
-.bigger{
+.bigger {
     font-size: 18px;
 }
 
-.white{
+.white {
     color: #FFF;
 }
 
-.area{
-    width: 90%;
+.area {
+    width: 92%;
+    margin-top: 1em;
+    /*box-sizing: border-box;*/
 }
 
-.q_border{
+.q_border {
     display: flex;
     flex-direction: column;
     width: 90%;
@@ -267,10 +252,11 @@ input:focus{
     border: 1px solid rgba(235, 235, 235, 0.92);
     background: rgba(251, 251, 251, 0.98);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
-    margin-top: 65px;
+    margin-top: 50px;
+    /*box-sizing: border-box;*/
 }
 
-::placeholder{
+::placeholder {
     color: var(--input, #9C9CA1);
     font-family: "SUITE Variable";
     font-size: 20px;
@@ -279,13 +265,13 @@ input:focus{
     line-height: normal;
 }
 
-.questions{
+.questions {
     align-self: flex-start;
     margin-left: 0.5em;
     margin-top: 1em;
 }
 
-.answer{
+.answer {
     width: 90%;
     height: 220px;
     flex-shrink: 0;
@@ -296,11 +282,11 @@ input:focus{
     padding-top: 13px;
 }
 
-.input_text{
-    background-color: #F7F8FB; 
+.input_text {
+    background-color: #F7F8FB;
 }
 
-.input_text::placeholder{
+.input_text::placeholder {
     color: var(--input, #9C9CA1);
     font-family: "SUITE Variable";
     font-size: 16px;
@@ -312,4 +298,52 @@ input:focus{
 .add_detail:hover,
 .delete_detail:hover {
     cursor: pointer;
+}
+
+.date_selector{
+    display: flex; 
+    align-items: center;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+.date_input{
+    display: flex;
+    align-items: center;
+    width: 300px;
+    height: 33px;
+    border-radius: 20px;
+    border: 1px solid rgb(118, 118, 118);
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    padding-left: 10px;
+}
+
+input[type="date"]{
+    border:none;
+    margin-top: 1em;
+}
+
+.date_input span {
+    margin: 0 5px;
+}
+
+#salary{
+    width: 201px;
+    height: 32px;
+    border-radius: 20px;
+    border: 1px solid rgb(118, 118, 118);
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    padding: 0;
+    padding-inline: 0;
+    padding-block: 0;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
 }

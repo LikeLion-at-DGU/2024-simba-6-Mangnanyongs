@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", () => {
             } else if(button.value == '전체'){
                 document.getElementById("depa").value = '전체';
                 console.log(1);
+            } else if(button.value == '국가'){
+                document.getElementById("depa").value = '국가';
+                console.log(1);
             }
             document.getElementById("searchForm").submit();
         })

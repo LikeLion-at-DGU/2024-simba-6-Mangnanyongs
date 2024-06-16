@@ -68,18 +68,16 @@
               <label class="work_date">활동 기간</label>
               <div class="date_input" id="work_date_input">
                 <input type="date" id="start_work_date" class="selector" />
-                <span>부터</span>
+                <span>~</span>
                 <input type="date" id="end_work_date" class="selector" />
-                <span>까지</span>
               </div>
             </div>
             <div class="date_selector">
               <label class="recruit_date">모집 기간</label>
               <div class="date_input" id="recruit_date_input">
                 <input type="date" id="start_recruit_date" class="selector" />
-                <span>부터</span>
+                <span>~</span>
                 <input type="date" id="end_recruit_date" class="selector" />
-                <span>까지</span>
               </div>
             </div>
           </span>
@@ -103,7 +101,21 @@
             <label for="work_place">근로 장소</label>
             <select name="work_place" id="work_place" class="selector">
               <option value="" hidden></option>
-              <option value="admin">행정보조</option>
+              <option value="0" {% if pl == '0' %}selected{% endif %}>전체</option>
+              <option value="1" {% if pl == '1' %}selected{% endif %}>경영/사회과학관</option>
+              <option value="2" {% if pl == '2' %}selected{% endif %}>과학관</option>
+              <option value="3" {% if pl == '3' %}selected{% endif %}>다향관</option>
+              <option value="4" {% if pl == '4' %}selected{% endif %}>명진관</option>
+              <option value="5" {% if pl == '5' %}selected{% endif %}>법학/만해관</option>
+              <option value="6" {% if pl == '6' %}selected{% endif %}>본관</option>
+              <option value="7" {% if pl == '7' %}selected{% endif %}>신공학관</option>
+              <option value="8" {% if pl == '8' %}selected{% endif %}>남산학사</option>
+              <option value="9" {% if pl == '9' %}selected{% endif %}>중앙도서관</option>
+              <option value="10" {% if pl == '10' %}selected{% endif %}>원흥관</option>
+              <option value="11" {% if pl == '11' %}selected{% endif %}>학림관</option>
+              <option value="12" {% if pl == '12' %}selected{% endif %}>학술문화관</option>
+              <option value="13" {% if pl == '13' %}selected{% endif %}>혜화관</option>
+              <option value="14" {% if pl == '14' %}selected{% endif %}>기타</option>
             </select>
           </div>
           <div>
@@ -119,9 +131,11 @@
               <option value="Sun">일요일</option>
             </select>
           </div>
-          <div style="align-items: center; margin-top: 0.55em;">
+          <div style="margin-top: 8px;">
             <label for="salary">급여</label>
-            <input type="number" id="salary" />
+            <span id="salary_input">
+              <input type="number" id="salary" />
+            </span>
           </div>
         </div>
       </form>

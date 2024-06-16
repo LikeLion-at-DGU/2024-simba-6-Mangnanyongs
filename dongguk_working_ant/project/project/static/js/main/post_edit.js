@@ -14,6 +14,9 @@
     });
 });*/
 
+//모집 입원 직접 입력 버튼
+
+
 //세부사항 추가 버튼
 function add_detail(){
     let detailsContainer = document.getElementById('details');

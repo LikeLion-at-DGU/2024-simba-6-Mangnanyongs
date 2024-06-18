@@ -50,18 +50,22 @@ function delete_detail(selected){
 
 
 //교직원 맨 아래 +버튼
-document.getElementById('add_question').addEventListener('click', function() {
+document.querySelector('#add_question img').addEventListener('click', function() {
     let obj = document.getElementById('main3');
-    let qborder = document.querySelector('.q_border'); // 첫 번째 q_border 요소 선택
+    let qborder = document.querySelector('.q_border:last-of-type'); // 마지막 q_border 요소 선택
     let newDiv = qborder.cloneNode(true); // 전체 내용을 복사
-    
+
     // 새로운 질문 번호 설정
     let questionNumber = obj.querySelectorAll('.q_border').length + 1;
     newDiv.querySelector('.orange').textContent = questionNumber + '.';
 
-    // 새로운 form 요소의 name 속성 설정
-    let newForm = newDiv.querySelector('form[name="question1"]');
-    newForm.setAttribute('name', 'question' + questionNumber);
+    // 새로운 input 요소의 name 속성 설정
+    let newInput = newDiv.querySelector('input[name="question1"]');
+    if (newInput) { // input 요소가 존재하는 경우에만 name 속성을 변경
+        newInput.setAttribute('name', 'question' + questionNumber);
+    }
 
-    obj.insertBefore(newDiv, document.getElementById('add_question'));
+    // obj 내의 q_border 요소들 중 마지막 요소의 다음에 newDiv를 삽입
+    obj.insertBefore(newDiv, qborder.nextElementSibling);
 });
+

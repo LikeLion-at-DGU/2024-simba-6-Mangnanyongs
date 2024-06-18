@@ -3,3 +3,24 @@ from django.shortcuts import render,redirect
 # Create your views here.
 def staff_mypage(request):
     return render(request, 'users/staff_mypage.html')
+
+def staff_appslist(request):
+    return render(request, 'users/staff_appslist.html')
+
+def staff_mypost(request):
+    return render(request, 'users/staff_mypost.html')
+
+def staff_studentappfile(request):
+    return render(request, 'users/staff_studentappfile.html')
+
+def student_myapplication(request):
+    return render(request, 'users/student_myapplication.html')
+
+def student_mypage(request):
+    return render(request, 'users/student_mypage.html')
+
+def student_myscrap(request):
+    return render(request, 'users/student_myscrap.html')
+
+def student_mywork(request):
+    return render(request, 'users/student_mywork.html')

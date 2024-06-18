@@ -97,6 +97,9 @@ def mainlistpage(request):
 def post_edit(request):
     return render(request, 'main/post_edit.html')
 
+def post_edit_modal(request):
+    return render(request, 'main/post_edit_modal')
+
 def post_question_create(num, parent_post):
     new_question = Question()
     new_question.post = parent_post
@@ -165,3 +168,6 @@ def scraps(request, post_id):
         post.scrap_count += 1
         post.save()
     return redirect('main:mainlistpage')
+
+def apply(request):
+    return render(request, 'main/apply.html')

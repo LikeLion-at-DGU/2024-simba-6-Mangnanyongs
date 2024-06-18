@@ -19,6 +19,7 @@ class Profile(models.Model):
 
     birth = models.DateField(blank=False, null=True)
     
+    photo = models.ImageField(upload_to="user_photo/", blank=True)
     department = models.CharField(max_length=20, blank=True)
     phone = models.CharField(max_length=20, blank=True)
     email = models.CharField(max_length=50, blank=False)

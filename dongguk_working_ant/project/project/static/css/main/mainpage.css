@@ -1,13 +1,12 @@
 .mainpageScreen{
     width: 100%;
-    height: 680px;
+    height: 625px;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    /* border: solid 1px red; */
-    gap:50px
+    /* border: solid 2px rgb(97, 248, 27); */
     
 }
 
@@ -15,7 +14,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 50px;
+    margin-top: 60px;
+    margin-bottom: 40px; 
+    /* border: solid 1px orangered; */
+    
 }
 .mainText{
     color: #1C1C1E;
@@ -38,89 +40,199 @@
     letter-spacing: 3.2px;
 }
 
+.slideBtnWapper{
+    display: flex;
+    justify-content: center; 
+    /* border: solid 1px blue; */
+    /* padding-bottom: 30px; */
+}
 .slideFrame{
-    display: flex;
-    align-items: center;
+    /* 
     justify-content: center;
-    position: relative; /* 수정이용: 위치 조정 */
-}
-.btnPrev, .btnNext { /* 수정이용: 슬라이드 버튼 스타일 추가 */
-    cursor: pointer;
-    z-index: 1000;
-    border-color: #E4E4E4;
-    background-color:#FFFFFF ;
-    width: 40px; /* 버튼의 너비 */
-    height: 40px; /* 버튼의 높이 */
-    border-radius: 50%; /* 원형으로 만들기 */
-}
-.btnPrev{
-    position: fixed;
-    left:240px;
-} 
-.btnNext{
-    position: fixed;
-    right: 240px;
-} 
-.buttonIcon{
+    align-items: center; */
     display: flex;
     justify-content: center;
-    align-items: center;
+    position: relative;
+    /* width: 1085px; */
+    width: 1400px;
+    margin: 0 auto;
+    height: 350px;
+    overflow: hidden;
+    /* border: solid 1px blue; */
+    /* padding-bottom: 60px; */
 }
-.slideUl{
+.slideCards{
     display: flex;
     list-style: none;
-    gap:10px;
-    overflow: hidden;/**/
-    width: 900px; /* 화면에 보이는 카드 3개 너비 설정 */
-    
+    position: absolute; 
+    left:-240px; top:0;
+    /* width:1400px; */
+    height: 350px;
+    padding: 0;
+    margin:0;
+    gap:100px;
+    transition: transform 0.5s ease-in-out; /* 여기 추가 */
 }
-.slideCard {/**/
-    flex: 0 0 300px; /* 카드 너비 설정 */
-    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+.slide{
+    opacity: 0.5; /* 기본 불투명도 */
+    transition: opacity 0.5s ease-in-out;
 }
+.slide.active {
+    opacity: 1; /* 활성 슬라이드의 불투명도 */
+}
+
 .cardFrame{
     display: flex;
     flex-direction: column;
     width: 295px;
-height: 350px;
-background: #F5F5F5;
-opacity: 0.5;/**/
-}
-.cardFrame.active { /* 수정이용: 활성 카드 스타일 추가 */
-    opacity: 1;
-    transform: scale(1.5);
-}
-/* 수정이용: 중앙 카드 불투명도 제거 */
-.slideCard:nth-child(3n+2) .cardFrame {
-    opacity: 1;
+    height: 350px;
+    background: #F5F5F5;
 }
 .cardImg{
     width: 100%;
     height: 250px;
-    border: solid 1px blue;
+    /* border: solid 1px blue; */
 }
-.cardText{
+.cardTextFrame{
     width:100%;
     height: 100px;
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* padding-top: 5px; 수정 */
+    /* padding-bottom: 20px; */
     
-    padding-top: 15px;
+} 
+.cardText{
+    display: flex;
+    justify-content: flex-start;
+    color:#1C1C1E;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-top: 10px;
+}
+.cardText2{
+    display: flex;
+    justify-content: flex-start;
+    color:#1C1C1E;
+    text-align: left; /* 변경된 text-align */
+    font-family: "SUITE Variable";
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.2; /* 변경된 line-height */
+    word-wrap: break-word; /* 긴 단어가 줄바꿈 되도록 */
+    word-break: break-all; /* 단어가 너무 길 경우 줄바꿈 */
+    padding-left: 10px;
+    padding-right: 10px;
+    white-space: normal; /* 줄바꿈을 허용 */
+}
+.cardText3{
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    gap: 16px;
+    margin: auto 10px 10px 10px;
+}
+.recruitFrame{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.recruitIcon{
+    width: 19px;
+    height: 16px;
+    fill: #FF8A00;
+}
+.c-Text{
+    color: #1C1C1E;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 0px; /* 0% */
+    letter-spacing: 1.6px;
+}
+.deadlineFrame{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.deadlineIcon{
+    width: 24px;
+    height: 24px;
+    fill: #FF8A00;
+}
+.slideBtn{
+    /* border:solid 1px blue; */
+    display: flex;
+    align-items: center;
+}
+.btnPrev, .btnNext { /*버튼 디자인죽이고 svg만 보이게 */
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+}
+.btnPrev svg, .btnNext svg {
+    display: block;
+}
+.btnPrev{
+display: flex;
+justify-content: center;
+align-items: center;
+width: 52px;
+height: 52px;
+flex-shrink: 0;
+position: relative;
+z-index: 1;
+left:26px;
 
 }
+.btnNext{
+/* display: flex; */
+/* justify-content: center;
+align-items: center; */
+width: 52px;
+height: 52px;
+flex-shrink: 0;
+position: relative;
+z-index: 1;
+right:26px;
 
+}
+.pageBtnFrame{
+    
+    /* border: solid 1px red; */
+    margin-top: 40px;
+}
 .pageBtn{
     border-radius: 30px;
     background: #FE902F;
     display: flex;
-    width: 120px;
-    height: 25px;
-    padding: 18px 38px;
+    /* width: 155px; */
+    /* height: 20px; */
+    width: 225px;
+    height: 58px;
+    /* padding: 18px 24px; */
     justify-content: center;
     align-items: center;
     gap: 8px;
     flex-shrink: 0;
+    
 }
-.btnText{
+.pageBtnContent{
+    display: flex;
+    align-items: center; /* 텍스트와 SVG 아이콘을 세로로 중앙 정렬 */
+    gap: 8px; /* 텍스트와 아이콘 사이의 간격 */
     color: #FFFDFB;
     text-align: center;
     font-family: "SUITE Variable";
@@ -128,4 +240,9 @@ opacity: 0.5;/**/
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+.btnText{
+   
+    display: flex;
+    align-items: center;
 }

@@ -5,6 +5,17 @@
     href="{% static 'css/main/mainlistpage.css'%}"
 />
 
+<!--검색, 정렬 제출 폼-->
+<form id="searchForm" method="GET" action="{% url 'main:mainlistpage' %}">
+    <input type="hidden" id="depa" name="depa" value="{{ depa }}">
+    <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
+    <!--페이지 관리 <input type="hidden" id="page" name="page" value="{{ page }}">-->
+    <input type="hidden" id="so" name="so" value="{{ so }}">
+    <input type="hidden" id="en" name="en" value="{{ en }}">
+    <input type="hidden" id="pl" name="pl" value="{{ pl }}">
+    <input type="hidden" id="inc" name="inc" value="{{ inc }}">
+</form>
+
 <div class="content" id="header">
     <div class="Caption Capital" id="Welcome">
         <p><span class="orange">동국대학교</span>에서 지금,</p>
@@ -14,99 +25,118 @@
 <!--각 근로 카드 위 부분-->
 <div class="content" id="main1">
     <!--교내, 학과 선택 필터-->
-    <div id="filter">
-        <button class="unchecked button Caption" id="all" value="전체">전체</button>
-        <button class="unchecked button Caption" id="oncampus" value="교내">교내</button>
-        <button class="unchecked button Caption" id="department" value="학과">학과</button>
-    </div>
+        <div id="filter" class="depa">
+            {% comment %} {{ depa }} {% endcomment %}
+            <button class="checked button Caption" id="all" value="전체" >전체</button>
+            <button class="unchecked button Caption" id="offcampus" value="국가" >국가</button>
+            <button class="unchecked button Caption" id="oncampus" value="교내" >교내</button>
+            <button class="unchecked button Caption" id="department" value="학과">학과</button>
+        </div>
     <!--검색, 정렬 필터-->
     <div id="convenience">
         <!--검색-->
-        <span id="textfield">
-            <input id="search" placeholder="검색" required value>
-            <button id="submit" aria-label="submit"></button>
-        </span>
+        <div id="textfield" name="textfield"> 
+            <input id="search" type="text" class="form-control kw" placeholder="검색" value="{{ kw|default_if_none:'' }}">
+            <button type="submit" id="submit" aria-label="submit"></button>
+        </div>
         <!--정렬 필터-->
-        <span id="selector">
-            <!--정렬-->
+        <div id="selector" name="selector">
             <label for="sort">
-                <select id="sort" class="Caption gray thin"> 
-                    <option value="" hidden>정렬</option>
-                    <option value="deadline">마감순</option>
-                    <option value="inquiry">조회순</option>
-                    <option value="scrap">스크랩순</option>
+                <select id="sort" class="Caption gray thin so" onchange="changeSelect_so(this);">
+                    {% comment %} {{ sort }} {% endcomment %}
+                    <option value="" {% if so == '' %}selected{% endif %}>정렬</option>
+                    <option value="deadline" {% if so == 'deadline' %}selected{% endif %}>마감순</option>
+                    <option value="inquiry" {% if so == 'inquiry' %}selected{% endif %}>조회순</option>
+                    <option value="scrap" {% if so == 'scrap' %}selected{% endif %}>스크랩순</option>
                 </select>
             </label>
             <!--마감 공고 제외-->
             <label for="end">
-                <select id="end" class="Caption gray thin">
-                    <option value="" hidden>마감 공고 제외</option>
-                    <option value="exclude">제외</option>
-                    <option value="include">포함</option>
+                <select id="end" class="Caption gray thin en" onchange="changeSelect_end(this);">
+                    {% comment %} {{ end }} {% endcomment %}
+                    <option value="" {% if en == '' %}selected{% endif %}>마감 공고 제외</option>
+                    <option value="exclude" {% if en == 'exclude' %}selected{% endif %}>제외</option>
+                    <option value="include" {% if en == 'include' %}selected{% endif %}>포함</option>
                 </select>
             </label>
             <!--근로 장소-->
             <label for="place">
-                <select id="place" class="Caption gray thin">
-                    <option value="" hidden>근로 장소</option>
-                    <option value="경영/사회과학관">경영/사회과학관</option>
-                    <option value="과학관">과학관</option>
-                    <option value="다향관">다향관</option>
-                    <option value="명진관">명진관</option>
-                    <option value="법학/만해관">법학/만해관</option>
-                    <option value="본관">본관</option>
-                    <option value="신공학관">신공학관</option>
-                    <option value="정각원">정각원</option>
-                    <option value="중앙도서관">중앙도서관</option>
-                    <option value="원흥관">원흥관</option>
-                    <option value="학림관">학림관</option>
-                    <option value="학술문화관">학술문화관</option>
-                    <option value="혜화관">혜화관</option>
-                    <option value="기타">기타</option>
+                <select id="place" class="Caption gray thin pl" onchange="changeSelect_place(this);">
+                    {% comment %} {{ place }} {% endcomment %}
+                    <option value="" {% if pl == '' %}selected{% endif %}>근로 장소</option>
+                    <option value="1" {% if pl == '1' %}selected{% endif %}>경영/사회과학관</option>
+                    <option value="2" {% if pl == '2' %}selected{% endif %}>과학관</option>
+                    <option value="3" {% if pl == '3' %}selected{% endif %}>다향관</option>
+                    <option value="4" {% if pl == '4' %}selected{% endif %}>명진관</option>
+                    <option value="5" {% if pl == '5' %}selected{% endif %}>법학/만해관</option>
+                    <option value="6" {% if pl == '6' %}selected{% endif %}>본관</option>
+                    <option value="7" {% if pl == '7' %}selected{% endif %}>신공학관</option>
+                    <option value="8" {% if pl == '8' %}selected{% endif %}>남산학사</option>
+                    <option value="9" {% if pl == '9' %}selected{% endif %}>중앙도서관</option>
+                    <option value="10" {% if pl == '10' %}selected{% endif %}>원흥관</option>
+                    <option value="11" {% if pl == '11' %}selected{% endif %}>학림관</option>
+                    <option value="12" {% if pl == '12' %}selected{% endif %}>학술문화관</option>
+                    <option value="13" {% if pl == '13' %}selected{% endif %}>혜화관</option>
+                    <option value="14" {% if pl == '14' %}selected{% endif %}>기타</option>
                 </select>
             </label>
-            <!--소득분위-->
             <label for="income">
-                <select id="income" class="Caption gray thin">
-                    <option value="" hidden>소득 분위</option>
-                    <option value="apply">반영</option>
-                    <option value="remove">미반영</option>
+                <select id="income" class="Caption gray thin inc" onchange="changeSelect_income(this);">
+                    {% comment %} {{ income }} {% endcomment %}
+                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위</option>
+                    <option value="apply" {% if inc == 'apply' %}selected{% endif %}>반영</option>
+                    <option value="remove" {% if inc == 'remove' %}selected{% endif %}>미반영</option>
                 </select>
             </label>
-        </span>
+        </div>
     </div>
 </div>
 <div class="content" id="main2">
-    {% for post in posts %}
-    <div class="card">
-        <button class="star" value="none" onclick="scrap(this);">
-            <img src="{% static 'images/icons/star.svg' %}"/>
-        </button>
-        <span class="photo">
-            <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
-        </span>
-        <span class="detail">
-            <div class="information">
-                <span class="info classification small orange">
-                    #{{post.department}}
-                </span>
-                <span class="info date small white">
-                    남음
-                </span>
-            </div>
-            <div class="title Caption big">
-                [{{post.organization}}] {{post.title}}
-            </div>
-            <div class="Caption light up">
-                <div>{{post.place}}</div>
-                <div>{{post.time}}</div>
-            </div>
-        </span>
-        <button type="button" class="more_info">
-            <img src="{% static 'images/icons/moreinfo.svg' %}"/>
-        </button>
-    </div>
-    {% endfor %}
+    {% if posts %}
+        {% for post in posts %}
+        <div class="card">
+            <form action="{% url 'main:scraps' post.id %}" method='POST'> <!--스크랩-->
+                {% csrf_token %}
+                <button name="star" class="star" value="none">
+                    {% if request.user in post.scrap.all %}
+                        <img src="{% static 'images/icons/blink_star.svg' %}"/>
+                    {% else %}
+                        <img src="{% static 'images/icons/star.svg' %}"/>
+                    {% endif %}
+                </button>
+            </form>
+            <span class="photo">
+                <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+            </span>
+            <span class="detail">
+                <div class="information">
+                    <span class="info classification small orange">
+                        #{{post.department}}
+                    </span>
+                    <span class="info date small white">
+                        {% if post.day_left >= 0 %}
+                            {{ post.day_left }}일 남음
+                        {% else %}
+                            지원 마감
+                        {% endif %}
+                    </span>
+                </div>
+                <a class="title Caption big" href="{% url 'main:post-detail' post.id %}">
+                    [{{post.organization}}] {{post.title}}
+                </a>
+                <div class="Caption light up">
+                    <div>{{post.place}}</div>
+                    <div>{{post.time}}</div>
+                </div>
+            </span>
+            <button type="button" class="more_info">
+                <img src="{% static 'images/icons/moreinfo.svg' %}"/>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
 </div>
+
 <script src="{% static 'js/main/mainlistpage.js' %}"></script>
+
 {% endblock %}

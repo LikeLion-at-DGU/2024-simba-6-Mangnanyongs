@@ -1,0 +1,47 @@
+<!--교직원 마이페이지 담당자:이동건-->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/users/staff_mypage.css'%}"
+/>
+
+<div class="staffScreen">
+    <div class="staffBody">
+        <div class="staffProfile">
+            <div class="profileImage">
+                
+            </div>
+            <div class="profileText">
+                <span>김동국님,</span><br><span>안녕하세요!</span>
+            </div>
+        </div>
+        <div class="staffNavBox">
+            <div class="staffNav">
+                <div class="nav" id="nav1">
+                    
+                </div>
+                <div class="nav" id="nav2">
+    
+                </div>
+                <div class="nav" id="nav3">
+
+                </div>
+            </div>
+            <div class="staffLogoutNav">
+                <div class="logoutNav"><span class="logoutNavText">로그아웃</span></div>
+                <div class="logoutNav"><span class="logoutNavText">회원탈퇴</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <script src="{% static 'js/main/mainpage.js' %}"></script>  js쓸거면 링크수정-->
+{% endblock %} 
+{% block footer %}
+    {% include 'shared/_footer.html' %}
+{% endblock %}

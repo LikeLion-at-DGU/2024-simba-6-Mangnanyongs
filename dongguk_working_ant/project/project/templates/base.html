@@ -14,6 +14,14 @@
         font-family: 'SUIT';
         src: url('../static/font/SUITE-Variable.ttf') format('truetype');
       }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+      }
     </style>
     <div class="container">
       <!-- 상단 네브바 -->
@@ -24,8 +32,10 @@
       {% block content %} {% endblock %}
       <!-- 내용 -->
 
-      <!--하단 footer-->
-      {% include 'shared/_footer.html' %}
+      <!--하단 footer: 필요한 페이지에서만 넣기 -->
+      {% block footer %}
+        {% include 'shared/_footer.html' %}
+      {% endblock %}
       <!--하단 footer-->
     </div>
   </body>

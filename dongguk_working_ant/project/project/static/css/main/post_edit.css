@@ -1,0 +1,364 @@
+#edit_page {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    margin: 0 auto; /* 중앙 정렬을 위한 설정 */
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 1400px;
+    gap: 10px;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+#main1 {
+    height: 74px;
+    margin-top: 3em;
+}
+
+#introduction {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    /*box-sizing: border-box;*/
+}
+
+#back {
+    width: 86px;
+    height: 74px;
+}
+
+#word {
+    margin-bottom: 0.25em;
+    flex: 0.93; /* 여유 공간을 차지하도록 */
+}
+
+#submit_button {
+    display: flex;
+    gap: 1em; /* 버튼 사이 간격을 일정하게 */
+}
+
+#temporary, #submit {
+    display: flex;
+    width: 130px;
+    height: 58px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 30px;
+}
+
+#temporary {
+    border: 1px solid #FE902F;
+}
+
+#submit {
+    background-color: #FE902F;
+    border: 1px solid #FE902F;
+}
+
+#main2 {
+    display: flex;
+    margin-top: 41px;
+    justify-content: center;
+    align-items: center;
+}
+
+#shell {
+    display: flex;
+    flex-direction: column;
+    width: 92%;
+    border: 2px solid #FE902F;
+    border-radius: 1em;
+    /*box-sizing: border-box;*/
+}
+
+#icon {
+    display: flex;
+    width: 100%;
+    height: 233px;
+    padding: 1em 0px;
+    justify-content: center;
+    align-items: center;
+    background-color: #FE902F;
+    border-radius: 0.75em 0.75em 0px 0px;
+}
+
+#detail {
+    display: flex;
+    width: 100%;
+    gap: 14%;
+    align-items: start;
+    justify-content: center;
+}
+
+#title div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#contents div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.selector {
+    margin-top: 0.75em;
+    margin-bottom: 1em;
+}
+
+#add {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.question {
+    display: flex;
+    width: 90%;
+    height: 220px;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 235, 0.92);
+    background: rgba(251, 251, 251, 0.98);
+    padding-top: 1em;
+}
+
+#main3 {
+    justify-content: center;
+    align-items: center;
+    margin-top: 4em;
+}
+
+.Capital {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 10px; /* 31.25% */
+    letter-spacing: 3.2px;
+}
+
+.big {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.gray {
+    background-color: #FBFBFB;
+    color: #9C9CA1;
+}
+
+.orange {
+    color: #FE902F;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+label {
+    margin-right: 1.25em;
+}
+
+select {
+    width: 203px;
+    height: 33px;
+    border-radius: 20px;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+select:focus {
+    width: 203px;
+    height: 33px; /* 기본 높이를 자동으로 조절 */
+    max-height: 100px; /* 최대 높이 설정 */
+}
+
+.topic {
+    margin-top: 2.5em;
+    width: 31%;
+}
+
+.top {
+    margin-top: 2em;
+}
+
+button {
+    background-color: #FFF;
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+hr {
+    width: 100%;
+    height: 1px;
+    border: none;
+    border-top: 1px solid #E4E4E4CC
+}
+
+input[type="text"] {
+    border: none;
+    width: 90%;
+    height: 40px;
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+input:focus {
+    outline: none;
+}
+
+.nav-2 :nth-child(2) {
+    color: #FF8A00
+}
+
+.bigger {
+    font-size: 18px;
+}
+
+.white {
+    color: #FFF;
+}
+
+.area {
+    width: 92%;
+    margin-top: 1em;
+    /*box-sizing: border-box;*/
+}
+
+.q_border {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    height: 324px;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 235, 0.92);
+    background: rgba(251, 251, 251, 0.98);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+    margin-top: 50px;
+    /*box-sizing: border-box;*/
+}
+
+::placeholder {
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.questions {
+    align-self: flex-start;
+    margin-left: 0.5em;
+    margin-top: 1em;
+}
+
+.answer {
+    width: 90%;
+    height: 220px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: #F7F8FB;
+    align-self: center;
+    padding-left: 19px;
+    padding-top: 13px;
+}
+
+.input_text {
+    background-color: #F7F8FB;
+}
+
+.input_text::placeholder {
+    color: var(--input, #9C9CA1);
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.add_detail:hover,
+.delete_detail:hover {
+    cursor: pointer;
+}
+
+.date_selector{
+    display: flex; 
+    align-items: center;
+    margin-top: 0.5em;
+    margin-bottom: 1.5em;
+}
+
+.date_input{
+    display: flex;
+    align-items: center;
+    width: 210px;
+    height: 33px;
+    border-radius: 20px;
+    border: 1px solid rgb(118, 118, 118);
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+    padding: 0 10px;
+}
+
+input[type="date"]{
+    border:none;
+    margin-top: 1em;
+    appearance: none;
+}
+
+#salary_input{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 201px;
+    height: 32px;
+    border-radius: 20px;
+    border: 1px solid rgb(118, 118, 118);
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+#salary{
+    width: 100px;
+    margin-left: 7px;
+    border: none;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0; 
+}
+
+#add_question{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#add_question img:hover{
+    cursor: pointer;
+}

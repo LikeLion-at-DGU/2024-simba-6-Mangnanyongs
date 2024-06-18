@@ -1,37 +1,25 @@
 .screen {
     display: flex;
     flex-direction: column;
-
     width: 100%;
-
-    gap: 10px;
-
-    @media (max-width: 1050px) {
-        align-items: start;
-        justify-content: center;
-    }
-    @media (min-width: 1051px) {
-        align-items: center;
-        justify-content: center;
-    }
+    height: 88px;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
 .topnav {
     display: flex;
-    flex-direction: column;
-    width: 1400px;
-    justify-content: space-between;
+    flex-direction: row;
+    margin: 0 auto;
+    margin-bottom: 1.75em;
 }
 
 .topnav .nav-1{
     display: flex;
-    flex-direction: column;
-    width: 87.5rem; /* 1050px */
-    height: 2.25rem; /* 36px */
-    align-items: center;
-    justify-content: center;
-    gap: 0.625rem; /* 10px */
-    transform: translateX(-1.25em);
+    flex-direction: row;
+    width: 1400px; 
 }
 
 .nav-1 .nav-2{
@@ -41,12 +29,11 @@
 }
 
 .topnav .div {
-    display: inline-flex;
+    display: flex;
+    width: 100%;
     align-items: center;
-    justify-content: center;
-    column-gap: 20rem;
+    justify-content: space-between;
     position: relative;
-    flex: 0 0 auto;
 }
 
 .topnav .logo{
@@ -56,7 +43,7 @@
     margin-top: 1em;
 }
 
-.nav-1 .nav-3{
+.topnav .nav-3{
     display: flex;
     align-items: center;
     gap:1.18em;
@@ -72,6 +59,11 @@
     line-height: normal;
 }
 
+.nav-3 .nav-link-account{
+    display:flex;
+    gap:1.5em;
+}
+
 .nav-3 .bell{
     margin-left: 1em;
 }
@@ -85,8 +77,38 @@
     line-height: normal;
 }
 a {
+    display: inline-block;
+    white-space: nowrap;
     text-decoration-line: none;
 }
 .gray{
     color: #9C9CA1;
+}
+
+.screen,
+.topnav,
+.nav-1,
+.nav-2,
+.topnav .div,
+.topnav .logo,
+.topnav .nav-3,
+.nav-3 .nav-link-account {
+    box-sizing: border-box;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    background-color: #f0f0f0;
+    position: relative;
+}
+
+hr::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }

@@ -43,10 +43,11 @@ def signup_student(request):
             department = request.POST['department']
             phone = request.POST['phone']
             email = request.POST['email']
+            photo = request.POST['photo']
             if request.FILES.get('certification_student'):
                 certification = request.FILES['certification_student']
 
-            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email)
+            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email, photo=photo)
             if request.FILES.get('certification_student'):
                 profile = Profile(certification=certification)
             profile.save()

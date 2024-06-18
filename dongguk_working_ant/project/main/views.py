@@ -139,7 +139,7 @@ def post_create(request):
     
     new_post.save()
     
-    #지원서 양식 부분
+    #지원서 양식 부분 수정 예정
     #if request.POST['question_count']:
     #    question_count = int(request.POST['question_count'])
     #    for q in range(1, question_count):

@@ -100,10 +100,10 @@ def post_edit(request):
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal')
 
-def post_question_create(num, parent_post):
+def post_question_create(request, num, parent_post):
     new_question = Question()
     new_question.post = parent_post
-    new_question.content = request.POST['content']
+    new_question.content = request.POST['question'+str(num)]
     new_question.save()
     return new_question
 
@@ -143,10 +143,11 @@ def post_create(request):
     new_post.save()
     
     #지원서 양식 부분 수정 예정
-    #if request.POST['question_count']:
-    #    question_count = int(request.POST['question_count'])
-    #    for q in range(1, question_count):
-    #        post_question_create(q, new_post)
+    if request.POST['question_count']:
+        question_count = int(request.POST['question_count'])
+        for q in range(1, question_count+1):
+            print(q)
+            post_question_create(request, q, new_post)
 
     return redirect('main:post-detail', new_post.id)
 

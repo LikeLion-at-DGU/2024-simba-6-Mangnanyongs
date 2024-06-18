@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
+from datetime import datetime
 from django.db.models import Q, Count, F
-
-from .models import Post
+import json
+from .models import Post, Question
 
 # Create your views here.
 def mainpage(request):
@@ -65,7 +66,6 @@ def mainlistpage(request):
         if income == 'apply':
             posts = posts.filter(is_income_bracket = 1)
 
-
         # 정렬
         if sort == 'deadline':
             posts = posts.order_by('-deadline','-pub_date')
@@ -97,10 +97,61 @@ def mainlistpage(request):
 def post_edit(request):
     return render(request, 'main/post_edit.html')
 
+def post_question_create(num, parent_post):
+    new_question = Question()
+    new_question.post = parent_post
+    new_question.content = request.POST['content']
+    new_question.save()
+    return new_question
+
+
+def post_create(request):
+    new_post = Post()
+
+    new_post.writer = request.user
+    new_post.title = request.POST['title']
+    #new_post.building 수정 예정
+    new_post.organization = request.POST['organization']
+    
+    new_post.department = request.POST['department']
+    new_post.is_income_bracket = request.POST['is_income_bracket']
+    new_post.start_date = request.POST['start_date']
+    new_post.end_date = request.POST['end_date']
+    new_post.deadline = request.POST['deadline']
+
+    #남은 날짜 계산
+    deadline_date = datetime.strptime(request.POST['deadline'], '%Y-%m-%d').date()
+    today = timezone.now().date()
+    d_day = deadline_date - today
+    new_post.day_left = d_day.days
+
+    new_post.place = request.POST['place']
+    new_post.time = request.POST['time']
+    new_post.recruitment = request.POST['recruitment']
+    new_post.wage = request.POST['wage']
+
+    #body부분을 리스트로 받아오기
+    body_list = request.POST.getlist('body')
+    new_post.set_body(body_list)  # JSON 변환 후 저장
+    
+    #new_post.file 수정 예정
+    new_post.pub_date = timezone.now()
+    
+    new_post.save()
+    
+    #지원서 양식 부분
+    #if request.POST['question_count']:
+    #    question_count = int(request.POST['question_count'])
+    #    for q in range(1, question_count):
+    #        post_question_create(q, new_post)
+
+    return redirect('main:post-detail', new_post.id)
+
 def post_detail(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)
-        return render(request, 'main/post_detail.html', {'post':post})
+        post_body_list = post.get_body()
+        return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list})
     return redirect('accounts:login')
 
 def scraps(request, post_id):

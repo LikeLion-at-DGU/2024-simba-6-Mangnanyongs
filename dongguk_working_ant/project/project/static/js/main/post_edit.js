@@ -59,12 +59,19 @@ document.querySelector('#add_question img').addEventListener('click', function()
     let questionNumber = obj.querySelectorAll('.q_border').length + 1;
     newDiv.querySelector('.orange').textContent = questionNumber + '.';
 
+    // 질문 개수 저장
+    document.getElementById("question_count").value = questionNumber;
+    console.log(document.getElementById("question_count").value);
+
     // 새로운 input 요소의 name 속성 설정
-    let newInput = newDiv.querySelector('input[name="question1"]');
+    let newInput = newDiv.querySelector('input[name^="question"]'); // question으로 시작하는 첫 번째 input 요소 선택
     if (newInput) { // input 요소가 존재하는 경우에만 name 속성을 변경
         newInput.setAttribute('name', 'question' + questionNumber);
     }
-
+    
+    // 새로운 input 요소의 value 초기화 (필요한 경우)
+    newInput.value = '';
+    
     // obj 내의 q_border 요소들 중 마지막 요소의 다음에 newDiv를 삽입
     obj.insertBefore(newDiv, qborder.nextElementSibling);
 });

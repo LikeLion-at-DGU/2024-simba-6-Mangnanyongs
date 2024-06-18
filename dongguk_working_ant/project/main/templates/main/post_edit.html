@@ -78,19 +78,17 @@
             <div class="date_selector">
               <label class="work_date">활동 기간</label>
               <div class="date_input" id="work_date_input">
-                <input type="date" id="start_work_date" class="selector" name="start_date" />
-                <span>부터</span>
-                <input type="date" id="end_work_date" class="selector" name="end_date" />
-                <span>까지</span>
+                <input type="date" id="start_work_date" class="selector" />
+                <span>~</span>
+                <input type="date" id="end_work_date" class="selector" />
               </div>
             </div>
             <div class="date_selector">
               <label class="recruit_date">모집 기간</label>
               <div class="date_input" id="recruit_date_input">
                 <input type="date" id="start_recruit_date" class="selector" />
-                <span>부터</span>
-                <input type="date" id="end_recruit_date" class="selector" name="deadline"/>
-                <span>까지</span>
+                <span>~</span>
+                <input type="date" id="end_recruit_date" class="selector" />
               </div>
             </div>
           </span>
@@ -114,20 +112,21 @@
             <label for="place">근로 장소</label>
             <select name="place" id="work_place" class="selector">
               <option value="" hidden></option>
-              <option value="경영/사회과학관" >경영/사회과학관</option>
-              <option value="과학관" >과학관</option>
-              <option value="다향관" >다향관</option>
-              <option value="명진관" >명진관</option>
-              <option value="법학/만해관" >법학/만해관</option>
-              <option value="본관" >본관</option>
-              <option value="신공학관" >신공학관</option>
-              <option value="남산학사" >남산학사</option>
-              <option value="중앙도서관" >중앙도서관</option>
-              <option value="원흥관" >원흥관</option>
-              <option value="학림관" >학림관</option>
-              <option value="학술문화관" >학술문화관</option>
-              <option value="혜화관" >혜화관</option>
-              <option value="기타" >기타</option>
+              <option value="0" {% if pl == '0' %}selected{% endif %}>전체</option>
+              <option value="1" {% if pl == '1' %}selected{% endif %}>경영/사회과학관</option>
+              <option value="2" {% if pl == '2' %}selected{% endif %}>과학관</option>
+              <option value="3" {% if pl == '3' %}selected{% endif %}>다향관</option>
+              <option value="4" {% if pl == '4' %}selected{% endif %}>명진관</option>
+              <option value="5" {% if pl == '5' %}selected{% endif %}>법학/만해관</option>
+              <option value="6" {% if pl == '6' %}selected{% endif %}>본관</option>
+              <option value="7" {% if pl == '7' %}selected{% endif %}>신공학관</option>
+              <option value="8" {% if pl == '8' %}selected{% endif %}>남산학사</option>
+              <option value="9" {% if pl == '9' %}selected{% endif %}>중앙도서관</option>
+              <option value="10" {% if pl == '10' %}selected{% endif %}>원흥관</option>
+              <option value="11" {% if pl == '11' %}selected{% endif %}>학림관</option>
+              <option value="12" {% if pl == '12' %}selected{% endif %}>학술문화관</option>
+              <option value="13" {% if pl == '13' %}selected{% endif %}>혜화관</option>
+              <option value="14" {% if pl == '14' %}selected{% endif %}>기타</option>
             </select>
           </div>
           <div>
@@ -143,9 +142,11 @@
               <option value="Sun">일요일</option>
             </select>
           </div>
-          <div style="align-items: center; margin-top: 0.55em;">
-            <label for="wage">급여</label>
-            <input type="number" id="salary" name="wage" />
+          <div style="margin-top: 8px;">
+            <label for="salary">급여</label>
+            <span id="salary_input">
+              <input type="number" id="salary" />
+            </span>
           </div>
         </div>
       </div>
@@ -208,19 +209,18 @@
       </div>
     </div>
   </div>
-  </form>
   <div class="content" id="main3">
     <div class="Caption Capital area">지원서 양식</div>
     <div class="q_border">
       <!--질문 입력란-->
-      <form name="question1" id="questions">
+      <div name="question1" id="questions">
         <div class="Caption big questions">
           <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
             >1.</span
           >
           <input type="text" class="gray" placeholder="질문을 입력해주세요." />
         </div>
-      </form>
+      </div>
       <div class="answer">
         <div class="Caption bold gray" style="background-color: #f7f8fb">
           지원자의 답변 입력란

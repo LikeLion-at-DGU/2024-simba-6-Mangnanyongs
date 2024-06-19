@@ -10,7 +10,6 @@ def staff_appslist(request):
 
 def staff_mypost(request):
     posts = Post.objects.filter(writer=request.user.id)
-    print(posts)
     return render(request, 'users/staff_mypost.html', {'posts':posts})
 
 def staff_studentappfile(request):

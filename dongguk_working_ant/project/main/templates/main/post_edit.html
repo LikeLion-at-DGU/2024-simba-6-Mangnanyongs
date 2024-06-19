@@ -55,7 +55,7 @@
                 </select>
               </div>
               <div style="margin-top: 12.5px;">
-                <label for="department">모집 대상</label>
+                <label for="target">모집 대상</label>
                 <select name="department" id="target" class="selector">
                   <option value="" hidden></option>
                   <option value="국가">국가</option>
@@ -94,7 +94,7 @@
           </div>
           <div class="Caption topic" id="contents">
             <div class="top">
-              <label for="recruitment">모집 인원</label>
+              <label for="recruit_count">모집 인원</label>
               <select name="recruitment" id="recruit_count" class="selector">
                 <option value="" hidden></option>
                 <option value="1">1</option>
@@ -106,7 +106,7 @@
               </select>
             </div>
             <div style="margin-top: 12.5px;">
-              <label for="place">근로 장소</label>
+              <label for="work_place">근로 장소</label>
               <select name="place" id="work_place" class="selector">
                 <option value="" hidden></option>
                 <option value="0" {% if pl == '0' %}selected{% endif %}>전체</option>
@@ -127,7 +127,7 @@
               </select>
             </div>
             <div style="margin-top: 12.5px;">
-              <label for="time">근로 요일 및 시간</label>
+              <label for="work_time">근로 요일 및 시간</label>
               <select name="time" id="work_time" class="selector">
                 <option value="" hidden></option>
                 <option value="Mon">월요일</option>
@@ -196,9 +196,8 @@
               style="margin-left: 10px"
               onclick="add_detail();"
             />
-            <!--삭제 버튼으로 대체할 거임-->
             <img
-              src="{% static 'images/icons/chuga.svg' %}"
+              src="{% static 'images/icons/delete.svg' %}"
               class="delete_detail"
               onclick="delete_detail(this);"
             />

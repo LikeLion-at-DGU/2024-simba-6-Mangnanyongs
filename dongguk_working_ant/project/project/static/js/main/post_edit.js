@@ -16,17 +16,14 @@
 
 //모집 입원 직접 입력 버튼
 
+let detailsContainer = document.getElementById('details');
+let detailTemplate = document.querySelector('.detail'); // 기존 detail 요소를 템플릿으로 사용
+    
+// 새로운 detail 요소 생성 및 복사
+const newDetail = detailTemplate.cloneNode(true);
 
 //세부사항 추가 버튼
 function add_detail(){
-    let detailsContainer = document.getElementById('details');
-    let detailTemplate = document.querySelector('.detail'); // 기존 detail 요소를 템플릿으로 사용
-    
-    // 새로운 detail 요소 생성 및 복사
-    let newDetail = detailTemplate.cloneNode(true);
-    
-    console.log(newDetail);
-
     // form 태그 안에 새로운 detail 추가
     detailsContainer.appendChild(newDetail);
 }
@@ -35,10 +32,7 @@ function add_detail(){
 function delete_detail(selected){
     let parent_detail = selected.parentNode;
     let grand_detail = parent_detail.parentNode;
-    let detailsContainer = document.getElementById('details');
-    let detailTemplate = document.querySelector('.detail');
-    let newDetail = detailTemplate.cloneNode(true);
-
+    
     parent_detail.remove();
     console.log(grand_detail.querySelectorAll('.detail')[0]);
     if(grand_detail.querySelectorAll('.detail')[0]==undefined){ //첫 요소가 삭제되면

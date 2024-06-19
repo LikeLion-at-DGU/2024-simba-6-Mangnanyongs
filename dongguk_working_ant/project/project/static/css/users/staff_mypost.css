@@ -26,7 +26,15 @@
 }
 
 #header{ 
-    margin-top: 6em;
+    margin-top: 56px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+#vector{
+    width: 86px;
+    height: 74px;
 }
 
 #main1{

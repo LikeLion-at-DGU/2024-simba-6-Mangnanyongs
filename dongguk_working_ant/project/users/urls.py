@@ -9,7 +9,7 @@ urlpatterns = [
     path('staff-mypost/', staff_mypost, name="staff_mypost"),
     path('staff-studentappfile/', staff_studentappfile, name="staff_studentappfile"),
     path('student-myapplication/', student_myapplication, name="student_myapplication"),
-    path('student-mypage/', student_mypage, name="student_mypage"),
+    path('student-mypage/', student_mypage, name="student-mypage"),
     path('student-myscrap/', student_myscrap, name="student_myscrap"),
     path('student-mywork/', student_mywork, name="student_mywork"),
 ]

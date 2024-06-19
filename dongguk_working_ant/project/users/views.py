@@ -1,4 +1,5 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import Post
 
 # Create your views here.
 def staff_mypage(request):
@@ -8,7 +9,8 @@ def staff_appslist(request):
     return render(request, 'users/staff_appslist.html')
 
 def staff_mypost(request):
-    return render(request, 'users/staff_mypost.html')
+    posts = posts.objects.filter(user=request.user)
+    return render(request, 'users/staff_mypost.html', {'posts':posts})
 
 def staff_studentappfile(request):
     return render(request, 'users/staff_studentappfile.html')

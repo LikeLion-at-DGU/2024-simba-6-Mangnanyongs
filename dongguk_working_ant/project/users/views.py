@@ -9,7 +9,7 @@ def staff_appslist(request):
     return render(request, 'users/staff_appslist.html')
 
 def staff_mypost(request):
-    posts = posts.objects.filter(user=request.user)
+    posts = Post.objects.filter(user=request.user)
     return render(request, 'users/staff_mypost.html', {'posts':posts})
 
 def staff_studentappfile(request):

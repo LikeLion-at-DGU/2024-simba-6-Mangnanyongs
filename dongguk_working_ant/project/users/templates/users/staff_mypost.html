@@ -1,1 +1,66 @@
 <!--교직원마이페이지 공고관리 (지원자확인) 담당자: 이정진-->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/users/staff_mypost.css'%}"
+/>
+
+<div class="content" id="header">
+    <a href="">
+        <img src="{% static 'images/icons/vector.svg' %}" id="vector">
+    </a>
+    <span class="Capital Caption" style="margin-bottom:0.5em;">공고관리</span>
+</div>
+
+<div class="content" id="main2">
+    {% if posts %}
+        {% for post in posts %}
+        <div class="card">
+            <form action="{% url 'main:scraps' post.id %}" method='POST'> <!--스크랩-->
+                {% csrf_token %}
+                <button name="star" class="star" value="none">
+                    {% if request.user in post.scrap.all %}
+                        <img src="{% static 'images/icons/blink_star.svg' %}"/>
+                    {% else %}
+                        <img src="{% static 'images/icons/star.svg' %}"/>
+                    {% endif %}
+                </button>
+            </form>
+            <span class="photo">
+                <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+            </span>
+            <span class="detail">
+                <div class="information">
+                    <span class="info classification small orange">
+                        #{{post.department}}
+                    </span>
+                    <span class="info date small white">
+                        {% if post.day_left >= 0 %}
+                            {{ post.day_left }}일 남음
+                        {% else %}
+                            지원 마감
+                        {% endif %}
+                    </span>
+                </div>
+                <a class="title Caption big" href="{% url 'main:post-detail' post.id %}">
+                    [{{post.organization}}] {{post.title}}
+                </a>
+                <div class="Caption light up">
+                    <div>{{post.place}}</div>
+                    <div>{{post.time}}</div>
+                </div>
+            </span>
+            <button type="button" class="more_info">
+                <img src="{% static 'images/icons/moreinfo.svg' %}"/>
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<script src="{% static 'js/users/staff_mypost.js' %}"></script>
+
+{% endblock %}

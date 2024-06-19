@@ -94,8 +94,12 @@ def mainlistpage(request):
         return render(request,'main/mainlistpage.html', context)
     return redirect('accounts:login')
 
-def post_edit(request):
-    return render(request, 'main/post_edit.html')
+def new_post(request):
+    return render(request, 'main/new-post.html')
+
+def post_edit(request, id):
+    edit_post = Post.objects.get(pk=id)
+    return render(request, 'main/post_edit.html', {'post' : edit_post})
 
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal')

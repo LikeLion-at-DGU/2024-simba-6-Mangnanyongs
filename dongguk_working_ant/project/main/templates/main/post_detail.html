@@ -63,7 +63,7 @@
                 <div class="box1Content1Frame">
                     <div class="box1TitleFrame">
                         <div class="box1Title">[{{post.organization}}] {{ post.title }}</div>
-                        <div class="box1organization">{{post.organization}}</div>
+                        <div class="box1organization">{{post.place}}</div>
                     </div>
                     <div class="deadlineFrame">
                         {% if post.day_left >= 0 %}
@@ -159,7 +159,9 @@
             <div class="detailBox2">
                 <div class="box2Frame">
                     <span class="box2Text">
-                        {{post.body}}
+                        {% for body in post_body_list %}
+                            {{body}}<br>
+                        {% endfor %}
                     </span>
                 </div>
             </div>

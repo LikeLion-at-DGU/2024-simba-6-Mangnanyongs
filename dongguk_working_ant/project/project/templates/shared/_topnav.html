@@ -34,7 +34,13 @@
         <div class="nav-3">
           {% if user.is_authenticated %}
           <a class="Caption" href="/accounts/logout/">로그아웃</a>
-          <a class="Caption" href="{% url 'users:staff-mypage' %}">MY</a>
+            {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
+            <a class="Caption" href="{% url 'users:student-mypage' %}">MY</a>
+            {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
+            <a class="Caption" href="{% url 'users:staff-mypage' %}">MY</a>
+            {% else %} <!--로그인하지 않았거나 어드민일 때(현재 개발 중인 탭 넣어두기)-->
+            <a class="Caption" href="{% url 'users:staff-mypage' %}">MY</a>
+            {% endif %}
 
           <!-- 로그인을 하지 않은 경우 -->
           {% else %}
@@ -53,7 +59,6 @@
     </div>
   </div>
 </div>
-<hr>
 <script>
   const captions = document.getElementsByClassName("Caption");
   for (let caption of captions) {

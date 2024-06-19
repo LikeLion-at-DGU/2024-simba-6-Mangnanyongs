@@ -77,7 +77,7 @@ box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.08);
 }
 .logoutNavText{
     color: var(--Gray-Gray03, #636366);
-    font-family: SUIT;
+    font-family: "SUITE Variable";
     font-size: 16px;
     font-style: normal;
     font-weight: 500;

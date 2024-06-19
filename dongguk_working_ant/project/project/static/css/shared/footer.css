@@ -35,7 +35,7 @@
 }
 .nameText{
     color: #737381;
-    font-family: SUIT;
+    font-family: "SUIT-Variable";
 font-feature-settings: 'clig' off, 'liga' off;
 
 font-size: 20px;
@@ -46,7 +46,7 @@ line-height: 24px; /* 120% */
 .adressText{
     color: #737381;
     font-feature-settings: 'clig' off, 'liga' off;
-    font-family: SUIT;
+    font-family: "SUIT-Variable";
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -55,7 +55,7 @@ line-height: 24px; /* 120% */
 .teamNameText{
     margin-top: 24px;
     color: #D6D6DD;
-    font-family: SUIT;
+    font-family: "SUIT-Variable";
     font-size: 12px;
     font-style: normal;
     font-weight: 500;

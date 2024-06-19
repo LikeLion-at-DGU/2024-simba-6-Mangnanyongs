@@ -11,8 +11,9 @@
     width: 52px;
     height: 52px;
     flex-shrink: 0;
-    padding-top: 67px;
-    padding-bottom: 60px;
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 45px;
     /* border:solid 1px orange; */
 }
 .detailpageFrame{
@@ -20,13 +21,13 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    gap:72px;
+    gap:43px;
     /* border:solid 1px rgb(51, 255, 0); */
 }
 .detailBox1{
     display: flex;
     width: 1300px;
-    height: 394px;
+    height: 377px;
     border-radius: 12px;
     border: 1px solid #EBEBEB;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
@@ -90,7 +91,7 @@
     /* Small */
     box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.08);
     color: #636366;
-    font-family: SUIT;
+    font-family: 'SUITE Variable';
     font-size: 16px;
     font-style: normal;
     font-weight: 500;
@@ -154,13 +155,14 @@
 }
 .box1etcFrame{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-direction: row; 
-    
     margin-top: 45px;
+    margin-left: 48px;
+    margin-right: 48px;
     /* border: 1px solid green; 디버그용 */
 }
-.etcWage,.etcContent,.etcDate,.etcTime {
+.etcWage,.etcDate,.etcTime {
     display: flex;
     flex-direction: row;
     width: auto;
@@ -171,49 +173,7 @@
     /* border: solid 1px blue; */
     align-items: center; /* 수정: 중앙 정렬 */
 }
-.etcIcon{
-    position: relative;
-    width: 59px;
-    height: 59px;
-    /* border: 1px solid red; 디버그용 */
-}
-.etcInnerIcon{
-    width: 34px;
-    height: 31px;
-    stroke-width: 3px;
-    stroke: #FF8A00;
-    position: absolute; 
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.etcInnerIcon1{
-    width: 35px;
-    height: 35px;
-    stroke: #FF8A00;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.etcInnerIcon2{
-    width: 29px;
-    height: 34px;
-    stroke: #FF8A00;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-.etcInnerIcon3{
-    width: 40px;
-    height: 40px;
-    stroke: #FF8A00;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .etcText{
     color: #000;
     font-family: "SUITE Variable";

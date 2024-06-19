@@ -51,7 +51,7 @@
 
 .Caption {
     color: #1C1C1E;
-    font-family: SUIT;
+    font-family: "SUIT-Variable";
     font-size: 15px;
     font-style: normal;
     font-weight: 550;
@@ -69,7 +69,7 @@
 
 .logo-font{
     color: #FF8A00;
-    font-family: SUIT;
+    font-family: "SUIT-Variable";
     font-size: 28px;
     font-style: normal;
     font-weight: 700;

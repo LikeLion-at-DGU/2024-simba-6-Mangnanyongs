@@ -42,16 +42,8 @@
                 <label for="income">소득분위</label>
                 <select type="number" name="is_income_bracket" id="income">
                   <option value=""hidden></option>
-                  <option value="1">1분위</option>
-                  <option value="2">2분위</option>
-                  <option value="3">3분위</option>
-                  <option value="4">4분위</option>
-                  <option value="5">5분위</option>
-                  <option value="6">6분위</option>
-                  <option value="7">7분위</option>
-                  <option value="8">8분위</option>
-                  <option value="9">9분위</option>
-                  <option value="10">10분위</option>
+                  <option value="1">반영</option>
+                  <option value="0">미반영</option>
                 </select>
               </div>
               <div style="margin-top: 12.5px;">
@@ -78,9 +70,9 @@
               <div class="date_selector">
                 <label class="work_date">활동 기간</label>
                 <div class="date_input" id="work_date_input">
-                  <input type="date" id="start_work_date" class="selector" />
+                  <input type="date" id="start_work_date" class="selector" name="start_date"/>
                   <span>~</span>
-                  <input type="date" id="end_work_date" class="selector" />
+                  <input type="date" id="end_work_date" class="selector" name="end_date"/>
                 </div>
               </div>
               <div class="date_selector">
@@ -88,7 +80,7 @@
                 <div class="date_input" id="recruit_date_input">
                   <input type="date" id="start_recruit_date" class="selector" />
                   <span>~</span>
-                  <input type="date" id="end_recruit_date" class="selector" />
+                  <input type="date" id="end_recruit_date" class="selector" name="deadline"/>
                 </div>
               </div>
           </div>
@@ -109,21 +101,20 @@
               <label for="work_place">근로 장소</label>
               <select name="place" id="work_place" class="selector">
                 <option value="" hidden></option>
-                <option value="0" {% if pl == '0' %}selected{% endif %}>전체</option>
-                <option value="1" {% if pl == '1' %}selected{% endif %}>경영/사회과학관</option>
-                <option value="2" {% if pl == '2' %}selected{% endif %}>과학관</option>
-                <option value="3" {% if pl == '3' %}selected{% endif %}>다향관</option>
-                <option value="4" {% if pl == '4' %}selected{% endif %}>명진관</option>
-                <option value="5" {% if pl == '5' %}selected{% endif %}>법학/만해관</option>
-                <option value="6" {% if pl == '6' %}selected{% endif %}>본관</option>
-                <option value="7" {% if pl == '7' %}selected{% endif %}>신공학관</option>
-                <option value="8" {% if pl == '8' %}selected{% endif %}>남산학사</option>
-                <option value="9" {% if pl == '9' %}selected{% endif %}>중앙도서관</option>
-                <option value="10" {% if pl == '10' %}selected{% endif %}>원흥관</option>
-                <option value="11" {% if pl == '11' %}selected{% endif %}>학림관</option>
-                <option value="12" {% if pl == '12' %}selected{% endif %}>학술문화관</option>
-                <option value="13" {% if pl == '13' %}selected{% endif %}>혜화관</option>
-                <option value="14" {% if pl == '14' %}selected{% endif %}>기타</option>
+                <option value="경영/사회과학관" >경영/사회과학관</option>
+                <option value="과학관" >과학관</option>
+                <option value="다향관" >다향관</option>
+                <option value="명진관" >명진관</option>
+                <option value="법학/만해관" >법학/만해관</option>
+                <option value="본관" >본관</option>
+                <option value="신공학관" >신공학관</option>
+                <option value="남산학사" >남산학사</option>
+                <option value="중앙도서관" >중앙도서관</option>
+                <option value="원흥관" >원흥관</option>
+                <option value="학림관" >학림관</option>
+                <option value="학술문화관" >학술문화관</option>
+                <option value="혜화관" >혜화관</option>
+                <option value="기타" >기타</option>
               </select>
             </div>
             <div style="margin-top: 12.5px;">
@@ -142,7 +133,7 @@
             <div style="margin-top: 12.5px;">
               <label for="salary">급여</label>
               <span id="salary_input">
-                <input type="number" id="salary" />
+                <input type="number" id="salary" name="wage" />
               </span>
             </div>
           </div>
@@ -226,7 +217,9 @@
     <div id="add_question">
       <img src="{% static 'images/icons/add.svg' %}" />
     </div>
-  </div>
+
+    <input type="hidden" id="question_count" name="question_count" value="{{ question_count }}">
+    </form>
 </div>
 <script src="{% static 'js/main/post_edit.js' %}"></script>
 {% endblock %}

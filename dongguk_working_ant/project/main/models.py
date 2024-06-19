@@ -44,14 +44,12 @@ class Question(models.Model):
     content = models.TextField()
     
     def __str__(self):
-        return self.id +'from' + self.post
+        return self.content
 
 class Application(models.Model):
     post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return self.post +':' + self.writer
 
 class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)
@@ -59,13 +57,10 @@ class Answer(models.Model):
     content = models.TextField()
     file = models.FileField(upload_to="question/", blank=True, null=True)
 
-    def __str__(self):
-        return self.id +'from' + self.application
-
 class Applicated(models.Model):
     post = models.OneToOneField(Post, on_delete=models.CASCADE)
     student = models.ManyToManyField(User, related_name='apply', blank=True, default=None)
     is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
 
     def __str__(self):
-        return 'applicated of' + self.post
+        return 'applicated of' + self.post.id

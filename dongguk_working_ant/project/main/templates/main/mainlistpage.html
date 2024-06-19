@@ -27,7 +27,7 @@
     <!--교내, 학과 선택 필터-->
         <div id="filter" class="depa">
             {% comment %} {{ depa }} {% endcomment %}
-            <button class="checked button Caption" id="all" value="전체" >전체</button>
+            <button class="checked button Caption" id="all" value="" >전체</button>
             <button class="unchecked button Caption" id="offcampus" value="국가" >국가</button>
             <button class="unchecked button Caption" id="oncampus" value="교내" >교내</button>
             <button class="unchecked button Caption" id="department" value="학과">학과</button>
@@ -44,7 +44,7 @@
             <label for="sort">
                 <select id="sort" class="Caption gray thin so" onchange="changeSelect_so(this);">
                     {% comment %} {{ sort }} {% endcomment %}
-                    <option value="" {% if so == '' %}selected{% endif %}>정렬</option>
+                    <option value="" {% if so == '' %}selected{% endif %}>최신순</option>
                     <option value="deadline" {% if so == 'deadline' %}selected{% endif %}>마감순</option>
                     <option value="inquiry" {% if so == 'inquiry' %}selected{% endif %}>조회순</option>
                     <option value="scrap" {% if so == 'scrap' %}selected{% endif %}>스크랩순</option>
@@ -54,16 +54,15 @@
             <label for="end">
                 <select id="end" class="Caption gray thin en" onchange="changeSelect_end(this);">
                     {% comment %} {{ end }} {% endcomment %}
-                    <option value="" {% if en == '' %}selected{% endif %}>마감 공고 제외</option>
-                    <option value="exclude" {% if en == 'exclude' %}selected{% endif %}>제외</option>
-                    <option value="include" {% if en == 'include' %}selected{% endif %}>포함</option>
+                    <option value="" {% if en == '' %}selected{% endif %}>마감 공고 포함</option>
+                    <option value="exclude" {% if en == 'exclude' %}selected{% endif %}>마감 공고 제외</option>
                 </select>
             </label>
             <!--근로 장소-->
             <label for="place">
                 <select id="place" class="Caption gray thin pl" onchange="changeSelect_place(this);">
                     {% comment %} {{ place }} {% endcomment %}
-                    <option value="" {% if pl == '' %}selected{% endif %}>근로 장소</option>
+                    <option value="" {% if pl == '' %}selected{% endif %}>근로 장소 전체</option>
                     <option value="1" {% if pl == '1' %}selected{% endif %}>경영/사회과학관</option>
                     <option value="2" {% if pl == '2' %}selected{% endif %}>과학관</option>
                     <option value="3" {% if pl == '3' %}selected{% endif %}>다향관</option>
@@ -83,9 +82,8 @@
             <label for="income">
                 <select id="income" class="Caption gray thin inc" onchange="changeSelect_income(this);">
                     {% comment %} {{ income }} {% endcomment %}
-                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위</option>
-                    <option value="apply" {% if inc == 'apply' %}selected{% endif %}>반영</option>
-                    <option value="remove" {% if inc == 'remove' %}selected{% endif %}>미반영</option>
+                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위 미반영</option>
+                    <option value="apply" {% if inc == 'apply' %}selected{% endif %}>소득 분위 반영</option>
                 </select>
             </label>
         </div>

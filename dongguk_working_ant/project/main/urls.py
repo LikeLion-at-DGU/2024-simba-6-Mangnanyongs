@@ -10,7 +10,7 @@ urlpatterns = [
     path('post-create/', post_create, name="post-create"),
     path('post-detail/<int:post_id>', post_detail, name="post-detail"),
     path('scrap/<int:post_id>', scraps, name="scraps"),
-    path('apply/', apply, name="apply"),
+    path('apply/<int:post_id>', apply, name="apply"),
     path('post_edit_modal/', post_edit_modal, name="post-edit-modal"),
     path('update/<int:id>', post_update, name="post-update"),
 ]

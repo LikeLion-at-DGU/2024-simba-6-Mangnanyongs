@@ -179,7 +179,19 @@ def post_update(request, id):
 
         update_post.place = request.POST['place']
         update_post.time = request.POST['time']
-        update_post.recruitment = request.POST['recruitment']
+
+
+        recruitment_value = request.POST.get('recruitment', '')
+        direct_recruitment_value = request.POST.get('direct_recruitment', '')
+
+        if recruitment_value == 'direct' and direct_recruitment_value.isdigit():
+            update_post.recruitment = int(direct_recruitment_value)
+        elif recruitment_value.isdigit():
+            update_post.recruitment = int(recruitment_value)
+        else:
+            update_post.recruitment = 0
+
+
         update_post.wage = request.POST['wage']
 
         #body부분을 리스트로 받아오기

@@ -155,6 +155,42 @@ def post_create(request):
 
     return redirect('main:post-detail', new_post.id)
 
+def post_update(request, id):
+    update_post = Post.objects.get(pk=id)
+    if request.user.is_authenticated and request.user == update_post.writer:
+        update_post.writer = request.user
+        update_post.title = request.POST['title']
+        #new_post.building 수정 예정
+        update_post.organization = request.POST['organization']
+        
+        update_post.department = request.POST['department']
+        update_post.is_income_bracket = request.POST['is_income_bracket']
+        update_post.start_date = request.POST['start_date']
+        update_post.end_date = request.POST['end_date']
+        update_post.deadline = request.POST['deadline']
+
+        #남은 날짜 계산
+        deadline_date = datetime.strptime(request.POST['deadline'], '%Y-%m-%d').date()
+        today = timezone.now().date()
+        d_day = deadline_date - today
+        update_post.day_left = d_day.days
+
+        update_post.place = request.POST['place']
+        update_post.time = request.POST['time']
+        update_post.recruitment = request.POST['recruitment']
+        update_post.wage = request.POST['wage']
+
+        #body부분을 리스트로 받아오기
+        body_list = request.POST.getlist('body')
+        update_post.set_body(body_list)  # JSON 변환 후 저장
+        
+        #new_post.file 수정 예정
+        update_post.pub_date = timezone.now()
+        
+        update_post.save()
+
+    return redirect('main:post-detail', update_post.id)
+
 def post_detail(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)

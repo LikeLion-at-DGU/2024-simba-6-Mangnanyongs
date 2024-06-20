@@ -193,6 +193,11 @@ def post_update(request, id):
 
     return redirect('main:post-detail', update_post.id)
 
+def post_delete(request, id):
+    delete_post = Post.objects.get(pk=id)
+    delete_post.delete()
+    return redirect('main:mainlistpage')
+
 def post_detail(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)

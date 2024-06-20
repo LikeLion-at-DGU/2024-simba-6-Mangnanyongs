@@ -13,4 +13,5 @@ urlpatterns = [
     path('apply/<int:post_id>', apply, name="apply"),
     path('post_edit_modal/', post_edit_modal, name="post-edit-modal"),
     path('update/<int:id>', post_update, name="post-update"),
+    path('post-delete/<int:id>', post_delete, name="post-delete"),
 ]

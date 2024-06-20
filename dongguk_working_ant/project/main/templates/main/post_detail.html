@@ -42,12 +42,12 @@
                     {% if post.writer == user %} <!--게시글 작성자일 때-->
                         <div class="box1EditFrame">
                             <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
-                            <button class="box1Btn" id="DeleteBtn">삭제</button>
+                            <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
                         </div>
                     {% else %} <!--개발 끝나면 이 부분 비우기-->
                         <div class="box1EditFrame">
                             <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
-                            <button class="box1Btn" id="DeleteBtn">삭제</button>
+                            <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
                         </div>
                     {% endif %}
                 </div>
@@ -98,10 +98,10 @@
                 </div>
             </div>
         </div>
-        <!--지원하기 버튼-->
+        <!--지원하기 버튼--> <!--모집 마감시에 버튼 수정하기-->
         {% if user.profile.student_or_staff == 'student' %}
         <div class="applyBtn">
-            <a href="{% url 'main:mainpage' %}" class="applyBtnAtag"><!--url수정하기-->
+            <a href="{% url 'main:apply' post.id %}" class="applyBtnAtag">
                 <span class="applyBtnContent">
                     지원하기
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
@@ -113,7 +113,7 @@
         {% elif user.profile.student_or_staff == 'staff' %}
         {% else %} <!--로그인하지 않았거나 어드민일 때(현재 개발 중인 탭 넣어두기)-->
         <div class="applyBtn">
-            <a href="{% url 'main:mainpage' %}" class="applyBtnAtag"><!--url수정하기-->
+            <a href="{% url 'main:apply' post.id %}" class="applyBtnAtag">
                 <span class="applyBtnContent">
                     지원하기
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">

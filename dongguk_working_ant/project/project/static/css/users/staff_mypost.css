@@ -116,6 +116,7 @@
 }
 
 .card{
+    position: relative;
     display:flex;
     width: 82.625em;
     height: 13.75em;
@@ -223,6 +224,14 @@ select{
     border-radius: 15px;
     border: 1px solid #E4E4E4;
     cursor: pointer;
+}
+
+.more_function{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 .Capital{

@@ -7,7 +7,7 @@
 />
 <div id="edit_page">
   <!-- 근로 내용 부분 form 태그 하나로 통일함 - 정지윤 작성 -->
-  <form action="{% url 'main:post-create' %}" method="POST" enctype="multipart/form-data">
+  <form action="{% url 'main:post-update' post.id %}" method="POST" enctype="multipart/form-data">
   {% csrf_token %}
 
   <div class="content" id="main1">
@@ -51,21 +51,21 @@
                 <label for="target">모집 대상</label>
                 <select name="department" id="target" class="selector">
                   <option value="" hidden></option>
-                  <option value="국가">국가</option>
-                  <option value="교내">교내</option>
-                  <option value="경영대학">경영대학</option>
-                  <option value="공과대학">공과대학</option>
-                  <option value="경찰사법대학">경찰사법대학</option>
-                  <option value="문과대학">문과대학</option>
-                  <option value="미래융합대학">미래융합대학</option>
-                  <option value="바이오시스템대학">바이오시스템대학</option>
-                  <option value="법과대학">법과대학</option>
-                  <option value="불교대학">불교대학</option>
-                  <option value="사범대학">사범대학</option>
-                  <option value="사회과학대학">사회과학대학</option>
-                  <option value="약학대학">약학대학</option>
-                  <option value="예술대학">예술대학</option>
-                  <option value="이과대학">이과대학</option>
+                  <option value="국가" {% if post.department == '국가' %}selected{% endif %}>국가</option>
+                  <option value="교내" {% if post.department == '교내' %}selected{% endif %}>교내</option>
+                  <option value="경영대학" {% if post.department == '경영대학' %}selected{% endif %}>경영대학</option>
+                  <option value="공과대학" {% if post.department == '공과대학' %}selected{% endif %}>공과대학</option>
+                  <option value="경찰사법대학" {% if post.department == '경찰사법대학' %}selected{% endif %}>경찰사법대학</option>
+                  <option value="문과대학" {% if post.department == '문과대학' %}selected{% endif %}>문과대학</option>
+                  <option value="미래융합대학" {% if post.department == '미래융합대학' %}selected{% endif %}>미래융합대학</option>
+                  <option value="바이오시스템대학" {% if post.department == '바이오시스템대학' %}selected{% endif %}>바이오시스템대학</option>
+                  <option value="법과대학" {% if post.department == '법과대학' %}selected{% endif %}>법과대학</option>
+                  <option value="불교대학" {% if post.department == '불교대학' %}selected{% endif %}>불교대학</option>
+                  <option value="사범대학" {% if post.department == '사범대학' %}selected{% endif %}>사범대학</option>
+                  <option value="사회과학대학" {% if post.department == '사회과학대학' %}selected{% endif %}>사회과학대학</option>
+                  <option value="약학대학" {% if post.department == '약학대학' %}selected{% endif %}>약학대학</option>
+                  <option value="예술대학" {% if post.department == '예술대학' %}selected{% endif %}>예술대학</option>
+                  <option value="이과대학" {% if post.department == '이과대학' %}selected{% endif %}>이과대학</option>
                 </select>
               </div>
               <div class="date_selector">
@@ -97,6 +97,9 @@
                 <option value="5">5</option>
                 <option value="direct">직접 입력</option>
               </select>
+              <span id="recruitment_input" style="display:none;">
+                <input type="number" id="selboxDirect" name="recruitment" style="border:none; width:160px; margin-left: 7px; height: 17px;">
+              </span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="work_place">근로 장소</label>

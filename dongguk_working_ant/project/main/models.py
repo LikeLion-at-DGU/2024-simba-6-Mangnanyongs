@@ -44,7 +44,7 @@ class Question(models.Model):
     content = models.TextField()
     
     def __str__(self):
-        return self.content
+        return self.content + ' from ' + str(self.post)
 
 class Application(models.Model):
     post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
@@ -63,4 +63,4 @@ class Applicated(models.Model):
     is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
 
     def __str__(self):
-        return 'applicated of' + self.post.id
+        return 'applicated of ' + str(self.post)

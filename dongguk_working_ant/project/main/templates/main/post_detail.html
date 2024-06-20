@@ -42,12 +42,12 @@
                     {% if post.writer == user %} <!--게시글 작성자일 때-->
                         <div class="box1EditFrame">
                             <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
-                            <button class="box1Btn" id="DeleteBtn">삭제</button>
+                            <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
                         </div>
                     {% else %} <!--개발 끝나면 이 부분 비우기-->
                         <div class="box1EditFrame">
                             <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
-                            <button class="box1Btn" id="DeleteBtn">삭제</button>
+                            <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
                         </div>
                     {% endif %}
                 </div>

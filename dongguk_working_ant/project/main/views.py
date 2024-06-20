@@ -3,7 +3,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.db.models import Q, Count, F
 import json
-from .models import Post, Question
+from .models import Post, Question, Application, Answer, Applicated
 
 # Create your views here.
 def mainpage(request):
@@ -102,7 +102,7 @@ def post_edit(request, id):
     return render(request, 'main/post_edit.html', {'post' : edit_post})
 
 def post_edit_modal(request):
-    return render(request, 'main/post_edit_modal')
+    return render(request, 'main/post_edit_modal.html')
 
 def post_question_create(request, num, parent_post):
     new_question = Question()
@@ -110,7 +110,6 @@ def post_question_create(request, num, parent_post):
     new_question.content = request.POST['question'+str(num)]
     new_question.save()
     return new_question
-
 
 def post_create(request):
     new_post = Post()
@@ -146,12 +145,15 @@ def post_create(request):
     
     new_post.save()
     
-    #지원서 양식 부분 수정 예정
+    #지원서 양식 부분
     if request.POST['question_count']:
         question_count = int(request.POST['question_count'])
         for q in range(1, question_count+1):
-            print(q)
             post_question_create(request, q, new_post)
+
+    new_applicated = Applicated()
+    new_applicated.post = new_post
+    new_applicated.save()
 
     return redirect('main:post-detail', new_post.id)
 
@@ -173,6 +175,29 @@ def scraps(request, post_id):
         post.scrap_count += 1
         post.save()
     return redirect('main:mainlistpage')
+    
+def apply(request, post_id):
+    questions = Question.objects.filter(post=post_id)
+    return render(request, 'main/apply.html', {'questions':questions})
 
-def apply(request):
-    return render(request, 'main/apply.html')
+def application_create(request, post_id):
+    new_application = Application()
+
+    new_application.post = Post.get_object_or_404(pk=post_id)
+    new_application.writer = request.user
+
+    new_application.save()
+    
+    #지원서 내용 부분
+    questions = Question.objects.filter(post=new_application.post)
+    num=1
+    for question in questions:
+            new_answer = Answer()
+            new_answer.application = new_application
+            new_answer.question = question
+            content = request.POST['answer'+str(num)]
+            new_answer.save()
+            num += 1
+            #file
+
+    return redirect('main:post-detail', post.id)

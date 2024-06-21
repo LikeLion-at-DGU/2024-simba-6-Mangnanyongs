@@ -1,9 +1,8 @@
-.testt{
+.test{
     display: flex;
     flex-direction: column;
-}
-.container {
     width: 100%;
+    max-width: 1400px;
 }
 
 .content {
@@ -11,29 +10,17 @@
     flex-direction: column;
     width: 100%;
     max-width: 1400px;
-    margin-left: 2em;
     gap: 10px;
 }
 
-@media (max-width: 1050px) {
-    .content {
-        align-items: start;
-        justify-content: center;
-    }
-}
-
-@media (min-width: 1051px) {
-    .content {
-        align-items: start;
-        justify-content: center;
-    }
-}
 
 #header{ 
     margin-top: 6em;
 }
 
 #main1{
+    display: flex;
+    width: 82.625em;
     margin-top: 4em;
 }
 
@@ -41,6 +28,7 @@
     display: flex;
     margin-top: 2.5em;
     align-items: center;
+    gap: 82px;
 }
 
 #textfield{
@@ -80,7 +68,6 @@
 }
 
 #selector{
-    margin-left: 12em;
     display:flex;
     gap: 13px;
 }
@@ -288,4 +275,10 @@ select{
 
 .nav-1 .nav-2 :nth-child(1){
     color: #FF8A00;
+}
+
+.baseContent,
+.test,
+.content{
+    box-sizing: border-box;
 }

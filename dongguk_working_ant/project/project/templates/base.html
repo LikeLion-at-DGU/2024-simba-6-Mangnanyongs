@@ -6,36 +6,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>동국일개미</title>
     <!--font awsome 사용을 위한 코드-->
-    <script src="https://kit.fontawesome.com/e6f57aa9de.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/e6f57aa9de.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body style="margin : 0px;">
+  <body style="margin: 0px">
     <style>
       /* @font-face {
         font-family: 'SUITE Variable' important!;
         src: url('../static/font/SUITE-Variable.ttf') format('truetype');
       } */
       body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            margin: 0;
-        }
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
       .container {
-        flex:1;
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100%;
-        /* height: 100vh; */
+        width: 100vw;
+        /*height: 100vh;*/
+        overflow: auto;
       }
-      .baseContent{
+
+      .baseContent {
         flex: 1;
         display: flex;
         justify-content: center;
         width: 100vw;
        
         /* height: 100vh; */
+        margin-bottom: 97px;
       }
     </style>
     <div class="container">
@@ -44,15 +50,11 @@
       <!-- 상단 네브바 -->
 
       <!-- 내용 -->
-      <div class="baseContent">
-      {% block content %} {% endblock %}
-      </div>
+      <div class="baseContent">{% block content %} {% endblock %}</div>
       <!-- 내용 -->
 
       <!--하단 footer: 필요한 페이지에서만 넣기 -->
-      {% block footer %}
-        {% include 'shared/_footer.html' %}
-      {% endblock %}
+      {% block footer %} {% include 'shared/_footer.html' %} {% endblock %}
       <!--하단 footer-->
     </div>
   </body>

@@ -14,7 +14,7 @@ def mainlistpage(request):
     if request.user.is_authenticated:
         
         # 입력 파라미터
-        department = request.GET.get('depa','')
+        department = request.GET.get('depa','전체')
         keyword = request.GET.get('kw', '')
         sort = request.GET.get('so', '')
         end = request.GET.get('en', '')

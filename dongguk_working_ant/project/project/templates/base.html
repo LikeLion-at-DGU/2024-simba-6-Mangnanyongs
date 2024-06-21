@@ -14,20 +14,27 @@
         font-family: 'SUITE Variable' important!;
         src: url('../static/font/SUITE-Variable.ttf') format('truetype');
       } */
+      body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+        }
       .container {
+        flex:1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 100vw;
-        height: 100vh;
+        width: 100%;
+        /* height: 100vh; */
       }
       .baseContent{
         flex: 1;
         display: flex;
         justify-content: center;
         width: 100vw;
-        height: 100vh;
+        /* height: 100vh; */
       }
     </style>
     <div class="container">

@@ -5,8 +5,8 @@
     type="text/css"
     href="{% static 'css/main/mainlistpage.css'%}"
 />
-
-<!--검색, 정렬 제출 폼-->
+<div class="testt">
+    <!--검색, 정렬 제출 폼-->
 <form id="searchForm" method="GET" action="{% url 'main:mainlistpage' %}">
     <input type="hidden" id="depa" name="depa" value="{{ depa }}">
     <input type="hidden" id="kw" name="kw" value="{{ kw|default_if_none:'' }}">
@@ -134,6 +134,8 @@
         </div>
         {% endfor %}
     {% endif %}
+</div>
+
 </div>
 
 <script src="{% static 'js/main/mainlistpage.js' %}"></script>

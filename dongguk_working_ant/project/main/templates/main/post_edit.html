@@ -33,9 +33,9 @@
       <div id="detail">
         <div class="Caption border">
           <span class="Caption" style="color:#FFAF36; margin-left:26px;">*</span>
-          <input type="text" name="organization" id="organization" placeholder="[기관명을 입력해주세요. (ex.교무팀)]"/> 
+          <input type="text" name="organization" id="organization" placeholder="[기관명을 입력해주세요. (ex.교무팀)]" value="{{ post.organization}}"/> 
           <span class="Caption" style="color:#FFAF36; font-size: 24px;">|</span>
-          <input type="text" name="title" id="announcement_title" placeholder="공고 제목을 입력해주세요."/>
+          <input type="text" name="title" id="announcement_title" placeholder="공고 제목을 입력해주세요." value="{{ post.title}}"/>
         </div>
         <div style="display: flex; width: 900px; justify-content: space-between;">
           <div class="Caption topic" id="title">
@@ -43,8 +43,8 @@
                 <label for="income">소득분위</label>
                 <select type="number" name="is_income_bracket" id="income">
                   <option value=""hidden></option>
-                  <option value="1">반영</option>
-                  <option value="0">미반영</option>
+                  <option value="1" {% if post.is_income_bracket == 1 %}selected{% endif %}>반영</option>
+                  <option value="0" {% if post.is_income_bracket == 0 %}selected{% endif %}>미반영</option>
                 </select>
               </div>
               <div style="margin-top: 12.5px;">
@@ -71,9 +71,9 @@
               <div class="date_selector">
                 <label class="work_date">활동 기간</label>
                 <div class="date_input" id="work_date_input">
-                  <input type="date" id="start_work_date" class="selector" name="start_date"/>
+                  <input type="date" id="start_work_date" class="selector" name="start_date" value="{{ post.start_date|date:'Y-m-d' }}"/>
                   <span>~</span>
-                  <input type="date" id="end_work_date" class="selector" name="end_date"/>
+                  <input type="date" id="end_work_date" class="selector" name="end_date" value="{{ post.end_date|date:'Y-m-d' }}"/>
                 </div>
               </div>
               <div class="date_selector">
@@ -81,7 +81,7 @@
                 <div class="date_input" id="recruit_date_input">
                   <input type="date" id="start_recruit_date" class="selector" />
                   <span>~</span>
-                  <input type="date" id="end_recruit_date" class="selector" name="deadline"/>
+                  <input type="date" id="end_recruit_date" class="selector" name="deadline" value="{{ post.deadline|date:'Y-m-d' }}"/>
                 </div>
               </div>
           </div>
@@ -90,54 +90,52 @@
               <label for="recruit_count">모집 인원</label>
               <select name="recruitment" id="recruit_count" class="selector">
                 <option value="" hidden></option>
-                <option value="1">1</option>
-                <option value="1">2</option>
-                <option value="2">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="direct">직접 입력</option>
+                {% for option in recruitment_options %}
+                    <option value="{{ option }}" {% if post.recruitment == option %}selected{% endif %}>{{ option }}</option>
+                {% endfor %}
+                <option value="direct" {% if post.recruitment not in recruitment_options and post.recruitment is not None %}selected{% endif %}>직접 입력</option>
               </select>
               <span id="recruitment_input" style="display:none;">
-                <input type="number" id="selboxDirect" name="recruitment" style="border:none; width:160px; margin-left: 7px; height: 17px;">
+                <input type="number" id="direct_input" name="direct_recruitment" class="selector" style="display:none;" value="{% if post.recruitment not in recruitment_options %}{{ post.recruitment }}{% endif %}" />
               </span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="work_place">근로 장소</label>
               <select name="place" id="work_place" class="selector">
                 <option value="" hidden></option>
-                <option value="경영/사회과학관" >경영/사회과학관</option>
-                <option value="과학관" >과학관</option>
-                <option value="다향관" >다향관</option>
-                <option value="명진관" >명진관</option>
-                <option value="법학/만해관" >법학/만해관</option>
-                <option value="본관" >본관</option>
-                <option value="신공학관" >신공학관</option>
-                <option value="남산학사" >남산학사</option>
-                <option value="중앙도서관" >중앙도서관</option>
-                <option value="원흥관" >원흥관</option>
-                <option value="학림관" >학림관</option>
-                <option value="학술문화관" >학술문화관</option>
-                <option value="혜화관" >혜화관</option>
-                <option value="기타" >기타</option>
+                <option value="경영/사회과학관" {% if post.place == "경영/사회과학관" %}selected{% endif %}>경영/사회과학관</option>
+                <option value="과학관" {% if post.place == "과학관" %}selected{% endif %}>과학관</option>
+                <option value="다향관" {% if post.place == "다향관" %}selected{% endif %}>다향관</option>
+                <option value="명진관" {% if post.place == "명진관" %}selected{% endif %}>명진관</option>
+                <option value="법학/만해관" {% if post.place == "법학/만해관" %}selected{% endif %}>법학/만해관</option>
+                <option value="본관" {% if post.place == "본관" %}selected{% endif %}>본관</option>
+                <option value="신공학관" {% if post.place == "신공학관" %}selected{% endif %}>신공학관</option>
+                <option value="남산학사" {% if post.place == "남산학사" %}selected{% endif %}>남산학사</option>
+                <option value="중앙도서관" {% if post.place == "중앙도서관" %}selected{% endif %}>중앙도서관</option>
+                <option value="원흥관" {% if post.place == "원흥관" %}selected{% endif %}>원흥관</option>
+                <option value="학림관" {% if post.place == "학림관" %}selected{% endif %}>학림관</option>
+                <option value="학술문화관" {% if post.place == "학술문화관" %}selected{% endif %}>학술문화관</option>
+                <option value="혜화관" {% if post.place == "혜화관" %}selected{% endif %}>혜화관</option>
+                <option value="기타" {% if post.place == "기타" %}selected{% endif %}>기타</option>
               </select>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="work_time">근로 요일 및 시간</label>
               <select name="time" id="work_time" class="selector">
                 <option value="" hidden></option>
-                <option value="Mon">월요일</option>
-                <option value="Tue">화요일</option>
-                <option value="Wed">수요일</option>
-                <option value="Thu">목요일</option>
-                <option value="Fri">금요일</option>
-                <option value="Sat">토요일</option>
-                <option value="Sun">일요일</option>
+                <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
+                <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
+                <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
+                <option value="Thu" {% if post.time == "Thu" %}selected{% endif %}>목요일</option>
+                <option value="Fri" {% if post.time == "Fri" %}selected{% endif %}>금요일</option>
+                <option value="Sat" {% if post.time == "Sat" %}selected{% endif %}>토요일</option>
+                <option value="Sun" {% if post.time == "Sun" %}selected{% endif %}>일요일</option>
               </select>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="salary">급여</label>
               <span id="salary_input">
-                <input type="number" id="salary" name="wage" />
+                <input type="number" id="salary" name="wage" value="{{ post.wage }}"/>
               </span>
             </div>
           </div>

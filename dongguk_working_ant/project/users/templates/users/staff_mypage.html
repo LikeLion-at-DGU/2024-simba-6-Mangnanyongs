@@ -13,27 +13,27 @@
     <div class="staffBody">
         <div class="staffProfile">
             <div class="profileImage">
-                
+                <img class="profileImage" src="{% static 'images/icons/imgprofile.svg' %}" />
             </div>
             <div class="profileText">
-                <span>김동국님,</span><br><span>안녕하세요!</span>
+                <span ><span id="mpTc">김동국</span>님,</span><span>안녕하세요!</span>
             </div>
         </div>
         <div class="staffNavBox">
             <div class="staffNav">
-                <div class="nav" id="nav1">
-                    
-                </div>
-                <div class="nav" id="nav2">
-    
-                </div>
-                <div class="nav" id="nav3">
-
-                </div>
+                <a class="nav" >
+                    <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
+                </a>
+                <a class="nav">
+                    <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
+                </a>
+                <a class="nav">
+                    <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
+                </a>
             </div>
             <div class="staffLogoutNav">
-                <div class="logoutNav"><span class="logoutNavText">로그아웃</span></div>
-                <div class="logoutNav"><span class="logoutNavText">회원탈퇴</span></div>
+                <button class="logoutNav"><span class="logoutNavText">로그아웃</span></button>
+                <button class="logoutNav"><span class="logoutNavText">회원탈퇴</span></button>
             </div>
         </div>
     </div>

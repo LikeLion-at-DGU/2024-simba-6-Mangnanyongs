@@ -86,12 +86,14 @@
           <div class="Caption topic" id="contents">
             <div class="top">
               <label for="recruit_count">모집 인원</label>
-              <select name="recruitment" id="recruit_count" class="selector" value="">
+              <select name="recruitment" id="recruit_count" class="selector">
                 <option value="" hidden></option>
-                {% for option in recruitment_options %}
-                    <option value="{{ option }}" {% if post.recruitment == option %}selected{% endif %}>{{ option }}</option>
-                {% endfor %}
-                <option value="direct" {% if post.recruitment not in recruitment_options and post.recruitment is not None %}selected{% endif %}>직접 입력</option>
+                <option value="1" {% if post.recruitment == 1 %} selected {% endif %}>1</option>
+                <option value="2" {% if post.recruitment == 2 %} selected {% endif %}>2</option>
+                <option value="3" {% if post.recruitment == 3 %} selected {% endif %}>3</option>
+                <option value="4" {% if post.recruitment == 4 %} selected {% endif %}>4</option>
+                <option value="5" {% if post.recruitment == 5 %} selected {% endif %}>5</option>
+                <option value="6" {% if post.recruitment == 6 %} selected {% endif %}>직접 입력</option>
               </select>
             </div>
             <div style="margin-top: 12.5px;">
@@ -197,7 +199,7 @@
           <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
             >1.</span
           >
-          <input type="text" class="gray" placeholder="질문을 입력해주세요." name="question1" value=""/>
+          <input type="text" class="gray" placeholder="질문을 입력해주세요." name="question1" value="{{ questions_list.0 }}"/>
         </div>
       </div>
       <div class="Caption gray answer">
@@ -209,6 +211,12 @@
       <img src="{% static 'images/icons/add.svg' %}" />
     </div>
 
+    <!-- 모든 질문 내용을 data-attributes로 전달 -->
+    <div id="questions_data" style="display: none;">
+      {% for question in questions_list %}
+          <div data-question="{{ question }}"></div>
+      {% endfor %}
+    </div>
     <input type="hidden" id="question_count" name="question_count" value="{{ question_count }}">
     </form>
 </div>

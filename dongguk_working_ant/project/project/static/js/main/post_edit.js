@@ -14,6 +14,10 @@
     });
 });*/
 
+//모달 팝업 띄우기
+
+
+
 //모집인원 직접 입력 버튼
 const topElement = document.querySelector('#contents .top');
 const selectElement = document.getElementById('recruit_count');

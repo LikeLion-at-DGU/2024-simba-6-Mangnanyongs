@@ -283,13 +283,17 @@ input:focus {
 .date_input{
     display: flex;
     align-items: center;
-    width: 210px;
-    height: 33px;
+    width: 201px;
+    height: 31px;
     border-radius: 20px;
     border: 1px solid rgb(118, 118, 118);
     background: #FFF;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
     padding: 0 10px;
+}
+
+#recruit_date_input{
+    width: 183px;
 }
 
 input[type="date"]{
@@ -302,7 +306,7 @@ input[type="date"]{
     flex-direction: column;
     justify-content: center;
     width: 201px;
-    height: 32px;
+    height: 31px;
     border-radius: 20px;
     border: 1px solid rgb(118, 118, 118);
     background: #FFF;
@@ -406,9 +410,24 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .Input_space{
-    width: 203px; height: 33px; 
+    width: 203px; 
+    height: 33px; 
     flex-shrink: 0; 
     border-radius: 20px; 
     background: #FFF; 
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
+}
+
+#end_recruit_date{
+    margin-left: 40px;
+}
+
+#day_time{
+    display:flex;
+    align-items: center;
+    width: 201px;
+    height: 31px;
+    border-radius: 20px; 
+    border: 1px solid rgb(118, 118, 118);
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);
 }

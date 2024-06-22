@@ -23,6 +23,7 @@
 }
 .footerFrame {
     width: 73vw;
+    min-width: 1400px;
     height: 100%;
     display: flex;
     justify-content: space-between;

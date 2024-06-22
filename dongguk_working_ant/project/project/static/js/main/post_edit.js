@@ -14,16 +14,17 @@
     });
 });*/
 
-//모달 팝업 띄우기
-const calender = document.querySelector('#day_time img');
-calender.addEventListener('click', function(){
-  fetch('post_edit_modal.html')
-      .then(response => response.text())
-      .then(data => {
-          document.getElementById('modalContainer').innerHTML = data;
-      })
-      .catch(error => console.error('Error:', error));
+/*모달 팝업 띄우기
+const calender = document.querySelector("#day_time img");
+calender.addEventListener("click", function () {
+  fetch("post_edit_modal.html")
+    .then((response) => response.text())
+    .then((data) => {
+      document.getElementById("modalContainer").innerHTML = data;
+    })
+    .catch((error) => console.error("Error:", error));
 });
+*/
 
 /*const calender = document.querySelector('#day_time img');
 const Postmodal = new Request("post_edit_modal.html");
@@ -45,28 +46,28 @@ calender.addEventListener('click', function(){
 })*/
 
 //모집인원 직접 입력 버튼
-const topElement = document.querySelector('#contents .top');
-const selectElement = document.getElementById('recruit_count');
-const directInputSpan = document.createElement('span');
-directInputSpan.style = 'width: 200px; height: 30px; display:flex; align-items: center; flex-shrink: 0; border-radius: 20px; background: #FFF; border: 1px solid gray; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08)'
+const topElement = document.querySelector("#contents .top");
+const selectElement = document.getElementById("recruit_count");
+const directInputSpan = document.createElement("span");
+directInputSpan.style =
+  "width: 200px; height: 30px; display:flex; align-items: center; flex-shrink: 0; border-radius: 20px; background: #FFF; border: 1px solid gray; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08)";
 
-const directInput = document.createElement('input'); //directInputSpan 정의
-directInput.type = 'number';
-directInput.name = 'recruitment';
-directInput.style = 'Input_space'
-directInput.id = 'selboxDirect';
-directInput.style = 'border:none; width:160px; margin-left: 7px; height: 17px;'
+const directInput = document.createElement("input"); //directInputSpan 정의
+directInput.type = "number";
+directInput.name = "recruitment";
+directInput.style = "Input_space";
+directInput.id = "selboxDirect";
+directInput.style = "border:none; width:160px; margin-left: 7px; height: 17px;";
 
-selectElement.addEventListener('change', function(){
+selectElement.addEventListener("change", function () {
   const selectedValue = selectElement.value;
-  
-  if(selectedValue == 'direct'){
-    selectElement.remove();
-    topElement.appendChild(directInputSpan)
-    directInputSpan.appendChild(directInput);
-  } 
-});
 
+  if (selectedValue == "direct") {
+    selectElement.remove();
+    topElement.appendChild(directInputSpan);
+    directInputSpan.appendChild(directInput);
+  }
+});
 
 //새로운 detail 만들기
 
@@ -97,18 +98,7 @@ function delete_detail(selected) {
 }
 
 //교직원 맨 아래 +버튼
-const obj = document.getElementById("main3");
-const qborder = document.querySelector(".q_border:last-of-type");
-const newDiv = qborder.cloneNode(true);
-
-let questionNumber = obj.querySelectorAll(".q_border").length + 1;
-newDiv.querySelector(".orange").textContent = questionNumber + ".";
-
-
-
-document
-  .querySelector("#add_question img")
-  .addEventListener("click", function () {
+document.querySelector("#add_question img").addEventListener("click", function () {
     let obj = document.getElementById("main3");
     let qborder = document.querySelector(".q_border:last-of-type"); // 마지막 q_border 요소 선택
     let newDiv = qborder.cloneNode(true); // 전체 내용을 복사
@@ -133,4 +123,36 @@ document
 
     // obj 내의 q_border 요소들 중 마지막 요소의 다음에 newDiv를 삽입
     obj.insertBefore(newDiv, qborder.nextElementSibling);
-  });
+});
+
+//페이지 로드 시 질문 개수만큼 칸 생성
+document.addEventListener("DOMContentLoaded", function () {
+  let questionNumber = document.getElementById("question_count").value;
+
+  for (i = 2; i <= questionNumber; i++) {
+  let obj = document.getElementById("main3");
+  let qborder = document.querySelector(".q_border:last-of-type"); // 마지막 q_border 요소 선택
+  let newDiv = qborder.cloneNode(true); // 전체 내용을 복사
+
+  // 질문 개수 저장
+  document.getElementById("question_count").value = questionNumber;
+  console.log(document.getElementById("question_count").value);
+
+  
+    // 새로운 질문 번호 설정
+    newDiv.querySelector(".orange").textContent = i + ".";
+  
+    // 새로운 input 요소의 name 속성 설정
+    let newInput = newDiv.querySelector('input[name^="question"]'); // question으로 시작하는 첫 번째 input 요소 선택
+    if (newInput) {
+      // input 요소가 존재하는 경우에만 name 속성을 변경
+      newInput.setAttribute("name", "question" + questionNumber);
+    }
+
+    // 새로운 input 요소의 value 초기화 (필요한 경우)
+    newInput.value = "";
+
+    // obj 내의 q_border 요소들 중 마지막 요소의 다음에 newDiv를 삽입
+    obj.insertBefore(newDiv, qborder.nextElementSibling);
+  }
+});

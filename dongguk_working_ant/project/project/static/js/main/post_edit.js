@@ -97,6 +97,15 @@ function delete_detail(selected) {
 }
 
 //교직원 맨 아래 +버튼
+const obj = document.getElementById("main3");
+const qborder = document.querySelector(".q_border:last-of-type");
+const newDiv = qborder.cloneNode(true);
+
+let questionNumber = obj.querySelectorAll(".q_border").length + 1;
+newDiv.querySelector(".orange").textContent = questionNumber + ".";
+
+
+
 document
   .querySelector("#add_question img")
   .addEventListener("click", function () {

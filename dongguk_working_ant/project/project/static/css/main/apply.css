@@ -6,13 +6,14 @@
     
     margin-bottom: 100px;
     margin-top: 40px;
-    border: solid 1px red;
+    /* border: solid 1px red; */
     
 }
 form{
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 .backBtn{
     display: flex;
@@ -37,8 +38,8 @@ form{
     flex-direction: column;
     align-items: center;
     max-width: 1400px; /* 최대 너비를 1400px로 제한 */
-    border: solid 1px blue;
-    gap:90px;
+    /* border: solid 1px blue; */
+    gap:70px;
 }
 .width{
     width: 1263px;
@@ -137,26 +138,27 @@ form{
     height: 262px;
     align-items: center;
     flex-direction: column;
-    border:solid 1px purple;
+    /* border:solid 1px purple; */
 }
 .qTitle{
     display: flex;
     justify-content: flex-start;
     margin-bottom: 10px;
-    color: var(--input, #9C9CA1);
-font-family: "SUITE Variable";
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    color: #9C9CA1;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 .qTitle span{
-    color: var(--, #FE902F);
-font-family: "SUITE Variable";
-font-size: 20px;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
+    color: #FE902F;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-right: 10px;
 }
 .inner{
     display: flex;
@@ -166,7 +168,7 @@ line-height: normal;
     
 }
 
-.q{
+.textarea{
     padding: 13px 19px;
     width: 100%;
     border-radius: 12px;
@@ -179,4 +181,134 @@ line-height: normal;
     font-style: normal;
     font-weight: 500;
     line-height: 45px;
+}
+#filebox{
+    min-height: 213px;
+}
+#file{
+    height: 164px;
+}
+#fileinner{
+    height: 96px;
+}
+
+.applyBtn{
+    display: flex;
+    width: 166px;
+    height: 58px;
+    /* padding: 18px 78px; */
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    border-radius: 30px;
+    background: #FE902F;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+}
+.applyBtn span{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    color:  #FFFDFB;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    width: 100%;
+}
+
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 스크롤해도 화면에 고정 */
+    z-index: 1; /* 최상위 레벨 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 화면 전체 너비 */
+    height: 100%; /* 화면 전체 높이 */
+    overflow: auto; /* 필요한 경우 스크롤 */
+    background-color: rgb(0,0,0); /* 백업 색상 */
+    background-color: rgba(0,0,0,0.4); /* 배경 색상 불투명도 */
+}
+
+/* 모달 콘텐츠 */
+.modal-content {
+    margin: 15% auto; /* 중앙에 위치 */
+    padding: 20px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+        width: 458px;
+    height: 232px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    
+}
+.dd{
+    display: flex;
+    justify-content: flex-end;
+}
+.modaltext{
+    display: flex;
+    justify-content: center;
+}
+.st{
+    display: flex;
+    text-align: center;
+    color:  #1C1C1E;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    /* border:solid 1px blue; */
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ff{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+/* 확인 버튼 */
+#confirmBtn {
+
+    width: 200px;
+    margin-top: 48px;
+    display: flex;
+    padding: 18px 78px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    background: #FF8A00;
+    border: none;
+    outline: none;
+    color: #FFF;
+
+text-align: center;
+font-family: "SUITE Variable";
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }

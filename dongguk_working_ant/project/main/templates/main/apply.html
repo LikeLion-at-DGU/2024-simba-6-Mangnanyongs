@@ -47,24 +47,88 @@
             <!--지원동기 양식 -->
             {% for question in questions %}
                 <div class="questionBox w100">
-                    
                     <div class="question">
                         <div class="qTitle w100">
                             <span>{{ forloop.counter }}.</span> {{ question.content }}
                         </div>
                         <div class="inner w100">
-                            <textarea class="q" placeholder="지원자의 답변 입력란" ></textarea>
+                            <textarea class="textarea" placeholder="지원자의 답변 입력란" ></textarea>
                         </div>
                     </div>
-                
                 </div>
             {% endfor %}
+            <div class="questionBox w100" id="filebox">
+                <div class="question" id="file">
+                    <div class="qTitle w100" >
+                        <span>*</span> 첨부 파일을 업로드해주세요.
+                    </div>
+                    <div class="inner w100" id="fileinner">
+                        <!--파일업로드로 바꿔야됨 -->
+                        <textarea class="textarea" placeholder="파일 업로드" ></textarea>
+                    </div>
+                </div>
+            </div>
         </div>
+<!-- disabled -->
+        <button
+            class="applyBtn"
+            
+            type="button" 
+            id="applyBtn"
+        >
+            <span>지원하기
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M6.5 17.5015L18.3647 5.63672M18.3647 5.63672H7.50011M18.3647 5.63672V15.5005" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            
+        </button>
     </form>
 
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="dd">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modaltext">
+                <span class="st">지원 완료되었어요 !</span>
+            </div>
+            <div class="ff">
+                <button type="button" id="confirmBtn">확인</button>
+            </div>
+        </div>
+    </div>
+
 </div>
+<script>
+    // JavaScript로 모달 팝업 제어
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("applyBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var confirmBtn = document.getElementById("confirmBtn");
 
+    // "지원하기" 버튼 클릭 시 모달 팝업 표시
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
 
+    // 닫기 버튼 클릭 시 모달 팝업 닫기
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // 확인 버튼 클릭 시 모달 팝업 닫기
+    confirmBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // 모달 외부 클릭 시 모달 팝업 닫기
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
 {% endblock %} 
 {% block footer %}

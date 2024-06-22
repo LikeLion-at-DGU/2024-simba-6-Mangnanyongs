@@ -15,23 +15,29 @@
 });*/
 
 //모집인원 직접 입력 버튼
-document.querySelector("#recruit_count").addEventListener("change", (event) => {
-  rC = document.getElementById("recruit_count");
-  rI = document.querySelector('.top span');
+const topElement = document.querySelector('#contents .top');
+const selectElement = document.getElementById('recruit_count');
+const directInputSpan = document.createElement('span');
+directInputSpan.style = 'width: 203px; height: 33px; flex-shrink: 0; border-radius: 20px; background: #FFF; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08);'
 
-  console.log(rC);
-  console.log(rI);
+const directInput = document.createElement('input'); //directInputSpan 정의
+directInput.type = 'number';
+directInput.name = 'recruitment';
+directInput.id = 'selboxDirect';
+directInput.style = 'border:none; width:160px; margin-left: 7px; height: 17px;'
 
-  if (rC.value == "direct") {
-    rI.style="";
-    rC.style = "display: none;";
-  } else {
-    rI.style="display: none;";
-    rC.style= "display:";
-  }
+selectElement.addEventListener('change', function(){
+  const selectedValue = selectElement.value;
+  
+  if(selectedValue == 'direct'){
+    selectElement.remove();
+    topElement.appendChild(directInputSpan)
+    directInputSpan.appendChild(directInput);
+  } 
 });
 
-//모집 입원 직접 입력 버튼
+
+//새로운 detail 만들기
 
 let detailsContainer = document.getElementById("details");
 let detailTemplate = document.querySelector(".detail"); // 기존 detail 요소를 템플릿으로 사용

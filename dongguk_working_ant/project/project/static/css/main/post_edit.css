@@ -4,6 +4,7 @@
     width: 100%;
     max-width: 1400px; /* 최대 너비를 1400px로 제한 */
     margin: 0 auto; /* 중앙 정렬을 위한 설정 */
+    margin-bottom: 97px;
 }
 
 .content {

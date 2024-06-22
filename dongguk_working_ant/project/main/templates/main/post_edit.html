@@ -88,16 +88,13 @@
           <div class="Caption topic" id="contents">
             <div class="top">
               <label for="recruit_count">모집 인원</label>
-              <select name="recruitment" id="recruit_count" class="selector">
+              <select name="recruitment" id="recruit_count" class="selector" value="">
                 <option value="" hidden></option>
                 {% for option in recruitment_options %}
                     <option value="{{ option }}" {% if post.recruitment == option %}selected{% endif %}>{{ option }}</option>
                 {% endfor %}
                 <option value="direct" {% if post.recruitment not in recruitment_options and post.recruitment is not None %}selected{% endif %}>직접 입력</option>
               </select>
-              <span id="recruitment_input" style="display:none;">
-                <input type="number" id="direct_input" name="direct_recruitment" class="selector" style="display:none;" value="{% if post.recruitment not in recruitment_options %}{{ post.recruitment }}{% endif %}" />
-              </span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="work_place">근로 장소</label>

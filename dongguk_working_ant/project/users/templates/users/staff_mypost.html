@@ -20,7 +20,7 @@
         {% for post in posts %}
         <div class="card">
             <div class="more_function">
-                <a href="">
+                <a href="{% url 'main:post-edit' id=post.id %}">
                     <img src="{% static 'images/icons/fix.svg' %}">
                 </a>
                 <button type="button" name="trash" onclick="delete_Card(this)"> <!--화면에서는 사라지는데 DB에서도 제거되어야 함-->

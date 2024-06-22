@@ -100,8 +100,12 @@ def new_post(request):
 def post_edit(request, id):
     edit_post = get_object_or_404(Post, pk=id)
     recruitment_options = [1, 2, 3, 4, 5]
+    
+    #지원서 양식 부분
+    questions = Question.objects.filter(post=id)
+    question_count = len(questions)
 
-    return render(request, 'main/post_edit.html', {'post': edit_post, 'recruitment_options': recruitment_options})
+    return render(request, 'main/post_edit.html', {'post': edit_post, 'recruitment_options': recruitment_options, 'questions':questions, 'question_count':question_count})
 
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal.html')
@@ -133,7 +137,7 @@ def post_create(request):
     new_post.day_left = d_day.days
 
     new_post.place = request.POST['place']
-    new_post.time = request.POST['time']
+    #new_post.time = request.POST['time']
     new_post.recruitment = request.POST['recruitment']
     new_post.wage = request.POST['wage']
 
@@ -198,6 +202,9 @@ def post_update(request, id):
         
         #new_post.file 수정 예정
         update_post.pub_date = timezone.now()
+
+        #지원서 양식 부분
+        
         
         update_post.save()
 

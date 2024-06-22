@@ -1,1 +1,7 @@
 <!-- 교직원 학생지원서확인페이지(지원서예시말하는듯?) 이동건-->
+{% for answer in answers %}
+    {{ answer.question.content }}
+    <br>
+    {{ answer.content }}
+    <br>
+{% endfor %}

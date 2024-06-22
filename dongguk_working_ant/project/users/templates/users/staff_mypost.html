@@ -87,7 +87,7 @@
                     <div>{{post.time}}</div>
                 </div>
             </span>
-            <a href="" class="more_info"> <!--url 수정 부탁드립니다-->
+            <a href="{% url 'users:staff-appslist' post.id %}" class="more_info"> <!--url 수정 부탁드립니다-->
                 <img src="{% static 'images/icons/check_applicator.svg' %}"/>
             </a>
         </div>

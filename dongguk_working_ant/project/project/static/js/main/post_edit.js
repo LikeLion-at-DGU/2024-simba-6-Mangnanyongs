@@ -18,13 +18,31 @@
 const calender = document.querySelector('#day_time img');
 calender.addEventListener('click', function(){
   fetch('post_edit_modal.html')
-            .then(response => response.text())
-            .then(data => {
-                modalBody.innerHTML = data;
-                modal.style.display = "block";
-            })
-            .catch(error => console.error('Error:', error));
-})
+      .then(response => response.text())
+      .then(data => {
+          document.getElementById('modalContainer').innerHTML = data;
+      })
+      .catch(error => console.error('Error:', error));
+});
+
+/*const calender = document.querySelector('#day_time img');
+const Postmodal = new Request("post_edit_modal.html");
+
+fetch(Postmodal)
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error(`HTTP 오류! 상태: ${response.status}`);
+    }
+
+    return response.blob();
+  })
+  .then((response) => {
+    myImage.src = URL.createObjectURL(response);
+  });
+
+calender.addEventListener('click', function(){
+
+})*/
 
 //모집인원 직접 입력 버튼
 const topElement = document.querySelector('#contents .top');

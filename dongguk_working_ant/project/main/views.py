@@ -14,7 +14,7 @@ def mainlistpage(request):
     if request.user.is_authenticated:
         
         # 입력 파라미터
-        department = request.GET.get('depa','')
+        department = request.GET.get('depa','전체')
         keyword = request.GET.get('kw', '')
         sort = request.GET.get('so', '')
         end = request.GET.get('en', '')
@@ -98,8 +98,10 @@ def new_post(request):
     return render(request, 'main/new-post.html')
 
 def post_edit(request, id):
-    edit_post = Post.objects.get(pk=id)
-    return render(request, 'main/post_edit.html', {'post' : edit_post})
+    edit_post = get_object_or_404(Post, pk=id)
+    recruitment_options = [1, 2, 3, 4, 5]
+
+    return render(request, 'main/post_edit.html', {'post': edit_post, 'recruitment_options': recruitment_options})
 
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal.html')
@@ -179,7 +181,17 @@ def post_update(request, id):
 
         update_post.place = request.POST['place']
         update_post.time = request.POST['time']
-        update_post.recruitment = request.POST['recruitment']
+
+        recruitment_value = request.POST.get('recruitment', '')
+        direct_recruitment_value = request.POST.get('direct_recruitment', '')
+
+        if recruitment_value == 'direct' and direct_recruitment_value.isdigit():
+            update_post.recruitment = int(direct_recruitment_value)
+        elif recruitment_value.isdigit():
+            update_post.recruitment = int(recruitment_value)
+        else:
+            update_post.recruitment = None
+
         update_post.wage = request.POST['wage']
 
         #body부분을 리스트로 받아오기

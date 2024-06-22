@@ -1,1 +1,4 @@
 <!--교직원 지원자 리스트 담당자: 이동건-->
+{% for student in students %}
+    {{ student.profile.name }}
+{% endfor %}

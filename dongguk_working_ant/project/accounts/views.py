@@ -81,3 +81,7 @@ def signup_staff(request):
             return redirect('/')
 
     return render(request, 'accounts/signup_staff.html')
+
+def delete_account(request):
+    request.user.delete()
+    return redirect('main:mainlistpage')

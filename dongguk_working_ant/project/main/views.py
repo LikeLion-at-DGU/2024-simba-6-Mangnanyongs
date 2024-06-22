@@ -118,7 +118,6 @@ def post_create(request):
 
     new_post.writer = request.user
     new_post.title = request.POST['title']
-    #new_post.building 수정 예정
     new_post.organization = request.POST['organization']
     
     new_post.department = request.POST['department']
@@ -164,7 +163,6 @@ def post_update(request, id):
     if request.user.is_authenticated and request.user == update_post.writer:
         update_post.writer = request.user
         update_post.title = request.POST['title']
-        #new_post.building 수정 예정
         update_post.organization = request.POST['organization']
         
         update_post.department = request.POST['department']

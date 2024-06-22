@@ -7,7 +7,6 @@ class Post(models.Model):
     #User, Profile 생성 후 writer부분 수정 예정
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    building = models.ImageField(upload_to="post/", blank=True, null=True)
     organization = models.CharField(max_length=50, null=True)
     
     department = models.CharField(max_length=50, null=True)

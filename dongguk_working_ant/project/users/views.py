@@ -22,7 +22,8 @@ def student_mypage(request):
     return render(request, 'users/student_mypage.html')
 
 def student_myscrap(request):
-    return render(request, 'users/student_myscrap.html')
+    scraped_posts = request.user.scraped.all()
+    return render(request, 'users/student_myscrap.html', {'scraped_posts':scraped_posts})
 
 def student_mywork(request):
     return render(request, 'users/student_mywork.html')

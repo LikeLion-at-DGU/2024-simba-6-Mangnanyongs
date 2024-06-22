@@ -1,10 +1,32 @@
 <!-- 학생알아보기 지원하기 이동건-->
 
-<!--question불러오기 예시-->
-{% for question in questions %}
-    {{ question.content }}
-{% endfor %}
-
-{% if user.profile.photo %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/apply.css'%}"
+/>
+<div id="applyScreen">
+    <div class="backBtn">
+        <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+            <img src="{% static 'images/icons/back.svg' %}" />
+        </a>
+        <span>{{post.organization}} {{post.title}} 지원</span>
+    </div>
+    <!--question불러오기 예시-->
+    {% for question in questions %}
+        {{ question.content }}
+    {% endfor %}
+    {% if user.profile.photo %}
  <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
 {% endif %}
+</div>
+
+
+<!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
+{% endblock %} 
+{% block footer %}
+    <!--footer필요없는페이지라 비우기 -->
+{% endblock %}

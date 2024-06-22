@@ -18,22 +18,47 @@
             <span id="word">{{post.organization}} {{post.title}} 지원</span>
         </div>
         <div id="applyBody" class="width">
-            <div class="profileBox width">
-                <div class="profile width">
+            <div class="profileBox w100">
+                <!--지원자 이미지 박스 -->
+                <div class="profile w100">
                     <div class="img">
-                        <div class="imgTest"> </div>
+                        {% if user.profile.photo %}
+                            <img src="{{ user.profile.photo.url }}" alt="사진" width="100px">
+                        {% endif %}
                     </div>
                     <div class="info">
                         <div class="infoText">
-                            <!--학번연결해야됨-->
-                            <span id="nameEtc"><span id="nameBold">{{ user.profile.name }}</span>{{user.profile.birth}}  |  {{user.profile.department}}  |  학번</span>
+                            
+                            <span id="nameEtc"><span id="nameBold">{{ user.profile.name }}</span>{{user.profile.birth}}  |  {{user.profile.department}}  |  {{user.profile.student_number}}</span>
                         </div>
-                        <div class="infoText"></div>
-                        <div class="infoText"></div>
-                        <div class="infoText"></div>
+                        <div class="infoText">
+                            <!--소득분위 연결해야됨-->
+                            <span class="contentText">소득분위<span class="indextext">| 8분위</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">휴대폰<span class="indextext">| {{ user.profile.phone }}</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">이메일<span class="indextext">| {{ user.profile.email }}</span></span>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!--지원동기 양식 -->
+            {% for question in questions %}
+                <div class="questionBox w100">
+                    
+                    <div class="question">
+                        <div class="qTitle w100">
+                            <span>{{ forloop.counter }}.</span> {{ question.content }}
+                        </div>
+                        <div class="inner w100">
+                            <textarea class="q" placeholder="지원자의 답변 입력란" ></textarea>
+                        </div>
+                    </div>
+                
+                </div>
+            {% endfor %}
         </div>
     </form>
 

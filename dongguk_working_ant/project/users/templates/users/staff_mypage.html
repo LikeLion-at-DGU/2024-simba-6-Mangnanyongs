@@ -16,24 +16,28 @@
                 <img class="profileImage" src="{% static 'images/icons/imgprofile.svg' %}" />
             </div>
             <div class="profileText">
-                <span ><span id="mpTc">김동국</span>님,</span><span>안녕하세요!</span>
+                <span ><span id="mpTc">{{ user.profile.name }}</span>님,</span><span>안녕하세요!</span>
             </div>
         </div>
         <div class="staffNavBox">
             <div class="staffNav">
-                <a class="nav" >
+                <a class="nav" href="">
                     <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
                 </a>
-                <a class="nav">
+                <a class="nav" href="{% url 'main:new-post' %}">
                     <img src="{% static 'images/icons/staffmypagenav2.svg' %}" />
                 </a>
-                <a class="nav">
+                <a class="nav" href="{% url 'users:staff-mypost' %}">
                     <img src="{% static 'images/icons/staffmypagenav3.svg' %}" />
                 </a>
             </div>
             <div class="staffLogoutNav">
-                <button class="logoutNav"><span class="logoutNavText">로그아웃</span></button>
-                <button class="logoutNav"><span class="logoutNavText">회원탈퇴</span></button>
+                <a href="{% url 'accounts:logout' %}">
+                    <button class="logoutNav"><span class="logoutNavText">로그아웃</span></button>
+                </a>
+                <a href="{% url 'accounts:delete-account' %}">
+                    <button class="logoutNav"><span class="logoutNavText">회원탈퇴</span></button>
+                </a>
             </div>
         </div>
     </div>

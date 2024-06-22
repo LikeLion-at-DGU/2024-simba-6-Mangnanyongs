@@ -16,8 +16,8 @@
 </div>
 
 <div class="content" id="main2">
-    {% if posts %}
-        {% for post in posts %}
+    {% if scraped_posts %}
+        {% for post in scraped_posts %}
         <div class="card">
             <form action="{% url 'main:scraps' post.id %}" method='POST'> <!--스크랩-->
                 {% csrf_token %}

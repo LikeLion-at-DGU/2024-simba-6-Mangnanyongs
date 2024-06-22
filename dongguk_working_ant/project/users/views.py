@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from main.models import Post
+from main.models import Post, Application, Applicated
 
 # Create your views here.
 def staff_mypage(request):
@@ -16,7 +16,9 @@ def staff_studentappfile(request):
     return render(request, 'users/staff_studentappfile.html')
 
 def student_myapplication(request):
-    return render(request, 'users/student_myapplication.html')
+    applications = Application.objects.filter(writer=request.user).select_related('post')
+    applicated_posts = [application.post for application in applications]
+    return render(request, 'users/student_myapplication.html', {'applicated_posts': applicated_posts})
 
 def student_mypage(request):
     return render(request, 'users/student_mypage.html')
@@ -26,4 +28,6 @@ def student_myscrap(request):
     return render(request, 'users/student_myscrap.html', {'scraped_posts':scraped_posts})
 
 def student_mywork(request):
-    return render(request, 'users/student_mywork.html')
+    mywork = Applicated.objects.filter(student=request.user, is_accepted=1).select_related('post')
+    mywork_posts = [applicated.post for applicated in mywork]
+    return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})

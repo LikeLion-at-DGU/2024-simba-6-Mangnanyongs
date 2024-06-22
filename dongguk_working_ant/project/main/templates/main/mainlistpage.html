@@ -105,7 +105,40 @@
                 </button>
             </form>
             <span class="photo">
-                <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+                <span class="architecture">
+                    <!--건물 사진 적용-->
+                    {% if post.place == '경영/사회과학관' %}
+                        <img src="{% static 'images/buildings/경영사회과학관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '과학관' %}
+                        <img src="{% static 'images/buildings/과학관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '남산학사' %}
+                        <img src="{% static 'images/buildings/남산학사.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '다향관' %}
+                        <img src="{% static 'images/buildings/다향관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '명진관' %}
+                        <img src="{% static 'images/buildings/명진관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '법학/만해관' %}
+                        <img src="{% static 'images/buildings/법학만해관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '본관' %}
+                        <img src="{% static 'images/buildings/본관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '신공학관' %}
+                        <img src="{% static 'images/buildings/신공학관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '원흥관' %}
+                        <img src="{% static 'images/buildings/원흥관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '정보문화관' %}
+                        <img src="{% static 'images/buildings/정보문화관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '중앙도서관' %}
+                        <img src="{% static 'images/buildings/중앙도서관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '학림관' %}
+                        <img src="{% static 'images/buildings/학림관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '학술문화관' %}
+                        <img src="{% static 'images/buildings/학술문화관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '혜화관' %}
+                        <img src="{% static 'images/buildings/혜화관.png' %}" alt="cardImage" width="295px" height="250px">
+                    {% elif post.place == '기타' %}
+                        <img src="{% static 'images/buildings/기타.png' %}" alt="cardImage" width="295px" height="250px">    
+                    {% endif %}
+                </span> <!--DB에 사진이 추가되면 삭제될 거임-->
             </span>
             <span class="detail">
                 <div class="information">

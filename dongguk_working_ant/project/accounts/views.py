@@ -43,6 +43,7 @@ def signup_student(request):
             department = request.POST['department']
             phone = request.POST['phone']
             email = request.POST['email']
+            student_number = request.POST['student_number']
 
             certification_student = request.FILES.get('certification_student')
             photo = request.FILES.get('photo')

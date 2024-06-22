@@ -6,6 +6,7 @@
     height: 566px;
     border-radius: 12px;
     background: #FFF;
+    border: 1px solid black;
 }
 .Caption {
     color: #1C1C1E;

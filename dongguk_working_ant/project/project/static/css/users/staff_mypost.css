@@ -147,6 +147,7 @@
     height: 10em;
     border-radius:50%;
     background-color: #D3D3D3;
+    overflow: hidden;
 }
 
 .detail{

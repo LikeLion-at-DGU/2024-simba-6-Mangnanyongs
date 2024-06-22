@@ -95,7 +95,7 @@ def mainlistpage(request):
     return redirect('accounts:login')
 
 def new_post(request):
-    return render(request, 'main/new-post.html')
+    return render(request, 'main/new_post.html')
 
 def post_edit(request, id):
     edit_post = get_object_or_404(Post, pk=id)

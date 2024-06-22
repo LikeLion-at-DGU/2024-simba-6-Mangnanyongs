@@ -69,8 +69,8 @@ def mainlistpage(request):
         # 정렬
         if sort == 'deadline':
             posts = posts.order_by('-deadline','-pub_date')
-        elif sort ==  'inquiry':
-            posts = posts.order_by('-inquiry','-pub_date')
+        elif sort ==  'apply':
+            posts = posts.order_by('-applicated_count','-pub_date')
         elif sort ==  'scrap':
             posts = posts.order_by('-scrap','-pub_date')
         else:

@@ -26,7 +26,6 @@ class Post(models.Model):
     pub_date = models.DateTimeField()
     scrap = models.ManyToManyField(User, related_name='scraped', blank=True, default=None)
     scrap_count = models.PositiveIntegerField(default=0)
-    inquiry = models.PositiveIntegerField(default=0)
     applicated_count = models.PositiveIntegerField(default=0)
 
     #body필드에 TextField를 사용하고 JSON 문자열로 변환하여 저장 > 리스트로 만들어주기 위함

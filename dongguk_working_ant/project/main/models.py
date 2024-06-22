@@ -55,11 +55,3 @@ class Answer(models.Model):
     question = models.ForeignKey(Question, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
     file = models.FileField(upload_to="answer_file/", blank=True, null=True)
-
-class Applicated(models.Model):
-    post = models.OneToOneField(Post, on_delete=models.CASCADE)
-    student = models.ManyToManyField(User, related_name='apply', blank=True, default=None)
-    is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
-
-    def __str__(self):
-        return 'applicated of ' + str(self.post)

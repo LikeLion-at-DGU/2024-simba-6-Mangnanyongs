@@ -3,7 +3,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.db.models import Q, Count, F
 import json
-from .models import Post, Question, Application, Answer, Applicated
+from .models import Post, Question, Application, Answer
 
 # Create your views here.
 def mainpage(request):

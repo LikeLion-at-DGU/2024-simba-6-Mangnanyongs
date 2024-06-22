@@ -231,7 +231,8 @@ def scraps(request, post_id):
     
 def apply(request, post_id):
     questions = Question.objects.filter(post=post_id)
-    return render(request, 'main/apply.html', {'questions':questions})
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'main/apply.html', {'questions':questions, 'post':post})
 
 def application_create(request, post_id):
     new_application = Application()

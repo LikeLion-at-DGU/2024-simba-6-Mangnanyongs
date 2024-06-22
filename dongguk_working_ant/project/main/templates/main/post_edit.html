@@ -151,6 +151,7 @@
           class="question"
           style="display: block; background-color: #f7f8fb; overflow: auto"
         >
+        {% for body in post.get_body %}
           <div
             class="detail"
             style="
@@ -177,6 +178,7 @@
                 margin-top: 3px;
               "
               name="body"
+              value="{{ body }}"
             />
             <img
               src="{% static 'images/icons/chuga.svg' %}"
@@ -190,6 +192,7 @@
               onclick="delete_detail(this);"
             />
           </div>
+        {% endfor %}
         </div>
       </div>
     </div>

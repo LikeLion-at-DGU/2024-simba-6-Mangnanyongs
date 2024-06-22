@@ -69,8 +69,8 @@ def mainlistpage(request):
         # 정렬
         if sort == 'deadline':
             posts = posts.order_by('-deadline','-pub_date')
-        elif sort ==  'inquiry':
-            posts = posts.order_by('-inquiry','-pub_date')
+        elif sort ==  'apply':
+            posts = posts.order_by('-applicated_count','-pub_date')
         elif sort ==  'scrap':
             posts = posts.order_by('-scrap','-pub_date')
         else:
@@ -231,7 +231,8 @@ def scraps(request, post_id):
     
 def apply(request, post_id):
     questions = Question.objects.filter(post=post_id)
-    return render(request, 'main/apply.html', {'questions':questions})
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'main/apply.html', {'questions':questions, 'post':post})
 
 def application_create(request, post_id):
     new_application = Application()

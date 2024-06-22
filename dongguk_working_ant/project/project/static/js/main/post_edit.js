@@ -15,8 +15,16 @@
 });*/
 
 //모달 팝업 띄우기
-
-
+const calender = document.querySelector('#day_time img');
+calender.addEventListener('click', function(){
+  fetch('post_edit_modal.html')
+            .then(response => response.text())
+            .then(data => {
+                modalBody.innerHTML = data;
+                modal.style.display = "block";
+            })
+            .catch(error => console.error('Error:', error));
+})
 
 //모집인원 직접 입력 버튼
 const topElement = document.querySelector('#contents .top');

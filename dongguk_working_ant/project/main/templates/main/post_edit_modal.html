@@ -141,7 +141,7 @@
         <div id="select_work_time">
             <div style="display: flex;">
                 <img src="../../../project/static/images/icons/watch.svg" style="margin-left: 21px; margin-right: 12px;">
-                <select id="select_time" class="Caption big gray">
+                <select name="time" id="select_time" class="Caption big gray">
                     <option value="" hidden>시작 시간 선택</option>
                     <option value="9">오전 9시</option>
                     <option value="10">오전 10시</option>
@@ -159,7 +159,7 @@
         <div id="select_work_time">
             <div style="display: flex;">
                 <img src="../../../project/static/images/icons/watch.svg" style="margin-left: 21px; margin-right: 12px;">
-                <select id="select_time" class="Caption big gray">
+                <select name="time" id="select_time" class="Caption big gray">
                     <option value="" hidden>종료 시간 선택</option>
                     <option value="9">오전 9시</option>
                     <option value="10">오전 10시</option>
@@ -183,5 +183,6 @@
             <img src="../../../project/static/images/icons/submit.svg">
         </button>
       </div>
+      <script src="{% static 'js/main/post_edit.js' %}"></script>
   </body>
 </html>

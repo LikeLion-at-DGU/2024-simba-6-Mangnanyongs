@@ -17,7 +17,7 @@ class Post(models.Model):
     day_left = models.IntegerField(null=True)#남은날짜
     place = models.CharField(max_length=50, blank=False)
     time = models.TextField(max_length=50, null=False)
-    recruitment = models.CharField(null=True)
+    recruitment = models.PositiveIntegerField(default=0)
     wage = models.PositiveIntegerField(null=True, default=0)
     body = models.TextField()
 
@@ -47,13 +47,14 @@ class Question(models.Model):
 class Application(models.Model):
     post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
 
 
 class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
-    file = models.FileField(upload_to="question/", blank=True, null=True)
+    file = models.FileField(upload_to="answer_file/", blank=True, null=True)
 
 class Applicated(models.Model):
     post = models.OneToOneField(Post, on_delete=models.CASCADE)

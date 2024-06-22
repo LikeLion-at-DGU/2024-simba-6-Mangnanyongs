@@ -62,7 +62,7 @@ directInput.style = "border:none; width:160px; margin-left: 7px; height: 17px;";
 selectElement.addEventListener("change", function () {
   const selectedValue = selectElement.value;
 
-  if (selectedValue == "direct") {
+  if (selectedValue == "6") {
     selectElement.remove();
     topElement.appendChild(directInputSpan);
     directInputSpan.appendChild(directInput);
@@ -128,6 +128,7 @@ document.querySelector("#add_question img").addEventListener("click", function (
 //페이지 로드 시 질문 개수만큼 칸 생성
 document.addEventListener("DOMContentLoaded", function () {
   let questionNumber = document.getElementById("question_count").value;
+  let questionsData = document.getElementById("questions_data").children;
 
   for (i = 2; i <= questionNumber; i++) {
   let obj = document.getElementById("main3");
@@ -146,11 +147,12 @@ document.addEventListener("DOMContentLoaded", function () {
     let newInput = newDiv.querySelector('input[name^="question"]'); // question으로 시작하는 첫 번째 input 요소 선택
     if (newInput) {
       // input 요소가 존재하는 경우에만 name 속성을 변경
-      newInput.setAttribute("name", "question" + questionNumber);
+      newInput.setAttribute("name", "question" + i);
+      
+      // 질문 데이터를 가져와서 value 속성에 설정
+      let questionContent = questionsData[i - 1].getAttribute('data-question');
+      newInput.setAttribute("value", questionContent);
     }
-
-    // 새로운 input 요소의 value 초기화 (필요한 경우)
-    newInput.value = "";
 
     // obj 내의 q_border 요소들 중 마지막 요소의 다음에 newDiv를 삽입
     obj.insertBefore(newDiv, qborder.nextElementSibling);

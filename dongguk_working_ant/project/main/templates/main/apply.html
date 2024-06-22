@@ -9,7 +9,7 @@
     href="{% static 'css/main/apply.css'%}"
 />
 <div id="applyScreen">
-    <form action="{% url 'main:post-update' post.id %}" method="POST" enctype="multipart/form-data">
+    <form action="{% url 'main:application-create' post.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="backBtn">
             <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
@@ -52,7 +52,7 @@
                             <span>{{ forloop.counter }}.</span> {{ question.content }}
                         </div>
                         <div class="inner w100">
-                            <textarea class="textarea" placeholder="지원자의 답변 입력란" ></textarea>
+                            <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
         <button
             class="applyBtn"
             
-            type="button" 
+            type="submit" 
             id="applyBtn"
         >
             <span>지원하기

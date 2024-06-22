@@ -65,6 +65,8 @@ def mainlistpage(request):
         #소득 분위 반영 여부
         if income == 'apply':
             posts = posts.filter(is_income_bracket = 1)
+        elif income == 'notapply':
+            posts = posts.filter(is_income_bracket = 0)
 
         # 정렬
         if sort == 'deadline':
@@ -101,10 +103,11 @@ def post_edit(request, id):
     edit_post = get_object_or_404(Post, pk=id)
 
     #지원서 양식 부분
-    questions = Question.objects.filter(post=id)
+    questions = Question.objects.filter(post=id).values_list('content', flat=True)
+    questions_list = list(questions)
     question_count = len(questions)
 
-    return render(request, 'main/post_edit.html', {'post': edit_post, 'questions':questions, 'question_count':question_count})
+    return render(request, 'main/post_edit.html', {'post': edit_post, 'questions_list':questions_list, 'question_count':question_count})
 
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal.html')
@@ -155,10 +158,6 @@ def post_create(request):
         for q in range(1, question_count+1):
             post_question_create(request, q, new_post)
 
-    new_applicated = Applicated()
-    new_applicated.post = new_post
-    new_applicated.save()
-
     return redirect('main:post-detail', new_post.id)
 
 def post_update(request, id):
@@ -203,7 +202,19 @@ def post_update(request, id):
         update_post.pub_date = timezone.now()
 
         #지원서 양식 부분
+        questions = Question.objects.filter(post=id)
         
+        num = 1
+        for q in questions: #기존에 있던 질문 수정
+            q.content = request.POST['question'+str(num)]
+            num += 1
+            q.save()
+
+        if int(request.POST['question_count']) > len(questions): #새로 만드는 질문 생성
+            question_count = int(request.POST['question_count'])
+            for q in range(num, question_count+1):
+                post_question_create(request, q, update_post)
+
         
         update_post.save()
 
@@ -241,11 +252,16 @@ def apply(request, post_id):
 def application_create(request, post_id):
     new_application = Application()
 
-    new_application.post = Post.get_object_or_404(pk=post_id)
+    post = get_object_or_404(Post, pk=post_id)
+    new_application.post = post
     new_application.writer = request.user
 
+    #지원자수 추가
+    post.applicated_count += 1
+
     new_application.save()
-    
+    post.save()
+
     #지원서 내용 부분
     questions = Question.objects.filter(post=new_application.post)
     num=1
@@ -253,9 +269,10 @@ def application_create(request, post_id):
             new_answer = Answer()
             new_answer.application = new_application
             new_answer.question = question
-            content = request.POST['answer'+str(num)]
+            new_answer.content = request.POST['answer'+str(num)]
             new_answer.save()
             num += 1
-            #file
+    
+    #file추가 수정 예정
 
-    return redirect('main:post-detail', post.id)
+    return redirect('main:post-detail', post_id)

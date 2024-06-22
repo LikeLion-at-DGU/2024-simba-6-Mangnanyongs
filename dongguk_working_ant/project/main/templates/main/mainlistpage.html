@@ -83,8 +83,9 @@
             <label for="income">
                 <select id="income" class="Caption gray thin inc" onchange="changeSelect_income(this);">
                     {% comment %} {{ income }} {% endcomment %}
-                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위 미반영</option>
+                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위</option>
                     <option value="apply" {% if inc == 'apply' %}selected{% endif %}>소득 분위 반영</option>
+                    <option value="notapply" {% if inc == 'notapply' %}selected{% endif %}>소득 분위 미반영</option>
                 </select>
             </label>
         </div>

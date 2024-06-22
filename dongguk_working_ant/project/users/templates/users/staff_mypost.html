@@ -9,7 +9,7 @@
 />
 
 <div class="content" id="header">
-    <a href="">
+    <a href="javascript:history.back()">
         <img src="{% static 'images/icons/vector.svg' %}" id="vector">
     </a>
     <span class="Capital Caption" style="margin-left:-0.5em; margin-bottom:0.5em;">공고관리</span>
@@ -87,8 +87,8 @@
                     <div>{{post.time}}</div>
                 </div>
             </span>
-            <a href="" class="more_info"> <!--url 수정 부탁드립니다-->
-                <img src="{% static 'images/icons/check_application.svg' %}"/>
+            <a href="{% url 'users:staff-appslist' post.id %}" class="more_info"> <!--url 수정 부탁드립니다-->
+                <img src="{% static 'images/icons/check_applicator.svg' %}"/>
             </a>
         </div>
         {% endfor %}

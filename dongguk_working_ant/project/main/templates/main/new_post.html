@@ -12,7 +12,7 @@
   <div class="content" id="main1">
     <div class="Caption Capital" id="introduction">
       <!--뒤로 가기 버튼-->
-      <a href="{% url 'main:mainlistpage' %}">
+      <a href="javascript:history.back()">
         <img src="{% static 'images/icons/vector.svg' %}" id="back" />
       </a>
       <span id="word">모집 공고 작성</span>
@@ -76,10 +76,8 @@
                 </div>
               </div>
               <div class="date_selector">
-                <label class="recruit_date">모집 기간</label>
+                <label class="recruit_date">모집 마감</label>
                 <div class="date_input" id="recruit_date_input">
-                  <input type="date" id="start_recruit_date" class="selector" />
-                  <span>~</span>
                   <input type="date" id="end_recruit_date" class="selector" name="deadline"/>
                 </div>
               </div>
@@ -118,17 +116,11 @@
               </select>
             </div>
             <div style="margin-top: 12.5px;">
-              <label for="work_time">근로 요일 및 시간</label>
-              <select name="time" id="work_time" class="selector">
-                <option value="" hidden></option>
-                <option value="Mon">월요일</option>
-                <option value="Tue">화요일</option>
-                <option value="Wed">수요일</option>
-                <option value="Thu">목요일</option>
-                <option value="Fri">금요일</option>
-                <option value="Sat">토요일</option>
-                <option value="Sun">일요일</option>
-              </select>
+              <span>근로 요일 및 시간</span>
+              <span id="day_time">
+                <input type="text" id="input_day_time" name="time"/>
+                <img src="{% static 'images/icons/calendar.svg' %}" style="width: 24px; height: 24px;">
+              </span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="salary">급여</label>

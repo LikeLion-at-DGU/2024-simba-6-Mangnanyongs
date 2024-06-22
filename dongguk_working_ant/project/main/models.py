@@ -17,7 +17,7 @@ class Post(models.Model):
     day_left = models.IntegerField(null=True)#남은날짜
     place = models.CharField(max_length=50, blank=False)
     time = models.TextField(max_length=50, null=False)
-    recruitment = models.PositiveIntegerField(null=True, default=0)
+    recruitment = models.CharField(null=True)
     wage = models.PositiveIntegerField(null=True, default=0)
     body = models.TextField()
 

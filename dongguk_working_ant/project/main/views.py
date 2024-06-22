@@ -99,13 +99,12 @@ def new_post(request):
 
 def post_edit(request, id):
     edit_post = get_object_or_404(Post, pk=id)
-    recruitment_options = [1, 2, 3, 4, 5]
-    
+
     #지원서 양식 부분
     questions = Question.objects.filter(post=id)
     question_count = len(questions)
 
-    return render(request, 'main/post_edit.html', {'post': edit_post, 'recruitment_options': recruitment_options, 'questions':questions, 'question_count':question_count})
+    return render(request, 'main/post_edit.html', {'post': edit_post, 'questions':questions, 'question_count':question_count})
 
 def post_edit_modal(request):
     return render(request, 'main/post_edit_modal.html')
@@ -182,7 +181,7 @@ def post_update(request, id):
         update_post.day_left = d_day.days
 
         update_post.place = request.POST['place']
-        update_post.time = request.POST['time']
+        #update_post.time = request.POST['time']
 
         recruitment_value = request.POST.get('recruitment', '')
         direct_recruitment_value = request.POST.get('direct_recruitment', '')

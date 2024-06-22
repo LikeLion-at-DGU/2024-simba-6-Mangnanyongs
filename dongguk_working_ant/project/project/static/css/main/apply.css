@@ -3,8 +3,95 @@
     flex-direction: column;
     width: 100%;
     max-width: 1400px; /* 최대 너비를 1400px로 제한 */
-    margin: 0 auto; /* 중앙 정렬을 위한 설정 */
-    margin-bottom: 200px;
+    
+    margin-bottom: 100px;
     margin-top: 40px;
     border: solid 1px red;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.backBtn{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+}
+#word{
+    color:  #1C1C1E;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#applyBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    border: solid 1px red;
+    gap:90px;
+}
+.width{
+    width: 90%;
+}
+.profileBox{
+    padding: 32px 70px;
+    display: flex;
+    justify-content: flex-start;
+    
+    height: 273px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #EBEBEB;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+.profile{
+    display: flex;
+    gap:60px;
+    justify-content: flex-start;
+    border: solid 1px rgb(75, 92, 167);
+}
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgTest{
+    width: 165px;
+    height: 171px;
+    flex-shrink: 0;
+    border-radius: 83px;
+    background-color: gray;
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.infoText{
+    display: flex;
+    height: 44px;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+#nameEtc{
+    color: #343030;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+}
+#nameBold{
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 10px;
 }

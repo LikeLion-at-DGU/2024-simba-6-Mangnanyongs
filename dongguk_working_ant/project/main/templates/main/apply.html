@@ -9,19 +9,34 @@
     href="{% static 'css/main/apply.css'%}"
 />
 <div id="applyScreen">
-    <div class="backBtn">
-        <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
-            <img src="{% static 'images/icons/back.svg' %}" />
-        </a>
-        <span>{{post.organization}} {{post.title}} 지원</span>
-    </div>
-    <!--question불러오기 예시-->
-    {% for question in questions %}
-        {{ question.content }}
-    {% endfor %}
-    {% if user.profile.photo %}
-        <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
-    {% endif %}
+    <form action="{% url 'main:post-update' post.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="backBtn">
+            <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+                <img src="{% static 'images/icons/back.svg' %}" />
+            </a>
+            <span id="word">{{post.organization}} {{post.title}} 지원</span>
+        </div>
+        <div id="applyBody" class="width">
+            <div class="profileBox width">
+                <div class="profile width">
+                    <div class="img">
+                        <div class="imgTest"> </div>
+                    </div>
+                    <div class="info">
+                        <div class="infoText">
+                            <!--학번연결해야됨-->
+                            <span id="nameEtc"><span id="nameBold">{{ user.profile.name }}</span>{{user.profile.birth}}  |  {{user.profile.department}}  |  학번</span>
+                        </div>
+                        <div class="infoText"></div>
+                        <div class="infoText"></div>
+                        <div class="infoText"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
 </div>
 
 
@@ -30,3 +45,11 @@
 {% block footer %}
     <!--footer필요없는페이지라 비우기 -->
 {% endblock %}
+
+ <!--question불러오기 예시
+ {% for question in questions %}
+ {{ question.content }}
+{% endfor %}
+{% if user.profile.photo %}
+ <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
+{% endif %} -->

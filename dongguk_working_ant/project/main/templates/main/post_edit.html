@@ -115,17 +115,8 @@
               </select>
             </div>
             <div style="margin-top: 12.5px;">
-              <label for="work_time">근로 요일 및 시간</label>
-              <select name="time" id="work_time" class="selector">
-                <option value="" hidden></option>
-                <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
-                <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
-                <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
-                <option value="Thu" {% if post.time == "Thu" %}selected{% endif %}>목요일</option>
-                <option value="Fri" {% if post.time == "Fri" %}selected{% endif %}>금요일</option>
-                <option value="Sat" {% if post.time == "Sat" %}selected{% endif %}>토요일</option>
-                <option value="Sun" {% if post.time == "Sun" %}selected{% endif %}>일요일</option>
-              </select>
+              <span>근로 요일 및 시간</span>
+              <span></span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="salary">급여</label>

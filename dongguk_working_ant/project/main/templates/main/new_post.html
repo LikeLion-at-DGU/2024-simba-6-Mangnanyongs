@@ -118,7 +118,7 @@
             <div style="margin-top: 12.5px;">
               <span>근로 요일 및 시간</span>
               <span id="day_time">
-                <input type="text" id="input_day_time" name="time"/>
+                <input type="text" id="input_day_time" name="time" value=""/>
                 <img src="{% static 'images/icons/calendar.svg' %}" style="width: 24px; height: 24px;">
               </span>
             </div>
@@ -209,8 +209,90 @@
     <div id="add_question">
       <img src="{% static 'images/icons/add.svg' %}" />
     </div>
-
     <input type="hidden" id="question_count" name="question_count" value="{{ question_count }}">
+    <!--모달-->
+    <div id="modal">
+      <div class="container">
+        <div class="Caption big" style="display: flex; margin-top: 43px">근로 요일 및 시간</div>
+        <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
+          <span class="big">요일</span>
+          <span>
+            <input type="radio" name="discussion_day" id="appoint" value="지정" />
+            <label class="Caption big" for="appoint">지정</label>
+          </span>
+          <span>
+            <input type="radio" name="discussion_day" id="deal" value="협의" />
+            <label class="Caption big" for="deal">협의</label>
+          </span>
+        </div>
+        <div id="select_work_day">
+          <img src="{% static 'images/icons/calendar.svg' %}" style="margin-left: 21px;">
+          <select name="time" id="work_day" class="selector Caption big gray">
+              <option value="" hidden>근로 요일 선택</option>
+              <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
+              <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
+              <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
+              <option value="Thu" {% if post.time == "Thu" %}selected{% endif %}>목요일</option>
+              <option value="Fri" {% if post.time == "Fri" %}selected{% endif %}>금요일</option>
+              <option value="Sat" {% if post.time == "Sat" %}selected{% endif %}>토요일</option>
+              <option value="Sun" {% if post.time == "Sun" %}selected{% endif %}>일요일</option>
+          </select>
+        </div>
+        <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
+          <span class="big">시간</span>
+          <span>
+            <input type="radio" name="discussion_time" id="appoint" value="지정" />
+            <label class="Caption big" for="appoint">지정</label>
+          </span>
+          <span>
+            <input type="radio" name="discussion_time" id="deal" value="협의" />
+            <label class="Caption big" for="deal">협의</label>
+          </span>
+        </div>
+        <div>
+          <div id="select_work_time">
+              <div style="display: flex;">
+                  <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
+                  <select name="time" id="select_start_time" class="Caption big gray">
+                      <option value="" hidden>시작 시간 선택</option>
+                      <option value="9">오전 9시</option>
+                      <option value="10">오전 10시</option>
+                      <option value="11">오전 11시</option>
+                      <option value="12">오전 12시</option>
+                      <option value="13">오후 1시</option>
+                      <option value="14">오후 2시</option>
+                      <option value="15">오후 3시</option>
+                      <option value="16">오후 4시</option>
+                      <option value="17">오후 5시</option>
+                      <option value="18">오후 6시</option>
+                  </select>
+              </div>
+          </div>
+          <div id="select_work_time">
+              <div style="display: flex;">
+                  <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
+                  <select name="time" id="select_end_time" class="Caption big gray">
+                      <option value="" hidden>종료 시간 선택</option>
+                      <option value="9">오전 9시</option>
+                      <option value="10">오전 10시</option>
+                      <option value="11">오전 11시</option>
+                      <option value="12">오전 12시</option>
+                      <option value="13">오후 1시</option>
+                      <option value="14">오후 2시</option>
+                      <option value="15">오후 3시</option>
+                      <option value="16">오후 4시</option>
+                      <option value="17">오후 5시</option>
+                      <option value="18">오후 6시</option>
+                  </select>
+              </div>
+          </div>
+        </div>
+        <div style="margin-top: 29px;">
+          <img src="{% static 'images/icons/cancel.svg' %}" id="cancel_time">
+          <img src="{% static 'images/icons/submit.svg' %}" id="submit_time">
+        </div>
+    </div>
+    </div>
     </form>
 </div>
 <script src="{% static 'js/main/post_edit.js' %}"></script>

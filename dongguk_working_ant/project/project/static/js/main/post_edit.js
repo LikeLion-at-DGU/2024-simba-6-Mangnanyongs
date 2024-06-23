@@ -1,49 +1,73 @@
-/*document.addEventListener('DOMContentLoaded', function(){
-    var selectElements = document.querySelectorAll('select');
-    selectElements.forEach(selectElement => {
-        selectElement.addEventListener('focus', function(){
-            this.size=5;
-        });
-        selectElement.addEventListener('blur', function(){
-            this.size = 1;
-        });
-        selectElement.addEventListener('change', function(){
-            this.size = 1;
-            this.blur();
-        });
-    });
-});*/
+//모달 동작
+const modal_button = document.querySelector("#day_time img");
+const modal = document.getElementById('modal');
+const submit = document.getElementById('submit_time');
+const cancel = document.getElementById('cancel_time');
 
-/*모달 팝업 띄우기
-const calender = document.querySelector("#day_time img");
-calender.addEventListener("click", function () {
-  fetch("post_edit_modal.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("modalContainer").innerHTML = data;
-    })
-    .catch((error) => console.error("Error:", error));
+modal_button.addEventListener('click', function(){
+  modal.style.display='block';
 });
-*/
 
-/*const calender = document.querySelector('#day_time img');
-const Postmodal = new Request("post_edit_modal.html");
+submit.addEventListener('click', function(){
+  d_day = document.querySelector('input[name="discussion_day"]:checked').value;
+  d_time = document.querySelector('input[name="discussion_time"]:checked').value;
 
-fetch(Postmodal)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP 오류! 상태: ${response.status}`);
+  if(d_day == "지정"){
+    work_day = document.getElementById('work_day').value;
+    console.log(work_day);
+    if(work_day==""){
+      alert("요일을 입력해주세요");
+      return;
     }
+    day_option = document.querySelectorAll('#work_day option');
+    day_option.forEach( option => {
+      if(work_day == option.value){
+        day = option.textContent;
+      }
+    });
+  } else{
+    day = "협의";
+  }
 
-    return response.blob();
-  })
-  .then((response) => {
-    myImage.src = URL.createObjectURL(response);
-  });
+  if(d_time == "지정"){
+    time_option = document.querySelectorAll('#select_start_time option');
+    start_time = document.getElementById('select_start_time').value;
+    end_time = document.getElementById('select_end_time').value;
+    if(start_time == "" || end_time == ""){
+      alert("시간을 입력해주세요");
+      return;
+    }
+    if(start_time > end_time){
+      alert("시작 시간이 종료 시간보다 늦을 수는 없습니다.");
+      return;
+    }
+    time_option.forEach(option =>{
+      if(start_time == option.value){
+        start_time_ = option.textContent;
+      }
+    });
+    time_option.forEach(option =>{
+      if(end_time == option.value){
+        end_time_ = option.textContent;
+      }
+    });
+    time = start_time_ + '~' + end_time_;
+  } else{
+    time = "협의";
+  }
 
-calender.addEventListener('click', function(){
+  input = document.getElementById('input_day_time');
+  input.value = day + ' '+ time;
 
-})*/
+  console.log(input.value);
+  modal.style.display="none";
+});
+
+//취소버튼
+cancel.addEventListener('click', function(){
+  modal.style.display="none";
+})
+
 
 //모집인원 직접 입력 버튼
 const topElement = document.querySelector("#contents .top");

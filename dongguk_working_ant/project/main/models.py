@@ -45,13 +45,13 @@ class Question(models.Model):
         return self.content + ' from ' + str(self.post)
 
 class Application(models.Model):
-    post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, null=False, related_name="applications", blank=False, on_delete=models.CASCADE)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
+    file = models.FileField(upload_to="application_file/", blank=True, null=True)
 
 
 class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
-    file = models.FileField(upload_to="answer_file/", blank=True, null=True)

@@ -9,24 +9,135 @@
     href="{% static 'css/main/apply.css'%}"
 />
 <div id="applyScreen">
-    <div class="backBtn">
-        <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
-            <img src="{% static 'images/icons/back.svg' %}" />
-        </a>
-        <span>{{post.organization}} {{post.title}} 지원</span>
+    <form action="{% url 'main:application-create' post.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="backBtn">
+            <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+                <img src="{% static 'images/icons/back.svg' %}" />
+            </a>
+            <span id="word">{{post.organization}} {{post.title}} 지원</span>
+        </div>
+        <div id="applyBody" class="width">
+            <div class="profileBox w100">
+                <!--지원자 이미지 박스 -->
+                <div class="profile w100">
+                    <div class="img">
+                        {% if user.profile.photo %}
+                            <img src="{{ user.profile.photo.url }}" alt="사진" width="100px">
+                        {% endif %}
+                    </div>
+                    <div class="info">
+                        <div class="infoText">
+                            
+                            <span id="nameEtc"><span id="nameBold">{{ user.profile.name }}</span>{{user.profile.birth}}  |  {{user.profile.department}}  |  {{user.profile.student_number}}</span>
+                        </div>
+                        <div class="infoText">
+                            <!--소득분위 연결해야됨-->
+                            <span class="contentText">소득분위<span class="indextext">| 8분위</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">휴대폰<span class="indextext">| {{ user.profile.phone }}</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">이메일<span class="indextext">| {{ user.profile.email }}</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--지원동기 양식 -->
+            {% for question in questions %}
+                <div class="questionBox w100">
+                    <div class="question">
+                        <div class="qTitle w100">
+                            <span>{{ forloop.counter }}.</span> {{ question.content }}
+                        </div>
+                        <div class="inner w100">
+                            <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="questionBox w100" id="filebox">
+                <div class="question" id="file">
+                    <div class="qTitle w100" >
+                        <span>*</span> 첨부 파일을 업로드해주세요.
+                    </div>
+                    <div class="inner w100" id="fileinner">
+                        <!--파일업로드로 바꿔야됨 -->
+                        <textarea class="textarea" placeholder="파일 업로드" ></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- disabled -->
+        <button
+            class="applyBtn"
+            
+            type="button" 
+            id="applyBtn"
+        >
+            <span>지원하기
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <path d="M6.5 17.5015L18.3647 5.63672M18.3647 5.63672H7.50011M18.3647 5.63672V15.5005" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </span>
+            
+        </button>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="dd">
+                <span class="close">&times;</span>
+            </div>
+            <div class="modaltext">
+                <span class="st">지원 완료되었어요 !</span>
+            </div>
+            <div class="ff">
+                <button type="submit" id="confirmBtn">확인</button>
+            </div>
+        </div>
     </div>
-    <!--question불러오기 예시-->
-    {% for question in questions %}
-        {{ question.content }}
-    {% endfor %}
-    {% if user.profile.photo %}
-        <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
-    {% endif %}
+    </form>
 </div>
+<script>
+    // JavaScript로 모달 팝업 제어
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("applyBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var confirmBtn = document.getElementById("confirmBtn");
 
+    // "지원하기" 버튼 클릭 시 모달 팝업 표시
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
 
+    // 닫기 버튼 클릭 시 모달 팝업 닫기
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // 확인 버튼 클릭 시 모달 팝업 닫기
+    confirmBtn.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // 모달 외부 클릭 시 모달 팝업 닫기
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 <!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
 {% endblock %} 
 {% block footer %}
     <!--footer필요없는페이지라 비우기 -->
 {% endblock %}
+
+ <!--question불러오기 예시
+ {% for question in questions %}
+ {{ question.content }}
+{% endfor %}
+{% if user.profile.photo %}
+ <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
+{% endif %} -->

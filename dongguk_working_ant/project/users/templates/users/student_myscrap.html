@@ -63,7 +63,7 @@
                     {% elif data.post.place == '기타' %}
                         <img src="{% static 'images/buildings/기타.png' %}" alt="cardImage" >    
                     {% endif %}
-                </span> <!--DB에 사진이 추가되면 삭제될 거임-->
+                </span>
             </span>
             <span class="detail">
                 <div class="information">
@@ -87,7 +87,6 @@
                 </div>
             </span>
 
-            <!--지원완료한 케이스 나눠서 if문 작성해주면 될 거 같아요.-->
             {% if data.has_application %}
             <div class="more_info">
                 <img src="{% static 'images/icons/complete_applicate.svg' %}"/>

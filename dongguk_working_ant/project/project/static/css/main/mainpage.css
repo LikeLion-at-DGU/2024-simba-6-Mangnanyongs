@@ -52,8 +52,8 @@
     display: flex;
     justify-content: center;
     position: relative;
-    /* width: 1085px; */
-    width: 1400px;
+    min-width: 1200px;
+    width: 73vw;
     margin: 0 auto;
     height: 350px;
     overflow: hidden;

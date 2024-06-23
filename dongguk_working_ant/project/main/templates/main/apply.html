@@ -33,7 +33,7 @@
                         </div>
                         <div class="infoText">
                             <!--소득분위 연결해야됨-->
-                            <span class="contentText">소득분위<span class="indextext">| 8분위</span></span>
+                            <span class="contentText">소득분위<span class="indextext">| {{ user.profile.income }}분위</span></span>
                         </div>
                         <div class="infoText">
                             <span class="contentText">휴대폰<span class="indextext">| {{ user.profile.phone }}</span></span>
@@ -63,8 +63,6 @@
                         <span>*</span> 첨부 파일을 업로드해주세요.
                     </div>
                     <div class="inner w100" id="fileinner">
-                        <!--파일업로드로 바꿔야됨(주석처리 해제해도 됌) -->
-                        <!--<textarea class="textarea" placeholder="파일 업로드" ></textarea>-->
                         <input type="file" name="file">
                     </div>
                 </div>
@@ -134,11 +132,3 @@
 {% block footer %}
     <!--footer필요없는페이지라 비우기 -->
 {% endblock %}
-
- <!--question불러오기 예시
- {% for question in questions %}
- {{ question.content }}
-{% endfor %}
-{% if user.profile.photo %}
- <p><img src="{{ user.profile.photo.url }}" alt="사진" width="100px"></p>
-{% endif %} -->

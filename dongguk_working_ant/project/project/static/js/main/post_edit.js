@@ -26,7 +26,7 @@ submit.addEventListener('click', function(){
       }
     });
   } else{
-    day = "협의";
+    day = "요일협의";
   }
 
   if(d_time == "지정"){
@@ -54,7 +54,7 @@ submit.addEventListener('click', function(){
     });
     time = start_time_ + '~' + end_time_;
   } else{
-    time = "협의";
+    time = "시간협의";
   }
 
   input = document.getElementById('input_day_time');

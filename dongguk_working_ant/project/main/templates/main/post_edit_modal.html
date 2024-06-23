@@ -115,7 +115,7 @@
       </div>
       <div id="select_work_day">
         <img src="../../../project/static/images/icons/calendar.svg" style="margin-left: 21px;">
-        <select name="time" id="work_day" class="selector Caption big gray">
+        <select id="work_day" class="selector Caption big gray">
             <option value="" hidden>근로 요일 선택</option>
             <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
             <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
@@ -141,7 +141,7 @@
         <div id="select_work_time">
             <div style="display: flex;">
                 <img src="../../../project/static/images/icons/watch.svg" style="margin-left: 21px; margin-right: 12px;">
-                <select name="time" id="select_time" class="Caption big gray">
+                <select id="select_time" class="Caption big gray">
                     <option value="" hidden>시작 시간 선택</option>
                     <option value="9">오전 9시</option>
                     <option value="10">오전 10시</option>
@@ -159,7 +159,7 @@
         <div id="select_work_time">
             <div style="display: flex;">
                 <img src="../../../project/static/images/icons/watch.svg" style="margin-left: 21px; margin-right: 12px;">
-                <select name="time" id="select_time" class="Caption big gray">
+                <select id="select_time" class="Caption big gray">
                     <option value="" hidden>종료 시간 선택</option>
                     <option value="9">오전 9시</option>
                     <option value="10">오전 10시</option>

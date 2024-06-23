@@ -24,6 +24,13 @@ class Profile(models.Model):
     phone = models.CharField(max_length=20, blank=True)
     email = models.CharField(max_length=50, blank=False)
     student_number = models.CharField(max_length=10, blank=False)
+    income = models.PositiveIntegerField(null=True, default=0)
     certification_student = models.FileField(upload_to="student_certification/", blank=True)
     certification_staff = models.FileField(upload_to="staff_certification/",blank=True)
     #scraped = models.ManyToManyField()
+
+class Notice(models.Model):
+    user = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    content = models.CharField(max_length=20, blank=True)
+    link = models.CharField(max_length=20, blank=True)
+    pub_date = models.DateTimeField()

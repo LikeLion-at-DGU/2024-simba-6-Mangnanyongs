@@ -23,16 +23,21 @@ def staff_studentappfile(request, post_id, student_id):
     return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers})
 
 def student_myapplication(request):
-    applications = Application.objects.filter(writer=request.user).select_related('post')
-    applicated_posts = [application.post for application in applications]
-    return render(request, 'users/student_myapplication.html', {'applicated_posts': applicated_posts})
+    applications = Application.objects.filter(writer=request.user)
+    return render(request, 'users/student_myapplication.html', {'applications':applications})
 
 def student_mypage(request):
     return render(request, 'users/student_mypage.html')
 
 def student_myscrap(request):
     scraped_posts = request.user.scraped.all()
-    return render(request, 'users/student_myscrap.html', {'scraped_posts':scraped_posts})
+    post_data = []
+
+    for post in scraped_posts:
+        has_application = Application.objects.filter(post=post, writer=request.user).exists()
+        post_data.append({'post': post, 'has_application': has_application})
+
+    return render(request, 'users/student_myscrap.html', {'post_data': post_data})
 
 def student_mywork(request):
     mywork = Application.objects.filter(writer=request.user, is_accepted=1).select_related('post')

@@ -22,19 +22,19 @@
         <div class="staffNavBox">
             <div class="staffNav">
                 <!-- 내정보관리 -->
-                <a class="nav" href=""> 
+                <a class="nav" href="{% url 'accounts:signup-student' %}"> 
                     <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
                 </a>
                 <!-- 나의근로 -->
-                <a class="nav" href="{% url 'main:new-post' %}"> 
+                <a class="nav" href="{% url 'users:student-mywork' %}"> 
                     <img src="{% static 'images/icons/studentnav2.svg' %}" />
                 </a>
                 <!-- 지원현황 -->
-                <a class="nav" href="{% url 'users:staff-mypost' %}"> 
+                <a class="nav" href="{% url 'users:student-myapplication' %}"> 
                     <img src="{% static 'images/icons/studentnav3.svg' %}" />
                 </a>
                 <!-- 스크랩 -->
-                <a class="nav" href="{% url 'users:staff-mypost' %}">
+                <a class="nav" href="{% url 'users:student-myscrap' %}">
                     <img src="{% static 'images/icons/studentnav4.svg' %}" />
                 </a>
             </div>

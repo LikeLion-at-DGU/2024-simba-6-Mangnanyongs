@@ -33,11 +33,12 @@ submit.addEventListener('click', function(){
     time_option = document.querySelectorAll('#select_start_time option');
     start_time = document.getElementById('select_start_time').value;
     end_time = document.getElementById('select_end_time').value;
+    
     if(start_time == "" || end_time == ""){
       alert("시간을 입력해주세요");
       return;
     }
-    if(start_time > end_time){
+    if(parseInt(start_time) >= parseInt(end_time)){
       alert("시작 시간이 종료 시간보다 늦을 수는 없습니다.");
       return;
     }

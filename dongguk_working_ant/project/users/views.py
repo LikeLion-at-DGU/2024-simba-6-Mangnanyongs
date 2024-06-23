@@ -24,6 +24,7 @@ def staff_studentappfile(request, post_id, student_id):
 
 def student_myapplication(request):
     applications = Application.objects.filter(writer=request.user)
+    applications = applications.order_by('-is_accepted')
     return render(request, 'users/student_myapplication.html', {'applications':applications})
 
 def student_mypage(request):

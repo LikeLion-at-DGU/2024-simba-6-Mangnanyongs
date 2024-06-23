@@ -44,6 +44,7 @@ def signup_student(request):
             phone = request.POST['phone']
             email = request.POST['email']
             student_number = request.POST['student_number']
+            income = request.POST['income']
 
             certification_student = request.FILES.get('certification_student')
             photo = request.FILES.get('photo')

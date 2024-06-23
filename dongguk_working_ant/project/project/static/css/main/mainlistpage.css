@@ -296,3 +296,9 @@ select{
     width: 100%;
     height: 100%;
 }
+
+#vector{
+    margin-left: -1em;
+    width: 86px;
+    height: 74px;
+}

@@ -87,12 +87,16 @@
             <!--세부사항 내용 들어가는 박스2-->
             <div class="detailBox2">
                 <div class="box2Frame">
-                    <span class="box2Text">
-                        {% for body in post_body_list %}
-                            {{body}}<br>
-                        {% endfor %}
-                    </span>
+                    {% for body in post_body_list %}
+                        <div class="check">
+                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
+                            <span class="box2Text">
+                                {{body}}<br>
+                            </span>
+                        </div>
+                    {% endfor %}
                 </div>
+                
             </div>
         </div>
         <!--지원하기 버튼--> <!--모집 마감시에 버튼 수정하기-->

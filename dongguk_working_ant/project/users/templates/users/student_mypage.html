@@ -1,1 +1,58 @@
 <!-- 학생마이페이지 이동건 -->
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/users/student_mypage.css'%}"
+/>
+
+<div class="staffScreen">
+    <div class="staffBody">
+        <div class="staffProfile">
+            <div class="profileImage">
+                <img src="{{ user.profile.photo.url }}" />
+            </div>
+            <div class="profileText">
+                <span ><span id="mpTc">{{ user.profile.name }}</span>님,</span><span>안녕하세요!</span>
+            </div>
+        </div>
+        <div class="staffNavBox">
+            <div class="staffNav">
+                <!-- 내정보관리 -->
+                <a class="nav" href=""> 
+                    <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
+                </a>
+                <!-- 나의근로 -->
+                <a class="nav" href="{% url 'main:new-post' %}"> 
+                    <img src="{% static 'images/icons/studentnav2.svg' %}" />
+                </a>
+                <!-- 지원현황 -->
+                <a class="nav" href="{% url 'users:staff-mypost' %}"> 
+                    <img src="{% static 'images/icons/studentnav3.svg' %}" />
+                </a>
+                <!-- 스크랩 -->
+                <a class="nav" href="{% url 'users:staff-mypost' %}">
+                    <img src="{% static 'images/icons/studentnav4.svg' %}" />
+                </a>
+            </div>
+            <div class="staffLogoutNav">
+                <a href="{% url 'accounts:logout' %}">
+                    <button class="logoutNav"><span class="logoutNavText">로그아웃</span></button>
+                </a>
+                <a href="{% url 'accounts:delete-account' %}">
+                    <button class="logoutNav"><span class="logoutNavText">회원탈퇴</span></button>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <script src="{% static 'js/main/mainpage.js' %}"></script>  js쓸거면 링크수정-->
+{% endblock %} 
+{% block footer %}
+    {% include 'shared/_footer.html' %}
+{% endblock %}

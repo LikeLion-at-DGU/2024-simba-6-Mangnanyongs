@@ -19,7 +19,8 @@
 .topnav .nav-1{
     display: flex;
     flex-direction: row;
-    width: 1400px; 
+    width: 73vw;
+    min-width: 1300px; 
 }
 
 .nav-1 .nav-2{

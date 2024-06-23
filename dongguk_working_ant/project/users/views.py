@@ -23,9 +23,8 @@ def staff_studentappfile(request, post_id, student_id):
     return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers})
 
 def student_myapplication(request):
-    applications = Application.objects.filter(writer=request.user).select_related('post')
-    applicated_posts = [application.post for application in applications]
-    return render(request, 'users/student_myapplication.html', {'applicated_posts': applicated_posts})
+    applications = Application.objects.filter(writer=request.user)
+    return render(request, 'users/student_myapplication.html', {'applications':applications})
 
 def student_mypage(request):
     return render(request, 'users/student_mypage.html')

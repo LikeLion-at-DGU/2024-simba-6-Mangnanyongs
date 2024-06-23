@@ -277,5 +277,8 @@ def application_create(request, post_id):
             num += 1
     
     #file추가 수정 예정
-
+    if 'file' in request.FILES:
+        new_application.file = request.FILES['file']
+    new_application.save()
+    
     return redirect('main:post-detail', post_id)

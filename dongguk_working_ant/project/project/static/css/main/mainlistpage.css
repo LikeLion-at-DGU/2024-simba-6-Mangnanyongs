@@ -75,6 +75,14 @@
 #main2{
     margin-top: 4.8em;
     gap: 2.2em;
+    margin-bottom: 60px;
+}
+
+#main3{
+    display:none;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
 }
 
 .unchecked{

@@ -73,3 +73,9 @@ function scrap(star) {
     }   
 }
 */
+
+//검색 결과가 없다는 창
+card = document.querySelector('#main2 .card');
+if(card==null){
+    document.getElementById('main3').style.display='flex';
+}

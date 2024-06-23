@@ -4,6 +4,7 @@ from datetime import datetime
 from django.db.models import Q, Count, F
 import json
 from .models import Post, Question, Application, Answer
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 def mainpage(request):
@@ -242,7 +243,9 @@ def scraps(request, post_id):
         post.scrap.add(request.user)
         post.scrap_count += 1
         post.save()
-    return redirect('main:mainlistpage')
+
+    previous_url = request.META.get('HTTP_REFERER', 'main:mainlistpage')
+    return HttpResponseRedirect(previous_url)
     
 def apply(request, post_id):
     questions = Question.objects.filter(post=post_id)

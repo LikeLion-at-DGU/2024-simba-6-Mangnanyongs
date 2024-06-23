@@ -32,7 +32,13 @@ def student_mypage(request):
 
 def student_myscrap(request):
     scraped_posts = request.user.scraped.all()
-    return render(request, 'users/student_myscrap.html', {'scraped_posts':scraped_posts})
+    post_data = []
+
+    for post in scraped_posts:
+        has_application = Application.objects.filter(post=post, writer=request.user).exists()
+        post_data.append({'post': post, 'has_application': has_application})
+
+    return render(request, 'users/student_myscrap.html', {'post_data': post_data})
 
 def student_mywork(request):
     mywork = Application.objects.filter(writer=request.user, is_accepted=1).select_related('post')

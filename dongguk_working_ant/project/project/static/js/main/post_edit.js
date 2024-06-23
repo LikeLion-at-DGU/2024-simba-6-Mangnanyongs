@@ -1,49 +1,36 @@
-/*document.addEventListener('DOMContentLoaded', function(){
-    var selectElements = document.querySelectorAll('select');
-    selectElements.forEach(selectElement => {
-        selectElement.addEventListener('focus', function(){
-            this.size=5;
-        });
-        selectElement.addEventListener('blur', function(){
-            this.size = 1;
-        });
-        selectElement.addEventListener('change', function(){
-            this.size = 1;
-            this.blur();
-        });
-    });
-});*/
+//모달 동작
+const modal_button = document.querySelector("#day_time img");
+const modal = document.getElementById('modal');
+const submit = document.getElementById('submit_time');
+const cancel = document.getElementById('cancel_time');
 
-/*모달 팝업 띄우기
-const calender = document.querySelector("#day_time img");
-calender.addEventListener("click", function () {
-  fetch("post_edit_modal.html")
-    .then((response) => response.text())
-    .then((data) => {
-      document.getElementById("modalContainer").innerHTML = data;
-    })
-    .catch((error) => console.error("Error:", error));
+modal_button.addEventListener('click', function(){
+  modal.style.display='block';
 });
-*/
 
-/*const calender = document.querySelector('#day_time img');
-const Postmodal = new Request("post_edit_modal.html");
+submit.addEventListener('click', function(){
+  day = document.querySelector('input[name="day"]:checked').value;
+  time = document.querySelector('input[name="time"]:checked').value;
 
-fetch(Postmodal)
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error(`HTTP 오류! 상태: ${response.status}`);
-    }
+  console.log(day);
+  if(day == "지정"){
+    work_day = document.getElementById('work_day');
+  } else{
+    work_day = "협의";
+  }
 
-    return response.blob();
-  })
-  .then((response) => {
-    myImage.src = URL.createObjectURL(response);
-  });
+  if(time == "지정"){
+    start_time = document.getElementById('start_time');
+    end_time = document.getElementById('end_time');
+  } else{
+    work_day = "협의";
+  }
+});
 
-calender.addEventListener('click', function(){
+cancel.addEventListener('click', function(){
+  modal.style.display="none";
+})
 
-})*/
 
 //모집인원 직접 입력 버튼
 const topElement = document.querySelector("#contents .top");

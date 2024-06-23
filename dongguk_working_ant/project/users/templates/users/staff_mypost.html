@@ -23,9 +23,11 @@
                 <a href="{% url 'main:post-edit' id=post.id %}">
                     <img src="{% static 'images/icons/fix.svg' %}">
                 </a>
-                <button type="button" name="trash" onclick="delete_Card(this)"> <!--화면에서는 사라지는데 DB에서도 제거되어야 함-->
-                    <img src="{% static 'images/icons/trash.svg' %}">
-                </button>
+                <a href="{% url 'main:post-delete' id=post.id %}">
+                    <button type="button" name="trash" onclick="delete_Card(this)"> <!--화면에서는 사라지는데 DB에서도 제거되어야 함-->
+                        <img src="{% static 'images/icons/trash.svg' %}">
+                    </button>
+                </a>
             </div>
             <span class="photo">
                 <span class="architecture">
@@ -61,7 +63,7 @@
                     {% elif post.place == '기타' %}
                         <img src="{% static 'images/buildings/기타.png' %}" alt="cardImage" >    
                     {% endif %}
-                </span> <!--DB에 사진이 추가되면 삭제될 거임-->
+                </span>
             </span>
             <span class="detail">
                 <div class="information">
@@ -72,7 +74,7 @@
                         {% if post.day_left >= 0 %}
                             {{ post.day_left }}일 남음
                         {% else %}
-                            지원 마감
+                            모집마감
                         {% endif %}
                     </span>
                     <span class="info classification small orange"> <!--인원 수 넣어주세요-->

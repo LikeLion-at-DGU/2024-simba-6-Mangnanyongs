@@ -230,7 +230,11 @@ def post_detail(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)
         post_body_list = post.get_body()
-        return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list})
+
+        applications = post.applications.all()  
+        applied_users = [application.writer for application in applications]  
+        print(applied_users)
+        return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list, 'applied_users': applied_users})
     return redirect('accounts:login')
 
 def scraps(request, post_id):

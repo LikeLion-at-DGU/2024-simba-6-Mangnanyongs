@@ -140,14 +140,14 @@ def post_create(request):
     new_post.day_left = d_day.days
 
     new_post.place = request.POST['place']
-    #new_post.time = request.POST['time']
     new_post.recruitment = request.POST['recruitment']
+    new_post.time = request.POST['time']
     new_post.wage = request.POST['wage']
 
     #body부분을 리스트로 받아오기
     body_list = request.POST.getlist('body')
     new_post.set_body(body_list)  # JSON 변환 후 저장
-    
+
     #new_post.file 수정 예정
     new_post.pub_date = timezone.now()
     
@@ -181,7 +181,7 @@ def post_update(request, id):
         update_post.day_left = d_day.days
 
         update_post.place = request.POST['place']
-        #update_post.time = request.POST['time']
+        update_post.time = request.POST['time']
 
         recruitment_value = request.POST.get('recruitment', '')
         direct_recruitment_value = request.POST.get('direct_recruitment', '')

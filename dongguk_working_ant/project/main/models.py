@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Post(models.Model):
-    #User, Profile 생성 후 writer부분 수정 예정
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
     organization = models.CharField(max_length=50, null=True)
@@ -14,7 +13,7 @@ class Post(models.Model):
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
     deadline = models.DateField(null=True)
-    day_left = models.IntegerField(null=True)#남은날짜
+    day_left = models.IntegerField(null=True)
     place = models.CharField(max_length=50, blank=False)
     time = models.TextField(null=False)
     recruitment = models.PositiveIntegerField(default=0)
@@ -53,7 +52,7 @@ class Question(models.Model):
 class Application(models.Model):
     post = models.ForeignKey(Post, null=False, related_name="applications", blank=False, on_delete=models.CASCADE)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-    is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
+    is_accepted = models.PositiveIntegerField(null=False, default=0) 
     file = models.FileField(upload_to="application_file/", blank=True, null=True)
 
 
@@ -61,3 +60,9 @@ class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
+
+class Review(models.Model):
+    organization = models.CharField(max_length=50, null=True)
+    writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    content = models.TextField()
+    star = models.PositiveIntegerField(null=False, default=0) #boolean

@@ -23,9 +23,11 @@ def staff_studentappfile(request, post_id, student_id):
     return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers})
 
 def student_myapplication(request):
-    applications = Application.objects.filter(writer=request.user)
-    applications = applications.order_by('-is_accepted')
-    return render(request, 'users/student_myapplication.html', {'applications':applications})
+    if request.user.is_authenticated:
+        applications = Application.objects.filter(writer=request.user)
+        applications = applications.order_by('-is_accepted')
+        return render(request, 'users/student_myapplication.html', {'applications':applications})
+    return redirect('accounts:login')
 
 def student_mypage(request):
     return render(request, 'users/student_mypage.html')

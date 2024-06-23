@@ -23,6 +23,8 @@
             <a class="Caption" href="{% url 'users:student-myapplication' %}">지원현황</a>
           {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
             <a class="Caption" href="{% url 'main:new-post' %}">게시하기</a>
+          {% else %} <!--로그인하지 않았거나 어드민일 때-->
+            <a class="Caption" href="{% url 'users:student-myapplication' %}">지원현황</a>
           {% endif %}
         </div>
         <a class="logo logo-font" href="{% url 'main:mainpage' %}">
@@ -34,6 +36,8 @@
             {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
             <a class="Caption" href="{% url 'users:student-mypage' %}">MY</a>
             {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->
+            <a class="Caption" href="{% url 'users:staff-mypage' %}">MY</a>
+            {% else %} <!--어드민일 때-->
             <a class="Caption" href="{% url 'users:staff-mypage' %}">MY</a>
             {% endif %}
 

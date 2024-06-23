@@ -140,14 +140,16 @@ def post_create(request):
     new_post.day_left = d_day.days
 
     new_post.place = request.POST['place']
-    #new_post.time = request.POST['time']
     new_post.recruitment = request.POST['recruitment']
     new_post.wage = request.POST['wage']
 
     #body부분을 리스트로 받아오기
     body_list = request.POST.getlist('body')
     new_post.set_body(body_list)  # JSON 변환 후 저장
-    
+    #time부분을 리스트로 받아오기
+    time_list = request.POST.getlist('time')
+    new_post.set_time(time_list)  # JSON 변환 후 저장
+
     #new_post.file 수정 예정
     new_post.pub_date = timezone.now()
     
@@ -230,7 +232,8 @@ def post_detail(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)
         post_body_list = post.get_body()
-        return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list})
+        post_time_list = post.get_time()
+        return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list, 'post_time_list':post_time_list})
     return redirect('accounts:login')
 
 def scraps(request, post_id):

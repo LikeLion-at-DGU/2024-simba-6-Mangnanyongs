@@ -16,7 +16,7 @@ class Post(models.Model):
     deadline = models.DateField(null=True)
     day_left = models.IntegerField(null=True)#남은날짜
     place = models.CharField(max_length=50, blank=False)
-    time = models.TextField(max_length=50, null=False)
+    time = models.TextField(null=False)
     recruitment = models.PositiveIntegerField(default=0)
     wage = models.PositiveIntegerField(null=True, default=0)
     body = models.TextField()
@@ -33,6 +33,12 @@ class Post(models.Model):
 
     def get_body(self):
         return json.loads(self.body)
+
+    def set_time(self, time):
+        self.time = json.dumps(time)
+
+    def get_time(self):
+        return json.loads(self.time)
 
     def __str__(self):
         return '[' + self.organization + ']' + self.title

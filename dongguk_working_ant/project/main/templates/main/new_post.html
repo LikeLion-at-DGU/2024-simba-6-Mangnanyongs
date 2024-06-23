@@ -118,7 +118,7 @@
             <div style="margin-top: 12.5px;">
               <span>근로 요일 및 시간</span>
               <span id="day_time">
-                <input type="text" id="input_day_time" name="time" value=""/>
+                <input type="text" id="input_day_time" name="" value=""/>
                 <img src="{% static 'images/icons/calendar.svg' %}" style="width: 24px; height: 24px;">
               </span>
             </div>
@@ -227,8 +227,8 @@
         </div>
         <div id="select_work_day">
           <img src="{% static 'images/icons/calendar.svg' %}" style="margin-left: 21px;">
-          <select name="time" id="work_day" class="selector Caption big gray">
-              <option value="" hidden>근로 요일 선택</option>
+          <select name="day" id="work_day" class="selector Caption big gray">
+              <option value="day" hidden>근로 요일 선택</option>
               <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
               <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
               <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
@@ -253,7 +253,7 @@
           <div id="select_work_time">
               <div style="display: flex;">
                   <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
-                  <select name="time" id="select_start_time" class="Caption big gray">
+                  <select name="time1" id="select_start_time" class="Caption big gray">
                       <option value="" hidden>시작 시간 선택</option>
                       <option value="9">오전 9시</option>
                       <option value="10">오전 10시</option>
@@ -271,7 +271,7 @@
           <div id="select_work_time">
               <div style="display: flex;">
                   <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
-                  <select name="time" id="select_end_time" class="Caption big gray">
+                  <select name="time2" id="select_end_time" class="Caption big gray">
                       <option value="" hidden>종료 시간 선택</option>
                       <option value="9">오전 9시</option>
                       <option value="10">오전 10시</option>

@@ -1,8 +1,8 @@
 .test{
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 1400px;
+    width: 73vw;
+    max-width: 1300px;
 }
 
 .content {

@@ -461,6 +461,7 @@ input[type=number]::-webkit-outer-spin-button {
 /*모달 부분*/
 #modal{
     display: none;
+    flex-direction: column;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -481,6 +482,7 @@ input[type=number]::-webkit-outer-spin-button {
     background: #fff;
     border: 1px solid black;
     padding-bottom: 1em;
+    margin: 15% auto;
   }
 #modal #select_work_day{
     display: flex;

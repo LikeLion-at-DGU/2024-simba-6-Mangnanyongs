@@ -9,24 +9,61 @@ modal_button.addEventListener('click', function(){
 });
 
 submit.addEventListener('click', function(){
-  day = document.querySelector('input[name="day"]:checked').value;
-  time = document.querySelector('input[name="time"]:checked').value;
+  d_day = document.querySelector('input[name="discussion_day"]:checked').value;
+  d_time = document.querySelector('input[name="discussion_time"]:checked').value;
 
-  console.log(day);
-  if(day == "지정"){
-    work_day = document.getElementById('work_day');
+  if(d_day == "지정"){
+    work_day = document.getElementById('work_day').value;
+    console.log(work_day);
+    if(work_day==""){
+      alert("요일을 입력해주세요");
+      return;
+    }
+    day_option = document.querySelectorAll('#work_day option');
+    day_option.forEach( option => {
+      if(work_day == option.value){
+        day = option.textContent;
+      }
+    });
   } else{
-    work_day = "협의";
+    day = "협의";
   }
 
-  if(time == "지정"){
-    start_time = document.getElementById('start_time');
-    end_time = document.getElementById('end_time');
+  if(d_time == "지정"){
+    time_option = document.querySelectorAll('#select_start_time option');
+    start_time = document.getElementById('select_start_time').value;
+    end_time = document.getElementById('select_end_time').value;
+    if(start_time == "" || end_time == ""){
+      alert("시간을 입력해주세요");
+      return;
+    }
+    if(start_time > end_time){
+      alert("시작 시간이 종료 시간보다 늦을 수는 없습니다.");
+      return;
+    }
+    time_option.forEach(option =>{
+      if(start_time == option.value){
+        start_time_ = option.textContent;
+      }
+    });
+    time_option.forEach(option =>{
+      if(end_time == option.value){
+        end_time_ = option.textContent;
+      }
+    });
+    time = start_time_ + '~' + end_time_;
   } else{
-    work_day = "협의";
+    time = "협의";
   }
+
+  input = document.getElementById('input_day_time');
+  input.value = day + ' '+ time;
+
+  console.log(input.value);
+  modal.style.display="none";
 });
 
+//취소버튼
 cancel.addEventListener('click', function(){
   modal.style.display="none";
 })

@@ -118,7 +118,7 @@
             <div style="margin-top: 12.5px;">
               <span>근로 요일 및 시간</span>
               <span id="day_time">
-                <input type="text" id="input_day_time" name="time"/>
+                <input type="text" id="input_day_time" name="time" value=""/>
                 <img src="{% static 'images/icons/calendar.svg' %}" style="width: 24px; height: 24px;">
               </span>
             </div>
@@ -217,11 +217,11 @@
         <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
           <span class="big">요일</span>
           <span>
-            <input type="radio" name="day" id="appoint" value="지정" />
+            <input type="radio" name="discussion_day" id="appoint" value="지정" />
             <label class="Caption big" for="appoint">지정</label>
           </span>
           <span>
-            <input type="radio" name="day" id="deal" value="협의" />
+            <input type="radio" name="discussion_day" id="deal" value="협의" />
             <label class="Caption big" for="deal">협의</label>
           </span>
         </div>
@@ -241,11 +241,11 @@
         <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
           <span class="big">시간</span>
           <span>
-            <input type="radio" name="time" id="appoint" value="지정" />
+            <input type="radio" name="discussion_time" id="appoint" value="지정" />
             <label class="Caption big" for="appoint">지정</label>
           </span>
           <span>
-            <input type="radio" name="time" id="deal" value="협의" />
+            <input type="radio" name="discussion_time" id="deal" value="협의" />
             <label class="Caption big" for="deal">협의</label>
           </span>
         </div>
@@ -291,6 +291,7 @@
           <img src="{% static 'images/icons/cancel.svg' %}" id="cancel_time">
           <img src="{% static 'images/icons/submit.svg' %}" id="submit_time">
         </div>
+    </div>
     </div>
     </form>
 </div>

@@ -86,9 +86,10 @@
                     <div>{{post.time}}</div>
                 </div>
             </span>
-            <button type="button" class="more_info">
-                <img src="{% static 'images/icons/moreinfo.svg' %}"/>
-            </button>
+            <!--지원완료한 케이스 나눠서 if문 작성해주면 될 거 같아요.-->
+            <div class="more_info">
+                <img src="{% static 'images/icons/complete_applicate.svg' %}"/>
+            </div>
         </div>
         {% endfor %}
     {% endif %}

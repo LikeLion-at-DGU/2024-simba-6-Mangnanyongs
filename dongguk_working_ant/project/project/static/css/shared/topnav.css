@@ -9,7 +9,7 @@
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
 }
 
-@media screen and (max-width: 1300px) {
+/* @media screen and (max-width: 1300px) {
     .screen{
         display: flex;
         flex-direction: column;
@@ -18,7 +18,7 @@
         align-items: flex-end;
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
     }
-}
+} */
 
 .topnav {
     display: flex;

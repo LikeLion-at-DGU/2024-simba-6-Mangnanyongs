@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from main.models import Post, Application, Answer
+from accounts.models import Notice
 from django.contrib.auth.models import User
-
+from django.http import HttpResponseRedirect
 # Create your views here.
 def staff_mypage(request):
     return render(request, 'users/staff_mypage.html')
@@ -9,9 +10,9 @@ def staff_mypage(request):
 #지원한 학생 리스트 페이지
 def staff_appslist(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    applications = Application.objects.filter(post_id=post_id).select_related('writer')
-    students = [app.writer for app in applications]
-    return render(request, 'users/staff_appslist.html',{'students':students, 'post':post})
+    applications = Application.objects.filter(post_id=post_id)
+    
+    return render(request, 'users/staff_appslist.html', {'applications': applications, 'post': post})
 
 def staff_mypost(request):
     posts = Post.objects.filter(writer=request.user.id)
@@ -49,6 +50,7 @@ def student_mywork(request):
     mywork_posts = [application.post for application in mywork]
     return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})
 
+<<<<<<< HEAD
 def check_result(request):
     if request.method == "POST":
         checked_applications = request.POST.getlist('check')
@@ -59,3 +61,9 @@ def check_result(request):
             application.is_accepted = 1
         application.save()
     return render(request, 'users/staff_studentappfile',{'applications':applicaton})
+=======
+def notice(request):
+    notices = Notice.objects.filter(user=request.user)
+    previous_url = request.META.get('HTTP_REFERER', 'main:mainlistpage')
+    return HttpResponseRedirect(previous_url, {'notices':notices})
+>>>>>>> 5a2d57cde14798b41e1c39d93c94e65bf44414a6

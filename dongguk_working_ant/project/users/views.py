@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from main.models import Post, Application, Answer
 from accounts.models import Notice
 from django.contrib.auth.models import User
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 # Create your views here.
 def staff_mypage(request):
     return render(request, 'users/staff_mypage.html')
@@ -66,5 +66,5 @@ def check_result(request, post_id):
 
 def notice(request):
     notices = Notice.objects.filter(user=request.user)
-    previous_url = request.META.get('HTTP_REFERER', 'main:mainlistpage')
-    return HttpResponseRedirect(previous_url, {'notices':notices})
+    notice_list = list(notices.values('content'))
+    return JsonResponse({'notices': notice_list})

@@ -239,6 +239,17 @@ def post_detail(request, post_id):
         return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list, 'applied_users': applied_users})
     return redirect('accounts:login')
 
+def post_detail_review(request, post_id):
+    if request.user.is_authenticated:
+        post = get_object_or_404(Post, pk=post_id)
+        post_body_list = post.get_body()
+
+        applications = post.applications.all()  
+        applied_users = [application.writer for application in applications]  
+        print(applied_users)
+        return render(request, 'main/post_detail_review.html', {'post':post, 'post_body_list':post_body_list, 'applied_users': applied_users})
+    return redirect('accounts:login')
+
 def scraps(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.user in post.scrap.all():

@@ -1,6 +1,15 @@
 .baseContent{
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
+    margin-top: 56px;
+}
+
+.test{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1300px;
 }
 
 .container {
@@ -30,14 +39,14 @@
 }
 
 #header{ 
-    margin-top: 56px;
+    width: 100%;
+    margin-top: 0px;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
 }
 
 #vector{
-    margin-left: -1em;
     width: 86px;
     height: 74px;
 }
@@ -95,7 +104,8 @@
 }
 
 #main2{
-    margin-top: 4.8em;
+    width: 100%;
+    margin-top: 3em;
     gap: 2.2em;
     margin-bottom: 60px;
 }
@@ -124,7 +134,7 @@
 .card{
     position: relative;
     display:flex;
-    width: 82.625em;
+    width: 1300px;
     height: 13.75em;
     flex-shrink: 0;
     border-radius: 0.75em;

@@ -1,8 +1,8 @@
 #edit_page {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    width: 100vw;
+    max-width: 1300px; /* 최대 너비를 1400px로 제한 */
     margin: 0 auto; /* 중앙 정렬을 위한 설정 */
     margin-bottom: 97px;
 }
@@ -10,7 +10,7 @@
 .content {
     display: flex;
     flex-direction: column;
-    width: 1400px;
+    width: 1300px;
     gap: 10px;
     overflow: hidden;
     box-sizing: border-box;
@@ -65,7 +65,7 @@
 
 #main2 {
     display: flex;
-    margin-top: 41px;
+    margin-top: 3em;
     justify-content: center;
     align-items: center;
 }

@@ -100,12 +100,15 @@
 }   
 
 #topnav_modal div{
-    display: flex;
-    align-items: center;
+    display: inline;
 }
 
 #topnav_modal div:hover{
     color: #FE902F
+}
+
+#topnav_modal div img:hover{
+    cursor: pointer;
 }
 
 .logo-font{

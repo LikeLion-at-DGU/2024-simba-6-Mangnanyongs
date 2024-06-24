@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from main.models import Post, Application, Answer
+from main.models import Post, Application, Answer, Review
 from accounts.models import Notice
 from django.contrib.auth.models import User
 from django.http import JsonResponse
@@ -71,3 +71,17 @@ def notice(request):
     notices = Notice.objects.filter(user=request.user)
     notice_list = [{'summary': notice.summary()} for notice in notices]
     return JsonResponse({'notices': notice_list})
+
+def review_content(request):
+    new_review = Review()
+
+    #new_review.organization = request.POST['review']
+
+    #new_review.writer = request.POST['review']
+
+    new_review.content = request.POST.get('review')
+
+    new_review.save()
+
+    print(new_review.content)
+    return redirect('users:student-mywork', new_review.id)

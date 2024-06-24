@@ -92,11 +92,11 @@
             <!--세부사항 내용 들어가는 박스2-->
             <div class="detailBox2">
                 <div class="box2Frame">
-                    {% for body in post_body_list %}
+                    {% for review in reviews %}
                         <div class="check">
                             <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
                             <span class="box2Text">
-                                {{body}}<br>
+                                {{review.writer.profile.name}}<br>{{review.content}}<br>
                             </span>
                         </div>
                     {% endfor %}

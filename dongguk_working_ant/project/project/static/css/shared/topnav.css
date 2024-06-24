@@ -87,7 +87,7 @@
 #topnav_modal{
     display: none;
     flex-direction: column;
-    width: 206px;
+    width: 315px;
     border-radius: 12px;
     border: 1px solid #E9E9E9;
     background: #FFF;
@@ -96,7 +96,7 @@
     gap: 8px;
     top: 120%;
     right: 0;
-    padding: 26px 24px 26px 15px;
+    padding: 26px 15px 26px 15px;
 }   
 
 #topnav_modal div{

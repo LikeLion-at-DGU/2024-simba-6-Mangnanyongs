@@ -1,3 +1,7 @@
+<img src="https://github.com/LikeLion-at-DGU/2024-simba-6-Mangnanyongs/assets/163876694/1a25d695-f43a-4709-b130-5e3566c623c9" width="60%">
+
+<br>
+
 # 1️⃣ Our Service 
 
 > #### 🦁 동국일개미 🦁

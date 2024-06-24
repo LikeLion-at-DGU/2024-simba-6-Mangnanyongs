@@ -83,30 +83,27 @@
             <!--세부사항 목차 아이콘?-->
             <div class="index">
                 <a href="{% url 'main:post-detail' post.id %}">
-                    <button class="indexB" id="detail">세부사항</button>
+                    <button class="indexB" id="detail" >세부사항</button>
                 </a>
                 <a href="{% url 'main:post-detail-review' post.id %}">
-                    <button class="indexB" id="review">근로후기</button>
+                    <button class="indexB" id="review" style="background-color: #FE902F; color: #FFFDFB;">근로후기</button>
                 </a>
             </div>
             <!--세부사항 내용 들어가는 박스2-->
-            <div class="detailBox2">
-                <div class="box2Frame">
-<<<<<<< HEAD
-                    안녕하세요
-=======
-                    {% for review in reviews %}
-                        <div class="check">
-                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
-                            <span class="box2Text">
-                                {{review.writer.profile.name}}<br>{{review.content}}<br>
-                            </span>
+            {% for review in reviews %}
+                <div class="detailBox2" style="height: 156px; display: flex; justify-content: center; align-items: center;">
+                    <div class="box2Frame" style=" display: flex; flex-direction: row; gap:34px; "  >
+                        <div class="reImg" style>
+                            <img src="{% static 'images/icons/Component4.svg' %}" />
                         </div>
-                    {% endfor %}
->>>>>>> dcfa23c8ee4d456ef87bcb84b3883ca82dd57301
+                        <div  class="reviewtext" style="height:100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+                            <div id="nAme" style="display: flex;">{{review.writer.profile.name}}</div>
+                            <div id="reView"style="display: flex;">{{review.content}}</div>
+                        </div>
+                        
+                    </div>
                 </div>
-                
-            </div>
+            {% endfor %}
         </div>
         <!--지원하기 버튼-->
         {% if user.profile.student_or_staff == 'student' %}

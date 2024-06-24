@@ -214,6 +214,7 @@
     font-weight: 500;
     line-height: normal;
 }
+
 .indexB:hover{
     background: #FE902F;
     color: #FFFDFB;
@@ -224,7 +225,7 @@
 }
 .detailBox2{
     width: 1300px;
-    height: 260px;
+    height: 156px;
     border-radius: 12px;
     border: 1px solid #EBEBEB;
     background: #FFF;

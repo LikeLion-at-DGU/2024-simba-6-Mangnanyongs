@@ -83,23 +83,17 @@
             <!--세부사항 목차 아이콘?-->
             <div class="index">
                 <a href="{% url 'main:post-detail' post.id %}">
-                    <button class="indexB" id="detail">세부사항</button>
+                    <button class="indexB" id="detail" >세부사항</button>
                 </a>
                 <a href="{% url 'main:post-detail-review' post.id %}">
-                    <button class="indexB" id="review">근로후기</button>
+                    <button class="indexB" id="review" style="background-color: #FE902F; color: #FFFDFB;">근로후기</button>
                 </a>
             </div>
-            <!--세부사항 내용 들어가는 박스2-->
+            <!--세부사항 내용 들어가는 박스2
+            진우야여기에 for문 넣어줘-->
             <div class="detailBox2">
                 <div class="box2Frame">
-                    {% for body in post_body_list %}
-                        <div class="check">
-                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
-                            <span class="box2Text">
-                                {{body}}<br>
-                            </span>
-                        </div>
-                    {% endfor %}
+                    
                 </div>
                 
             </div>

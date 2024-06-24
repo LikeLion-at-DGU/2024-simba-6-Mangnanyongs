@@ -87,26 +87,44 @@
       
       // AJAX 요청 보내기
       fetch('{% url "users:notice" %}', {
-            method: 'GET',
-            headers: {
-                'X-Requested-With': 'XMLHttpRequest',
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            // 데이터 받아서 모달에 표시
-            const notices = data.notices;
-            let noticeContent = '';
-            notices.forEach(notice => {
-              noticeContent += `<div class="Caption gray">
-                        <img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>
-                            <span>${notice.summary}...</span>
-                    </div>
-                    <br>`
-            });
-            document.getElementById('notice-container').innerHTML = noticeContent;
-            topnav_modal.style.display = 'flex';
+          method: 'GET',
+          headers: {
+              'X-Requested-With': 'XMLHttpRequest',
+              'Content-Type': 'application/json'
+          },
+      })
+      .then(response => response.json())
+      .then(data => {
+          // 데이터 받아서 모달에 표시
+          const notices = data.notices;
+          let noticeContent = '';
+          notices.forEach(notice => {
+              const detailUrl = `{% url 'main:post-detail' 0 %}`.replace('0', notice.link);
+              noticeContent += `
+                  <div class="Caption gray">
+                      <img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>
+                      <a href="${detailUrl}">
+                          <span>${notice.summary}...</span>
+                      </a>
+                  </div>
+                  <br>
+              `;
+            }
+          );
+          document.getElementById('notice-container').innerHTML = noticeContent;
+
+          // 새로 생성된 .Caption 요소들에 이벤트 리스너 추가
+          const newCaptions = document.getElementsByClassName("Caption");
+          for (let caption of newCaptions) {
+              caption.addEventListener("mouseover", function (event) {
+                  event.target.style.color = "#FF8A00";
+              }, false);
+              caption.addEventListener("mouseout", function (event) {
+                  event.target.style.color = "";
+              }, false);
+          }
+  
+          topnav_modal.style.display = 'flex';
         })
         .catch(error => console.error('Error:', error));
 

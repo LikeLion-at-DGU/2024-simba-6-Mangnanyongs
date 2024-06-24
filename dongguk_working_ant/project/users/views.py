@@ -52,7 +52,6 @@ def student_mywork(request):
 
 def check_result(request, post_id):
     if request.method == "POST":
-        print(request.POST.get('result'))
         checked_applications = request.POST.getlist('check')
         
         for app in checked_applications:

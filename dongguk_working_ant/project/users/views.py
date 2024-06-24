@@ -49,3 +49,13 @@ def student_mywork(request):
     mywork_posts = [application.post for application in mywork]
     return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})
 
+def check_result(request):
+    if request.method == "POST":
+        checked_applications = request.POST.getlist('check')
+        applicaton = get_object_or_404(Application, )
+        if request.POST['result']== '합격':
+            application.is_accepted = 2
+        elif request.POST['result'] == '불합격':
+            application.is_accepted = 1
+        application.save()
+    return render(request, 'users/staff_studentappfile',{'applications':applicaton})

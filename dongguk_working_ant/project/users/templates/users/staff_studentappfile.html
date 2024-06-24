@@ -12,10 +12,10 @@
 <div id="applyScreen">
     <div class="ttt">
         <div class="backBtn">
-            <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+            <a href="javascript:history.back()" class="backBtnAtag">
                 <img src="{% static 'images/icons/back.svg' %}" />
             </a>
-            <span id="word">{{application.post.organization}} {{application.post.title}} 지원</span>
+            <span id="word">{{post.organization}} {{post.title}} 지원</span>
         </div>
         <div id="applyBody" class="width">
             <div class="profileBox w100">

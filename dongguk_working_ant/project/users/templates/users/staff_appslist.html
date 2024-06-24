@@ -36,7 +36,9 @@
                             <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
                         </div>
                         <div class="img">
-                            <!--이미지연결해야됨-->
+                            <div class="profileImage">
+                                <img src="{{ student.profile.photo.url }}" />
+                            </div>
                         </div>
                         <div class="cardText">
                             <span class="ct"><span class="ct" id="bold">{{ student.profile.name }}</span>{{student.profile.birth}}</span>

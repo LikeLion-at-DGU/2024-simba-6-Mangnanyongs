@@ -20,13 +20,16 @@ def staff_mypost(request):
 
 #학생 지원서 내용 페이지
 def staff_studentappfile(request, post_id, student_id):
+    post = get_object_or_404(Post, pk=post_id)
     application = get_object_or_404(Application, writer_id=student_id, post_id=post_id)
     student = get_object_or_404(User, id=student_id)
     answers = Answer.objects.filter(application=application)
-    return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers, 'student':student})
+    return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers, 'student':student, 'post':post})
 
 def student_myapplication(request):
+    #post = get_object_or_404(Post)
     if request.user.is_authenticated:
+
         applications = Application.objects.filter(writer=request.user)
         applications = applications.order_by('-is_accepted')
         return render(request, 'users/student_myapplication.html', {'applications':applications})

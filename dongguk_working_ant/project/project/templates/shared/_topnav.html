@@ -99,7 +99,11 @@
             const notices = data.notices;
             let noticeContent = '';
             notices.forEach(notice => {
-                noticeContent += `<div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/><span>${notice.summary}...</span></div><br>`
+              noticeContent += `<div class="Caption gray">
+                        <img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>
+                            <span>${notice.summary}...</span>
+                    </div>
+                    <br>`
             });
             document.getElementById('notice-container').innerHTML = noticeContent;
             topnav_modal.style.display = 'flex';

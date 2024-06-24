@@ -79,3 +79,23 @@ card = document.querySelector('#main2 .card');
 if(card==null){
     document.getElementById('main3').style.display='flex';
 }
+
+// //나의근로 근로모달팝업
+// function showModal() {
+//     var modal = document.getElementById('myModal');
+//     modal.style.display = 'block';
+// }
+
+// // 모달 닫기 버튼 기능 추가
+// document.querySelector('.close').addEventListener('click', function() {
+//     var modal = document.getElementById('myModal');
+//     modal.style.display = 'none';
+// });
+
+// // 모달 외부 클릭 시 닫기 기능 추가
+// window.onclick = function(event) {
+//     var modal = document.getElementById('myModal');
+//     if (event.target == modal) {
+//         modal.style.display = 'none';
+//     }
+// }

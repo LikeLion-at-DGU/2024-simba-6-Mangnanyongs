@@ -46,7 +46,9 @@
                         </div>
                     </div>
                     <div class="cardBtnFrame">
-                        <button class="cardBtn">지원서 확인</button>
+                        <a href="{% url 'users:staff-studentappfile' post.id student.id %}">
+                            <button class="cardBtn">지원서 확인</button>
+                        </a>
                     </div>
                 </div>
                 

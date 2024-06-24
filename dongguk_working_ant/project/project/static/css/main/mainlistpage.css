@@ -305,3 +305,142 @@ select{
     width: 86px;
     height: 74px;
 }
+
+
+/*근로후기 모달 추가부분*/
+
+.modal {
+    display: none; /* 기본적으로 숨김 */
+    position: fixed; /* 스크롤해도 화면에 고정 */
+    z-index: 1; /* 최상위 레벨 */
+    left: 0;
+    top: 0;
+    width: 100%; /* 화면 전체 너비 */
+    height: 100%; /* 화면 전체 높이 */
+    background-color: rgb(0,0,0); /* 백업 색상 */
+    background-color: rgba(0,0,0,0.4); /* 배경 색상 불투명도 */
+}
+
+/* 모달 콘텐츠 */
+.modal-content {
+    margin: 10% auto; /* 중앙에 위치 */
+    padding: 20px;
+    border-radius: 10px;
+    background: #FFF;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.15);
+    width: 1064px;
+    height: 555px;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+
+    
+}
+.modalBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    /* border: solid 1px blue; */
+}
+.dd{
+    display: flex;
+    justify-content: flex-start;
+    gap:400px;
+}
+
+.modaltext{
+    display: flex;
+    justify-content: center;
+}
+.st{
+    display: flex;
+    color: var(--, #1C1C1E);
+text-align: center;
+font-family: "SUITE Variable";
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.textA{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top:30px ;
+}
+/* 닫기 버튼 */
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    margin-left: 30px;
+    /* border:solid 1px blue; */
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.ff{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+textarea{
+    display: flex;
+    justify-content: flex-start;
+    width: 911px;
+    height: 300px;
+    border: none;
+    border-radius: 10px;
+    background: rgba(228, 228, 228, 0.50);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+    color:#9C9CA1;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    padding: 17px 27px;
+    }
+/* 확인 버튼 */
+#confirmBtn {
+
+    width: 130px;
+    height: 58px;
+    /* margin-top: 48px; */
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    outline: none;
+    color: #FE902F;
+    border: 1px solid #FE902F;
+    background: #FFF;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+#confirmBtn:hover{
+    border: 1px solid #FE902F;
+    background: #FE902F;
+    color: #FFF;
+}
+#confirmBtn:active{
+    border: 1px solid #FE902F;
+    background: #FE902F;
+    color: #FFF;
+}

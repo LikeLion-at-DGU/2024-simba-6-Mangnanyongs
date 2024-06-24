@@ -48,3 +48,4 @@ def student_mywork(request):
     mywork = Application.objects.filter(writer=request.user, is_accepted=2).select_related('post')
     mywork_posts = [application.post for application in mywork]
     return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})
+

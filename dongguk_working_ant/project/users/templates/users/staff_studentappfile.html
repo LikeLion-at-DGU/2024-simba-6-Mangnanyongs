@@ -12,7 +12,7 @@
 <div id="applyScreen">
     <div class="ttt">
         <div class="backBtn">
-            <a href="javascript:history.back()" class="backBtnAtag">
+            <a href="{% url 'users:staff-appslist' post.id %}" class="backBtnAtag">
                 <img src="{% static 'images/icons/back.svg' %}" />
             </a>
             <span id="word">{{post.organization}} {{post.title}} 지원</span>
@@ -22,8 +22,8 @@
                 <!--지원자 이미지 박스 -->
                 <div class="profile w100">
                     <div class="img">
-                        {% if user.profile.photo %}
-                            <img src="{{ user.profile.photo.url }}" alt="사진" width="100px">
+                        {% if student.profile.photo %}
+                            <img src="{{ student.profile.photo.url }}" alt="사진" width="100px">
                         {% endif %}
                     </div>
                     <div class="info">

@@ -7,12 +7,19 @@
     width: 100%;
 }
 
-.content {
+.test{
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1400px;
-    margin-left: 2em;
+    max-width: 1300px;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 73vw;
+    max-width: 1300px;
     gap: 10px;
 }
 
@@ -95,7 +102,7 @@
 }
 
 #main2{
-    margin-top: 4.8em;
+    margin-top: 3em;
     gap: 2.2em;
     margin-bottom: 60px;
 }
@@ -124,7 +131,7 @@
 .card{
     position: relative;
     display:flex;
-    width: 82.625em;
+    width: 1300px;
     height: 13.75em;
     flex-shrink: 0;
     border-radius: 0.75em;

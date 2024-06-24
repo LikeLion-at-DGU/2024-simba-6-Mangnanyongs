@@ -3,7 +3,7 @@ from django.utils import timezone
 from datetime import datetime
 from django.db.models import Q, Count, F
 import json
-from .models import Post, Question, Application, Answer
+from .models import Post, Question, Application, Answer, Review
 from accounts.models import Notice
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
@@ -234,20 +234,20 @@ def post_detail(request, post_id):
         post_body_list = post.get_body()
 
         applications = post.applications.all()  
-        applied_users = [application.writer for application in applications]  
-        print(applied_users)
+        applied_users = [application.writer for application in applications]
         return render(request, 'main/post_detail.html', {'post':post, 'post_body_list':post_body_list, 'applied_users': applied_users})
     return redirect('accounts:login')
 
 def post_detail_review(request, post_id):
     if request.user.is_authenticated:
         post = get_object_or_404(Post, pk=post_id)
-        post_body_list = post.get_body()
 
         applications = post.applications.all()  
         applied_users = [application.writer for application in applications]  
-        print(applied_users)
-        return render(request, 'main/post_detail_review.html', {'post':post, 'post_body_list':post_body_list, 'applied_users': applied_users})
+        
+        reviews = Review.objects.filter(organization=post.organization)
+
+        return render(request, 'main/post_detail_review.html', {'post':post,'applied_users': applied_users, 'reviews':reviews})
     return redirect('accounts:login')
 
 def scraps(request, post_id):

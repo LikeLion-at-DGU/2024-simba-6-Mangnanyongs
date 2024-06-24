@@ -92,7 +92,18 @@
             <!--세부사항 내용 들어가는 박스2-->
             <div class="detailBox2">
                 <div class="box2Frame">
+<<<<<<< HEAD
                     안녕하세요
+=======
+                    {% for review in reviews %}
+                        <div class="check">
+                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
+                            <span class="box2Text">
+                                {{review.writer.profile.name}}<br>{{review.content}}<br>
+                            </span>
+                        </div>
+                    {% endfor %}
+>>>>>>> dcfa23c8ee4d456ef87bcb84b3883ca82dd57301
                 </div>
                 
             </div>

@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from main.models import Post, Application, Answer, Review
 from accounts.models import Notice
 from django.contrib.auth.models import User
+from django.utils import timezone
 from django.http import JsonResponse
 # Create your views here.
 def staff_mypage(request):
@@ -58,12 +59,23 @@ def check_result(request, post_id):
         checked_applications = request.POST.getlist('check')
         
         for app in checked_applications:
-            application = get_object_or_404(Application, pk=app )
+            application = get_object_or_404(Application, pk=app)
+
+            #학생에게 알림전송
+            new_notice = Notice()
+            new_notice.user = application.writer
+            
             if request.POST.get('result')== '합격':
                 application.is_accepted = 2
+                new_notice.content = '합격 | [' + application.post.organization + ']' + application.post.title
             elif request.POST.get('result') == '불합격':
                 application.is_accepted = 1
+                new_notice.content = '불합격 | [' + application.post.organization + ']' + application.post.title
             application.save()
+
+            new_notice.link = str(application.post.id)
+            new_notice.pub_date = timezone.now()
+            new_notice.save()
 
     return redirect('users:staff-appslist', post_id)
 

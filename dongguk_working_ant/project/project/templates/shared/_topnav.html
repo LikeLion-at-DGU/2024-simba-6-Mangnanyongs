@@ -57,8 +57,11 @@
             <!--모달-->
             <div id="topnav_modal" style="display: none;">
               <!--내용 추가..-->
-              <div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>합격 | 남산학사 어쩌구</div>
-              <div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>마감 D-1 | 교무팀 어쩌구</div>
+              {% if notices %}
+                {% for notice in notices %}
+                  <div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>{{notice.content}}</div>
+                {% endfor %}
+              {% endif %}
             </div>
           </div>
         </div>

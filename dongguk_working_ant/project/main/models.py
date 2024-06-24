@@ -33,12 +33,6 @@ class Post(models.Model):
     def get_body(self):
         return json.loads(self.body)
 
-    def set_time(self, time):
-        self.time = json.dumps(time)
-
-    def get_time(self):
-        return json.loads(self.time)
-
     def __str__(self):
         return '[' + self.organization + ']' + self.title
 
@@ -54,7 +48,6 @@ class Application(models.Model):
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     is_accepted = models.PositiveIntegerField(null=False, default=0) 
     file = models.FileField(upload_to="application_file/", blank=True, null=True)
-
 
 class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)

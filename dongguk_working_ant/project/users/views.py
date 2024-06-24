@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from main.models import Post, Application, Answer
+from accounts.models import Notice
 from django.contrib.auth.models import User
-
+from django.http import HttpResponseRedirect
 # Create your views here.
 def staff_mypage(request):
     return render(request, 'users/staff_mypage.html')
@@ -48,3 +49,8 @@ def student_mywork(request):
     mywork = Application.objects.filter(writer=request.user, is_accepted=2).select_related('post')
     mywork_posts = [application.post for application in mywork]
     return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})
+
+def notice(request):
+    notices = Notice.objects.filter(user=request.user)
+    previous_url = request.META.get('HTTP_REFERER', 'main:mainlistpage')
+    return HttpResponseRedirect(previous_url, {'notices':notices})

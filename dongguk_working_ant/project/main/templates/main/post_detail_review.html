@@ -94,6 +94,14 @@
             <div class="detailBox2">
                 <div class="box2Frame">
                     
+                    {% for review in reviews %}
+                        <div class="check">
+                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
+                            <span class="box2Text">
+                                {{review.writer.profile.name}}<br>{{review.content}}<br>
+                            </span>
+                        </div>
+                    {% endfor %}
                 </div>
                 
             </div>

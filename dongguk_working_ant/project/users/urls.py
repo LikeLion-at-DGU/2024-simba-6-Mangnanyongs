@@ -12,4 +12,5 @@ urlpatterns = [
     path('student-mypage/', student_mypage, name="student-mypage"),
     path('student-myscrap/', student_myscrap, name="student-myscrap"),
     path('student-mywork/', student_mywork, name="student-mywork"),
+    path('check-result/<int:post_id>', check_result, name="check-result"),
 ]

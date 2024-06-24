@@ -12,10 +12,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     passBtn.addEventListener('click', () => {
         passModal.style.display = 'flex';
+        document.getElementById("result").value="합격"
     });
 
     failBtn.addEventListener('click', () => {
         failModal.style.display = 'flex';
+        document.getElementById("result").value="불합격"
     });
 
     passConfirmBtn.addEventListener('click', () => {

@@ -50,13 +50,19 @@
           <!--로그인 페이지-->
           </ul>
           {% endif %}
-          <a class="Caption bell"> <!--알림 기능은 어떻게 구현할 지 구상 중..-->
-            <img src="{% static 'images/icons/bell.svg' %}" />
-          </a>
+          <button id="bell">
+            <img src="{% static 'images/icons/bell.svg' %}" class="bell"/>
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>
+<!--모달-->
+<div id="topnav_modal" style="display: none;">
+  <!--내용 추가..-->
+  <div class="orange" id="recent" style="font-size: 15px;">합격 | 남산학사 어쩌구</div>
+  <div class="Caption gray" id="after">마감 D-1 | 교무팀 어쩌구</div>
 </div>
 <script>
   const captions = document.getElementsByClassName("Caption");
@@ -68,4 +74,15 @@
       event.target.style.color = "";
     }, false);
   }
+
+  const bell = document.getElementById('bell');
+  const topnav_modal = document.getElementById('topnav_modal');
+  bell.addEventListener('click', function(){
+    if( topnav_modal.style.display == 'none'){
+      topnav_modal.style.display = 'flex';
+    }else if(topnav_modal.style.display == 'flex'){
+      topnav_modal.style.display = 'none';
+    }
+  });
+
 </script>

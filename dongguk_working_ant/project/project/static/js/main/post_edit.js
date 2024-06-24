@@ -75,7 +75,7 @@ const topElement = document.querySelector("#contents .top");
 const selectElement = document.getElementById("recruit_count");
 const directInputSpan = document.createElement("span");
 directInputSpan.style =
-  "width: 200px; height: 30px; display:flex; align-items: center; flex-shrink: 0; border-radius: 20px; background: #FFF; border: 1px solid gray; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08)";
+  "width: 201px; height: 31px; display:flex; align-items: center; flex-shrink: 0; border-radius: 20px; background: #FFF; border: 1px solid gray; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08)";
 
 const directInput = document.createElement("input"); //directInputSpan 정의
 directInput.type = "number";

@@ -18,7 +18,7 @@
       <div class="div">
         <!-- 로그인을 한 경우 -->
         <div class="nav-2">
-          <a class="Caption" href="{% url 'main:mainlistpage' %}">알아보기</a>
+          <a class="Caption" href="{% url 'main:mainlistpage' %}" id="arabogy">알아보기</a>
           {% if user.profile.student_or_staff == 'student' %} <!--학생일 때-->
             <a class="Caption" href="{% url 'users:student-myapplication' %}">지원현황</a>
           {% elif user.profile.student_or_staff == 'staff' %}<!--교직원일 때-->

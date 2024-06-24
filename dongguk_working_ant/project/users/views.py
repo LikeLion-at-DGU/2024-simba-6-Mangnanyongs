@@ -85,15 +85,19 @@ def notice(request):
     return JsonResponse({'notices': notice_list})
 
 def review_content(request):
-    new_review = Review()
+    if request.user.is_authenticated:
+        new_review = Review()
+        post_num = int(request.POST['post_id'])
 
-    #new_review.organization = request.POST['review']
+        post = get_object_or_404(Post, pk=post_num)
 
-    #new_review.writer = request.POST['review']
+        new_review.organization = post.organization
 
-    new_review.content = request.POST.get('review')
+        new_review.writer = request.user
 
-    new_review.save()
+        new_review.content = request.POST.get('review')
+
+        new_review.save()
 
     print(new_review.content)
-    return redirect('users:student-mywork', new_review.id)
+    return redirect('users:student-mywork')

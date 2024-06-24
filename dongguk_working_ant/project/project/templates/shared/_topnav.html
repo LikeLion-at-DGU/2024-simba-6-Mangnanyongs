@@ -57,8 +57,10 @@
             <!--모달-->
             <div id="topnav_modal" style="display: none;">
               <!--내용 추가..-->
-                  <div class="Caption gray" id="notice-container"></div>
+              <div id="notice-container">
+                  <!--<div class="Caption gray"></div>-->
                   <!--<div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>{{notice.content}}</div>-->
+              </div>
             </div>
           </div>
         </div>
@@ -97,8 +99,7 @@
             const notices = data.notices;
             let noticeContent = '';
             notices.forEach(notice => {
-                noticeContent += `<img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>`
-                noticeContent += `<p>${notice.content}</p>`;
+                noticeContent += `<div class="Caption gray"><img src="{% static 'images/icons/x.svg' %}" style="margin-right: 3px;" onclick="delete_alarm(this)"/>${notice.summary}...</div><br>`
             });
             document.getElementById('notice-container').innerHTML = noticeContent;
             topnav_modal.style.display = 'flex';

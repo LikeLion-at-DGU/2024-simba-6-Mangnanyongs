@@ -34,3 +34,6 @@ class Notice(models.Model):
     content = models.CharField(max_length=20, blank=True)
     link = models.CharField(max_length=20, blank=True)
     pub_date = models.DateTimeField()
+
+    def summary(self):
+        return self.content[:25]

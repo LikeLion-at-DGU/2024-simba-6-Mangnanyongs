@@ -50,20 +50,22 @@ def student_mywork(request):
     mywork_posts = [application.post for application in mywork]
     return render(request, 'users/student_mywork.html', {'mywork_posts': mywork_posts})
 
-<<<<<<< HEAD
-def check_result(request):
+def check_result(request, post_id):
     if request.method == "POST":
+        print(request.POST.get('result'))
         checked_applications = request.POST.getlist('check')
-        applicaton = get_object_or_404(Application, )
-        if request.POST['result']== '합격':
-            application.is_accepted = 2
-        elif request.POST['result'] == '불합격':
-            application.is_accepted = 1
-        application.save()
-    return render(request, 'users/staff_studentappfile',{'applications':applicaton})
-=======
+        
+        for app in checked_applications:
+            application = get_object_or_404(Application, pk=app )
+            if request.POST.get('result')== '합격':
+                application.is_accepted = 2
+            elif request.POST.get('result') == '불합격':
+                application.is_accepted = 1
+            application.save()
+
+    return redirect('users:staff-appslist', post_id)
+
 def notice(request):
     notices = Notice.objects.filter(user=request.user)
     previous_url = request.META.get('HTTP_REFERER', 'main:mainlistpage')
     return HttpResponseRedirect(previous_url, {'notices':notices})
->>>>>>> 5a2d57cde14798b41e1c39d93c94e65bf44414a6

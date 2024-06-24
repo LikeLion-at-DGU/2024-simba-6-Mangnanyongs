@@ -12,7 +12,8 @@
 <!-- {% for student in students %}
     {{ student.profile.name }}
 {% endfor %} -->
-<form action="{% url 'users:check-result' %}" method="POST" enctype="multipart/form-data">
+<form action="{% url 'users:check-result' post.id %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
 <div class="appslist">
     <!--뒤로가기 +제목 -->
     <div class="title">
@@ -31,17 +32,10 @@
                     <div class="cardContent">
                         <!--라디오버튼인척하는 체크박스 
                         라디오버튼은 하나만 클릭돼서 이렇게함 -->
-<<<<<<< HEAD
-                        <div class="fake">
-                            <!--{{ forloop.counter }}이거는 for문개수를 숫자로 표현해주는거임 맨처음 카드가1그다음이 2 이런식-->
-                            <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox" name="check" value="">
-                            <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
-                        </div>
-=======
                         {% if app.is_accepted == 0 %} <!--결과 없음-->
                             <div class="fake">
                                 <!--{{ forloop.counter }}이거는 for문개수를 숫자로 표현해주는거임 맨처음 카드가1그다음이 2 이런식-->
-                                <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox">
+                                <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox" name="check" value="{{app.id}}">
                                 <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
                             </div>
                         {% elif app.is_accepted == 1 %} <!--불합격-->
@@ -49,7 +43,6 @@
                         {% elif app.is_accepted == 2 %} <!--합격-->
                             합격    
                         {% endif %}
->>>>>>> 5a2d57cde14798b41e1c39d93c94e65bf44414a6
                         <div class="img">
                             <div class="profileImage">
                                 <img src="{{ app.writer.profile.photo.url }}" />
@@ -82,7 +75,7 @@
         <div class="modal-content">
             <div class="comment">합격 처리하시겠습니까?</div>
             <div class="bt">
-                <button class="modalBtn" id="passConfirm" name="result" value="합격">확인</button>
+                <button class="modalBtn" id="passConfirm">확인</button>
                 <button class="modalBtn" id="cancel">취소</button>
             </div>
             
@@ -94,7 +87,7 @@
         <div class="modal-content">
             <div class="comment">불합격 처리하시겠습니까?</div>
             <div class="bt">
-                <button class="modalBtn" id="failConfirm" name="result" value="불합격">확인</button>
+                <button class="modalBtn" id="failConfirm">확인</button>
                 <button class="modalBtn" id="cancel">취소</button>
             </div>
             
@@ -105,6 +98,7 @@
     <div class="modal" id="resultModal">
         <div class="modal-content">
             <div id="resultMessage"></div>
+            <input type="hidden" name="result" id="result" value="{{ result }}">
             <button type="submit" class="modalBtn" id="resultClose">확인</button>
         </div>
     </div>

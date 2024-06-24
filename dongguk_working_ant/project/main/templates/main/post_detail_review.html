@@ -89,22 +89,21 @@
                     <button class="indexB" id="review" style="background-color: #FE902F; color: #FFFDFB;">근로후기</button>
                 </a>
             </div>
-            <!--세부사항 내용 들어가는 박스2
-            진우야여기에 for문 넣어줘-->
-            <div class="detailBox2">
-                <div class="box2Frame">
-                    
-                    {% for review in reviews %}
-                        <div class="check">
-                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
-                            <span class="box2Text">
-                                {{review.writer.profile.name}}<br>{{review.content}}<br>
-                            </span>
+            <!--세부사항 내용 들어가는 박스2-->
+            {% for review in reviews %}
+                <div class="detailBox2" style="height: 156px; display: flex; justify-content: center; align-items: center;">
+                    <div class="box2Frame" style="padding: 29px 46px; display: flex; flex-direction: row; gap:34px; "  >
+                        <div class="reImg" style>
+                            <img src="{% static 'images/icons/Component4.svg' %}" />
                         </div>
-                    {% endfor %}
+                        <div  class="reviewtext" style="height:100%; display: flex; flex-direction: column; justify-content: center; align-items: flex-start;">
+                            <div id="nAme" style="display: flex;">{{review.writer.profile.name}}</div>
+                            <div id="reView"style="display: flex;">{{review.content}}</div>
+                        </div>
+                        
+                    </div>
                 </div>
-                
-            </div>
+            {% endfor %}
         </div>
         <!--지원하기 버튼-->
         {% if user.profile.student_or_staff == 'student' %}

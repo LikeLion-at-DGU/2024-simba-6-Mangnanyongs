@@ -4,6 +4,8 @@ from datetime import datetime
 from django.db.models import Q, Count, F
 import json
 from .models import Post, Question, Application, Answer
+from accounts.models import Notice
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
 # Create your views here.
@@ -280,9 +282,18 @@ def application_create(request, post_id):
             new_answer.save()
             num += 1
     
-    #file추가 수정 예정
+    #첨부파일
     if 'file' in request.FILES:
         new_application.file = request.FILES['file']
     new_application.save()
     
+    #교직원에게 알림전송
+    new_notice = Notice()
+    new_notice.user = post.writer
+    content = '새로운 지원자 (' + request.user.profile.name + ') | [' + post.organization + ']' + post.title
+    link = str(post.id)
+    pub_date = timezone.now()
+
+    new_notice.save()
+
     return redirect('main:post-detail', post_id)

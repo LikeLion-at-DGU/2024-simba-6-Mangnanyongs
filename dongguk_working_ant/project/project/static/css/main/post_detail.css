@@ -191,6 +191,10 @@
 }
 .index{
     display: flex;
+    gap:20px;
+}
+.indexB{
+    display: flex;
     width: 130px;
     height: 58px;
     /* padding: 18px 78px; */
@@ -199,16 +203,24 @@
     gap: 8px;
     flex-shrink: 0;
     border-radius: 30px;
-    background: #FE902F;
-}
-.indexText{
-    color: #FFFDFB;
+
+    border: 1px solid #FE902F;
+    background: #FFF;
+    color: #FE902F;
     text-align: center;
     font-family: "SUITE Variable";
     font-size: 18px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+}
+.indexB:hover{
+    background: #FE902F;
+    color: #FFFDFB;
+}
+.indexB:active{
+    background: #FE902F;
+    color: #FFFDFB;
 }
 .detailBox2{
     width: 1300px;

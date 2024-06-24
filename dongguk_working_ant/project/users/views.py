@@ -10,9 +10,9 @@ def staff_mypage(request):
 #지원한 학생 리스트 페이지
 def staff_appslist(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    applications = Application.objects.filter(post_id=post_id).select_related('writer')
-    students = [app.writer for app in applications]
-    return render(request, 'users/staff_appslist.html',{'students':students, 'post':post})
+    applications = Application.objects.filter(post_id=post_id)
+    
+    return render(request, 'users/staff_appslist.html', {'applications': applications, 'post': post})
 
 def staff_mypost(request):
     posts = Post.objects.filter(writer=request.user.id)

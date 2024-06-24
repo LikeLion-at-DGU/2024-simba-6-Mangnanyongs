@@ -24,29 +24,35 @@
     </div>
     <!--지원자리스트 목록 라디오태그 -->
     <div class="cardFrame">
-        {% for student in students %}
+        {% for app in applications %}
             <div class="card">
                 <div class="cardPadding">
                     <div class="cardContent">
                         <!--라디오버튼인척하는 체크박스 
                         라디오버튼은 하나만 클릭돼서 이렇게함 -->
-                        <div class="fake">
-                            <!--{{ forloop.counter }}이거는 for문개수를 숫자로 표현해주는거임 맨처음 카드가1그다음이 2 이런식-->
-                            <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox">
-                            <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
-                        </div>
+                        {% if app.is_accepted == 0 %} <!--결과 없음-->
+                            <div class="fake">
+                                <!--{{ forloop.counter }}이거는 for문개수를 숫자로 표현해주는거임 맨처음 카드가1그다음이 2 이런식-->
+                                <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox">
+                                <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
+                            </div>
+                        {% elif app.is_accepted == 1 %} <!--불합격-->
+                            불합격
+                        {% elif app.is_accepted == 2 %} <!--합격-->
+                            합격    
+                        {% endif %}
                         <div class="img">
                             <div class="profileImage">
-                                <img src="{{ student.profile.photo.url }}" />
+                                <img src="{{ app.writer.profile.photo.url }}" />
                             </div>
                         </div>
                         <div class="cardText">
-                            <span class="ct"><span class="ct" id="bold">{{ student.profile.name }}</span>{{student.profile.birth}}</span>
-                            <span class="ct">{{student.profile.department}} | {{student.profile.student_number}}</span>
+                            <span class="ct"><span class="ct" id="bold">{{ app.writer.profile.name }}</span>{{app.writer.profile.birth}}</span>
+                            <span class="ct">{{app.writer.profile.department}} | {{app.writer.profile.student_number}}</span>
                         </div>
                     </div>
                     <div class="cardBtnFrame">
-                        <a href="{% url 'users:staff-studentappfile' post.id student.id %}">
+                        <a href="{% url 'users:staff-studentappfile' post.id app.writer.id %}">
                             <button class="cardBtn">지원서 확인</button>
                         </a>
                     </div>

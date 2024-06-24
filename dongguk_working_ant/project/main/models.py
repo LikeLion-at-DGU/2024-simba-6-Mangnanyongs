@@ -58,4 +58,3 @@ class Review(models.Model):
     organization = models.CharField(max_length=50, null=True)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
-    star = models.PositiveIntegerField(null=False, default=0) #boolean

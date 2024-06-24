@@ -36,4 +36,4 @@ class Notice(models.Model):
     pub_date = models.DateTimeField()
 
     def summary(self):
-        return self.content[:25]
+        return self.content[:22]

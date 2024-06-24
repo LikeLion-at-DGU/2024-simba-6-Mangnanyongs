@@ -98,7 +98,11 @@
 .fake{
     display: flex;
     justify-content: center;
-    width: 50px;
+    width: 60px;
+}
+.passFail{
+    width: 60px;
+    height:60px;
 }
 .custom-checkbox {
     display: none;
@@ -154,10 +158,7 @@
     line-height: 35px;
 }
 
-.passFail{
-    width: 50px;
-    height:50px;
-}
+
 #bold{
     font-size: 20px;
     font-weight: 700;

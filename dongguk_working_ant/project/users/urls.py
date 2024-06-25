@@ -15,4 +15,5 @@ urlpatterns = [
     path('check-result/<int:post_id>', check_result, name="check-result"),
     path('notice/', notice, name="notice"),
     path('review-content/', review_content, name="review-content"),
+    path('student-myappfile/<int:post_id>', student_myappfile, name="student-myappfile"),
 ]

@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from main.models import Post, Application, Answer
+from main.models import Post, Application, Answer, Review
 from accounts.models import Notice
 from django.contrib.auth.models import User
 from django.utils import timezone
@@ -83,3 +83,21 @@ def notice(request):
     notices = Notice.objects.filter(user=request.user)
     notice_list = [{'summary': notice.summary(), 'link': int(notice.link)} for notice in notices]
     return JsonResponse({'notices': notice_list})
+
+def review_content(request):
+    if request.user.is_authenticated:
+        new_review = Review()
+        post_num = int(request.POST['post_id'])
+
+        post = get_object_or_404(Post, pk=post_num)
+
+        new_review.organization = post.organization
+
+        new_review.writer = request.user
+
+        new_review.content = request.POST.get('review')
+
+        new_review.save()
+
+    print(new_review.content)
+    return redirect('users:student-mywork')

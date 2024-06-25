@@ -93,12 +93,14 @@
             <div class="detailBox2">
                 <div class="box2Frame">
                     {% for body in post_body_list %}
-                        <div class="check">
-                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
-                            <span class="box2Text">
-                                {{body}}<br>
-                            </span>
-                        </div>
+                        {% if body %}
+                            <div class="check">
+                                <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
+                                <span class="box2Text">
+                                    {{body}}<br>
+                                </span>
+                            </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
                 

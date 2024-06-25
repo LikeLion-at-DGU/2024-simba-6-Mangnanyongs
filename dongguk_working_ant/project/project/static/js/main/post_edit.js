@@ -103,6 +103,7 @@ let detailTemplate = document.querySelector(".detail"); // 기존 detail 요소�
 function add_detail() {
   // 새로운 detail 요소 생성 및 복사
   const newDetail = detailTemplate.cloneNode(true);
+  newDetail.style.display = 'flex';
 
   // form 태그 안에 새로운 detail 추가
   detailsContainer.appendChild(newDetail);

@@ -81,5 +81,5 @@ def check_result(request, post_id):
 
 def notice(request):
     notices = Notice.objects.filter(user=request.user)
-    notice_list = [{'summary': notice.summary()} for notice in notices]
+    notice_list = [{'summary': notice.summary(), 'link': int(notice.link)} for notice in notices]
     return JsonResponse({'notices': notice_list})

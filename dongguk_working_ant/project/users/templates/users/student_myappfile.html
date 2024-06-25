@@ -1,0 +1,79 @@
+<!-- 학생이 자기 지원서 보는것 이동건-->
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/users/staff_studentappfile.css'%}"
+/>
+<div id="applyScreen">
+    <div class="ttt">
+        <div class="backBtn">
+            <a href="{% url 'users:staff-appslist' post.id %}" class="backBtnAtag">
+                <img src="{% static 'images/icons/back.svg' %}" />
+            </a>
+            <span id="word">{{post.organization}} {{post.title}} 지원</span>
+        </div>
+        <div id="applyBody" class="width">
+            <div class="profileBox w100">
+                <!--지원자 이미지 박스 -->
+                <div class="profile w100">
+                    <div class="img">
+                        {% if student.profile.photo %}
+                            <img src="{{ student.profile.photo.url }}" alt="사진" width="100px">
+                        {% endif %}
+                    </div>
+                    <div class="info">
+                        <div class="infoText">
+                            
+                            <span id="nameEtc"><span id="nameBold">{{ student.profile.name }}</span>{{student.profile.birth}}  |  {{student.profile.department}}  |  {{student.profile.student_number}}</span>
+                        </div>
+                        <div class="infoText">
+                            <!--소득분위 연결해야됨-->
+                            <span class="contentText">소득분위<span class="indextext">| {{student.profile.income }}분위</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">휴대폰<span class="indextext">| {{ student.profile.phone }}</span></span>
+                        </div>
+                        <div class="infoText">
+                            <span class="contentText">이메일<span class="indextext">| {{ student.profile.email }}</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--지원동기 양식 -->
+            {% for answer in answers %}
+                <div class="questionBox w100">
+                    <div class="question">
+                        <div class="qTitle w100">
+                            <span>{{ forloop.counter }}.</span> {{ answer.question.content }}
+                        </div>
+                        <div class="inner w100">
+                            <!-- <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea> -->
+                            {{ answer.content }}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+            <div class="questionBox w100" id="filebox">
+                <div class="question" id="file">
+                    <div class="qTitle w100" >
+                        <span>*</span> 첨부 파일.
+                    </div>
+                    <div class="inner w100" id="fileinner">
+                        <!-- <input type="file" name="file"> 첨부된파일넣는곳 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
+{% endblock %} 
+{% block footer %}
+    <!--footer필요없는페이지라 비우기 -->
+{% endblock %}

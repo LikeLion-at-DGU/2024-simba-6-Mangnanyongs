@@ -101,3 +101,10 @@ def review_content(request):
 
     print(new_review.content)
     return redirect('users:student-mywork')
+
+def delete_notice(request, notice_id):
+    notice = Notice.objects.get(pk=notice_id)
+    notice.delete()
+    notices = Notice.objects.filter(user=request.user)
+    notice_list = [{'summary': notice.summary(), 'link': int(notice.link), 'id':int(notice.id)} for notice in notices]
+    return JsonResponse({'notices': notice_list})

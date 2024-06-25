@@ -116,8 +116,8 @@ function delete_detail(selected) {
   let grand_detail = parent_detail.parentNode;
 
   parent_detail.remove();
-  console.log(grand_detail.querySelectorAll(".detail")[0]);
-  if (grand_detail.querySelectorAll(".detail")[0] == undefined) {
+  console.log(grand_detail.querySelectorAll(".detail")[1]);
+  if (grand_detail.querySelectorAll(".detail")[1] == undefined) {
     //첫 요소가 삭제되면  
     detailsContainer.appendChild(add_detail()); //새로운 템플릿 생성
   }

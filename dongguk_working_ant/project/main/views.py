@@ -12,6 +12,7 @@ from django.db.models import Case, When, Value, IntegerField
 # Create your views here.
 def mainpage(request):
     posts = Post.objects.all()
+    posts = posts.order_by('-pub_date')
     return render(request, 'main/mainpage.html', {'posts':posts})
 
 def mainlistpage(request):

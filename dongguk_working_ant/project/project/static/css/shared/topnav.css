@@ -101,6 +101,12 @@
 
 #topnav_modal div{
     display: flex;
+    color:#FE902F;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
 
 #topnav_modal div:hover{

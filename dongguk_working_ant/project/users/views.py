@@ -102,3 +102,11 @@ def review_content(request):
 
         return redirect('users:student-mywork')
     return redirect('accounts:login')
+
+
+def student_myappfile(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    application = get_object_or_404(Application, writer=request.user, post_id=post_id)
+    student = get_object_or_404(User, id=request.user.id)
+    answers = Answer.objects.filter(application=application)
+    return render(request, 'users/staff_studentappfile.html',{'application':application, 'answers':answers, 'student':student, 'post':post})

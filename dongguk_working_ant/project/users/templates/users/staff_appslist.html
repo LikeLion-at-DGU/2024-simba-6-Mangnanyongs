@@ -18,7 +18,7 @@
     <!--뒤로가기 +제목 -->
     <div class="title">
         <div class="backBtn">
-            <a href="{% url 'users:staff-mypost' %}" class="backBtnAtag">
+            <a href="javascript:history.back()" class="backBtnAtag">
                 <img src="{% static 'images/icons/back.svg' %}" />
             </a>
             <span id="word">{{post.organization}} {{post.title}} 지원현황</span>

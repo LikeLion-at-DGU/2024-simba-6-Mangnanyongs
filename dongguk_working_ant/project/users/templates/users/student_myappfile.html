@@ -12,7 +12,7 @@
 <div id="applyScreen">
     <div class="ttt">
         <div class="backBtn">
-            <a href="{% url 'users:staff-appslist' post.id %}" class="backBtnAtag">
+            <a href="javascript:history.back()" class="backBtnAtag">
                 <img src="{% static 'images/icons/back.svg' %}" />
             </a>
             <span id="word">{{post.organization}} {{post.title}} 지원</span>

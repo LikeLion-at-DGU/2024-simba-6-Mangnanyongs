@@ -48,8 +48,9 @@
             {% for answer in answers %}
                 <div class="questionBox w100">
                     <div class="question">
-                        <div class="qTitle w100">
-                            <span>{{ forloop.counter }}.</span> {{ answer.question.content }}
+                        <div class="qTitle w100" id="ldg">
+                            <span id="ssss"><span id="rrrr">{{ forloop.counter }}.</span> {{ answer.question.content }}</span>
+                            {{ answer.content|length }} 자
                         </div>
                         <div class="inner w100">
                             <!-- <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea> -->

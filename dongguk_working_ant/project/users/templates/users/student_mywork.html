@@ -20,21 +20,12 @@
   </a>
   <span class="Capital Caption" style="margin-bottom:0.5em;">나의 근로</span>
 </div>
-
+<form action="{% url 'users:review-content' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
 <div class="content" id="main2">
     {% if mywork_posts  %}
         {% for post in mywork_posts  %}
         <div class="card">
-            <form action="{% url 'main:scraps' post.id %}" method='POST'> <!--스크랩-->
-                {% csrf_token %}
-                <button name="star" class="star" value="none">
-                    {% if request.user in post.scrap.all %}
-                        <img src="{% static 'images/icons/blink_star.svg' %}"/>
-                    {% else %}
-                        <img src="{% static 'images/icons/star.svg' %}"/>
-                    {% endif %}
-                </button>
-            </form>
             <span class="photo">
                 <span class="architecture">
                     <!--건물 사진 적용-->
@@ -95,14 +86,13 @@
             <button type="button" class="more_info" onclick="showModal()">
                 <img src="{% static 'images/icons/MY.svg' %}"/>
             </button>
+            <input type="hidden" name="post_id" value="{{ post.id }}">
         </div>
         {% endfor %}
     {% endif %}
-
 </div>
 <!--모달 폼태그-->
-<form action="" method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
+
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modalBox">
@@ -114,10 +104,10 @@
                 </div>
                 <div class="textA">
                     <!--텍스트에라 name바꿔야됨1-->
-                    <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="해당 근로에 대한 후기를 작성해주세요." ></textarea>
+                    <textarea name="review" class="textarea" placeholder="해당 근로에 대한 후기를 작성해주세요." ></textarea>
                 </div>
             
-                
+        
                 <div class="ff">
                     <button type="submit" id="confirmBtn">확인</button>
                 </div>

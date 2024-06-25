@@ -302,7 +302,7 @@ def application_create(request, post_id):
     #교직원에게 알림전송
     new_notice = Notice()
     new_notice.user = post.writer
-    new_notice.content = 'New! | [' + post.organization + ']' + post.title
+    new_notice.content = '신규 지원자 | [' + post.organization + ']' + post.title
     new_notice.link = str(post.id)
     new_notice.pub_date = timezone.now()
 

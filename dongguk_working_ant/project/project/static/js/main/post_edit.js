@@ -99,15 +99,14 @@ selectElement.addEventListener("change", function () {
 let detailsContainer = document.getElementById("details");
 let detailTemplate = document.querySelector(".detail"); // 기존 detail 요소를 템플릿으로 사용
 
-// 새로운 detail 요소 생성 및 복사
-const newDetail = detailTemplate.cloneNode(true);
-
 //세부사항 추가 버튼
 function add_detail() {
+  // 새로운 detail 요소 생성 및 복사
+  const newDetail = detailTemplate.cloneNode(true);
+
   // form 태그 안에 새로운 detail 추가
   detailsContainer.appendChild(newDetail);
 }
-
 //세부사항 삭제 버튼
 function delete_detail(selected) {
   let parent_detail = selected.parentNode;

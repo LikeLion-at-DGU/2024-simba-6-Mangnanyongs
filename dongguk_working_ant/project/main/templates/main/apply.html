@@ -12,7 +12,7 @@
     <form action="{% url 'main:application-create' post.id %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="backBtn">
-            <a href="{% url 'main:post-detail' post.id %}" class="backBtnAtag">
+            <a href="javascript:history.back()" class="backBtnAtag">
                 <img src="{% static 'images/icons/back.svg' %}" />
             </a>
             <span id="word">{{post.organization}} {{post.title}} 지원</span>

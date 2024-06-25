@@ -5,11 +5,15 @@ from .views import *
 app_name = "users"
 urlpatterns = [
     path('staff-mypage/', staff_mypage, name="staff-mypage"),
-    path('staff-appslist/', staff_appslist, name="staff-appslist"),
+    path('staff-appslist/<int:post_id>', staff_appslist, name="staff-appslist"),
     path('staff-mypost/', staff_mypost, name="staff-mypost"),
-    path('staff-studentappfile/', staff_studentappfile, name="staff-studentappfile"),
+    path('staff-studentappfile/<int:post_id>/<int:student_id>', staff_studentappfile, name="staff-studentappfile"),
     path('student-myapplication/', student_myapplication, name="student-myapplication"),
     path('student-mypage/', student_mypage, name="student-mypage"),
     path('student-myscrap/', student_myscrap, name="student-myscrap"),
     path('student-mywork/', student_mywork, name="student-mywork"),
+    path('check-result/<int:post_id>', check_result, name="check-result"),
+    path('notice/', notice, name="notice"),
+    path('review-content/', review_content, name="review-content"),
+    path('student-myappfile/<int:post_id>', student_myappfile, name="student-myappfile"),
 ]

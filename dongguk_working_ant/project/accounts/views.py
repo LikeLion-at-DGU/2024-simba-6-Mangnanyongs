@@ -43,13 +43,19 @@ def signup_student(request):
             department = request.POST['department']
             phone = request.POST['phone']
             email = request.POST['email']
-            photo = request.POST['photo']
-            if request.FILES.get('certification_student'):
-                certification = request.FILES['certification_student']
+            student_number = request.POST['student_number']
+            income = request.POST['income']
 
-            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email, photo=photo)
-            if request.FILES.get('certification_student'):
-                profile = Profile(certification=certification)
+            certification_student = request.FILES.get('certification_student')
+            photo = request.FILES.get('photo')
+
+            profile = Profile(student_or_staff=student_or_staff, user=user, name=name, gender=gender, birth=birth, department=department, phone=phone, email=email)
+
+            if certification_student:
+                profile.certification_student = certification_student
+            if photo:
+                profile.photo = photo
+
             profile.save()
 
             auth.login(request, user)
@@ -81,3 +87,7 @@ def signup_staff(request):
             return redirect('/')
 
     return render(request, 'accounts/signup_staff.html')
+
+def delete_account(request):
+    request.user.delete()
+    return redirect('main:mainlistpage')

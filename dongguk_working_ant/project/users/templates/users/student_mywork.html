@@ -1,1 +1,144 @@
-<!-- 학생 마이페이지 나의근로 이정진 -->
+<!--교직원 알아보기 페이지 담당자:이정진-->
+{% extends 'base.html' %} {% block content %} {% load static %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/main/mainlistpage.css'%}"
+/>
+<style>
+    #arabogy {
+    color: black;
+    }
+    .nav-3 :nth-child(2){
+        color: #FF8A00
+    }
+</style>
+<div class="test" id="test"> 
+<div class="content" id="header" style="flex-direction: row; align-items: center; justify-content: flex-start;">
+  <a href="javascript:history.back()">
+      <img src="{% static 'images/icons/vector.svg' %}" id="vector">
+  </a>
+  <span class="Capital Caption" style="margin-bottom:0.5em;">나의 근로</span>
+</div>
+<form action="{% url 'users:review-content' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<div class="content" id="main2">
+    {% if mywork_posts  %}
+        {% for post in mywork_posts  %}
+        <div class="card">
+            <span class="photo">
+                <span class="architecture">
+                    <!--건물 사진 적용-->
+                    {% if post.place == '경영/사회과학관' %}
+                        <img src="{% static 'images/buildings/경영사회과학관.png' %}" alt="cardImage">
+                    {% elif post.place == '과학관' %}
+                        <img src="{% static 'images/buildings/과학관.png' %}" alt="cardImage" >
+                    {% elif post.place == '남산학사' %}
+                        <img src="{% static 'images/buildings/남산학사.png' %}" alt="cardImage" >
+                    {% elif post.place == '다향관' %}
+                        <img src="{% static 'images/buildings/다향관.png' %}" alt="cardImage" >
+                    {% elif post.place == '명진관' %}
+                        <img src="{% static 'images/buildings/명진관.png' %}" alt="cardImage" >
+                    {% elif post.place == '법학/만해관' %}
+                        <img src="{% static 'images/buildings/법학만해관.png' %}" alt="cardImage" >
+                    {% elif post.place == '본관' %}
+                        <img src="{% static 'images/buildings/본관.png' %}" alt="cardImage" >
+                    {% elif post.place == '신공학관' %}
+                        <img src="{% static 'images/buildings/신공학관.png' %}" alt="cardImage" >
+                    {% elif post.place == '원흥관' %}
+                        <img src="{% static 'images/buildings/원흥관.png' %}" alt="cardImage" >
+                    {% elif post.place == '정보문화관' %}
+                        <img src="{% static 'images/buildings/정보문화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '중앙도서관' %}
+                        <img src="{% static 'images/buildings/중앙도서관.png' %}" alt="cardImage" >
+                    {% elif post.place == '학림관' %}
+                        <img src="{% static 'images/buildings/학림관.png' %}" alt="cardImage" >
+                    {% elif post.place == '학술문화관' %}
+                        <img src="{% static 'images/buildings/학술문화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '혜화관' %}
+                        <img src="{% static 'images/buildings/혜화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '기타' %}
+                        <img src="{% static 'images/buildings/기타.png' %}" alt="cardImage" >    
+                    {% endif %}
+                </span> <!--DB에 사진이 추가되면 삭제될 거임-->
+            </span>
+            <span class="detail">
+                <div class="information">
+                    <span class="info classification small orange">
+                        #{{post.department}}
+                    </span>
+                    <span class="info date small white">
+                        {% if post.day_left >= 0 %}
+                            {{ post.day_left }}일 남음
+                        {% else %}
+                            모집마감
+                        {% endif %}
+                    </span>
+                </div>
+                <a class="title Caption big" href="{% url 'main:post-detail' post.id %}">
+                    [{{post.organization}}] {{post.title}}
+                </a>
+                <div class="Caption light up">
+                    <div>{{post.place}}</div>
+                    <div>{{post.time}}</div>
+                </div>
+            </span>
+            <button type="button" class="more_info" onclick="showModal()">
+                <img src="{% static 'images/icons/mignone.svg' %}"/>
+            </button>
+            <input type="hidden" name="post_id" value="{{ post.id }}">
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+<!--모달 폼태그-->
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="modalBox">
+                <div class="dd">
+                    <div class="close">
+                        <img src="{% static 'images/icons/backmodal.svg' %}"/>
+                    </div>
+                    <div class="st">근로후기 등록</div>
+                </div>
+                <div class="textA">
+                    <!--텍스트에라 name바꿔야됨1-->
+                    <textarea name="review" class="textarea" placeholder="해당 근로에 대한 후기를 작성해주세요." ></textarea>
+                </div>
+            
+        
+                <div class="ff">
+                    <button type="submit" id="confirmBtn">확인</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</div>
+<script>
+    function showModal() {
+        var modal = document.getElementById('myModal');
+        modal.style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // 모달 닫기 버튼 기능 추가
+        document.querySelector('.close').addEventListener('click', function() {
+            var modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        });
+
+        // 모달 외부 클릭 시 닫기 기능 추가
+        window.onclick = function(event) {
+            var modal = document.getElementById('myModal');
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+    });
+</script>
+<script src="{% static 'js/main/mainlistpage.js' %}"></script>
+
+{% endblock %}

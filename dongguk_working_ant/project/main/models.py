@@ -4,10 +4,8 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Post(models.Model):
-    #User, Profile 생성 후 writer부분 수정 예정
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
     title = models.CharField(max_length=50)
-    building = models.ImageField(upload_to="post/", blank=True, null=True)
     organization = models.CharField(max_length=50, null=True)
     
     department = models.CharField(max_length=50, null=True)
@@ -15,10 +13,10 @@ class Post(models.Model):
     start_date = models.DateField(null=True)
     end_date = models.DateField(null=True)
     deadline = models.DateField(null=True)
-    day_left = models.IntegerField(null=True)#남은날짜
+    day_left = models.IntegerField(null=True)
     place = models.CharField(max_length=50, blank=False)
-    time = models.TextField(max_length=50, null=False)
-    recruitment = models.PositiveIntegerField(null=True, default=0)
+    time = models.TextField(null=False)
+    recruitment = models.PositiveIntegerField(default=0)
     wage = models.PositiveIntegerField(null=True, default=0)
     body = models.TextField()
 
@@ -26,7 +24,6 @@ class Post(models.Model):
     pub_date = models.DateTimeField()
     scrap = models.ManyToManyField(User, related_name='scraped', blank=True, default=None)
     scrap_count = models.PositiveIntegerField(default=0)
-    inquiry = models.PositiveIntegerField(default=0)
     applicated_count = models.PositiveIntegerField(default=0)
 
     #body필드에 TextField를 사용하고 JSON 문자열로 변환하여 저장 > 리스트로 만들어주기 위함
@@ -47,20 +44,17 @@ class Question(models.Model):
         return self.content + ' from ' + str(self.post)
 
 class Application(models.Model):
-    post = models.ForeignKey(Post, null=False, blank=False, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, null=False, related_name="applications", blank=False, on_delete=models.CASCADE)
     writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
-
+    is_accepted = models.PositiveIntegerField(null=False, default=0) 
+    file = models.FileField(upload_to="application_file/", blank=True, null=True)
 
 class Answer(models.Model):
     application = models.ForeignKey(Application, null=False, blank=False, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, null=False, blank=False, on_delete=models.CASCADE)
     content = models.TextField()
-    file = models.FileField(upload_to="question/", blank=True, null=True)
 
-class Applicated(models.Model):
-    post = models.OneToOneField(Post, on_delete=models.CASCADE)
-    student = models.ManyToManyField(User, related_name='apply', blank=True, default=None)
-    is_accepted = models.PositiveIntegerField(null=False, default=0) #boolean
-
-    def __str__(self):
-        return 'applicated of ' + str(self.post)
+class Review(models.Model):
+    organization = models.CharField(max_length=50, null=True)
+    writer = models.ForeignKey(User, null=False, blank=False, on_delete=models.CASCADE)
+    content = models.TextField()

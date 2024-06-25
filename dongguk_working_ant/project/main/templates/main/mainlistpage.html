@@ -47,7 +47,7 @@
                     {% comment %} {{ sort }} {% endcomment %}
                     <option value="" {% if so == '' %}selected{% endif %}>최신순</option>
                     <option value="deadline" {% if so == 'deadline' %}selected{% endif %}>마감순</option>
-                    <option value="inquiry" {% if so == 'inquiry' %}selected{% endif %}>조회순</option>
+                    <option value="apply" {% if so == 'apply' %}selected{% endif %}>지원자순</option>
                     <option value="scrap" {% if so == 'scrap' %}selected{% endif %}>스크랩순</option>
                 </select>
             </label>
@@ -83,8 +83,9 @@
             <label for="income">
                 <select id="income" class="Caption gray thin inc" onchange="changeSelect_income(this);">
                     {% comment %} {{ income }} {% endcomment %}
-                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위 미반영</option>
+                    <option value="" {% if inc == '' %}selected{% endif %}>소득 분위</option>
                     <option value="apply" {% if inc == 'apply' %}selected{% endif %}>소득 분위 반영</option>
+                    <option value="notapply" {% if inc == 'notapply' %}selected{% endif %}>소득 분위 미반영</option>
                 </select>
             </label>
         </div>
@@ -105,7 +106,40 @@
                 </button>
             </form>
             <span class="photo">
-                <span class="architecture"></span> <!--DB에 사진이 추가되면 삭제될 거임-->
+                <span class="architecture">
+                    <!--건물 사진 적용-->
+                    {% if post.place == '경영/사회과학관' %}
+                        <img src="{% static 'images/buildings/경영사회과학관.png' %}" alt="cardImage">
+                    {% elif post.place == '과학관' %}
+                        <img src="{% static 'images/buildings/과학관.png' %}" alt="cardImage" >
+                    {% elif post.place == '남산학사' %}
+                        <img src="{% static 'images/buildings/남산학사.png' %}" alt="cardImage" >
+                    {% elif post.place == '다향관' %}
+                        <img src="{% static 'images/buildings/다향관.png' %}" alt="cardImage" >
+                    {% elif post.place == '명진관' %}
+                        <img src="{% static 'images/buildings/명진관.png' %}" alt="cardImage" >
+                    {% elif post.place == '법학/만해관' %}
+                        <img src="{% static 'images/buildings/법학만해관.png' %}" alt="cardImage" >
+                    {% elif post.place == '본관' %}
+                        <img src="{% static 'images/buildings/본관.png' %}" alt="cardImage" >
+                    {% elif post.place == '신공학관' %}
+                        <img src="{% static 'images/buildings/신공학관.png' %}" alt="cardImage" >
+                    {% elif post.place == '원흥관' %}
+                        <img src="{% static 'images/buildings/원흥관.png' %}" alt="cardImage" >
+                    {% elif post.place == '정보문화관' %}
+                        <img src="{% static 'images/buildings/정보문화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '중앙도서관' %}
+                        <img src="{% static 'images/buildings/중앙도서관.png' %}" alt="cardImage" >
+                    {% elif post.place == '학림관' %}
+                        <img src="{% static 'images/buildings/학림관.png' %}" alt="cardImage" >
+                    {% elif post.place == '학술문화관' %}
+                        <img src="{% static 'images/buildings/학술문화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '혜화관' %}
+                        <img src="{% static 'images/buildings/혜화관.png' %}" alt="cardImage" >
+                    {% elif post.place == '기타' %}
+                        <img src="{% static 'images/buildings/기타.png' %}" alt="cardImage" >    
+                    {% endif %}
+                </span> <!--DB에 사진이 추가되면 삭제될 거임-->
             </span>
             <span class="detail">
                 <div class="information">
@@ -116,7 +150,7 @@
                         {% if post.day_left >= 0 %}
                             {{ post.day_left }}일 남음
                         {% else %}
-                            지원 마감
+                            모집마감
                         {% endif %}
                     </span>
                 </div>
@@ -133,6 +167,10 @@
             </button>
         </div>
         {% endfor %}
+        {% else %}
+        <div id="main3">
+            <img src="{% static 'images/icons/No_content.svg' %}" style="width: 442px; height: 279px;"/>
+        </div>
     {% endif %}
 </div>
 

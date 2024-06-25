@@ -9,11 +9,10 @@
     type="text/css"
     href="{% static 'css/main/post_detail.css'%}"
 />
-
 <div class="detailpageScreen">
     <!--뒤로가기 버튼-->
     <div class="backBtn">
-        <a href="{% url 'main:mainlistpage' %}" class="backBtnAtag">
+        <a href="javascript:history.back()" class="backBtnAtag">
             <img src="{% static 'images/icons/back.svg' %}" />
         </a>
     </div>
@@ -44,11 +43,6 @@
                             <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
                             <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
                         </div>
-                    {% else %} <!--개발 끝나면 이 부분 비우기-->
-                        <div class="box1EditFrame">
-                            <a href="{% url 'main:post-edit' id=post.id %}" class="box1Btn" id="EditBtn">수정</a>
-                            <a href="{% url 'main:post-delete' id=post.id %}" class="box1Btn" id="DeleteBtn">삭제</a>
-                        </div>
                     {% endif %}
                 </div>
                 <div class="box1Content1Frame">
@@ -60,7 +54,7 @@
                         {% if post.day_left >= 0 %}
                             <div class="deadline">~{{post.deadline}} 마감 {{post.day_left}}일 전</div>
                         {% else %}
-                            <div class="deadline">지원 마감</div>
+                            <div class="deadline">모집마감</div>
                         {% endif %}
                         <div class="box1line"></div>
                     </div>
@@ -75,7 +69,10 @@
                         </div>
                         <div class="etcTime">
                             <img src="{% static 'images/icons/date.svg' %}" />
-                            <div class="etcText">요일 및 시간<br>{{post.time}}</div>
+                            <div class="etcText">요일 및 시간
+                                <br>
+                                {{post.time}}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -85,49 +82,62 @@
         <div class="detailBox2Frame">
             <!--세부사항 목차 아이콘?-->
             <div class="index">
-                <span class="indexText">세부사항</span>
+                <a href="{% url 'main:post-detail' post.id %}">
+                    <button class="indexB" id="detail" style="background-color: #FE902F; color: #FFFDFB;">세부사항</button>
+                </a>
+                <a href="{% url 'main:post-detail-review' post.id %}">
+                    <button class="indexB" id="review">근로후기</button>
+                </a>
             </div>
             <!--세부사항 내용 들어가는 박스2-->
             <div class="detailBox2">
                 <div class="box2Frame">
-                    <span class="box2Text">
-                        {% for body in post_body_list %}
-                            {{body}}<br>
-                        {% endfor %}
-                    </span>
+                    {% for body in post_body_list %}
+                        <div class="check">
+                            <img class="profileImage"src="{% static 'images/icons/check.svg' %}" />
+                            <span class="box2Text">
+                                {{body}}<br>
+                            </span>
+                        </div>
+                    {% endfor %}
                 </div>
+                
             </div>
         </div>
-        <!--지원하기 버튼--> <!--모집 마감시에 버튼 수정하기-->
+        <!--지원하기 버튼-->
         {% if user.profile.student_or_staff == 'student' %}
-        <div class="applyBtn">
-            <a href="{% url 'main:apply' post.id %}" class="applyBtnAtag">
-                <span class="applyBtnContent">
-                    지원하기
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                        <path d="M6.5 17.9897L18.3647 6.125M18.3647 6.125H7.50011M18.3647 6.125V15.9888" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </a>
-        </div>
-        {% elif user.profile.student_or_staff == 'staff' %}
-        {% else %} <!--로그인하지 않았거나 어드민일 때(현재 개발 중인 탭 넣어두기)-->
-        <div class="applyBtn">
-            <a href="{% url 'main:apply' post.id %}" class="applyBtnAtag">
-                <span class="applyBtnContent">
-                    지원하기
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-                        <path d="M6.5 17.9897L18.3647 6.125M18.3647 6.125H7.50011M18.3647 6.125V15.9888" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-            </a>
-        </div>
+            {% if post.day_left >= 0 %}
+                {% if user not in applied_users %}
+                    <div class="applyBtn">
+                        <a href="{% url 'main:apply' post.id %}" class="applyBtnAtag">
+                            <span class="applyBtnContent">
+                                지원하기
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
+                                    <path d="M6.5 17.9897L18.3647 6.125M18.3647 6.125H7.50011M18.3647 6.125V15.9888" stroke="#FFFDFB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="applyBtn">
+                        <span class="applyBtnContent">
+                            지원 완료
+                        </span>
+                    </div>
+                {% endif %}
+            {% else %}
+                <div class="applyBtn">
+                    <span class="applyBtnContent">
+                        모집 마감
+                    </span>
+                </div>
+            {% endif %}
         {% endif %}
     </div>
 
 </div>
 
-<script src="{% static 'js/main/workDetailPage.js' %}"></script>
+<!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
 {% endblock %} 
 {% block footer %}
     <!--footer필요없는페이지라 비우기 -->

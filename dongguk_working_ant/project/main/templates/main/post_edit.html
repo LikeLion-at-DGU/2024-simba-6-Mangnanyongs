@@ -79,8 +79,6 @@
               <div class="date_selector">
                 <label class="recruit_date">모집 기간</label>
                 <div class="date_input" id="recruit_date_input">
-                  <input type="date" id="start_recruit_date" class="selector" />
-                  <span>~</span>
                   <input type="date" id="end_recruit_date" class="selector" name="deadline" value="{{ post.deadline|date:'Y-m-d' }}"/>
                 </div>
               </div>
@@ -88,12 +86,14 @@
           <div class="Caption topic" id="contents">
             <div class="top">
               <label for="recruit_count">모집 인원</label>
-              <select name="recruitment" id="recruit_count" class="selector" value="">
+              <select name="recruitment" id="recruit_count" class="selector">
                 <option value="" hidden></option>
-                {% for option in recruitment_options %}
-                    <option value="{{ option }}" {% if post.recruitment == option %}selected{% endif %}>{{ option }}</option>
-                {% endfor %}
-                <option value="direct" {% if post.recruitment not in recruitment_options and post.recruitment is not None %}selected{% endif %}>직접 입력</option>
+                <option value="1" {% if post.recruitment == 1 %} selected {% endif %}>1</option>
+                <option value="2" {% if post.recruitment == 2 %} selected {% endif %}>2</option>
+                <option value="3" {% if post.recruitment == 3 %} selected {% endif %}>3</option>
+                <option value="4" {% if post.recruitment == 4 %} selected {% endif %}>4</option>
+                <option value="5" {% if post.recruitment == 5 %} selected {% endif %}>5</option>
+                <option value="6" {% if post.recruitment == 6 %} selected {% endif %}>직접 입력</option>
               </select>
             </div>
             <div style="margin-top: 12.5px;">
@@ -117,17 +117,11 @@
               </select>
             </div>
             <div style="margin-top: 12.5px;">
-              <label for="work_time">근로 요일 및 시간</label>
-              <select name="time" id="work_time" class="selector">
-                <option value="" hidden></option>
-                <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
-                <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
-                <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
-                <option value="Thu" {% if post.time == "Thu" %}selected{% endif %}>목요일</option>
-                <option value="Fri" {% if post.time == "Fri" %}selected{% endif %}>금요일</option>
-                <option value="Sat" {% if post.time == "Sat" %}selected{% endif %}>토요일</option>
-                <option value="Sun" {% if post.time == "Sun" %}selected{% endif %}>일요일</option>
-              </select>
+              <span>근로 요일 및 시간</span>
+              <span id="day_time">
+                <input type="text" id="input_day_time" name="time" value="{{ post.time }}"/>
+                <img src="{% static 'images/icons/calendar.svg' %}" style="width: 24px; height: 24px;">
+              </span>
             </div>
             <div style="margin-top: 12.5px;">
               <label for="salary">급여</label>
@@ -153,6 +147,47 @@
           class="question"
           style="display: block; background-color: #f7f8fb; overflow: auto"
         >
+        <div
+            class="detail"
+            style="
+              display: none;
+              width: 100%;
+              height: 34px;
+              background-color: #f7f8fb;
+              margin-bottom: 1em;
+            "
+          >
+            <img
+              src="{% static 'images/icons/check.svg' %}"
+              style="margin-left: 23px; margin-right: 10px"
+            />
+            <input
+              type="text"
+              placeholder="입력란"
+              class="input_text"
+              style="
+                border-bottom: 1px solid #9c9ca1;
+                font-size: 16px;
+                height: 25px;
+                width: 85%;
+                margin-top: 3px;
+              "
+              name="body"
+              value="{{ body }}"
+            />
+            <img
+              src="{% static 'images/icons/chuga.svg' %}"
+              class="add_detail"
+              style="margin-left: 10px"
+              onclick="add_detail();"
+            />
+            <img
+              src="{% static 'images/icons/delete.svg' %}"
+              class="delete_detail"
+              onclick="delete_detail(this);"
+            />
+          </div>
+        {% for body in post.get_body %}
           <div
             class="detail"
             style="
@@ -179,6 +214,7 @@
                 margin-top: 3px;
               "
               name="body"
+              value="{{ body }}"
             />
             <img
               src="{% static 'images/icons/chuga.svg' %}"
@@ -192,6 +228,7 @@
               onclick="delete_detail(this);"
             />
           </div>
+        {% endfor %}
         </div>
       </div>
     </div>
@@ -205,7 +242,7 @@
           <span class="orange" style="margin-left: 1em; margin-right: 0.25em"
             >1.</span
           >
-          <input type="text" class="gray" placeholder="질문을 입력해주세요." name="question1"/>
+          <input type="text" class="gray" placeholder="질문을 입력해주세요." name="question1" value="{{ questions_list.0 }}"/>
         </div>
       </div>
       <div class="Caption gray answer">
@@ -217,7 +254,97 @@
       <img src="{% static 'images/icons/add.svg' %}" />
     </div>
 
+    <!-- 모든 질문 내용을 data-attributes로 전달 -->
+    <div id="questions_data" style="display: none;">
+      {% for question in questions_list %}
+          <div data-question="{{ question }}"></div>
+      {% endfor %}
+    </div>
     <input type="hidden" id="question_count" name="question_count" value="{{ question_count }}">
+
+    <!--모달-->
+    <div id="modal">
+      <div class="container">
+        <div class="Caption big" style="display: flex; margin-top: 43px">근로 요일 및 시간</div>
+        <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
+          <span class="big">요일</span>
+          <span>
+            <input type="radio" name="discussion_day" id="appoint" value="지정" />
+            <label class="Caption big" for="appoint">지정</label>
+          </span>
+          <span>
+            <input type="radio" name="discussion_day" id="deal" value="요일협의" />
+            <label class="Caption big" for="deal">협의</label>
+          </span>
+        </div>
+        <div id="select_work_day">
+          <img src="{% static 'images/icons/calendar.svg' %}" style="margin-left: 21px;">
+          <select name="" id="work_day" class="selector Caption big gray">
+              <option value="" hidden>근로 요일 선택</option>
+              <option value="Mon" {% if post.time == "Mon" %}selected{% endif %}>월요일</option>
+              <option value="Tue" {% if post.time == "Tue" %}selected{% endif %}>화요일</option>
+              <option value="Wed" {% if post.time == "Wed" %}selected{% endif %}>수요일</option>
+              <option value="Thu" {% if post.time == "Thu" %}selected{% endif %}>목요일</option>
+              <option value="Fri" {% if post.time == "Fri" %}selected{% endif %}>금요일</option>
+              <option value="Sat" {% if post.time == "Sat" %}selected{% endif %}>토요일</option>
+              <option value="Sun" {% if post.time == "Sun" %}selected{% endif %}>일요일</option>
+          </select>
+        </div>
+        <div id="day" style="display: flex; gap: 63px; margin-top: 43px">
+          <span class="big">시간</span>
+          <span>
+            <input type="radio" name="discussion_time" id="appoint" value="지정" />
+            <label class="Caption big" for="appoint">지정</label>
+          </span>
+          <span>
+            <input type="radio" name="discussion_time" id="deal" value="시간협의" />
+            <label class="Caption big" for="deal">협의</label>
+          </span>
+        </div>
+        <div>
+          <div id="select_work_time">
+              <div style="display: flex;">
+                  <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
+                  <select name="" id="select_start_time" class="Caption big gray">
+                      <option value="" hidden>시작 시간 선택</option>
+                      <option value="9">오전 9시</option>
+                      <option value="10">오전 10시</option>
+                      <option value="11">오전 11시</option>
+                      <option value="12">오전 12시</option>
+                      <option value="13">오후 1시</option>
+                      <option value="14">오후 2시</option>
+                      <option value="15">오후 3시</option>
+                      <option value="16">오후 4시</option>
+                      <option value="17">오후 5시</option>
+                      <option value="18">오후 6시</option>
+                  </select>
+              </div>
+          </div>
+          <div id="select_work_time">
+              <div style="display: flex;">
+                  <img src="{% static 'images/icons/watch.svg' %}" style="margin-left: 21px; margin-right: 12px;">
+                  <select name="" id="select_end_time" class="Caption big gray">
+                      <option value="" hidden>종료 시간 선택</option>
+                      <option value="9">오전 9시</option>
+                      <option value="10">오전 10시</option>
+                      <option value="11">오전 11시</option>
+                      <option value="12">오전 12시</option>
+                      <option value="13">오후 1시</option>
+                      <option value="14">오후 2시</option>
+                      <option value="15">오후 3시</option>
+                      <option value="16">오후 4시</option>
+                      <option value="17">오후 5시</option>
+                      <option value="18">오후 6시</option>
+                  </select>
+              </div>
+          </div>
+        </div>
+        <div style="margin-top: 29px;">
+          <img src="{% static 'images/icons/cancel.svg' %}" id="cancel_time">
+          <img src="{% static 'images/icons/submit.svg' %}" id="submit_time">
+        </div>
+    </div>
+    </div>
     </form>
 </div>
 <script src="{% static 'js/main/post_edit.js' %}"></script>

@@ -1,1 +1,116 @@
-<!--교직원 지원자 리스트 담당자: 이동건-->
+<!--교직원 지원자 리스트 담당자: 이동건!-->
+
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<link
+    rel="stylesheet"
+    type="text/css"
+    href="{% static 'css/users/staff_appslist.css'%}"
+/>
+<!-- {% for student in students %}
+    {{ student.profile.name }}
+{% endfor %} -->
+<form action="{% url 'users:check-result' post.id %}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="appslist">
+    <!--뒤로가기 +제목 -->
+    <div class="title">
+        <div class="backBtn">
+            <a href="javascript:history.back()" class="backBtnAtag">
+                <img src="{% static 'images/icons/back.svg' %}" />
+            </a>
+            <span id="word">{{post.organization}} {{post.title}} 지원현황</span>
+        </div>
+    </div>
+    <!--지원자리스트 목록 라디오태그 -->
+    <div class="cardFrame">
+        {% for app in applications %}
+            <div class="card">
+                <div class="cardPadding">
+                    <div class="cardContent">
+                        <!--라디오버튼인척하는 체크박스 
+                        라디오버튼은 하나만 클릭돼서 이렇게함 -->
+                            {% if app.is_accepted == 0 %} <!--결과 없음-->
+                            <div class="fake">
+                                <!--{{ forloop.counter }}이거는 for문개수를 숫자로 표현해주는거임 맨처음 카드가1그다음이 2 이런식-->
+                                <input type="checkbox" id="checkbox{{ forloop.counter }}" class="custom-checkbox" name="check" value="{{app.id}}">
+                                <label for="checkbox{{ forloop.counter }}" class="custom-label"></label>
+                            </div>
+                        {% elif app.is_accepted == 1 %} <!--불합격-->
+                            <div class="fake">
+                                <img class="passFail" src="{% static 'images/icons/faillee.svg' %}" />
+                            </div>
+                            
+                        {% elif app.is_accepted == 2 %} <!--합격-->
+                            <div class="fake">
+                                <img class="passFail" src="{% static 'images/icons/passlee.svg' %}" />    
+                            </div>
+                            
+                        {% endif %}
+                        <div class="img">
+                            <div class="profileImage">
+                                <img src="{{ app.writer.profile.photo.url }}" />
+                            </div>
+                        </div>
+                        <div class="cardText">
+                            <span class="ct"><span class="ct" id="bold">{{ app.writer.profile.name }}</span>{{app.writer.profile.birth}}</span>
+                            <span class="ct">{{app.writer.profile.department}} | {{app.writer.profile.student_number}}</span>
+                        </div>
+                    </div>
+                    <div class="cardBtnFrame">
+                        <a href="{% url 'users:staff-studentappfile' post.id app.writer.id %}">
+                            <div class="cardBtn">지원서 확인</div>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        {% endfor %}
+        <div class="passfail">
+            <button type="button" class="appBtn" id="pass">합격</button>
+            <button type="button" class="appBtn" id="fail">불합격</button>
+        </div>
+    </div>
+</div>
+
+
+    <!-- 합격 모달 -->
+    <div class="modal" id="passModal">
+        <div class="modal-content">
+            <div class="comment">합격 처리하시겠습니까?</div>
+            <div class="bt">
+                <button type="button" class="modalBtn" id="passConfirm">확인</button>
+                <button type="button" class="modalBtn" id="cancel">취소</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- 불합격 모달 -->
+    <div class="modal" id="failModal">
+        <div class="modal-content">
+            <div class="comment">불합격 처리하시겠습니까?</div>
+            <div class="bt">
+                <button type="button"class="modalBtn" id="failConfirm">확인</button>
+                <button type="button" class="modalBtn" id="cancel">취소</button>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- 결과 모달 -->
+    <div class="modal" id="resultModal">
+        <div class="modal-content">
+            <div id="resultMessage"></div>
+            <input type="hidden" name="result" id="result" value="{{ result }}">
+            <button type="submit" class="modalBtn" id="resultClose">확인</button>
+        </div>
+    </div>
+</form>
+<script src="{% static 'js/users/staff_appslist.js' %}"></script>
+{% endblock %} 
+{% block footer %}
+    <!--footer필요없는페이지라 비우기 -->
+{% endblock %}

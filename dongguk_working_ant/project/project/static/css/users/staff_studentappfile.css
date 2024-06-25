@@ -1,0 +1,199 @@
+#applyScreen{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    
+    margin-bottom: 100px;
+    margin-top: 40px;
+    /* border: solid 1px red; */
+    
+}
+.ttt{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.backBtn{
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 30px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+#word{
+    color:  #1C1C1E;
+    text-align: center;
+    font-family: "SUITE Variable";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+#applyBody{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 1400px; /* 최대 너비를 1400px로 제한 */
+    /* border: solid 1px blue; */
+    gap:70px;
+}
+.width{
+    width: 1263px;
+}
+.w100{
+    width: 100%;
+}
+.profileBox{
+    
+    display: flex;
+    justify-content: flex-start;
+    height: 273px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    border: 1px solid #EBEBEB;
+    background: #FFF;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+.profile{
+    padding: 32px 70px;
+    display: flex;
+    gap:60px;
+    /* justify-content: center;*/
+    align-items: center; 
+    /* border: solid 1px rgb(75, 92, 167); */
+}
+.img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    width: 165px;
+    height: 165px;
+    border-radius:50%;
+    background-color: #D3D3D3;
+    overflow: hidden;
+}
+.img img{
+    width: 165px;
+    height: 171px;;
+    object-fit: cover; /* 이미지 비율 유지하며 크기에 맞추기 */
+    object-position: center; /* 이미지의 중앙을 기준으로 맞추기 */
+}
+.info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.infoText{
+    display: flex;
+    height: 44px;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+#nameEtc{
+    color: #343030;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+}
+#nameBold{
+    font-size: 20px;
+    font-weight: 700;
+    margin-right: 10px;
+}
+.contentText{
+    color: #737381;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px; /* 281.25% */
+    
+}
+.indextext{
+    color:#1C1C1E;
+    margin-left:6px;
+}
+.questionBox{
+    display: flex;
+    min-height: 324px;
+    margin: 31px 37px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    border: 1px solid rgba(235, 235, 235, 0.92);
+    background: #FBFBFB;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+.question{
+    display: flex;
+    width: 1167px;
+    height: 262px;
+    align-items: center;
+    flex-direction: column;
+    /* border:solid 1px purple; */
+}
+.qTitle{
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+    color: #3a3a3b;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+.qTitle span{
+    color: #FE902F;
+    font-family: "SUITE Variable";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin-right: 10px;
+}
+.inner{
+    display: flex;
+    width: 1144px;
+    height: 220px;
+    flex-shrink: 0;
+    color: #9C9CA1; /* 원하는 색상으로 설정 */
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+}
+
+/* .textarea{
+    padding: 13px 19px;
+    width: 100%;
+    border-radius: 12px;
+    background: #F7F8FB;
+    border: none;
+    outline: none;
+    color: #9C9CA1;
+    font-family: "SUITE Variable";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 45px;
+} */
+#filebox{
+    min-height: 213px;
+}
+#file{
+    height: 164px;
+}
+#fileinner{
+    height: 96px;
+}
+

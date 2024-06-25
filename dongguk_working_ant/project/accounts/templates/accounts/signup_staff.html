@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<form action="{% url 'accounts:signup-staff' %}" method="POST">
+<form action="{% url 'accounts:signup-staff' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <p>아이디</p>
     <input type="text" name="username">
@@ -26,7 +26,7 @@
     <br>
 
     <p>교직원증명서</p>
-    <input type="file" name="certification">
+    <input type="file" name="certification_staff">
     <br>
     
     <input type="submit" value="회원가입">

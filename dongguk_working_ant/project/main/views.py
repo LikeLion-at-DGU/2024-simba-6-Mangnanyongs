@@ -34,7 +34,7 @@ def mainlistpage(request):
         elif department == '교내':
             posts = posts.filter(department='교내')
         elif department == '학과':
-            posts = posts.filter(~Q(department='교내'), ~Q(department='국가'))
+            posts = posts.filter(~Q(department='교내'), ~Q(department='국가'), Q(department=request.user.profile.department))
 
         if keyword:
             posts = posts.filter(

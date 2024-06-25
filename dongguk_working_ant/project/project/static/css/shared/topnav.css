@@ -100,7 +100,7 @@
 }   
 
 #topnav_modal div{
-    display: inline;
+    display: flex;
 }
 
 #topnav_modal div:hover{
@@ -138,11 +138,11 @@ a {
 .nav-3 .nav-link-account {
     box-sizing: border-box;
 }
-
+ 
 a {
-    color: inherit; /* 부모 요소의 색상 상속 */
+    color: inherit;
     text-decoration: none; /* 밑줄 제거 */
-}
+} 
 
 hr {
     border: none;
@@ -164,4 +164,32 @@ hr::before {
 button{
     border: none;
     background-color: #FFF;
+}
+
+#blank-img{
+    width: 18px;
+    height: 18px;
+    margin-right: 3px;
+}
+
+.modal_con{
+    height: 38px;
+    align-items: center;
+    padding-right: 6px;
+    padding-left: 6px;
+    border-radius: 5px;
+    background: rgba(255, 186, 82, 0.50);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+}
+
+.new{
+    background: rgba(255, 186, 82, 0.50);
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);   
+    color: #E18417; 
+}
+
+.seen{
+    background: #F7F7F7;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    color: #9C9CA1;
 }

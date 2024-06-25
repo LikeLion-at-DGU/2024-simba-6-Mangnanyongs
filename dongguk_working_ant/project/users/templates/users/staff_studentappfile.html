@@ -61,10 +61,14 @@
             <div class="questionBox w100" id="filebox">
                 <div class="question" id="file">
                     <div class="qTitle w100" >
-                        <span>*</span> 첨부 파일.
+                        <span>*</span> 첨부 파일
                     </div>
                     <div class="inner w100" id="fileinner">
-                        <!-- <input type="file" name="file"> 첨부된파일넣는곳 -->
+                        {% if application.file %}
+                            <a href="{{ application.file.url }}">{{ application.file.name }}</a>
+                        {% else %}
+                            <p>첨부 파일 없음</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

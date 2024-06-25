@@ -103,21 +103,23 @@ let detailTemplate = document.querySelector(".detail"); // 기존 detail 요소�
 function add_detail() {
   // 새로운 detail 요소 생성 및 복사
   const newDetail = detailTemplate.cloneNode(true);
+  newDetail.style.display = 'flex';
 
   // form 태그 안에 새로운 detail 추가
   detailsContainer.appendChild(newDetail);
 }
+
 //세부사항 삭제 버튼
 function delete_detail(selected) {
+
   let parent_detail = selected.parentNode;
   let grand_detail = parent_detail.parentNode;
 
   parent_detail.remove();
   console.log(grand_detail.querySelectorAll(".detail")[0]);
   if (grand_detail.querySelectorAll(".detail")[0] == undefined) {
-    //첫 요소가 삭제되면
-    console.log(newDetail);
-    detailsContainer.appendChild(newDetail); //새로운 템플릿 생성
+    //첫 요소가 삭제되면  
+    detailsContainer.appendChild(add_detail()); //새로운 템플릿 생성
   }
 }
 

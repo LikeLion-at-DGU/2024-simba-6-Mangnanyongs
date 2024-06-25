@@ -7,6 +7,7 @@ from .models import Post, Question, Application, Answer, Review
 from accounts.models import Notice
 from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
+from django.db.models import Case, When, Value, IntegerField
 
 # Create your views here.
 def mainpage(request):
@@ -73,18 +74,18 @@ def mainlistpage(request):
 
         # 정렬
         if sort == 'deadline':
-            posts = posts.order_by('-deadline','-pub_date')
+            posts = posts.annotate(
+                sort_deadline=Case(
+                    When(day_left__lt=0, then=Value(999999)),  # 음수인 경우 큰 값 할당
+                    default='day_left'  # 음수가 아닐 경우 deadline 값 사용
+                )
+            ).order_by('sort_deadline', '-pub_date')
         elif sort ==  'apply':
             posts = posts.order_by('-applicated_count','-pub_date')
         elif sort ==  'scrap':
             posts = posts.order_by('-scrap','-pub_date')
         else:
             posts = posts.order_by('-pub_date')
-        
-        #페이지 나누기 추후 추가
-        #paginator = Paginator(content_list,5)
-        #page = request.GET.get('page','')
-        #posts = paginator.get_page(page)
         
         context = {
             'depa': department,
@@ -301,7 +302,7 @@ def application_create(request, post_id):
     #교직원에게 알림전송
     new_notice = Notice()
     new_notice.user = post.writer
-    new_notice.content = 'New! | [' + post.organization + ']' + post.title
+    new_notice.content = '신규 지원자 | [' + post.organization + ']' + post.title
     new_notice.link = str(post.id)
     new_notice.pub_date = timezone.now()
 

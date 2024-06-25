@@ -4,6 +4,7 @@ from accounts.models import Notice
 from django.contrib.auth.models import User
 from django.utils import timezone
 from django.http import JsonResponse
+
 # Create your views here.
 def staff_mypage(request):
     return render(request, 'users/staff_mypage.html')
@@ -25,7 +26,7 @@ def staff_studentappfile(request, post_id, student_id):
     application = get_object_or_404(Application, writer_id=student_id, post_id=post_id)
     student = get_object_or_404(User, id=student_id)
     answers = Answer.objects.filter(application=application)
-    return render(request, 'users/staff_studentappfile.html',{'appcliation':application, 'answers':answers, 'student':student, 'post':post})
+    return render(request, 'users/staff_studentappfile.html',{'application':application, 'answers':answers, 'student':student, 'post':post})
 
 def student_myapplication(request):
     #post = get_object_or_404(Post)
@@ -99,5 +100,5 @@ def review_content(request):
 
         new_review.save()
 
-    print(new_review.content)
-    return redirect('users:student-mywork')
+        return redirect('users:student-mywork')
+    return redirect('accounts:login')

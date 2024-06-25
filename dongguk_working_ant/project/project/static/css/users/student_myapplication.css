@@ -201,10 +201,14 @@
 }
 
 .more_info{
+    
     margin-left: auto;
     margin-right: 5.31em;
-}
 
+}
+#plz{
+    margin-left: 10px;
+}
 .circle{
     border-radius: 50%;
     border: 5px #FE902F;

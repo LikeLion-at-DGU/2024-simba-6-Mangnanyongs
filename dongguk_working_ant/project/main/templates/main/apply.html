@@ -49,17 +49,21 @@
                 <div class="questionBox w100">
                     <div class="question">
                         <div class="qTitle w100">
-                            <span>{{ forloop.counter }}.</span> {{ question.content }}
+                            <span><span id="sspan">{{ forloop.counter }}.</span> {{ question.content }}</span>
+                            <div id="charCount{{ forloop.counter }}" class="char-counter">0자</div>
                         </div>
                         <div class="inner w100">
-                            <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea>
+                            <!-- <div id="charCount" class="char-counter">0자</div>
+                            <textarea name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란" ></textarea> -->
+                            
+                            <textarea id="textArea{{ forloop.counter }}" name="answer{{ forloop.counter }}" class="textarea" placeholder="지원자의 답변 입력란"></textarea>
                         </div>
                     </div>
                 </div>
             {% endfor %}
             <div class="questionBox w100" id="filebox">
                 <div class="question" id="file">
-                    <div class="qTitle w100" >
+                    <div class="qTitle w100" id="tttt" >
                         <span>*</span> 첨부 파일을 업로드해주세요.
                     </div>
                     <div class="inner w100" id="fileinner">
@@ -83,19 +87,19 @@
             
         </button>
 
-    <div id="myModal" class="modal">
-        <div class="modal-content">
-            <div class="dd">
-                <span class="close">&times;</span>
-            </div>
-            <div class="modaltext">
-                <span class="st">지원 완료되었어요 !</span>
-            </div>
-            <div class="ff">
-                <button type="submit" id="confirmBtn">확인</button>
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+                <div class="dd">
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modaltext">
+                    <span class="st">지원 완료되었어요 !</span>
+                </div>
+                <div class="ff">
+                    <button type="submit" id="confirmBtn">확인</button>
+                </div>
             </div>
         </div>
-    </div>
     </form>
 </div>
 <script>
@@ -126,8 +130,17 @@
             modal.style.display = "none";
         }
     }
+    
+   // 모든 textarea 요소에 대해 글자 수 카운터 설정
+    document.querySelectorAll('textarea').forEach((textarea, index) => {
+        const charCount = document.getElementById(`charCount${index + 1}`);
+        textarea.addEventListener('input', () => {
+            const currentLength = textarea.value.length;
+            charCount.textContent = `${currentLength} 자`;
+        });
+    });
+    
 </script>
-<!-- <script src="{% static 'js/main/workDetailPage.js' %}"></script> -->
 {% endblock %} 
 {% block footer %}
     <!--footer필요없는페이지라 비우기 -->

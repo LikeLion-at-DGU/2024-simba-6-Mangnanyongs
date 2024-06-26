@@ -76,8 +76,8 @@
 .staffNav {
     display: flex;
     justify-content: center;
-    gap: 50px;
-    /* padding: 0px 95px 0px 95px; */
+    gap: 124px;
+    padding: 0px 95px 0px 95px;
 }
 
 .nav img {

@@ -28,14 +28,15 @@
         </div>
         <div class="staffNavBox">
             <div class="staffNav">
-                <a class="nav" href="{% url 'accounts:signup-staff' %}">
-                    <img src="{% static 'images/icons/staffmypagenav1.svg' %}" />
-                </a>
                 <a class="nav" href="{% url 'main:new-post' %}">
                     <img src="{% static 'images/icons/staffmypagenav2.svg' %}" />
                 </a>
                 <a class="nav" href="{% url 'users:staff-mypost' %}">
                     <img src="{% static 'images/icons/staffmypagenav3.svg' %}" />
+                </a>
+                <!-- 스크랩 -->
+                <a class="nav" href="{% url 'users:student-myscrap' %}">
+                    <img src="{% static 'images/icons/studentnav4.svg' %}" />
                 </a>
             </div>
             <div class="staffLogoutNav">

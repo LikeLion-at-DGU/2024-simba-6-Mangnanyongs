@@ -151,7 +151,13 @@
     font-weight: 700;
     line-height: normal;
 }
-.qTitle span{
+#ldg{
+    justify-content: space-between;
+}
+#ssss{
+    color: #3a3a3b;
+}
+#rrrr{
     color: #FE902F;
     font-family: "SUITE Variable";
     font-size: 20px;

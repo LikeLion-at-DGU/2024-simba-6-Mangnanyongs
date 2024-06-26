@@ -157,6 +157,8 @@
 
   document.addEventListener("DOMContentLoaded", function () {
       const captions = document.getElementsByClassName("modal_con");
+      console.log(captions);
+
       for (let caption of captions) {
           const bgState = localStorage.getItem(caption.id);
           if (bgState === "seen") {
